@@ -9,6 +9,7 @@ on:
     paths:
       - '.github/workflows/structure_lab_refresh.yml'
       - 'build_structure_lab.py'
+      - 'build_status.py'
       - 'structure_core.py'
       - 'requirements.txt'
       - 'tests/**'
@@ -40,13 +41,15 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Build real historical dataset
-        run: python build_structure_lab.py
+        run: |
+          python build_structure_lab.py
+          python build_status.py
 
       - name: Commit refreshed public dataset
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/structure_lab.json
+          git add docs/data/structure_lab.json docs/data/status.json
           if git diff --cached --quiet; then
             echo "No dataset changes"
             exit 0
