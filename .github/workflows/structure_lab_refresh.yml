@@ -13,6 +13,7 @@ on:
       - 'structure_core.py'
       - 'requirements.txt'
       - 'tests/**'
+      - 'docs/data/news_history.json'
 
 permissions:
   contents: write
