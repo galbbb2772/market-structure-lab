@@ -8,12 +8,11 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/structure_lab_refresh.yml'
-      - 'build_structure_lab.py'
+      - 'build_updown_core.py'
       - 'build_status.py'
       - 'structure_core.py'
       - 'requirements.txt'
       - 'tests/**'
-      - 'docs/data/news_history.json'
 
 permissions:
   contents: write
@@ -22,7 +21,7 @@ permissions:
 
 concurrency:
   group: structure-lab-refresh
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   refresh:
@@ -30,7 +29,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 12
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,9 +45,9 @@ jobs:
       - name: Run tests
         run: python -m unittest discover -s tests -v
 
-      - name: Build real historical dataset
+      - name: Refresh three-index dataset
         run: |
-          python build_structure_lab.py
+          python build_updown_core.py
           python build_status.py
 
       - name: Commit refreshed public dataset
@@ -59,7 +58,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No dataset changes"
           else
-            git commit -m "data: refresh market structure lab"
+            git commit -m "data: refresh three-index up/down dataset"
             git push
           fi
 
