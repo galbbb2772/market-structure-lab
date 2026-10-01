@@ -1,6 +1,6 @@
 {
   "schema": "STRUCTURE-LAB-STATUS-V1",
-  "generated_at": "2026-10-01T13:55:21.436789+00:00",
+  "generated_at": "2026-10-01T14:06:08.262985+00:00",
   "indices": {
     "^GSPC": {
       "name": "S&P 500",
