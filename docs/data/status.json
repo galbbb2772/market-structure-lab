@@ -1,6 +1,6 @@
 {
   "schema": "STRUCTURE-LAB-STATUS-V1",
-  "generated_at": "2026-10-01T13:43:53.334339+00:00",
+  "generated_at": "2026-10-01T13:49:06.688904+00:00",
   "indices": {
     "^GSPC": {
       "name": "S&P 500",
@@ -27,7 +27,7 @@
   "market_instruments": 17,
   "market_failures": 0,
   "macro": {},
-  "news_observations": 0,
+  "news_observations": 6,
   "news_status": "exploratory_short_history",
   "errors": {
     "T10Y3M": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
@@ -35,7 +35,6 @@
     "INDPRO": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
     "PERMIT": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
     "BAA10YM": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
-    "NFCI": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
-    "news": "FileNotFoundError(2, 'No such file or directory')"
+    "NFCI": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))"
   }
 }
