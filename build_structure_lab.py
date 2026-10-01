@@ -67,6 +67,16 @@ def get_json(url: str) -> dict:
     raise RuntimeError(f'Yahoo history unavailable: {error}')
 
 
+def _drop_incomplete_session(bars: list[list]) -> list[list]:
+    """Remove today's changing US daily candle before it is safely EOD."""
+    clean = validate_bars(bars)
+    ny_now = datetime.now(timezone.utc).astimezone(ZoneInfo('America/New_York'))
+    if (ny_now.hour, ny_now.minute) < (18, 0):
+        today_ny = ny_now.date().isoformat()
+        clean = [b for b in clean if b[0] < today_ny]
+    return clean
+
+
 def yahoo_bars(sym: str, since: str | None) -> list[list]:
     start = int(pd.Timestamp(since or '1900-01-01', tz='UTC').timestamp())
     end = int(datetime.now(timezone.utc).timestamp()) + 86400
@@ -88,21 +98,13 @@ def yahoo_bars(sym: str, since: str | None) -> list[list]:
                                   for k in ('open', 'high', 'low', 'close', 'volume')])
         except (TypeError, ValueError, IndexError):
             continue
-
-    # Yahoo can expose the current US session as a changing "daily" candle.
-    # Never treat that incomplete candle as a completed daily observation. The
-    # scheduled refresh runs after 18:00 New York time, when today's EOD bar is
-    # allowed; manual/intraday refreshes keep only prior completed sessions.
-    ny_now = datetime.now(timezone.utc).astimezone(ZoneInfo('America/New_York'))
-    if (ny_now.hour, ny_now.minute) < (18, 0):
-        today_ny = ny_now.date().isoformat()
-        bars = [b for b in bars if b[0] < today_ny]
-
-    return validate_bars(bars)
+    return _drop_incomplete_session(bars)
 
 
 def merge_bars(previous: list[list], newer: list[list]) -> list[list]:
-    return validate_bars(previous + newer)
+    # Filtering after merge also purges an incomplete candle that may have been
+    # cached by an older build before the EOD guard existed.
+    return _drop_incomplete_session(previous + newer)
 
 
 def macro_monthly(series_id: str) -> list[list]:
@@ -138,7 +140,7 @@ def build(existing: dict | None = None) -> dict:
             source_status = 'refreshed'
         except Exception as exc:
             errors[sym] = repr(exc)
-            bars, source_status = prev, 'stale_cached' if prev else 'unavailable'
+            bars, source_status = _drop_incomplete_session(prev), 'stale_cached' if prev else 'unavailable'
         if not bars:
             continue
         boxes = numbered_boxes(sym.replace('^', ''), bars)
@@ -179,7 +181,7 @@ def build(existing: dict | None = None) -> dict:
         'schema': 'STRUCTURE-LAB-V1',
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'policy': {
-            'price': 'Yahoo daily raw OHLCV when available; incomplete US intraday candles excluded; ETF inception limits coverage',
+            'price': 'Yahoo daily raw OHLCV when available; incomplete US intraday candles excluded from fresh and cached data; ETF inception limits coverage',
             'box_eligibility': 'ONLY next session after detected_at, never start_at',
             'box_scores': 'provisional descriptive 0-10; historical finalized scores are EX POST',
             'news': 'equal-weight reaction_adjusted components from recorded news_history only',
