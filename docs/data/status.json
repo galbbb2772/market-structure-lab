@@ -1,0 +1,41 @@
+{
+  "schema": "STRUCTURE-LAB-STATUS-V1",
+  "generated_at": "2026-10-01T13:43:53.334339+00:00",
+  "indices": {
+    "^GSPC": {
+      "name": "S&P 500",
+      "start": "1927-12-30",
+      "end": "2026-10-01",
+      "bars": 24805,
+      "source_status": "refreshed"
+    },
+    "^IXIC": {
+      "name": "Nasdaq Composite",
+      "start": "1971-02-05",
+      "end": "2026-10-01",
+      "bars": 14031,
+      "source_status": "refreshed"
+    },
+    "^DJI": {
+      "name": "Dow Jones",
+      "start": "1992-01-02",
+      "end": "2026-10-01",
+      "bars": 8749,
+      "source_status": "refreshed"
+    }
+  },
+  "market_instruments": 17,
+  "market_failures": 0,
+  "macro": {},
+  "news_observations": 0,
+  "news_status": "exploratory_short_history",
+  "errors": {
+    "T10Y3M": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
+    "UNRATE": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
+    "INDPRO": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
+    "PERMIT": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
+    "BAA10YM": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
+    "NFCI": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=22)\"))",
+    "news": "FileNotFoundError(2, 'No such file or directory')"
+  }
+}
