@@ -13,6 +13,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 import requests
@@ -87,6 +88,16 @@ def yahoo_bars(sym: str, since: str | None) -> list[list]:
                                   for k in ('open', 'high', 'low', 'close', 'volume')])
         except (TypeError, ValueError, IndexError):
             continue
+
+    # Yahoo can expose the current US session as a changing "daily" candle.
+    # Never treat that incomplete candle as a completed daily observation. The
+    # scheduled refresh runs after 18:00 New York time, when today's EOD bar is
+    # allowed; manual/intraday refreshes keep only prior completed sessions.
+    ny_now = datetime.now(timezone.utc).astimezone(ZoneInfo('America/New_York'))
+    if (ny_now.hour, ny_now.minute) < (18, 0):
+        today_ny = ny_now.date().isoformat()
+        bars = [b for b in bars if b[0] < today_ny]
+
     return validate_bars(bars)
 
 
@@ -168,7 +179,7 @@ def build(existing: dict | None = None) -> dict:
         'schema': 'STRUCTURE-LAB-V1',
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'policy': {
-            'price': 'Yahoo daily raw OHLCV when available; ETF inception limits coverage',
+            'price': 'Yahoo daily raw OHLCV when available; incomplete US intraday candles excluded; ETF inception limits coverage',
             'box_eligibility': 'ONLY next session after detected_at, never start_at',
             'box_scores': 'provisional descriptive 0-10; historical finalized scores are EX POST',
             'news': 'equal-weight reaction_adjusted components from recorded news_history only',
