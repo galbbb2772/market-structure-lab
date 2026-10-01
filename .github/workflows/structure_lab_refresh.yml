@@ -17,6 +17,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: structure-lab-refresh
@@ -24,6 +26,9 @@ concurrency:
 
 jobs:
   refresh:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -53,7 +58,21 @@ jobs:
           git add docs/data/structure_lab.json docs/data/status.json
           if git diff --cached --quiet; then
             echo "No dataset changes"
-            exit 0
+          else
+            git commit -m "data: refresh market structure lab"
+            git push
           fi
-          git commit -m "data: refresh market structure lab"
-          git push
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload refreshed site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy refreshed site
+        id: deployment
+        uses: actions/deploy-pages@v4
