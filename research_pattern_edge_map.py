@@ -65,9 +65,6 @@ def market_state(sp_close: float, sp_ma200: float, sp_ma200_20ago: float) -> str
 def feature_rows(bars, sp_state_map):
     n = len(bars)
     cl = [float(b[4]) for b in bars]
-    pref = [0.0]
-    for x in cl:
-        pref.append(pref[-1] + x)
     streak = [0] * n
     tr = [None] * n
     atr = [None] * n
@@ -170,36 +167,38 @@ def build_sp_state_map(sp_bars):
 
 
 def oos_cell_test(bars, rows, h):
-    # Expanding-window, year-by-year pseudo-OOS test. For each test year, the
-    # conditioned cell and streak baseline are estimated only from prior years.
+    # Expanding-window, year-by-year pseudo-OOS. Statistics used for a test
+    # year are computed once from prior years only and cached by bucket/cell.
     by_year = defaultdict(list)
     for r in rows:
         by_year[r['year']].append(r)
     years = sorted(by_year)
+    base_groups = defaultdict(list)
+    cell_groups = defaultdict(list)
     pred_records = []
+
     for y in years:
-        train = [r for yy in years if yy < y for r in by_year[yy]]
         test = by_year[y]
-        if not train:
-            continue
-        base_groups = defaultdict(list)
-        cell_groups = defaultdict(list)
-        for r in train:
-            if r['streak_bucket'] == 'FLAT':
-                continue
-            base_groups[r['streak_bucket']].append(r)
-            cell_groups[(r['streak_bucket'], r['market_state'], r['position'], r['volatility'])].append(r)
+        base_stats = {
+            k: summarize(bars, g, h)
+            for k, g in base_groups.items()
+            if len(g) >= MIN_CELL_N
+        }
+        cell_stats = {
+            k: summarize(bars, g, h)
+            for k, g in cell_groups.items()
+            if len(g) >= MIN_CELL_N
+        }
+
         for r in test:
             sb = r['streak_bucket']
             if sb == 'FLAT':
                 continue
             key = (sb, r['market_state'], r['position'], r['volatility'])
-            br = base_groups.get(sb, [])
-            cr = cell_groups.get(key, [])
-            if len(br) < MIN_CELL_N or len(cr) < MIN_CELL_N:
+            bs = base_stats.get(sb)
+            cs = cell_stats.get(key)
+            if not bs or not cs:
                 continue
-            bs = summarize(bars, br, h)
-            cs = summarize(bars, cr, h)
             actual = outcomes(bars, r, h)['ret']
             pred_records.append({
                 'actual_up': actual > 0,
@@ -209,10 +208,21 @@ def oos_cell_test(bars, rows, h):
                 'base_median': bs['median'],
                 'cell_median': cs['median'],
             })
+
+        # Only after scoring year y do its rows become historical training data.
+        for r in test:
+            sb = r['streak_bucket']
+            if sb == 'FLAT':
+                continue
+            base_groups[sb].append(r)
+            cell_groups[(sb, r['market_state'], r['position'], r['volatility'])].append(r)
+
     if len(pred_records) < MIN_OOS_N:
         return {'n': len(pred_records), 'usable': False}
+
     def brier(p, y):
         return (p / 100 - (1.0 if y else 0.0)) ** 2
+
     base_brier = avg(brier(r['base_up_pct'], r['actual_up']) for r in pred_records)
     cell_brier = avg(brier(r['cell_up_pct'], r['actual_up']) for r in pred_records)
     base_abs = avg(abs(r['actual_ret'] - r['base_median']) for r in pred_records)
@@ -246,25 +256,26 @@ def main():
             'volatility': {'low': '<33.3 ATR14 percentile', 'mid': '33.3-66.7', 'high': '>=66.7'},
             'baseline': 'same signed streak bucket across all market states/positions/volatility',
             'minimum_cell_n': MIN_CELL_N,
+            'oos': 'expanding-window by calendar year; test year never enters its own training statistics',
         },
         'instruments': {},
     }
     for sym in SYMS:
         inst = data['instruments'][sym]
         bars = inst['bars']
-        rr = feature_rows(bars, sp_state_map)
-        rr = [r for r in rr if r['streak_bucket'] != 'FLAT']
+        rr = [r for r in feature_rows(bars, sp_state_map) if r['streak_bucket'] != 'FLAT']
         base_groups = defaultdict(list)
         cell_groups = defaultdict(list)
         for r in rr:
             base_groups[r['streak_bucket']].append(r)
             cell_groups[(r['streak_bucket'], r['market_state'], r['position'], r['volatility'])].append(r)
-        baselines = {}
+
+        baselines = {
+            sb: {str(h): summarize(bars, group, h) for h in HORIZONS}
+            for sb, group in sorted(base_groups.items())
+        }
         cells = []
-        for sb, group in sorted(base_groups.items()):
-            baselines[sb] = {str(h): summarize(bars, group, h) for h in HORIZONS}
-        for key, group in cell_groups.items():
-            sb, ms, pos, vol = key
+        for (sb, ms, pos, vol), group in cell_groups.items():
             entry = {
                 'streak': sb,
                 'market_state': ms,
@@ -276,18 +287,12 @@ def main():
             for h in HORIZONS:
                 cs = summarize(bars, group, h)
                 bs = baselines[sb][str(h)]
-                entry['horizons'][str(h)] = {
-                    'cell': cs,
-                    'baseline': bs,
-                    'edge': delta(cs, bs),
-                }
+                entry['horizons'][str(h)] = {'cell': cs, 'baseline': bs, 'edge': delta(cs, bs)}
+            e5 = entry['horizons']['5']['edge']
+            entry['research_sort_score'] = None if not e5.get('usable') else abs(e5['up_edge_pp']) + 10 * abs(e5['median_edge_pct'])
             cells.append(entry)
-        # Rank descriptively by T+5 combined directional + median edge, but only
-        # expose a score as a research sorting field, not as a trading recommendation.
-        for e in cells:
-            x = e['horizons']['5']['edge']
-            e['research_sort_score'] = None if not x.get('usable') else abs(x['up_edge_pp']) + 10 * abs(x['median_edge_pct'])
-        cells.sort(key=lambda e: (-1 if e['research_sort_score'] is None else -e['research_sort_score'], e['streak'], e['market_state'], e['position'], e['volatility']))
+
+        cells.sort(key=lambda e: (e['research_sort_score'] is None, -(e['research_sort_score'] or 0), e['streak'], e['market_state'], e['position'], e['volatility']))
         result['instruments'][sym] = {
             'name': inst['name'],
             'coverage': [rr[0]['date'], rr[-1]['date']] if rr else None,
@@ -296,6 +301,7 @@ def main():
             'cells': cells,
             'oos': {str(h): oos_cell_test(bars, rr, h) for h in HORIZONS},
         }
+
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2))
     print(json.dumps({s: result['instruments'][s]['oos'] for s in SYMS}, ensure_ascii=False, indent=2))
 
