@@ -1,0 +1,39 @@
+name: Run Historical Pattern Analog
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_pattern_analog.py'
+      - '.github/workflows/run_pattern_analog.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pattern-analog-latest
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run analog research
+        run: python research_pattern_analog.py
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/analog_latest.json
+          if git diff --cached --quiet; then
+            echo "No result changes"
+          else
+            git commit -m "data: refresh latest pattern analog"
+            git push
+          fi
