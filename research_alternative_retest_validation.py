@@ -4,7 +4,9 @@ import json, math, statistics
 from collections import defaultdict
 from pathlib import Path
 
-from research_pattern_edge_map import build_sp_state_map, feature_rows, outcomes
+import numpy as np
+
+from research_pattern_edge_map import build_sp_state_map, feature_rows
 from research_sp500_survivor_diagnostic import enrich
 
 SRC = Path('docs/data/structure_lab.json')
@@ -32,49 +34,43 @@ def summary(rows):
     return {'n':len(rows),'up_pct':100*sum(x>0 for x in rs)/len(rs),'mean':avg(rs),'median':quantile(rs,.5),'p25':quantile(rs,.25),'p75':quantile(rs,.75)}
 
 
-def scaler(train):
-    out={}
-    for k in FEATURES:
-        xs=[r[k] for r in train if r.get(k) is not None]
-        med=quantile(xs,.5); q1=quantile(xs,.25); q3=quantile(xs,.75)
-        scale=(q3-q1) if q1 is not None and q3 is not None and q3>q1 else (statistics.pstdev(xs) if len(xs)>1 else 1.0)
-        out[k]=(med,scale or 1.0)
-    return out
-
-
-def dist(a,b,sc):
-    vals=[]
-    for k in FEATURES:
-        if a.get(k) is None or b.get(k) is None:continue
-        _,s=sc[k]; vals.append(((a[k]-b[k])/s)**2)
-    return math.sqrt(sum(vals)/max(1,len(vals)))
-
-
 def continuous_knn(rows):
     by_year=defaultdict(list)
     for r in rows: by_year[r['year']].append(r)
     train=[]; rec=[]
     for y in sorted(by_year):
         test=by_year[y]
-        if len(train)>=120:
-            sc=scaler(train)
-            base_p=sum(r['t5_up'] for r in train)/len(train)
-            base_med=quantile([r['t5_ret'] for r in train],.5)
-            for r in test:
-                # require fully historical analogs and reduce near-duplicate episode dependence
-                cand=[x for x in train if x['idx']+10 < r['idx']]
-                if len(cand)<K: continue
-                nn=sorted(cand,key=lambda x:dist(r,x,sc))[:K]
-                p=sum(x['t5_up'] for x in nn)/len(nn)
-                med=quantile([x['t5_ret'] for x in nn],.5)
-                rec.append({'year':y,'actual':r['t5_up'],'ret':r['t5_ret'],'base_p':base_p,'knn_p':p,'base_med':base_med,'knn_med':med})
+        if len(train)>=120 and test:
+            # Freeze the candidate pool before the test year and apply a 10-session
+            # boundary embargo. This makes the candidate matrix constant within year.
+            first_idx=min(r['idx'] for r in test)
+            cand=[x for x in train if x['idx']+10 < first_idx]
+            if len(cand)>=K:
+                X=np.asarray([[float(r[k]) for k in FEATURES] for r in cand],dtype=float)
+                med=np.nanmedian(X,axis=0)
+                q1=np.nanpercentile(X,25,axis=0); q3=np.nanpercentile(X,75,axis=0)
+                scale=q3-q1
+                sd=np.nanstd(X,axis=0)
+                scale=np.where(scale>1e-12,scale,np.where(sd>1e-12,sd,1.0))
+                Xz=(X-med)/scale
+                cand_up=np.asarray([1.0 if r['t5_up'] else 0.0 for r in cand])
+                cand_ret=np.asarray([r['t5_ret'] for r in cand],dtype=float)
+                base_p=float(np.mean(cand_up))
+                base_med=float(np.median(cand_ret))
+                for r in test:
+                    z=(np.asarray([float(r[k]) for k in FEATURES])-med)/scale
+                    d=np.nanmean((Xz-z)**2,axis=1)
+                    idx=np.argpartition(d,K-1)[:K]
+                    p=float(np.mean(cand_up[idx])); medret=float(np.median(cand_ret[idx]))
+                    rec.append({'year':y,'actual':r['t5_up'],'ret':r['t5_ret'],'base_p':base_p,'knn_p':p,'base_med':base_med,'knn_med':medret})
         train.extend(test)
     if not rec:return {'n':0}
     b0=avg((r['base_p']-(1 if r['actual'] else 0))**2 for r in rec)
     b1=avg((r['knn_p']-(1 if r['actual'] else 0))**2 for r in rec)
     m0=avg(abs(r['ret']-r['base_med']) for r in rec);m1=avg(abs(r['ret']-r['knn_med']) for r in rec)
     yearly={}
-    for y in sorted(set(r['year'] for r in rec)):
+    years=sorted(set(r['year'] for r in rec))
+    for y in years:
         z=[r for r in rec if r['year']==y]
         yearly[str(y)]={'n':len(z),'brier_improvement':avg((r['base_p']-(1 if r['actual'] else 0))**2-(r['knn_p']-(1 if r['actual'] else 0))**2 for r in z),'median_mae_improvement':avg(abs(r['ret']-r['base_med'])-abs(r['ret']-r['knn_med']) for r in z)}
     return {'n':len(rec),'k':K,'base_brier':b0,'knn_brier':b1,'brier_improvement':b0-b1,'base_median_mae':m0,'knn_median_mae':m1,'median_mae_improvement':m0-m1,'positive_brier_years':sum(v['brier_improvement']>0 for v in yearly.values()),'years':len(yearly),'yearly':yearly}
@@ -94,7 +90,6 @@ def matched_control(rows):
     for t in targets:
         pool=[c for c in controls if abs(c['year']-t['year'])<=5 and c['market_state']=='bull' and abs(c['idx']-t['idx'])>10]
         if len(pool)<3: continue
-        # local robust scale from candidate pool
         sc={}
         for k in match_keys:
             xs=[c[k] for c in pool]; q1=quantile(xs,.25);q3=quantile(xs,.75);sc[k]=max((q3-q1) if q3>q1 else 1.0,1e-9)
@@ -103,13 +98,9 @@ def matched_control(rows):
         ctrl=avg(c['t5_ret'] for c in nn)
         pairs.append({'date':t['date'],'target_ret':t['t5_ret'],'control_ret':ctrl,'diff':t['t5_ret']-ctrl})
     diffs=[p['diff'] for p in pairs]
-    # sign-flip permutation approximation deterministic over all cyclic pseudo-sign patterns
     if diffs:
-        obs=avg(diffs); n=len(diffs)
-        # normal approximation to paired mean, reported as descriptive not confirmatory
-        sd=statistics.stdev(diffs) if n>1 else 0
-        se=sd/math.sqrt(n) if n else None
-        z=obs/se if se and se>0 else None
+        obs=avg(diffs); n=len(diffs); sd=statistics.stdev(diffs) if n>1 else 0
+        se=sd/math.sqrt(n) if n else None; z=obs/se if se and se>0 else None
     else: obs=se=z=None
     return {'n_pairs':len(pairs),'mean_paired_edge':obs,'median_paired_edge':quantile(diffs,.5) if diffs else None,'positive_pair_pct':100*sum(x>0 for x in diffs)/len(diffs) if diffs else None,'se_mean':se,'z_descriptive':z}
 
@@ -119,11 +110,9 @@ def retest_score(r):
     s=0.0
     if r['market_state']=='bull': s+=1.0
     if r['pre1']>0: s+=1.0
-    # deeper position/pullback gets higher score, capped to prevent extremes dominating
     s += max(0.0,min(1.5,(40-r['pos60'])/25))
     s += max(0.0,min(1.5,(-r['ma50_dist'])/3.0))
     s += max(0.0,min(1.0,(45-r['rsi14'])/20.0))
-    # prefer medium rather than extreme ATR via smooth triangular score
     s += max(0.0,1.0-abs(r['atr_rank']-50)/35)
     return s
 
