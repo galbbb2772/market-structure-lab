@@ -7,6 +7,9 @@
 <style>
 :root{--bg:#081016;--panel:#0f1b24;--panel2:#142530;--line:#243a47;--text:#dbe7ef;--muted:#91a6b5;--blue:#79a9ff;--green:#69d5b3;--amber:#ffcc77;--red:#ff8b8b}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#071017,#0a141b 35%,#081016);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1480px;margin:auto;padding:22px}.top,.sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--green)}a.btn,button,select,input{background:#10202a;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:9px 11px;text-decoration:none}button{cursor:pointer}.hero{padding:38px 0 22px}.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--green);font-weight:700}.hero h1{font-size:clamp(30px,5vw,58px);line-height:1.04;margin:9px 0 13px}.lead,.panel p,.hint,small{color:var(--muted)}.lead{max-width:980px;font-size:16px}.notice{background:#111f29;border:1px solid var(--line);padding:13px 15px;border-radius:12px;color:var(--muted)}.panel{background:rgba(15,27,36,.96);border:1px solid var(--line);border-radius:15px;padding:18px;margin:16px 0;box-shadow:0 12px 40px #0005}.panel h2{margin:0 0 7px;font-size:clamp(22px,3.5vw,34px);line-height:1.15}.subhead{margin:18px 0 4px;font-weight:700;font-size:15px}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:end}.controls label{display:grid;gap:5px;font-size:12px;color:var(--muted)}.quick{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.quick button.active{border-color:var(--green);background:#12302f}.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0}.metric{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:13px}.metric small{display:block}.metric b{display:block;font-size:21px;margin-top:5px}.chartWrap{position:relative}.chart{display:block;width:100%;height:320px;background:#0b171f;border:1px solid var(--line);border-radius:12px;margin-top:8px;cursor:grab;touch-action:none;user-select:none}.chart.ratio{height:380px}.chart.dragging{cursor:grabbing}.navigator{display:block;width:100%;height:64px;background:#0a151d;border:1px solid var(--line);border-radius:10px;margin-top:8px;touch-action:none;cursor:ew-resize}.tooltip{position:absolute;display:none;pointer-events:none;background:#071017ef;border:1px solid #355364;border-radius:10px;padding:9px 11px;font-size:12px;box-shadow:0 8px 30px #0008;z-index:3}.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:7px;color:var(--muted);font-size:12px}.legend span:before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;background:var(--blue);vertical-align:middle;margin-right:7px}.legend.balance span:nth-child(2):before{background:var(--amber)}.scroll{overflow:auto;max-height:620px;border:1px solid var(--line);border-radius:11px}.matrix{overflow:auto;border:1px solid var(--line);border-radius:11px}table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#0f1b24;z-index:1}thead th{position:sticky;top:0;background:#12212b;color:var(--muted);z-index:2}thead th:first-child{z-index:3}.ratioHigh{color:var(--green)}.ratioLow{color:var(--red)}.ratioMid{color:var(--amber)}.empty{color:#587080}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted);font-size:12px}.ok{color:var(--green)}.warn{color:var(--amber)}
+
+.gateGrid{display:grid;grid-template-columns:1.15fr 1fr;gap:12px;margin-top:14px}.gateHero,.gateBox{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px}.gateHero{display:grid;gap:9px}.gateState{font-size:clamp(26px,4vw,42px);font-weight:850;line-height:1}.gateState.normal{color:var(--green)}.gateState.heat{color:var(--amber)}.gateState.repair{color:var(--blue)}.gateState.watch{color:#d7b8ff}.gateAction{font-size:17px;font-weight:750;line-height:1.45}.gateWhy{color:var(--muted);font-size:13px;line-height:1.65}.gateLevels{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}.gateLevel{background:#0b171f;border:1px solid var(--line);border-radius:10px;padding:11px}.gateLevel small{display:block}.gateLevel b{display:block;font-size:20px;margin-top:4px}.gateTag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:12px;color:var(--muted)}.gateNote{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.6}
+@media(max-width:800px){.gateGrid{grid-template-columns:1fr}.gateLevels{grid-template-columns:1fr}}
 @media(max-width:1100px){.metrics{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.wrap{padding:12px}.panel{padding:14px}.metrics{grid-template-columns:repeat(2,1fr)}.metric b{font-size:18px}.chart{height:245px}.chart.ratio{height:300px}.navigator{height:54px}.hero{padding-top:24px}.hero h1{font-size:32px}.lead{font-size:14px}.sectionTitle>div{min-width:0;width:100%}.sectionTitle h2{font-size:28px}.controls label{flex:1 1 135px}.controls select,.controls input{width:100%}}
 @media(max-width:440px){.metrics{grid-template-columns:1fr}.chart{height:225px}.chart.ratio{height:285px}.sectionTitle h2{font-size:25px}}
@@ -60,6 +63,27 @@
 <div class="subhead">领先 / 滞后相关性</div>
 <div class="chartWrap"><canvas id="lagChart" class="chart"></canvas></div>
 <div class="hint" style="margin-top:8px">横轴为偏移期数：<b>正值</b> = 涨跌比领先指数收益；<b>负值</b> = 指数收益领先涨跌比。滚动日视图下 1 期≈1 个交易日。</div>
+</section>
+
+
+<section class="panel" id="entryGatePanel">
+<div class="sectionTitle"><div><h2>Entry Gate · 新增仓位状态</h2><p>固定使用我们已经验证过的20日涨跌比研究口径；核心仓位和固定定投不因本模块单独改变，主要约束“额外追仓/机会仓”。</p></div><div class="controls"><label>背离阈值<select id="gateThreshold"><option value="1">1.0σ</option><option value="1.5" selected>1.5σ</option><option value="2">2.0σ</option></select></label><span class="gateTag">20日固定口径</span></div></div>
+<div class="gateGrid">
+  <div class="gateHero">
+    <small>当前系统状态</small>
+    <div id="gateState" class="gateState normal">—</div>
+    <div id="gateAction" class="gateAction">正在计算…</div>
+    <div id="gateWhy" class="gateWhy">—</div>
+  </div>
+  <div class="gateBox">
+    <div class="subhead" style="margin-top:0">当前结构</div>
+    <div id="gateMetrics" class="metrics" style="grid-template-columns:repeat(2,1fr);margin:8px 0 0"></div>
+  </div>
+</div>
+<div class="subhead">具体结构参考位</div>
+<div id="gateLevels" class="gateLevels"></div>
+<div id="gatePlan" class="notice" style="margin-top:12px">—</div>
+<div class="gateNote">“具体点位”是按当前20日价格结构动态计算的研究参考，不是对未来底部/顶部的保证。我们前面的回测支持它作为新增仓位过滤器，但没有证明单靠它择时能稳定提高长期收益。</div>
 </section>
 
 <section class="panel"><div class="sectionTitle"><div><h2>逐期明细</h2><p>上方主图显示所选区间累计涨跌幅；本表中的月度/年度涨跌幅仍表示各自周期内涨跌幅。</p></div><span id="rowCount" class="pill">—</span></div><div id="detail" class="scroll"></div></section>
@@ -175,20 +199,62 @@ attachChart($('returnChart'));attachChart($('ratioChart'));attachChart($('diverg
 $('navigator').addEventListener('pointerdown',e=>{NAVDRAG=true;$('navigator').setPointerCapture?.(e.pointerId);navMove(e)});$('navigator').addEventListener('pointermove',e=>{if(NAVDRAG)navMove(e)});$('navigator').addEventListener('pointerup',()=>NAVDRAG=false);$('navigator').addEventListener('pointercancel',()=>NAVDRAG=false);
 function navMove(e){const c=$('navigator'),r=c.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),len=VIEW.end-VIEW.start,n=FULL.length;let st=Math.round(p*n-len/2);st=Math.max(0,Math.min(n-len,st));VIEW.start=st;VIEW.end=st+len;paint()}
 
+
+function entryGateSnapshot(sym){
+ const b=barsFor(sym),n=b.length;if(n<90)return null;
+ const close=b.map(x=>+x[4]),dates=b.map(x=>x[0]),dirsA=[null];
+ for(let i=1;i<n;i++)dirsA.push(close[i]>close[i-1]?1:close[i]<close[i-1]?-1:0);
+ const rs=Array(n).fill(null),rr=Array(n).fill(null),ret=Array(n).fill(null),hi20=Array(n).fill(null),lo20=Array(n).fill(null),div=Array(n).fill(null),corr=Array(n).fill(null);
+ for(let i=20;i<n;i++){
+   const w=dirsA.slice(i-19,i+1),up=w.filter(v=>v===1).length,dn=w.filter(v=>v===-1).length;
+   rr[i]=dn?up/dn:(up?Infinity:null);rs[i]=Math.log((up+.5)/(dn+.5));ret[i]=close[i]/close[i-20]-1;
+   const px=close.slice(i-19,i+1);hi20[i]=Math.max(...px);lo20[i]=Math.min(...px)
+ }
+ for(let i=79;i<n;i++){
+   const pz=zAt(ret.slice(i-59,i+1)),rz=zAt(rs.slice(i-59,i+1));if(Number.isFinite(pz)&&Number.isFinite(rz))div[i]=pz-rz;
+   corr[i]=pearsonPairs(Array.from({length:60},(_,k)=>[ret[i-59+k],rs[i-59+k]]))
+ }
+ const i=n-1,la=Math.max(20,i-179);let best=null;
+ for(let lag=1;lag<=20;lag++){
+   const pairs=[];for(let j=la;j+lag<=i;j++)pairs.push([rs[j],ret[j+lag]]);
+   const c=pearsonPairs(pairs);if(Number.isFinite(c)&&(!best||Math.abs(c)>Math.abs(best.corr)))best={lag,corr:c}
+ }
+ return{date:dates[i],close:close[i],ratio:rr[i],ret20:ret[i],high20:hi20[i],low20:lo20[i],mid20:(hi20[i]+lo20[i])/2,divergence:div[i],corr:corr[i],bestLead:best}
+}
+function renderEntryGate(){
+ const root=$('entryGatePanel');if(!root||!DATA)return;
+ const q=entryGateSnapshot($('idx').value),th=+($('gateThreshold')?.value||1.5);if(!q){$('gateState').textContent='数据不足';$('gateAction').textContent='暂不生成操作参考';return}
+ const leadOK=q.bestLead&&q.bestLead.corr>=.25,corrOK=Number.isFinite(q.corr)&&q.corr>=.25,confirm=leadOK&&corrOK;
+ const nearHigh=q.close>=q.high20*.97,nearLow=q.close<=q.low20*1.03;
+ const heat=Number.isFinite(q.divergence)&&q.divergence>=th&&q.ret20>0&&nearHigh;
+ const repair=Number.isFinite(q.divergence)&&q.divergence<=-th&&q.ret20<0&&nearLow;
+ let state='正常',clsName='normal',action='核心仓位：持有；固定定投：照常；机会仓：不因本指标单独加仓。',plan='当前没有明确的过热或修复信号。若想等更好的结构位置，可把20日中位作为普通回撤观察位，把20日低点附近作为更深的修复观察区。';
+ if(heat){state='过热 / 谨慎追涨';clsName='heat';action='核心仓位：继续持有；固定定投：照常；机会仓：暂停追涨，等待过热解除。';plan=`当前不建议因为上涨而额外追仓。第一观察线：≤ ${fmt(q.high20*.97,2)}；普通回撤参考：约 ${fmt(q.mid20,2)}；若进一步进入 ${fmt(q.low20,2)}～${fmt(q.low20*1.03,2)}，再检查是否转为“修复观察”。`}
+ else if(repair&&confirm){state='修复确认 / 机会仓观察';clsName='repair';action='核心仓位：持有；固定定投：照常；机会仓：可进入分批研究状态，不建议一次性满仓。';plan=`已进入历史研究中的修复区。研究执行参考：下一交易时段若仍≤ ${fmt(q.low20*1.03,2)}，可考虑机会仓首批；20日低点 ${fmt(q.low20,2)} 为更深一档结构参考。若价格快速脱离修复区，不追价，重新等待。`}
+ else if(repair){state='修复观察 / 待确认';clsName='watch';action='核心仓位：持有；固定定投：照常；机会仓：先观察，等待相关性/领先确认。';plan=`价格已进入修复区域 ${fmt(q.low20,2)}～${fmt(q.low20*1.03,2)}，但确认条件不足。先不把它当正式加仓触发；等滚动相关≥0.25且涨跌比领先相关≥0.25后再升级。`}
+ $('gateState').className='gateState '+clsName;$('gateState').textContent=state;$('gateAction').textContent=action;
+ const leadText=q.bestLead?`+${q.bestLead.lag}日 / ${fmt(q.bestLead.corr,3)}`:'—';
+ $('gateWhy').textContent=`${q.date} · 背离 ${fmt(q.divergence,2)}σ · 20日收益 ${fmt(q.ret20*100,2)}% · 涨跌比 ${q.ratio===Infinity?'∞':fmt(q.ratio,2)} · 60日相关 ${fmt(q.corr,3)} · 最强正向领先 ${leadText}`;
+ const ms=[['当前点位',fmt(q.close,2)],['20日收益',fmt(q.ret20*100,2)+'%'],['背离强度',fmt(q.divergence,2)+'σ'],['领先确认',leadText]];
+ $('gateMetrics').innerHTML=ms.map(([k,v])=>`<div class="metric"><small>${k}</small><b>${v}</b></div>`).join('');
+ const levels=[['离开过热区观察线',q.high20*.97,`20日高 ${fmt(q.high20,2)} × 97%`],['20日区间中位',q.mid20,'普通回撤结构参考'],['修复观察区',q.low20,`${fmt(q.low20,2)} ～ ${fmt(q.low20*1.03,2)}`]];
+ $('gateLevels').innerHTML=levels.map(([k,v,d])=>`<div class="gateLevel"><small>${k}</small><b>${fmt(v,2)}</b><small>${d}</small></div>`).join('');$('gatePlan').innerHTML=`<b>系统操作参考：</b> ${plan}`
+}
+
 function stats(s){let up=0,down=0,flat=0;s.forEach(q=>{up+=q.up;down+=q.down;flat+=q.flat});const cum=s.map(q=>q.cumRetPct).filter(Number.isFinite),last=cum.at(-1);return{points:s.length,up,down,flat,overall:down?up/down:(up?Infinity:null),upShare:(up+down)?100*up/(up+down):null,lastCum:last}}
 function renderMetrics(){const z=stats(FULL),rows=[['区间点数',z.points||0],['区间总上涨日',z.up||0],['区间总下跌日',z.down||0],['区间总涨跌比',z.overall===Infinity?'∞':fmt(z.overall,2)],['上涨日占比',z.upShare==null?'—':fmt(z.upShare,1)+'%'],['区间累计涨跌',z.lastCum==null?'—':fmt(z.lastCum,2)+'%']];$('metrics').innerHTML=rows.map(([k,v])=>`<div class="metric"><small>${k}</small><b>${v}</b></div>`).join('')}
 function renderDetail(){const m=$('mode').value;if(m==='R'){$('detail').innerHTML='<div class="hint" style="padding:16px">滚动视图点数较多，请直接在上下同步图表中查看具体日期。切换到逐月/逐年可查看完整明细表。</div>';$('rowCount').textContent=`${FULL.length} 个滚动点`;return}$('rowCount').textContent=`${FULL.length}${m==='M'?'个月':'年'}`;$('detail').innerHTML=`<table><thead><tr><th>${m==='M'?'月份':'年份'}</th><th>指数涨跌幅</th><th>上涨日</th><th>下跌日</th><th>平盘</th><th>涨跌比</th><th>上涨占比</th></tr></thead><tbody>${[...FULL].reverse().map(q=>`<tr><td>${q.key}${q.provisional?' · 盘中':''}</td><td class="${q.retPct>0?'ratioHigh':q.retPct<0?'ratioLow':''}">${fmt(q.retPct,2)}%</td><td>${q.up}</td><td>${q.down}</td><td>${q.flat}</td><td class="${cls(q.ratio)}"><b>${q.ratio===Infinity?'∞':fmt(q.ratio,2)}</b></td><td>${fmt(q.upShare,1)}%</td></tr>`).join('')}</tbody></table>`}
 function renderMatrix(){const sym=$('idx').value,ms=grouped(sym,'M'),ys=grouped(sym,'Y'),mm=new Map(ms.map(q=>[q.key,q])),ym=new Map(ys.map(q=>[q.key,q])),a=$('from').value.slice(0,4),b=$('to').value.slice(0,4),arr=[];for(let y=+a;y<=+b;y++)arr.push(String(y));$('matrix').innerHTML=`<table><thead><tr><th>年份</th>${Array.from({length:12},(_,i)=>`<th>${i+1}月</th>`).join('')}<th>全年</th></tr></thead><tbody>${arr.reverse().map(y=>`<tr><td><b>${y}</b></td>${Array.from({length:12},(_,i)=>{const k=`${y}-${String(i+1).padStart(2,'0')}`,q=mm.get(k);return q?`<td class="${cls(q.ratio)}" title="指数 ${fmt(q.retPct,2)}% · 涨 ${q.up}/跌 ${q.down}">${q.ratio===Infinity?'∞':fmt(q.ratio,2)}</td>`:'<td class="empty">—</td>'}).join('')}${(()=>{const q=ym.get(y);return q?`<td class="${cls(q.ratio)}"><b>${q.ratio===Infinity?'∞':fmt(q.ratio,2)}</b></td>`:'<td>—</td>'})()}</tr>`).join('')}</tbody></table>`}
-function render(){if(!DATA)return;$('windowLabel').style.display=$('mode').value==='R'?'grid':'none';FULL=series();prepareAnalysis();renderMetrics();renderAnalysisMetrics();renderDetail();renderMatrix();$('chartTitle').textContent=`${DATA.instruments[$('idx').value].name} · 累计涨跌幅 × 涨跌比`;resetView()}
+function render(){if(!DATA)return;$('windowLabel').style.display=$('mode').value==='R'?'grid':'none';FULL=series();prepareAnalysis();renderMetrics();renderAnalysisMetrics();renderEntryGate();renderDetail();renderMatrix();$('chartTitle').textContent=`${DATA.instruments[$('idx').value].name} · 累计涨跌幅 × 涨跌比`;resetView()}
 
 function syncDates(reset=true){const sym=$('idx').value,i=DATA.instruments[sym],end=currentEnd(sym);$('from').min=i.start;$('to').max=end;if(reset||!$('from').value||$('from').value<i.start)$('from').value=i.start;if(reset||!$('to').value||$('to').value> end)$('to').value=end;$('coverage').textContent=`${i.start} → ${end}${end>i.end?' · 含盘中':''}`}
 function quick(range){document.querySelectorAll('[data-range]').forEach(b=>b.classList.toggle('active',b.dataset.range===range));const sym=$('idx').value,i=DATA.instruments[sym],endStr=currentEnd(sym),end=new Date(endStr+'T00:00:00Z');if(range==='all')$('from').value=i.start;else{const years=+range.replace('y',''),d=new Date(end);d.setUTCFullYear(d.getUTCFullYear()-years);$('from').value=d.toISOString().slice(0,10)<i.start?i.start:d.toISOString().slice(0,10)}$('to').value=endStr;render()}
-$('resetView').onclick=resetView;window.addEventListener('resize',()=>requestAnimationFrame(paint));['corrWindow','lagMax'].forEach(id=>$(id)?.addEventListener('change',()=>{prepareAnalysis();renderAnalysisMetrics();paint()}));
+$('resetView').onclick=resetView;$('gateThreshold')?.addEventListener('change',renderEntryGate);window.addEventListener('resize',()=>requestAnimationFrame(paint));['corrWindow','lagMax'].forEach(id=>$(id)?.addEventListener('change',()=>{prepareAnalysis();renderAnalysisMetrics();paint()}));
 ['mode','window','from','to'].forEach(id=>$(id).addEventListener('change',()=>{document.querySelectorAll('[data-range]').forEach(b=>b.classList.remove('active'));render()}));$('idx').addEventListener('change',()=>{syncDates(true);quick('5y')});$('apply').onclick=render;document.querySelectorAll('[data-range]').forEach(b=>b.onclick=()=>quick(b.dataset.range));
 
 function liveStateLabel(v){return v==='regular'?'盘中':v==='pre'?'盘前':v==='post'?'盘后':'休市'}
 function updateStatus(){if(!DATA)return;const sym=$('idx').value,l=liveRow(sym),hist=DATA.instruments[sym];let liveTxt='<span class="warn">实时快照尚未生成</span>';if(l){const t=(l.asof||'').replace('T',' ').slice(0,19);liveTxt=`<span class="ok">${liveStateLabel(l.session_state)}快照</span> ${t} UTC · ${fmt(l.day_return_pct,2)}% · 目标5分钟更新`} $('status').innerHTML=`<span class="ok">历史闭合日K已加载</span> · ${hist.start}→${hist.end} · ${liveTxt}`}
-async function fetchLive(){try{const r=await fetch('./data/live_indices.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('live_indices.json unavailable');const j=await r.json();const changed=j.generated_at!==LIVE?.generated_at;LIVE=j;if(DATA){const oldLen=VIEW.end-VIEW.start||defaultCount(),wasRight=VIEW.end>=FULL.length;syncDates(false);const end=currentEnd($('idx').value);if($('to').value<end&&document.querySelector('[data-range].active'))$('to').value=end;if(changed){FULL=series();prepareAnalysis();renderMetrics();renderAnalysisMetrics();renderDetail();renderMatrix();if(wasRight){VIEW.end=FULL.length;VIEW.start=Math.max(0,VIEW.end-Math.min(oldLen,FULL.length))}else clamp();paint()}updateStatus()}}catch(e){if(DATA)updateStatus()}}
+async function fetchLive(){try{const r=await fetch('./data/live_indices.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('live_indices.json unavailable');const j=await r.json();const changed=j.generated_at!==LIVE?.generated_at;LIVE=j;if(DATA){const oldLen=VIEW.end-VIEW.start||defaultCount(),wasRight=VIEW.end>=FULL.length;syncDates(false);const end=currentEnd($('idx').value);if($('to').value<end&&document.querySelector('[data-range].active'))$('to').value=end;if(changed){FULL=series();prepareAnalysis();renderMetrics();renderAnalysisMetrics();renderEntryGate();renderDetail();renderMatrix();if(wasRight){VIEW.end=FULL.length;VIEW.start=Math.max(0,VIEW.end-Math.min(oldLen,FULL.length))}else clamp();paint()}updateStatus()}}catch(e){if(DATA)updateStatus()}}
 Promise.all([
  fetch('./data/structure_lab.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('structure_lab.json 不可用');return r.json()}),
  fetch('./data/live_indices.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)
