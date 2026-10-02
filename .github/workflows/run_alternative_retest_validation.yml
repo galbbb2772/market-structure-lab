@@ -1,0 +1,40 @@
+name: Run Alternative Retest Validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_alternative_retest_validation.py'
+      - '.github/workflows/run_alternative_retest_validation.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: alternative-retest-validation
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run alternative validation
+        run: python research_alternative_retest_validation.py
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/alternative_retest_validation.json
+          if git diff --cached --quiet; then
+            echo "No result changes"
+          else
+            git commit -m "data: refresh alternative retest validation"
+            git pull --rebase origin main
+            git push
+          fi
