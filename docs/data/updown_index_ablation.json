@@ -1,0 +1,430 @@
+{
+  "schema": "UPDOWN-INDEX-ABLATION-V1",
+  "fixed_signal": {
+    "window": 20,
+    "entry_ratio_lte": 0.666667,
+    "exit_ratio_gte": 1.0,
+    "execution": "close signal -> next open",
+    "universe": [
+      "^GSPC",
+      "^IXIC",
+      "^DJI"
+    ]
+  },
+  "controls": {
+    "ma": "close >= SMA200 at entry signal",
+    "time": "max 10 sessions",
+    "stop": "5% gap-aware daily OHLC"
+  },
+  "results": {
+    "^GSPC": {
+      "name": "S&P 500",
+      "configs": {
+        "BASE": {
+          "total_return_pct": 54.052,
+          "cagr_pct": 0.439,
+          "max_drawdown_pct": -85.757,
+          "sharpe": 0.097,
+          "trades": 403,
+          "win_rate_pct": 64.76,
+          "avg_trade_pct": 0.24,
+          "median_holding_days": 11,
+          "exposure_pct": 23.89,
+          "exit_reasons": {
+            "ratio": 402,
+            "forced_end": 1
+          }
+        },
+        "MA_ONLY": {
+          "total_return_pct": 112.932,
+          "cagr_pct": 0.775,
+          "max_drawdown_pct": -52.141,
+          "sharpe": 0.142,
+          "trades": 230,
+          "win_rate_pct": 68.26,
+          "avg_trade_pct": 0.409,
+          "median_holding_days": 10,
+          "exposure_pct": 12.79,
+          "exit_reasons": {
+            "ratio": 229,
+            "forced_end": 1
+          }
+        },
+        "TIME_ONLY": {
+          "total_return_pct": 123.223,
+          "cagr_pct": 0.817,
+          "max_drawdown_pct": -77.965,
+          "sharpe": 0.129,
+          "trades": 675,
+          "win_rate_pct": 60.59,
+          "avg_trade_pct": 0.2,
+          "median_holding_days": 10,
+          "exposure_pct": 21.54,
+          "exit_reasons": {
+            "ratio": 318,
+            "time": 356,
+            "forced_end": 1
+          }
+        },
+        "STOP_ONLY": {
+          "total_return_pct": 20.861,
+          "cagr_pct": 0.192,
+          "max_drawdown_pct": -84.131,
+          "sharpe": 0.075,
+          "trades": 558,
+          "win_rate_pct": 58.24,
+          "avg_trade_pct": 0.151,
+          "median_holding_days": 8,
+          "exposure_pct": 23.15,
+          "exit_reasons": {
+            "ratio": 394,
+            "stop_gap": 70,
+            "stop_intraday": 93,
+            "forced_end": 1
+          }
+        },
+        "MA_TIME": {
+          "total_return_pct": 85.339,
+          "cagr_pct": 0.632,
+          "max_drawdown_pct": -38.435,
+          "sharpe": 0.136,
+          "trades": 314,
+          "win_rate_pct": 63.38,
+          "avg_trade_pct": 0.239,
+          "median_holding_days": 9,
+          "exposure_pct": 9.63,
+          "exit_reasons": {
+            "ratio": 167,
+            "time": 146,
+            "forced_end": 1
+          }
+        },
+        "MA_STOP": {
+          "total_return_pct": 88.152,
+          "cagr_pct": 0.647,
+          "max_drawdown_pct": -44.982,
+          "sharpe": 0.146,
+          "trades": 250,
+          "win_rate_pct": 67.2,
+          "avg_trade_pct": 0.307,
+          "median_holding_days": 8,
+          "exposure_pct": 10.58,
+          "exit_reasons": {
+            "ratio": 205,
+            "stop_gap": 19,
+            "stop_intraday": 25,
+            "forced_end": 1
+          }
+        },
+        "TIME_STOP": {
+          "total_return_pct": 18.283,
+          "cagr_pct": 0.17,
+          "max_drawdown_pct": -83.208,
+          "sharpe": 0.072,
+          "trades": 746,
+          "win_rate_pct": 56.84,
+          "avg_trade_pct": 0.104,
+          "median_holding_days": 8,
+          "exposure_pct": 21.24,
+          "exit_reasons": {
+            "ratio": 320,
+            "stop_gap": 61,
+            "time": 292,
+            "stop_intraday": 72,
+            "forced_end": 1
+          }
+        },
+        "ALL_V2": {
+          "total_return_pct": 87.945,
+          "cagr_pct": 0.646,
+          "max_drawdown_pct": -37.366,
+          "sharpe": 0.152,
+          "trades": 320,
+          "win_rate_pct": 62.5,
+          "avg_trade_pct": 0.235,
+          "median_holding_days": 8,
+          "exposure_pct": 9.36,
+          "exit_reasons": {
+            "ratio": 165,
+            "stop_gap": 12,
+            "time": 128,
+            "stop_intraday": 14,
+            "forced_end": 1
+          }
+        }
+      }
+    },
+    "^IXIC": {
+      "name": "Nasdaq Composite",
+      "configs": {
+        "BASE": {
+          "total_return_pct": 102.427,
+          "cagr_pct": 1.277,
+          "max_drawdown_pct": -54.494,
+          "sharpe": 0.164,
+          "trades": 211,
+          "win_rate_pct": 66.35,
+          "avg_trade_pct": 0.457,
+          "median_holding_days": 11,
+          "exposure_pct": 21.36,
+          "exit_reasons": {
+            "ratio": 210,
+            "forced_end": 1
+          }
+        },
+        "MA_ONLY": {
+          "total_return_pct": 85.614,
+          "cagr_pct": 1.134,
+          "max_drawdown_pct": -23.922,
+          "sharpe": 0.213,
+          "trades": 115,
+          "win_rate_pct": 67.83,
+          "avg_trade_pct": 0.588,
+          "median_holding_days": 9,
+          "exposure_pct": 10.59,
+          "exit_reasons": {
+            "ratio": 114,
+            "forced_end": 1
+          }
+        },
+        "TIME_ONLY": {
+          "total_return_pct": 167.157,
+          "cagr_pct": 1.784,
+          "max_drawdown_pct": -34.876,
+          "sharpe": 0.207,
+          "trades": 340,
+          "win_rate_pct": 59.12,
+          "avg_trade_pct": 0.382,
+          "median_holding_days": 10,
+          "exposure_pct": 19.26,
+          "exit_reasons": {
+            "time": 177,
+            "ratio": 162,
+            "forced_end": 1
+          }
+        },
+        "STOP_ONLY": {
+          "total_return_pct": 45.76,
+          "cagr_pct": 0.68,
+          "max_drawdown_pct": -57.566,
+          "sharpe": 0.116,
+          "trades": 316,
+          "win_rate_pct": 54.75,
+          "avg_trade_pct": 0.247,
+          "median_holding_days": 7,
+          "exposure_pct": 20.46,
+          "exit_reasons": {
+            "ratio": 207,
+            "stop_gap": 33,
+            "stop_intraday": 75,
+            "forced_end": 1
+          }
+        },
+        "MA_TIME": {
+          "total_return_pct": 28.008,
+          "cagr_pct": 0.451,
+          "max_drawdown_pct": -26.578,
+          "sharpe": 0.111,
+          "trades": 156,
+          "win_rate_pct": 60.26,
+          "avg_trade_pct": 0.197,
+          "median_holding_days": 9,
+          "exposure_pct": 8.7,
+          "exit_reasons": {
+            "ratio": 84,
+            "time": 71,
+            "forced_end": 1
+          }
+        },
+        "MA_STOP": {
+          "total_return_pct": 15.744,
+          "cagr_pct": 0.267,
+          "max_drawdown_pct": -37.554,
+          "sharpe": 0.077,
+          "trades": 133,
+          "win_rate_pct": 61.65,
+          "avg_trade_pct": 0.168,
+          "median_holding_days": 7,
+          "exposure_pct": 9.38,
+          "exit_reasons": {
+            "ratio": 102,
+            "stop_gap": 5,
+            "stop_intraday": 25,
+            "forced_end": 1
+          }
+        },
+        "TIME_STOP": {
+          "total_return_pct": 80.124,
+          "cagr_pct": 1.065,
+          "max_drawdown_pct": -47.924,
+          "sharpe": 0.149,
+          "trades": 389,
+          "win_rate_pct": 55.27,
+          "avg_trade_pct": 0.251,
+          "median_holding_days": 7,
+          "exposure_pct": 18.93,
+          "exit_reasons": {
+            "time": 133,
+            "ratio": 166,
+            "stop_gap": 25,
+            "stop_intraday": 64,
+            "forced_end": 1
+          }
+        },
+        "ALL_V2": {
+          "total_return_pct": -14.562,
+          "cagr_pct": -0.286,
+          "max_drawdown_pct": -47.056,
+          "sharpe": -0.032,
+          "trades": 164,
+          "win_rate_pct": 56.71,
+          "avg_trade_pct": -0.051,
+          "median_holding_days": 8,
+          "exposure_pct": 8.42,
+          "exit_reasons": {
+            "ratio": 81,
+            "time": 60,
+            "stop_gap": 4,
+            "stop_intraday": 18,
+            "forced_end": 1
+          }
+        }
+      }
+    },
+    "^DJI": {
+      "name": "Dow Jones",
+      "configs": {
+        "BASE": {
+          "total_return_pct": 212.706,
+          "cagr_pct": 3.344,
+          "max_drawdown_pct": -31.896,
+          "sharpe": 0.341,
+          "trades": 150,
+          "win_rate_pct": 76.0,
+          "avg_trade_pct": 0.81,
+          "median_holding_days": 9,
+          "exposure_pct": 20.58,
+          "exit_reasons": {
+            "ratio": 149,
+            "forced_end": 1
+          }
+        },
+        "MA_ONLY": {
+          "total_return_pct": 104.798,
+          "cagr_pct": 2.133,
+          "max_drawdown_pct": -16.542,
+          "sharpe": 0.383,
+          "trades": 94,
+          "win_rate_pct": 78.72,
+          "avg_trade_pct": 0.8,
+          "median_holding_days": 9,
+          "exposure_pct": 12.37,
+          "exit_reasons": {
+            "ratio": 93,
+            "forced_end": 1
+          }
+        },
+        "TIME_ONLY": {
+          "total_return_pct": 211.457,
+          "cagr_pct": 3.332,
+          "max_drawdown_pct": -27.906,
+          "sharpe": 0.359,
+          "trades": 221,
+          "win_rate_pct": 69.23,
+          "avg_trade_pct": 0.586,
+          "median_holding_days": 9,
+          "exposure_pct": 18.84,
+          "exit_reasons": {
+            "ratio": 129,
+            "time": 91,
+            "forced_end": 1
+          }
+        },
+        "STOP_ONLY": {
+          "total_return_pct": 151.486,
+          "cagr_pct": 2.696,
+          "max_drawdown_pct": -35.459,
+          "sharpe": 0.3,
+          "trades": 194,
+          "win_rate_pct": 67.53,
+          "avg_trade_pct": 0.563,
+          "median_holding_days": 7,
+          "exposure_pct": 19.86,
+          "exit_reasons": {
+            "ratio": 144,
+            "stop_intraday": 48,
+            "stop_gap": 1,
+            "forced_end": 1
+          }
+        },
+        "MA_TIME": {
+          "total_return_pct": 53.916,
+          "cagr_pct": 1.278,
+          "max_drawdown_pct": -19.009,
+          "sharpe": 0.262,
+          "trades": 121,
+          "win_rate_pct": 70.25,
+          "avg_trade_pct": 0.392,
+          "median_holding_days": 8,
+          "exposure_pct": 10.51,
+          "exit_reasons": {
+            "ratio": 73,
+            "time": 47,
+            "forced_end": 1
+          }
+        },
+        "MA_STOP": {
+          "total_return_pct": 81.336,
+          "cagr_pct": 1.768,
+          "max_drawdown_pct": -17.372,
+          "sharpe": 0.373,
+          "trades": 100,
+          "win_rate_pct": 77.0,
+          "avg_trade_pct": 0.636,
+          "median_holding_days": 7,
+          "exposure_pct": 11.17,
+          "exit_reasons": {
+            "ratio": 84,
+            "stop_intraday": 15,
+            "forced_end": 1
+          }
+        },
+        "TIME_STOP": {
+          "total_return_pct": 133.501,
+          "cagr_pct": 2.477,
+          "max_drawdown_pct": -31.069,
+          "sharpe": 0.285,
+          "trades": 247,
+          "win_rate_pct": 63.97,
+          "avg_trade_pct": 0.408,
+          "median_holding_days": 6,
+          "exposure_pct": 18.46,
+          "exit_reasons": {
+            "ratio": 126,
+            "time": 76,
+            "stop_intraday": 43,
+            "stop_gap": 1,
+            "forced_end": 1
+          }
+        },
+        "ALL_V2": {
+          "total_return_pct": 61.763,
+          "cagr_pct": 1.426,
+          "max_drawdown_pct": -19.659,
+          "sharpe": 0.317,
+          "trades": 123,
+          "win_rate_pct": 69.92,
+          "avg_trade_pct": 0.422,
+          "median_holding_days": 8,
+          "exposure_pct": 10.12,
+          "exit_reasons": {
+            "ratio": 69,
+            "stop_intraday": 12,
+            "time": 41,
+            "forced_end": 1
+          }
+        }
+      }
+    }
+  }
+}
