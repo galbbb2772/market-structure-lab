@@ -1,0 +1,42 @@
+name: Run Frozen Return-Surface Confirmation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_return_surface_confirmatory.py'
+      - 'research_return_surface.py'
+      - 'research_pattern_edge_map.py'
+      - 'docs/data/structure_lab.json'
+      - '.github/workflows/run_return_surface_confirmatory.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: return-surface-confirmatory
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run confirmatory walk-forward
+        run: python research_return_surface_confirmatory.py
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/return_surface_confirmatory.json
+          if git diff --cached --quiet; then
+            echo "No confirmatory changes"
+          else
+            git commit -m "data: confirm frozen return-surface hypotheses"
+            git pull --rebase origin main
+            git push
+          fi
