@@ -1,0 +1,42 @@
+name: Backtest UpDown Index Ablation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'backtest_updown_ablation.py'
+      - '.github/workflows/backtest_updown_ablation.yml'
+      - 'docs/data/structure_lab.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: updown-index-ablation
+  cancel-in-progress: true
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run ablation study
+        run: python backtest_updown_ablation.py
+      - name: Commit ablation result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/updown_index_ablation.json
+          if git diff --cached --quiet; then
+            echo "No result changes"
+          else
+            git commit -m "research: refresh index updown ablation results"
+            git push
+          fi
