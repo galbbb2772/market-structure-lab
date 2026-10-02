@@ -1,0 +1,1129 @@
+{
+  "schema": "ALTERNATIVE-RETEST-VALIDATION-V1",
+  "note": "Alternative formulations to reduce dependence on hard bins. Still research-stage; no method is an independent future sample.",
+  "instruments": {
+    "^GSPC": {
+      "name": "S&P 500",
+      "n_D1": 5861,
+      "continuous_knn": {
+        "n": 5731,
+        "k": 40,
+        "base_brier": 0.24835587131666106,
+        "knn_brier": 0.2536976531146397,
+        "brier_improvement": -0.005341781797978645,
+        "base_median_mae": 1.8136205821698956,
+        "knn_median_mae": 1.8472243999877564,
+        "median_mae_improvement": -0.033603817817860815,
+        "positive_brier_years": 28,
+        "years": 96,
+        "yearly": {
+          "1931": {
+            "n": 71,
+            "brier_improvement": -0.0024599445787148854,
+            "median_mae_improvement": 0.011405917601715984
+          },
+          "1932": {
+            "n": 62,
+            "brier_improvement": -0.01275994321244041,
+            "median_mae_improvement": -0.3417206421785538
+          },
+          "1933": {
+            "n": 69,
+            "brier_improvement": -0.0013672913548647447,
+            "median_mae_improvement": 0.07003188998713669
+          },
+          "1934": {
+            "n": 67,
+            "brier_improvement": 0.01060314626605684,
+            "median_mae_improvement": -0.023273864492422688
+          },
+          "1935": {
+            "n": 62,
+            "brier_improvement": 0.006090440979358438,
+            "median_mae_improvement": -0.04279305674488293
+          },
+          "1936": {
+            "n": 72,
+            "brier_improvement": 0.0003125032268052874,
+            "median_mae_improvement": -0.030022023224799792
+          },
+          "1937": {
+            "n": 61,
+            "brier_improvement": -0.02686919333147097,
+            "median_mae_improvement": -0.28910032207995423
+          },
+          "1938": {
+            "n": 67,
+            "brier_improvement": -0.004451230502759469,
+            "median_mae_improvement": 0.030155633692030375
+          },
+          "1939": {
+            "n": 69,
+            "brier_improvement": -0.019986161271352415,
+            "median_mae_improvement": -0.1114154911802093
+          },
+          "1940": {
+            "n": 64,
+            "brier_improvement": -0.017257030370379078,
+            "median_mae_improvement": -0.16940862694708891
+          },
+          "1941": {
+            "n": 59,
+            "brier_improvement": 0.0011513732062320007,
+            "median_mae_improvement": -0.0289222736644673
+          },
+          "1942": {
+            "n": 56,
+            "brier_improvement": -0.001234334959362014,
+            "median_mae_improvement": -0.09744647570160017
+          },
+          "1943": {
+            "n": 57,
+            "brier_improvement": 0.0016127473185336325,
+            "median_mae_improvement": -0.009825237580057919
+          },
+          "1944": {
+            "n": 61,
+            "brier_improvement": -0.001781960850079066,
+            "median_mae_improvement": -0.05053674576724489
+          },
+          "1945": {
+            "n": 53,
+            "brier_improvement": -0.01186734126571761,
+            "median_mae_improvement": -0.05539035308131243
+          },
+          "1946": {
+            "n": 57,
+            "brier_improvement": -0.009345760233918138,
+            "median_mae_improvement": -0.031231631806004228
+          },
+          "1947": {
+            "n": 62,
+            "brier_improvement": -0.02382625537484069,
+            "median_mae_improvement": -0.08153919110551044
+          },
+          "1948": {
+            "n": 63,
+            "brier_improvement": -0.02049807684043687,
+            "median_mae_improvement": -0.12963666325155174
+          },
+          "1949": {
+            "n": 51,
+            "brier_improvement": 0.008393816705883737,
+            "median_mae_improvement": 0.025372335009132843
+          },
+          "1950": {
+            "n": 60,
+            "brier_improvement": -0.0024621844031611465,
+            "median_mae_improvement": 0.0034795168930439285
+          },
+          "1951": {
+            "n": 52,
+            "brier_improvement": -0.01594449088176051,
+            "median_mae_improvement": -0.08202418921894797
+          },
+          "1952": {
+            "n": 50,
+            "brier_improvement": -0.010954401354262835,
+            "median_mae_improvement": -0.0551792112051519
+          },
+          "1953": {
+            "n": 52,
+            "brier_improvement": -0.007813614981327204,
+            "median_mae_improvement": -0.04784548337019792
+          },
+          "1954": {
+            "n": 44,
+            "brier_improvement": -0.0027011263751939175,
+            "median_mae_improvement": -0.03216351992415457
+          },
+          "1955": {
+            "n": 53,
+            "brier_improvement": -0.008185870880115121,
+            "median_mae_improvement": -0.06796127596599372
+          },
+          "1956": {
+            "n": 57,
+            "brier_improvement": -0.01228977776103245,
+            "median_mae_improvement": -0.05266112112233092
+          },
+          "1957": {
+            "n": 52,
+            "brier_improvement": -0.0037077034803123026,
+            "median_mae_improvement": -0.022586838026652754
+          },
+          "1958": {
+            "n": 51,
+            "brier_improvement": -0.0031971413175655604,
+            "median_mae_improvement": 0.004131771548868806
+          },
+          "1959": {
+            "n": 58,
+            "brier_improvement": 0.010976865516270598,
+            "median_mae_improvement": -0.0031527612822226493
+          },
+          "1960": {
+            "n": 51,
+            "brier_improvement": 0.0011392723727863892,
+            "median_mae_improvement": 0.004424362941701021
+          },
+          "1961": {
+            "n": 56,
+            "brier_improvement": -0.006125254103508732,
+            "median_mae_improvement": -0.059318402824430724
+          },
+          "1962": {
+            "n": 53,
+            "brier_improvement": 0.0038014492884080758,
+            "median_mae_improvement": 0.019980263122417075
+          },
+          "1963": {
+            "n": 58,
+            "brier_improvement": -0.02059647677325259,
+            "median_mae_improvement": -0.10036124119750724
+          },
+          "1964": {
+            "n": 52,
+            "brier_improvement": -0.008528460505231414,
+            "median_mae_improvement": -0.055533489550600404
+          },
+          "1965": {
+            "n": 52,
+            "brier_improvement": -0.015637148914847788,
+            "median_mae_improvement": -0.04177229247154652
+          },
+          "1966": {
+            "n": 46,
+            "brier_improvement": 0.0006277621332202616,
+            "median_mae_improvement": 0.05088127848057857
+          },
+          "1967": {
+            "n": 51,
+            "brier_improvement": -0.00610636640663924,
+            "median_mae_improvement": -0.03153979397068498
+          },
+          "1968": {
+            "n": 46,
+            "brier_improvement": -0.00020999870252950186,
+            "median_mae_improvement": 0.03282545046108145
+          },
+          "1969": {
+            "n": 46,
+            "brier_improvement": -0.01553427612985151,
+            "median_mae_improvement": -0.08230433192516366
+          },
+          "1970": {
+            "n": 52,
+            "brier_improvement": -0.017705138001663127,
+            "median_mae_improvement": -0.09593894653040792
+          },
+          "1971": {
+            "n": 49,
+            "brier_improvement": -0.0076529811746621846,
+            "median_mae_improvement": 0.030077367954755324
+          },
+          "1972": {
+            "n": 49,
+            "brier_improvement": 0.02551678342710401,
+            "median_mae_improvement": 0.07531849163243234
+          },
+          "1973": {
+            "n": 51,
+            "brier_improvement": -0.02427315950501476,
+            "median_mae_improvement": -0.056877087418002195
+          },
+          "1974": {
+            "n": 51,
+            "brier_improvement": 0.011789851521535907,
+            "median_mae_improvement": 0.036614587214812484
+          },
+          "1975": {
+            "n": 54,
+            "brier_improvement": -0.01626871778936478,
+            "median_mae_improvement": -0.07641283366594945
+          },
+          "1976": {
+            "n": 60,
+            "brier_improvement": -0.008862176076936214,
+            "median_mae_improvement": -0.050565872394003716
+          },
+          "1977": {
+            "n": 56,
+            "brier_improvement": -0.010252793849036181,
+            "median_mae_improvement": -0.04890872065740061
+          },
+          "1978": {
+            "n": 53,
+            "brier_improvement": 0.004345195578035968,
+            "median_mae_improvement": -0.022401305315494037
+          },
+          "1979": {
+            "n": 56,
+            "brier_improvement": -0.02105875927655153,
+            "median_mae_improvement": -0.09336075302923548
+          },
+          "1980": {
+            "n": 54,
+            "brier_improvement": 0.00573668365530144,
+            "median_mae_improvement": 0.02289662896448846
+          },
+          "1981": {
+            "n": 56,
+            "brier_improvement": -0.0005527138916418735,
+            "median_mae_improvement": -0.048285689911437
+          },
+          "1982": {
+            "n": 61,
+            "brier_improvement": -0.003168172101327098,
+            "median_mae_improvement": -0.04499719243180211
+          },
+          "1983": {
+            "n": 66,
+            "brier_improvement": -0.013928204243435625,
+            "median_mae_improvement": 0.011118240097091567
+          },
+          "1984": {
+            "n": 61,
+            "brier_improvement": -0.019403564618557682,
+            "median_mae_improvement": -0.06273700591369709
+          },
+          "1985": {
+            "n": 59,
+            "brier_improvement": 0.0011622259797526438,
+            "median_mae_improvement": -0.0281927163066901
+          },
+          "1986": {
+            "n": 65,
+            "brier_improvement": 0.007575108417751749,
+            "median_mae_improvement": 0.043782857035461656
+          },
+          "1987": {
+            "n": 59,
+            "brier_improvement": -0.01778059865730577,
+            "median_mae_improvement": -0.11959369892297675
+          },
+          "1988": {
+            "n": 67,
+            "brier_improvement": -0.01314073761536148,
+            "median_mae_improvement": -0.03341665685911117
+          },
+          "1989": {
+            "n": 59,
+            "brier_improvement": 0.00601387527042381,
+            "median_mae_improvement": 0.01597713345900041
+          },
+          "1990": {
+            "n": 62,
+            "brier_improvement": 0.005496094045533318,
+            "median_mae_improvement": 0.03410087566575763
+          },
+          "1991": {
+            "n": 62,
+            "brier_improvement": 0.01482904839551787,
+            "median_mae_improvement": 0.06639451399468731
+          },
+          "1992": {
+            "n": 66,
+            "brier_improvement": -0.0034017208790962294,
+            "median_mae_improvement": -0.005330347686651385
+          },
+          "1993": {
+            "n": 57,
+            "brier_improvement": -0.009698599038991028,
+            "median_mae_improvement": -0.028562938070735136
+          },
+          "1994": {
+            "n": 66,
+            "brier_improvement": -0.009765582508286134,
+            "median_mae_improvement": -0.009465326250531808
+          },
+          "1995": {
+            "n": 57,
+            "brier_improvement": -0.01787133752209008,
+            "median_mae_improvement": -0.09592377475247582
+          },
+          "1996": {
+            "n": 57,
+            "brier_improvement": -0.020323915235216174,
+            "median_mae_improvement": -0.09125727387502447
+          },
+          "1997": {
+            "n": 61,
+            "brier_improvement": -0.007698755144633751,
+            "median_mae_improvement": -0.02193053833478117
+          },
+          "1998": {
+            "n": 61,
+            "brier_improvement": 0.01601662172520376,
+            "median_mae_improvement": 0.036805171170618295
+          },
+          "1999": {
+            "n": 62,
+            "brier_improvement": -0.008305613617893245,
+            "median_mae_improvement": -0.03946546252090995
+          },
+          "2000": {
+            "n": 66,
+            "brier_improvement": -0.006292705869425277,
+            "median_mae_improvement": -0.012314015256219123
+          },
+          "2001": {
+            "n": 65,
+            "brier_improvement": -0.0021501681340016492,
+            "median_mae_improvement": -0.015508411217279498
+          },
+          "2002": {
+            "n": 68,
+            "brier_improvement": -0.00044290972062121397,
+            "median_mae_improvement": -0.047629142311700734
+          },
+          "2003": {
+            "n": 70,
+            "brier_improvement": -0.0012817746243737156,
+            "median_mae_improvement": -0.01802841055252635
+          },
+          "2004": {
+            "n": 66,
+            "brier_improvement": 0.019155585663988395,
+            "median_mae_improvement": 0.07633805656104006
+          },
+          "2005": {
+            "n": 70,
+            "brier_improvement": -0.007885117358140367,
+            "median_mae_improvement": -0.041958112256785404
+          },
+          "2006": {
+            "n": 67,
+            "brier_improvement": -0.027219265295992376,
+            "median_mae_improvement": -0.0702156730075037
+          },
+          "2007": {
+            "n": 71,
+            "brier_improvement": -0.008272098067898422,
+            "median_mae_improvement": -0.008586402599001675
+          },
+          "2008": {
+            "n": 73,
+            "brier_improvement": -0.01194392437712249,
+            "median_mae_improvement": -0.03141280111404993
+          },
+          "2009": {
+            "n": 68,
+            "brier_improvement": -0.008366419009797666,
+            "median_mae_improvement": -0.11486582207477132
+          },
+          "2010": {
+            "n": 64,
+            "brier_improvement": -0.0007646190581659992,
+            "median_mae_improvement": 0.004719135091125155
+          },
+          "2011": {
+            "n": 60,
+            "brier_improvement": -0.014004199879547959,
+            "median_mae_improvement": -0.0983869504032661
+          },
+          "2012": {
+            "n": 56,
+            "brier_improvement": -0.029302623012523343,
+            "median_mae_improvement": -0.10491806539227055
+          },
+          "2013": {
+            "n": 65,
+            "brier_improvement": 0.004931555418569991,
+            "median_mae_improvement": 0.003025302150035676
+          },
+          "2014": {
+            "n": 70,
+            "brier_improvement": 0.0013113042504024693,
+            "median_mae_improvement": 0.04455228016658121
+          },
+          "2015": {
+            "n": 67,
+            "brier_improvement": -0.004894706321910798,
+            "median_mae_improvement": -0.02901871387161264
+          },
+          "2016": {
+            "n": 71,
+            "brier_improvement": -0.0034087823170174418,
+            "median_mae_improvement": -0.014155466454780087
+          },
+          "2017": {
+            "n": 67,
+            "brier_improvement": 0.0063592591028823805,
+            "median_mae_improvement": 0.008173571845513521
+          },
+          "2018": {
+            "n": 63,
+            "brier_improvement": 0.0011803250544421405,
+            "median_mae_improvement": -0.02385525109442024
+          },
+          "2019": {
+            "n": 58,
+            "brier_improvement": 0.01635671290548873,
+            "median_mae_improvement": 0.03715918508706352
+          },
+          "2020": {
+            "n": 74,
+            "brier_improvement": -0.017791133488359936,
+            "median_mae_improvement": -0.034553780072200876
+          },
+          "2021": {
+            "n": 65,
+            "brier_improvement": -0.000549533128083295,
+            "median_mae_improvement": -0.037833829882251147
+          },
+          "2022": {
+            "n": 62,
+            "brier_improvement": 0.004049871775354635,
+            "median_mae_improvement": 0.056812361324593
+          },
+          "2023": {
+            "n": 65,
+            "brier_improvement": -0.008816043919324149,
+            "median_mae_improvement": -0.04524366588968034
+          },
+          "2024": {
+            "n": 63,
+            "brier_improvement": -0.007473182150970749,
+            "median_mae_improvement": -0.049994903566241804
+          },
+          "2025": {
+            "n": 62,
+            "brier_improvement": -0.011366618971277416,
+            "median_mae_improvement": -0.04578835066350674
+          },
+          "2026": {
+            "n": 43,
+            "brier_improvement": 0.014351306688207437,
+            "median_mae_improvement": 0.09451447146763618
+          }
+        }
+      },
+      "matched_control": {
+        "n_pairs": 92,
+        "mean_paired_edge": 0.5240184447646948,
+        "median_paired_edge": 0.9706002113287111,
+        "positive_pair_pct": 66.30434782608695,
+        "se_mean": 0.35046176666991685,
+        "z_descriptive": 1.4952228590979018
+      },
+      "retest_score_gradient": {
+        "quintiles": {
+          "Q1": {
+            "n": 2004,
+            "up_pct": 55.63872255489022,
+            "mean": 0.09499742770336031,
+            "median": 0.25963865463306535,
+            "p25": -1.0987994936753065,
+            "p75": 1.3523855212509484,
+            "score_median": 1.9031921380409593
+          },
+          "Q2": {
+            "n": 341,
+            "up_pct": 51.90615835777126,
+            "mean": 0.010220532232823773,
+            "median": 0.07478825013518264,
+            "p25": -1.101749837977961,
+            "p75": 1.2475591234541117,
+            "score_median": 2.070294784580499
+          },
+          "Q3": {
+            "n": 1173,
+            "up_pct": 53.28218243819267,
+            "mean": 0.10355682491681964,
+            "median": 0.1846722068328699,
+            "p25": -1.1166253101736912,
+            "p75": 1.3313183021323782,
+            "score_median": 2.367924770596196
+          },
+          "Q4": {
+            "n": 1171,
+            "up_pct": 53.3731853116994,
+            "mean": -0.010562652437090168,
+            "median": 0.17723184511411194,
+            "p25": -1.2324838905977742,
+            "p75": 1.3368907889941273,
+            "score_median": 2.8299319727891157
+          },
+          "Q5": {
+            "n": 1172,
+            "up_pct": 54.863481228668945,
+            "mean": 0.08912788604093265,
+            "median": 0.2847361942300064,
+            "p25": -1.640350195807888,
+            "p75": 2.094441971333411,
+            "score_median": 4.1352404383746535
+          }
+        },
+        "median_monotone_non_decreasing": false,
+        "up_prob_monotone_non_decreasing": false,
+        "q5_minus_q1_median": 0.025097539596941054,
+        "q5_minus_q1_up_pp": -0.775241326221277
+      }
+    },
+    "^IXIC": {
+      "name": "Nasdaq Composite",
+      "n_D1": 3099,
+      "continuous_knn": {
+        "n": 2957,
+        "k": 40,
+        "base_brier": 0.24798470192781627,
+        "knn_brier": 0.24964047176192086,
+        "brier_improvement": -0.0016557698341045923,
+        "base_median_mae": 2.1345308482887355,
+        "knn_median_mae": 2.1457674111558287,
+        "median_mae_improvement": -0.01123656286709318,
+        "positive_brier_years": 26,
+        "years": 52,
+        "yearly": {
+          "1975": {
+            "n": 52,
+            "brier_improvement": -0.00014714437764176238,
+            "median_mae_improvement": 0.08198203476117845
+          },
+          "1976": {
+            "n": 49,
+            "brier_improvement": 0.0005717604291158338,
+            "median_mae_improvement": 0.04563476928457379
+          },
+          "1977": {
+            "n": 47,
+            "brier_improvement": 0.01225040608178637,
+            "median_mae_improvement": 0.06167611615617497
+          },
+          "1978": {
+            "n": 41,
+            "brier_improvement": 0.010351479800469817,
+            "median_mae_improvement": 0.04334677082040347
+          },
+          "1979": {
+            "n": 44,
+            "brier_improvement": 0.01259789404366678,
+            "median_mae_improvement": 0.04974721556420256
+          },
+          "1980": {
+            "n": 48,
+            "brier_improvement": 0.010309201388888856,
+            "median_mae_improvement": 0.12609139192562988
+          },
+          "1981": {
+            "n": 52,
+            "brier_improvement": 0.004259296540376782,
+            "median_mae_improvement": 0.05417164406839227
+          },
+          "1982": {
+            "n": 58,
+            "brier_improvement": 0.023763836087496416,
+            "median_mae_improvement": 0.18052371154464902
+          },
+          "1983": {
+            "n": 54,
+            "brier_improvement": 0.00042719451148785754,
+            "median_mae_improvement": 0.05319988706403125
+          },
+          "1984": {
+            "n": 54,
+            "brier_improvement": -0.002912435367457999,
+            "median_mae_improvement": -0.13813051112530472
+          },
+          "1985": {
+            "n": 45,
+            "brier_improvement": 0.0030451822831103524,
+            "median_mae_improvement": 0.0402879018027686
+          },
+          "1986": {
+            "n": 48,
+            "brier_improvement": 0.0025432256604745198,
+            "median_mae_improvement": 0.027514863875244457
+          },
+          "1987": {
+            "n": 47,
+            "brier_improvement": 0.0018824865138491512,
+            "median_mae_improvement": 0.024080128000096214
+          },
+          "1988": {
+            "n": 47,
+            "brier_improvement": -0.01888636821897262,
+            "median_mae_improvement": -0.07954127700438207
+          },
+          "1989": {
+            "n": 55,
+            "brier_improvement": -0.007356165626014379,
+            "median_mae_improvement": -0.05666005354399107
+          },
+          "1990": {
+            "n": 47,
+            "brier_improvement": 0.003701457373907109,
+            "median_mae_improvement": 0.010416662354992461
+          },
+          "1991": {
+            "n": 49,
+            "brier_improvement": 0.009249547547079887,
+            "median_mae_improvement": 0.03396822462486766
+          },
+          "1992": {
+            "n": 54,
+            "brier_improvement": -0.009391189763240892,
+            "median_mae_improvement": -0.028621459401469804
+          },
+          "1993": {
+            "n": 51,
+            "brier_improvement": 0.002700530999775659,
+            "median_mae_improvement": -0.061349969347844445
+          },
+          "1994": {
+            "n": 53,
+            "brier_improvement": -0.005150697916155532,
+            "median_mae_improvement": -0.06611033069041042
+          },
+          "1995": {
+            "n": 54,
+            "brier_improvement": -0.01312940632020622,
+            "median_mae_improvement": -0.023895312235468362
+          },
+          "1996": {
+            "n": 54,
+            "brier_improvement": -0.0018655334473990258,
+            "median_mae_improvement": -0.004784726237390861
+          },
+          "1997": {
+            "n": 52,
+            "brier_improvement": 0.017281500499991928,
+            "median_mae_improvement": 0.03394021172053953
+          },
+          "1998": {
+            "n": 58,
+            "brier_improvement": 0.01422199279519802,
+            "median_mae_improvement": 0.0787286359753575
+          },
+          "1999": {
+            "n": 61,
+            "brier_improvement": 0.003238750560559241,
+            "median_mae_improvement": 0.033689915200971296
+          },
+          "2000": {
+            "n": 57,
+            "brier_improvement": 0.016899720664055987,
+            "median_mae_improvement": 0.10088334932500213
+          },
+          "2001": {
+            "n": 61,
+            "brier_improvement": -0.006170569091770451,
+            "median_mae_improvement": -0.0224573093763671
+          },
+          "2002": {
+            "n": 65,
+            "brier_improvement": 0.0019431588895933742,
+            "median_mae_improvement": 0.15118806605185656
+          },
+          "2003": {
+            "n": 67,
+            "brier_improvement": -0.007062959638544833,
+            "median_mae_improvement": -0.012021506936213427
+          },
+          "2004": {
+            "n": 66,
+            "brier_improvement": -0.005616772505684574,
+            "median_mae_improvement": -0.04953733251926264
+          },
+          "2005": {
+            "n": 65,
+            "brier_improvement": 0.010430068512737355,
+            "median_mae_improvement": 0.026678092936544853
+          },
+          "2006": {
+            "n": 59,
+            "brier_improvement": -0.022265538816739462,
+            "median_mae_improvement": -0.057671501389276625
+          },
+          "2007": {
+            "n": 67,
+            "brier_improvement": -0.018560176818697087,
+            "median_mae_improvement": -0.08701702518956735
+          },
+          "2008": {
+            "n": 66,
+            "brier_improvement": -0.022058488030794327,
+            "median_mae_improvement": -0.23153795709695948
+          },
+          "2009": {
+            "n": 64,
+            "brier_improvement": -0.002598038549195345,
+            "median_mae_improvement": -0.059414159792708754
+          },
+          "2010": {
+            "n": 56,
+            "brier_improvement": 0.0007866942498377269,
+            "median_mae_improvement": -0.04801239104631394
+          },
+          "2011": {
+            "n": 59,
+            "brier_improvement": -0.028533229443451727,
+            "median_mae_improvement": -0.12682645261532513
+          },
+          "2012": {
+            "n": 61,
+            "brier_improvement": 0.012087848593082755,
+            "median_mae_improvement": 0.03990680150585188
+          },
+          "2013": {
+            "n": 65,
+            "brier_improvement": 2.4071108948522293e-05,
+            "median_mae_improvement": -0.024491932420773316
+          },
+          "2014": {
+            "n": 66,
+            "brier_improvement": 0.011699824688863414,
+            "median_mae_improvement": 0.04955809525866801
+          },
+          "2015": {
+            "n": 60,
+            "brier_improvement": -0.020724378770468267,
+            "median_mae_improvement": -0.07175087880029628
+          },
+          "2016": {
+            "n": 67,
+            "brier_improvement": 0.0039124329601905195,
+            "median_mae_improvement": 0.011081790968609534
+          },
+          "2017": {
+            "n": 67,
+            "brier_improvement": -0.01666531837341198,
+            "median_mae_improvement": -0.08124278322086623
+          },
+          "2018": {
+            "n": 66,
+            "brier_improvement": -0.00969739406332068,
+            "median_mae_improvement": -0.00789035014479032
+          },
+          "2019": {
+            "n": 61,
+            "brier_improvement": 0.008453406193609039,
+            "median_mae_improvement": -0.004989485335184585
+          },
+          "2020": {
+            "n": 68,
+            "brier_improvement": -0.008012189935351447,
+            "median_mae_improvement": -0.08794580376456454
+          },
+          "2021": {
+            "n": 64,
+            "brier_improvement": -0.009817879655825524,
+            "median_mae_improvement": -0.03936409641301833
+          },
+          "2022": {
+            "n": 62,
+            "brier_improvement": -0.004370258988909181,
+            "median_mae_improvement": -0.08094798369163453
+          },
+          "2023": {
+            "n": 60,
+            "brier_improvement": -0.003457143509766865,
+            "median_mae_improvement": -0.10007534406274572
+          },
+          "2024": {
+            "n": 59,
+            "brier_improvement": -0.005461526862765564,
+            "median_mae_improvement": -0.0577201580712732
+          },
+          "2025": {
+            "n": 65,
+            "brier_improvement": -0.006291941332607837,
+            "median_mae_improvement": -0.04885256191089433
+          },
+          "2026": {
+            "n": 40,
+            "brier_improvement": -0.005435834891756658,
+            "median_mae_improvement": -0.028124749173764625
+          }
+        }
+      },
+      "matched_control": null,
+      "retest_score_gradient": {
+        "quintiles": {
+          "Q1": {
+            "n": 958,
+            "up_pct": 58.455114822546975,
+            "mean": 0.23331549560114784,
+            "median": 0.4859141918005294,
+            "p25": -1.0038018555660055,
+            "p75": 1.7377331420962816,
+            "score_median": 2.0
+          },
+          "Q2": {
+            "n": 289,
+            "up_pct": 58.8235294117647,
+            "mean": 0.28871118425482306,
+            "median": 0.480656200203744,
+            "p25": -0.9595909550327963,
+            "p75": 1.8957345971563955,
+            "score_median": 2.104308390022676
+          },
+          "Q3": {
+            "n": 619,
+            "up_pct": 58.319870759289174,
+            "mean": 0.283760526025366,
+            "median": 0.49741221469170593,
+            "p25": -1.130725218238754,
+            "p75": 1.6924119512304658,
+            "score_median": 2.4499218836065113
+          },
+          "Q4": {
+            "n": 613,
+            "up_pct": 51.876019575856446,
+            "mean": -0.08177918575623777,
+            "median": 0.10728538259012765,
+            "p25": -1.6524020393739125,
+            "p75": 1.7595307917888547,
+            "score_median": 2.897971939933972
+          },
+          "Q5": {
+            "n": 620,
+            "up_pct": 50.483870967741936,
+            "mean": -0.02761939250938536,
+            "median": 0.07274226355981073,
+            "p25": -2.098119983055566,
+            "p75": 2.216892643762425,
+            "score_median": 4.377995805899392
+          }
+        },
+        "median_monotone_non_decreasing": false,
+        "up_prob_monotone_non_decreasing": false,
+        "q5_minus_q1_median": -0.4131719282407187,
+        "q5_minus_q1_up_pp": -7.971243854805039
+      }
+    },
+    "^DJI": {
+      "name": "Dow Jones",
+      "n_D1": 2170,
+      "continuous_knn": {
+        "n": 2039,
+        "k": 40,
+        "base_brier": 0.24360184053956918,
+        "knn_brier": 0.24695806768023543,
+        "brier_improvement": -0.003356227140666246,
+        "base_median_mae": 1.6945108184580913,
+        "knn_median_mae": 1.694895370796884,
+        "median_mae_improvement": -0.00038455233879264306,
+        "positive_brier_years": 11,
+        "years": 32,
+        "yearly": {
+          "1995": {
+            "n": 60,
+            "brier_improvement": 0.007392257517044472,
+            "median_mae_improvement": 0.010327100045087282
+          },
+          "1996": {
+            "n": 61,
+            "brier_improvement": 0.010642398176279497,
+            "median_mae_improvement": -0.004309018366430185
+          },
+          "1997": {
+            "n": 63,
+            "brier_improvement": -0.017013731418493324,
+            "median_mae_improvement": -0.06319976420617288
+          },
+          "1998": {
+            "n": 57,
+            "brier_improvement": -0.0012264457439896091,
+            "median_mae_improvement": 0.007368095754839915
+          },
+          "1999": {
+            "n": 67,
+            "brier_improvement": 0.016089923043471517,
+            "median_mae_improvement": 0.0649102858752237
+          },
+          "2000": {
+            "n": 60,
+            "brier_improvement": -0.006929948658509813,
+            "median_mae_improvement": 0.03844165181633551
+          },
+          "2001": {
+            "n": 68,
+            "brier_improvement": 0.012801326010502689,
+            "median_mae_improvement": 0.05565266670140927
+          },
+          "2002": {
+            "n": 65,
+            "brier_improvement": -0.01089980037599086,
+            "median_mae_improvement": -0.10040305394323931
+          },
+          "2003": {
+            "n": 67,
+            "brier_improvement": 0.005589995862698986,
+            "median_mae_improvement": -0.004210971295487082
+          },
+          "2004": {
+            "n": 73,
+            "brier_improvement": -0.014357337834526881,
+            "median_mae_improvement": -0.01386762479625901
+          },
+          "2005": {
+            "n": 69,
+            "brier_improvement": 0.014757089578516066,
+            "median_mae_improvement": 0.008588304995201993
+          },
+          "2006": {
+            "n": 64,
+            "brier_improvement": -0.004296816664252788,
+            "median_mae_improvement": 0.007763400107257699
+          },
+          "2007": {
+            "n": 65,
+            "brier_improvement": 0.009239607424869626,
+            "median_mae_improvement": 0.057982106008199225
+          },
+          "2008": {
+            "n": 72,
+            "brier_improvement": 0.00473186410617494,
+            "median_mae_improvement": 0.01764155278486902
+          },
+          "2009": {
+            "n": 66,
+            "brier_improvement": 0.0026900567878303484,
+            "median_mae_improvement": -0.0006789371110960993
+          },
+          "2010": {
+            "n": 63,
+            "brier_improvement": -0.007311095745757024,
+            "median_mae_improvement": -0.020621611157980977
+          },
+          "2011": {
+            "n": 65,
+            "brier_improvement": -0.006788590436299339,
+            "median_mae_improvement": -0.004624694914204459
+          },
+          "2012": {
+            "n": 62,
+            "brier_improvement": -0.02952770285998464,
+            "median_mae_improvement": -0.028778296649120415
+          },
+          "2013": {
+            "n": 68,
+            "brier_improvement": -0.02081987089578724,
+            "median_mae_improvement": -0.12829250654565397
+          },
+          "2014": {
+            "n": 66,
+            "brier_improvement": -0.001153156372942513,
+            "median_mae_improvement": 0.022064856174253546
+          },
+          "2015": {
+            "n": 67,
+            "brier_improvement": -0.01859875255444632,
+            "median_mae_improvement": -0.021158352882845788
+          },
+          "2016": {
+            "n": 68,
+            "brier_improvement": -0.017153532028389623,
+            "median_mae_improvement": -0.05101083974433121
+          },
+          "2017": {
+            "n": 58,
+            "brier_improvement": 0.009084960464051675,
+            "median_mae_improvement": 0.02236082425320755
+          },
+          "2018": {
+            "n": 57,
+            "brier_improvement": -0.006242759576455936,
+            "median_mae_improvement": 0.00580592598947533
+          },
+          "2019": {
+            "n": 67,
+            "brier_improvement": -0.005508472473848609,
+            "median_mae_improvement": -0.01311662898645753
+          },
+          "2020": {
+            "n": 70,
+            "brier_improvement": -0.0004379152324332584,
+            "median_mae_improvement": 0.034244108396309654
+          },
+          "2021": {
+            "n": 61,
+            "brier_improvement": -0.0164266262188995,
+            "median_mae_improvement": -0.03300794143577716
+          },
+          "2022": {
+            "n": 60,
+            "brier_improvement": -0.001007771238871305,
+            "median_mae_improvement": 0.04811992080071432
+          },
+          "2023": {
+            "n": 56,
+            "brier_improvement": 0.01385007871452863,
+            "median_mae_improvement": 0.07729478859410378
+          },
+          "2024": {
+            "n": 60,
+            "brier_improvement": -0.00019165552213312777,
+            "median_mae_improvement": 0.036255166010801705
+          },
+          "2025": {
+            "n": 65,
+            "brier_improvement": -0.013439795571353204,
+            "median_mae_improvement": 0.0029043785316850298
+          },
+          "2026": {
+            "n": 49,
+            "brier_improvement": -0.015702700707677212,
+            "median_mae_improvement": -0.029726900922368318
+          }
+        }
+      },
+      "matched_control": null,
+      "retest_score_gradient": {
+        "quintiles": {
+          "Q1": {
+            "n": 726,
+            "up_pct": 58.95316804407714,
+            "mean": 0.14433177625987076,
+            "median": 0.3290399497171026,
+            "p25": -0.8462389425480304,
+            "p75": 1.2846480818985428,
+            "score_median": 2.0
+          },
+          "Q2": {
+            "n": 146,
+            "up_pct": 56.84931506849315,
+            "mean": 0.04188898550678079,
+            "median": 0.27911385798841115,
+            "p25": -0.9983438377264703,
+            "p75": 1.1490628044873052,
+            "score_median": 2.0816326530612246
+          },
+          "Q3": {
+            "n": 430,
+            "up_pct": 58.372093023255815,
+            "mean": 0.1594506731242993,
+            "median": 0.3044873069191212,
+            "p25": -0.8241698123149371,
+            "p75": 1.3728312505800533,
+            "score_median": 2.3650793650793647
+          },
+          "Q4": {
+            "n": 434,
+            "up_pct": 55.52995391705069,
+            "mean": 0.06537364153132645,
+            "median": 0.20057792917417272,
+            "p25": -1.1540108783486853,
+            "p75": 1.4125838866806684,
+            "score_median": 2.7842986285443017
+          },
+          "Q5": {
+            "n": 434,
+            "up_pct": 60.13824884792627,
+            "mean": 0.49458654460236806,
+            "median": 0.6175817599344602,
+            "p25": -1.047002276897571,
+            "p75": 2.277698218147839,
+            "score_median": 3.879740220450084
+          }
+        },
+        "median_monotone_non_decreasing": false,
+        "up_prob_monotone_non_decreasing": false,
+        "q5_minus_q1_median": 0.2885418102173576,
+        "q5_minus_q1_up_pp": 1.1850808038491323
+      }
+    }
+  }
+}
