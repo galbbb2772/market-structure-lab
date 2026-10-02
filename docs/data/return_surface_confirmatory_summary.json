@@ -1,0 +1,32 @@
+{
+  "schema": "RETURN-SURFACE-CONFIRMATORY-SUMMARY-V1",
+  "headline": "No A/B/C hypothesis passes the frozen confirmatory gate after purged walk-forward and within-index BH-FDR at q<=0.10.",
+  "threshold_q": 0.10,
+  "instruments": {
+    "^GSPC": {
+      "name": "S&P 500",
+      "A_strength_dip": {"min_oos_n": 434, "best_q": 0.147465903741691, "forecast_pass_horizons": [], "realized_pass_horizons": [1], "confirmatory_horizons": [], "avg_mean_edge": 0.08470007031433151, "avg_median_edge": 0.07920005345086951, "avg_up_edge_pp": 3.993265627559054},
+      "B_trend_geometry": {"min_oos_n": 517, "best_q": 0.147465903741691, "forecast_pass_horizons": [], "realized_pass_horizons": [3,5], "confirmatory_horizons": [], "avg_mean_edge": 0.09791914282983548, "avg_median_edge": 0.05655528111462458, "avg_up_edge_pp": 3.313241532033636},
+      "C_moderate_pullback": {"min_oos_n": 1397, "best_q": 0.3180227141525991, "forecast_pass_horizons": [], "realized_pass_horizons": [], "confirmatory_horizons": [], "avg_mean_edge": 0.14422890064433894, "avg_median_edge": 0.14547679753775453, "avg_up_edge_pp": 2.5793084960542285},
+      "notable": {
+        "B_T5": {"oos_n": 517, "q": 0.147465903741691, "brier_improvement": 0.00847440870787829, "median_mae_improvement": 0.026788315721934276, "mean_edge": 0.20866094297324472, "median_edge": 0.15843542505707636, "up_edge_pp": 6.561809157249921, "confirmed": false},
+        "A_T1": {"oos_n": 434, "q": 0.147465903741691, "brier_improvement": 0.006625177644079335, "median_mae_improvement": 0.00823250948766261, "mean_edge": 0.13685619683057837, "median_edge": 0.11633727913818058, "up_edge_pp": 5.640342047468173, "confirmed": false}
+      }
+    },
+    "^IXIC": {
+      "name": "Nasdaq Composite",
+      "A_strength_dip": {"min_oos_n": 266, "best_q": 0.29133827870390605, "forecast_pass_horizons": [], "realized_pass_horizons": [1], "confirmatory_horizons": [], "avg_mean_edge": 0.06900618265209713, "avg_median_edge": -0.008186694982771173, "avg_up_edge_pp": 3.476430772206624},
+      "B_trend_geometry": {"min_oos_n": 246, "best_q": 0.2076508137990445, "forecast_pass_horizons": [], "realized_pass_horizons": [10], "confirmatory_horizons": [], "avg_mean_edge": 0.1104418386410154, "avg_median_edge": -0.010240139023376192, "avg_up_edge_pp": 3.627708117687583},
+      "C_moderate_pullback": {"min_oos_n": 714, "best_q": 0.2076508137990445, "forecast_pass_horizons": [], "realized_pass_horizons": [], "confirmatory_horizons": [], "avg_mean_edge": 0.2019716561274489, "avg_median_edge": 0.1169544525095923, "avg_up_edge_pp": 2.991627427684001},
+      "notable": {
+        "B_T10": {"oos_n": 246, "q": 0.2076508137990445, "brier_improvement": 0.021087679489704393, "median_mae_improvement": 0.11708776118913916, "mean_edge": 0.5209643327383755, "median_edge": 0.4717998694939494, "up_edge_pp": 9.190282230865952, "confirmed": false}
+      }
+    },
+    "^DJI": {
+      "name": "Dow Jones",
+      "A_strength_dip": {"min_oos_n": 123, "best_q": 0.9780969036479071, "forecast_pass_horizons": [], "realized_pass_horizons": [], "confirmatory_horizons": [], "avg_mean_edge": -0.11853252403079058, "avg_median_edge": -0.06976910280983487, "avg_up_edge_pp": -1.197293331821915},
+      "B_trend_geometry": {"min_oos_n": 226, "best_q": 0.9780969036479071, "forecast_pass_horizons": [], "realized_pass_horizons": [], "confirmatory_horizons": [], "avg_mean_edge": -0.14899093429169058, "avg_median_edge": -0.10675413431622068, "avg_up_edge_pp": -1.6324470501234072},
+      "C_moderate_pullback": {"min_oos_n": 554, "best_q": 0.9780969036479071, "forecast_pass_horizons": [], "realized_pass_horizons": [], "confirmatory_horizons": [], "avg_mean_edge": 0.020366553697801295, "avg_median_edge": 0.09367010882286594, "avg_up_edge_pp": 0.15391514425272979}
+    }
+  }
+}
