@@ -1,0 +1,52 @@
+{
+  "schema": "PATTERN-PURGED-FDR-SUMMARY-V1",
+  "method": {
+    "walk_forward": "calendar-year expanding window, prior history only",
+    "boundary_gap_sessions": 10,
+    "primary_test": "paired Brier improvement vs same signed streak baseline",
+    "serial_dependence": "Newey-West/HAC one-sided test, lag 5",
+    "multiple_testing": "Benjamini-Hochberg FDR across all cell x horizon tests within each index",
+    "fdr_pass": "q <= 0.10 plus positive Brier improvement, positive median-MAE improvement, >=60% positive test years, OOS N>=50",
+    "strong_pass": "q <= 0.05 plus >=2/3 positive test years and OOS N>=80"
+  },
+  "instruments": {
+    "^GSPC": {
+      "name": "S&P 500",
+      "tested_hypotheses": 320,
+      "fdr_survivors": 1,
+      "strong_survivors": 0,
+      "survivor": {
+        "horizon": 5,
+        "streak": "D1",
+        "market_state": "bull",
+        "position": "low",
+        "volatility": "mid",
+        "oos_n": 52,
+        "test_years": 20,
+        "positive_years": 16,
+        "positive_year_rate": 0.8,
+        "actual_up_pct": 78.84615384615384,
+        "avg_base_up_pct": 52.5724917017094,
+        "avg_cell_up_pct": 67.24496821391057,
+        "brier_improvement": 0.05426901769328433,
+        "median_mae_improvement_pct": 0.11208817243550852,
+        "p_value": 0.000015064505469758914,
+        "q_value": 0.004820641750322853,
+        "bonferroni_p": 0.004820641750322853
+      }
+    },
+    "^IXIC": {
+      "name": "Nasdaq Composite",
+      "tested_hypotheses": 168,
+      "fdr_survivors": 0,
+      "strong_survivors": 0
+    },
+    "^DJI": {
+      "name": "Dow Jones",
+      "tested_hypotheses": 96,
+      "fdr_survivors": 0,
+      "strong_survivors": 0
+    }
+  },
+  "interpretation": "After purge/gap, forward-only evaluation and multiple-testing correction, the earlier Nasdaq D2/D3 discovery candidates do not survive. Only one S&P 500 T+5 state remains at the FDR pass level, and none meet the stronger confirmation threshold."
+}
