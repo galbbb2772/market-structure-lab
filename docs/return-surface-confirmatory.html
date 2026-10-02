@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Frozen Return-Surface Confirmation</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0f14;--panel:#121822;--panel2:#0f151e;--text:#e9eef6;--muted:#9aa8ba;--line:#263142;--good:#3ddc97;--bad:#ff6b6b;--warn:#f5c451;--accent:#7ab8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1220px;margin:auto;padding:28px 18px 64px}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}.eyebrow{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.12em}h1{margin:5px 0 8px;font-size:clamp(28px,4vw,48px)}p{color:var(--muted);line-height:1.65;margin:8px 0}.badge{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--muted)}.danger{color:var(--bad);border-color:#5b3034}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.card h3{margin:0 0 8px;font-size:16px}.rule{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:#c6d4e6;background:var(--panel2);padding:10px;border-radius:9px;line-height:1.55}.controls{display:flex;gap:10px;align-items:center;margin:24px 0 12px;flex-wrap:wrap}select{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:9px 12px}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}.metric{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:13px}.metric b{display:block;font-size:20px;margin-top:3px}.metric span{font-size:11px;color:var(--muted)}table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13px}th,td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;background:var(--panel2)}tr:last-child td{border-bottom:none}.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}.status{font-weight:700}.note{margin-top:18px;padding:14px 16px;border-left:3px solid var(--warn);background:#17170f;border-radius:8px}.links{margin-top:20px;font-size:13px}.links a{color:var(--accent);text-decoration:none;margin-right:14px}@media(max-width:800px){.grid,.summary{grid-template-columns:1fr}.tablewrap{overflow:auto}}
+</style>
+</head>
+<body><div class="wrap">
+<div class="top"><div><div class="eyebrow">Market Structure Lab / Confirmatory Stage</div><h1>Frozen Return-Surface Confirmation</h1><p>把描述性 Conditional Return Surface 中发现的三类宽区域冻结，然后用逐年 expanding-window、10 个交易日 boundary gap、FDR 校正进行回看式 pseudo-OOS 检验。</p></div><div class="badge danger" id="globalStatus">Loading…</div></div>
+<div class="grid" id="hypCards"></div>
+<div class="controls"><label>指数 <select id="sym"></select></label></div>
+<div class="summary" id="summary"></div>
+<div class="tablewrap"><table><thead><tr><th>Hypothesis / Horizon</th><th>OOS N</th><th>q-value</th><th>Brier Δ</th><th>Median AE Δ</th><th>Realized Mean Edge</th><th>Median Edge</th><th>Up Edge</th><th>Mean+ Years</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="note"><b>解释：</b>“Brier Δ / Median AE Δ”大于 0 表示使用冻结区域的历史统计，比普通 D1 历史统计更能预测该区域后续事件；“Realized Edge”则比较测试年份里该区域与同年全部 D1 的真实分布。只有预测层与真实分布层同时通过，才标记 Confirmed。由于 A/B/C 本身来自此前全历史表面的启发，这仍不是一个完全未触碰的 pristine holdout。</div>
+<div class="links"><a href="./pattern-edge.html">Pattern Edge Validation</a><a href="./concentration-lab.html">Analog Engine</a><a href="./structure-lab.html">Structure Lab</a></div>
+</div>
+<script>
+const fmt=(x,d=3)=>x==null?'—':Number(x).toFixed(d);const pct=x=>x==null?'—':`${Number(x).toFixed(1)}%`;
+const cls=x=>x>0?'good':x<0?'bad':'';
+let DATA;
+async function init(){DATA=await fetch('./data/return_surface_confirmatory.json',{cache:'no-store'}).then(r=>r.json());
+ const cards=document.getElementById('hypCards');
+ for(const [k,h] of Object.entries(DATA.hypotheses)){const rule=Object.entries(h.rule).map(([a,b])=>`${a}: ${b}`).join('\n');cards.insertAdjacentHTML('beforeend',`<div class="card"><h3>${h.label}</h3><p>${h.description}</p><div class="rule">${rule}</div></div>`)}
+ const sel=document.getElementById('sym');for(const [s,v] of Object.entries(DATA.instruments)){sel.add(new Option(`${v.name} (${s})`,s))}sel.value='^GSPC';sel.onchange=render;render();}
+function render(){const s=document.getElementById('sym').value,inst=DATA.instruments[s],tests=inst.tests;
+ const passed=tests.filter(x=>x.confirmatory_pass).length;document.getElementById('globalStatus').textContent=passed?`${passed} confirmatory passes`:'0 confirmatory passes';
+ const fpass=tests.filter(x=>x.forecast_pass).length,rpass=tests.filter(x=>x.realized_pass).length,bestq=Math.min(...tests.map(x=>x.q_value??1));
+ document.getElementById('summary').innerHTML=`<div class="metric"><span>D1 EVENTS</span><b>${inst.n_D1}</b></div><div class="metric"><span>FORECAST PASSES</span><b>${fpass}/12</b></div><div class="metric"><span>REALIZED PASSES</span><b>${rpass}/12</b></div><div class="metric"><span>BEST q</span><b>${fmt(bestq,3)}</b></div>`;
+ document.getElementById('rows').innerHTML=tests.map(t=>{let st=t.confirmatory_pass?'<span class="status good">CONFIRMED</span>':t.realized_pass?'<span class="status warn">REALIZED ONLY</span>':t.forecast_pass?'<span class="status warn">FORECAST ONLY</span>':'<span class="status bad">NOT CONFIRMED</span>';return `<tr><td>${t.label} · T+${t.horizon}</td><td>${t.oos_n}</td><td>${fmt(t.q_value,3)}</td><td class="${cls(t.avg_brier_improvement)}">${fmt(t.avg_brier_improvement,4)}</td><td class="${cls(t.avg_median_mae_improvement)}">${fmt(t.avg_median_mae_improvement,4)}</td><td class="${cls(t.avg_realized_mean_edge)}">${fmt(t.avg_realized_mean_edge,3)}%</td><td class="${cls(t.avg_realized_median_edge)}">${fmt(t.avg_realized_median_edge,3)}%</td><td class="${cls(t.avg_realized_up_edge_pp)}">${fmt(t.avg_realized_up_edge_pp,2)}pp</td><td>${pct(100*t.positive_mean_edge_year_rate)}</td><td>${st}</td></tr>`}).join('');}
+init().catch(e=>{document.getElementById('globalStatus').textContent='Load failed';console.error(e)});
+</script></body></html>
