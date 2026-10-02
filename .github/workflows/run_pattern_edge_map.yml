@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: pattern-edge-map
+  group: pattern-edge-map-fast
   cancel-in-progress: true
 
 jobs:
