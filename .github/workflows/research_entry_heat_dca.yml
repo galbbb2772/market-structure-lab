@@ -1,0 +1,35 @@
+name: Research Entry Heat DCA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_entry_heat_dca.py'
+      - '.github/workflows/research_entry_heat_dca.yml'
+      - 'docs/data/structure_lab.json'
+
+concurrency:
+  group: research-entry-heat-dca
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run entry heat DCA study
+        run: python research_entry_heat_dca.py
+      - name: Commit result
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/updown_entry_heat_dca.json
+          git diff --cached --quiet || git commit -m 'data: update entry heat DCA study'
+          git push
