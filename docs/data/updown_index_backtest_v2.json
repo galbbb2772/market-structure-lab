@@ -1,0 +1,670 @@
+{
+  "schema": "UPDOWN-INDEX-BACKTEST-V2",
+  "rules": {
+    "universe": [
+      "^GSPC",
+      "^IXIC",
+      "^DJI"
+    ],
+    "window": 20,
+    "entry_ratio_lte": 0.666667,
+    "ma_filter": "close >= SMA200",
+    "exit_ratio_gte": 1.0,
+    "max_holding_sessions": 10,
+    "stop_loss_pct": 5.0,
+    "execution": "entry/ratio/time signals at close t execute at open t+1; stop uses next-session OHLC with gap-aware fill",
+    "side": "long_or_cash_only",
+    "leverage": 1.0,
+    "fees_slippage": 0.0,
+    "note": "V2 fixed before reviewing results; index-only, no stock selection."
+  },
+  "results": {
+    "^GSPC": {
+      "start": "1928-10-17",
+      "end": "2026-09-30",
+      "bars": 24604,
+      "last_ratio": 0.5385,
+      "last_close": 7651.54,
+      "last_ma200": 7217.0922,
+      "current_close_entry_condition": true,
+      "strategy": {
+        "total_return_pct": 77.001,
+        "cagr_pct": 0.585,
+        "max_drawdown_pct": -39.534,
+        "sharpe": 0.142,
+        "trades": 318,
+        "win_rate_pct": 62.26,
+        "avg_trade_pct": 0.217,
+        "median_holding_days": 8,
+        "exposure_pct": 9.27,
+        "exit_reasons": {
+          "ratio_or_time": 292,
+          "stop_gap": 11,
+          "stop_intraday": 14,
+          "forced_end": 1
+        }
+      },
+      "benchmark": {
+        "total_return_pct": 35014.915,
+        "cagr_pct": 6.166,
+        "max_drawdown_pct": -86.19,
+        "sharpe": 0.412,
+        "exposure_pct": 100.0
+      },
+      "recent_trades": [
+        {
+          "entry_date": "2019-05-29",
+          "exit_date": "2019-06-07",
+          "entry_price": 2790.25,
+          "exit_price": 2852.8701,
+          "return_pct": 2.2442,
+          "holding_days": 7,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2019-08-13",
+          "exit_date": "2019-08-19",
+          "entry_price": 2880.72,
+          "exit_price": 2913.48,
+          "return_pct": 1.1372,
+          "holding_days": 4,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2019-08-26",
+          "exit_date": "2019-08-29",
+          "entry_price": 2866.7,
+          "exit_price": 2910.3701,
+          "return_pct": 1.5234,
+          "holding_days": 3,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-03-05",
+          "exit_date": "2021-03-18",
+          "entry_price": 3793.5801,
+          "exit_price": 3953.5,
+          "return_pct": 4.2155,
+          "holding_days": 9,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-09-22",
+          "exit_date": "2021-10-06",
+          "entry_price": 4367.4302,
+          "exit_price": 4319.5698,
+          "return_pct": -1.0958,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2022-01-07",
+          "exit_date": "2022-01-21",
+          "entry_price": 4697.6602,
+          "exit_price": 4462.77719,
+          "return_pct": -5.0,
+          "holding_days": 9,
+          "exit_reason": "stop_intraday"
+        },
+        {
+          "entry_date": "2022-02-01",
+          "exit_date": "2022-02-09",
+          "entry_price": 4519.5698,
+          "exit_price": 4547.0,
+          "return_pct": 0.6069,
+          "holding_days": 6,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2023-03-02",
+          "exit_date": "2023-03-16",
+          "entry_price": 3938.6799,
+          "exit_price": 3878.9299,
+          "return_pct": -1.517,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2023-03-17",
+          "exit_date": "2023-03-22",
+          "entry_price": 3958.6899,
+          "exit_price": 4002.04,
+          "return_pct": 1.0951,
+          "holding_days": 3,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2023-05-17",
+          "exit_date": "2023-05-19",
+          "entry_price": 4122.8501,
+          "exit_price": 4204.1499,
+          "return_pct": 1.9719,
+          "holding_days": 2,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2023-08-17",
+          "exit_date": "2023-08-31",
+          "entry_price": 4416.3198,
+          "exit_price": 4517.0098,
+          "return_pct": 2.28,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-04-18",
+          "exit_date": "2024-05-02",
+          "entry_price": 5031.52,
+          "exit_price": 5049.3198,
+          "return_pct": 0.3538,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-08-08",
+          "exit_date": "2024-08-15",
+          "entry_price": 5252.5698,
+          "exit_price": 5501.1299,
+          "return_pct": 4.7322,
+          "holding_days": 5,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2025-01-02",
+          "exit_date": "2025-01-16",
+          "entry_price": 5903.2598,
+          "exit_price": 5963.6099,
+          "return_pct": 1.0223,
+          "holding_days": 9,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2025-08-22",
+          "exit_date": "2025-08-29",
+          "entry_price": 6384.5898,
+          "exit_price": 6489.2798,
+          "return_pct": 1.6397,
+          "holding_days": 5,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-03-19",
+          "exit_date": "2026-04-02",
+          "entry_price": 6583.1201,
+          "exit_price": 6512.6099,
+          "return_pct": -1.0711,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-07-02",
+          "exit_date": "2026-07-13",
+          "entry_price": 7495.1401,
+          "exit_price": 7547.5298,
+          "return_pct": 0.699,
+          "holding_days": 6,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-07-21",
+          "exit_date": "2026-07-27",
+          "entry_price": 7489.9502,
+          "exit_price": 7464.2002,
+          "return_pct": -0.3438,
+          "holding_days": 4,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-09-01",
+          "exit_date": "2026-09-16",
+          "entry_price": 7635.4702,
+          "exit_price": 7601.25,
+          "return_pct": -0.4482,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-09-17",
+          "exit_date": "2026-09-30",
+          "entry_price": 7631.4399,
+          "exit_price": 7651.54,
+          "return_pct": 0.2634,
+          "holding_days": 9,
+          "exit_reason": "forced_end"
+        }
+      ],
+      "name": "S&P 500"
+    },
+    "^IXIC": {
+      "start": "1971-11-19",
+      "end": "2026-09-30",
+      "bars": 13830,
+      "last_ratio": 1.0,
+      "last_close": 26861.0605,
+      "last_ma200": 24690.5419,
+      "current_close_entry_condition": false,
+      "strategy": {
+        "total_return_pct": -20.43,
+        "cagr_pct": -0.416,
+        "max_drawdown_pct": -49.722,
+        "sharpe": -0.059,
+        "trades": 163,
+        "win_rate_pct": 55.83,
+        "avg_trade_pct": -0.098,
+        "median_holding_days": 8,
+        "exposure_pct": 8.32,
+        "exit_reasons": {
+          "ratio_or_time": 140,
+          "stop_gap": 4,
+          "stop_intraday": 18,
+          "forced_end": 1
+        }
+      },
+      "benchmark": {
+        "total_return_pct": 25991.365,
+        "cagr_pct": 10.674,
+        "max_drawdown_pct": -77.932,
+        "sharpe": 0.602,
+        "exposure_pct": 100.0
+      },
+      "recent_trades": [
+        {
+          "entry_date": "2021-03-11",
+          "exit_date": "2021-03-18",
+          "entry_price": 13273.3096,
+          "exit_price": 13349.2002,
+          "return_pct": 0.5718,
+          "holding_days": 5,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-05-12",
+          "exit_date": "2021-05-26",
+          "entry_price": 13215.4902,
+          "exit_price": 13693.9404,
+          "return_pct": 3.6204,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-05-27",
+          "exit_date": "2021-06-09",
+          "entry_price": 13742.5898,
+          "exit_price": 13980.2305,
+          "return_pct": 1.7292,
+          "holding_days": 8,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-10-01",
+          "exit_date": "2021-10-15",
+          "entry_price": 14494.9297,
+          "exit_price": 14891.2402,
+          "return_pct": 2.7341,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-12-21",
+          "exit_date": "2021-12-23",
+          "entry_price": 15140.4297,
+          "exit_price": 15544.79,
+          "return_pct": 2.6707,
+          "holding_days": 2,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2022-01-06",
+          "exit_date": "2022-01-20",
+          "entry_price": 15024.1504,
+          "exit_price": 14272.94288,
+          "return_pct": -5.0,
+          "holding_days": 9,
+          "exit_reason": "stop_intraday"
+        },
+        {
+          "entry_date": "2023-04-25",
+          "exit_date": "2023-05-09",
+          "entry_price": 11968.8096,
+          "exit_price": 12195.7803,
+          "return_pct": 1.8964,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2023-08-16",
+          "exit_date": "2023-08-30",
+          "entry_price": 13593.1699,
+          "exit_price": 13961.7695,
+          "return_pct": 2.7117,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-03-12",
+          "exit_date": "2024-03-21",
+          "entry_price": 16116.9805,
+          "exit_price": 16517.2402,
+          "return_pct": 2.4835,
+          "holding_days": 7,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-04-22",
+          "exit_date": "2024-04-25",
+          "entry_price": 15396.1299,
+          "exit_price": 15375.2598,
+          "return_pct": -0.1356,
+          "holding_days": 3,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-08-08",
+          "exit_date": "2024-08-15",
+          "entry_price": 16408.2695,
+          "exit_price": 17394.5391,
+          "return_pct": 6.0108,
+          "holding_days": 5,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2025-01-03",
+          "exit_date": "2025-01-21",
+          "entry_price": 19395.5098,
+          "exit_price": 19734.3906,
+          "return_pct": 1.7472,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2025-01-22",
+          "exit_date": "2025-02-05",
+          "entry_price": 19903.0508,
+          "exit_price": 19533.0508,
+          "return_pct": -1.859,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-02-27",
+          "exit_date": "2026-03-12",
+          "entry_price": 22615.4297,
+          "exit_price": 22526.5898,
+          "return_pct": -0.3928,
+          "holding_days": 9,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-06-29",
+          "exit_date": "2026-07-13",
+          "entry_price": 25502.0898,
+          "exit_price": 26088.3105,
+          "return_pct": 2.2987,
+          "holding_days": 9,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-07-21",
+          "exit_date": "2026-07-29",
+          "entry_price": 25772.5508,
+          "exit_price": 24483.92326,
+          "return_pct": -5.0,
+          "holding_days": 6,
+          "exit_reason": "stop_intraday"
+        },
+        {
+          "entry_date": "2026-07-31",
+          "exit_date": "2026-08-05",
+          "entry_price": 25340.7109,
+          "exit_price": 26698.0195,
+          "return_pct": 5.3562,
+          "holding_days": 3,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-08-07",
+          "exit_date": "2026-08-21",
+          "entry_price": 26534.6602,
+          "exit_price": 26198.8398,
+          "return_pct": -1.2656,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-09-01",
+          "exit_date": "2026-09-16",
+          "entry_price": 26031.6699,
+          "exit_price": 26108.4609,
+          "return_pct": 0.295,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-09-17",
+          "exit_date": "2026-09-30",
+          "entry_price": 26377.8594,
+          "exit_price": 26861.0605,
+          "return_pct": 1.8318,
+          "holding_days": 9,
+          "exit_reason": "forced_end"
+        }
+      ],
+      "name": "Nasdaq Composite"
+    },
+    "^DJI": {
+      "start": "1992-10-15",
+      "end": "2026-09-30",
+      "bars": 8548,
+      "last_ratio": 0.4286,
+      "last_close": 50906.0508,
+      "last_ma200": 50248.4942,
+      "current_close_entry_condition": true,
+      "strategy": {
+        "total_return_pct": 70.837,
+        "cagr_pct": 1.59,
+        "max_drawdown_pct": -17.378,
+        "sharpe": 0.349,
+        "trades": 123,
+        "win_rate_pct": 70.73,
+        "avg_trade_pct": 0.465,
+        "median_holding_days": 8,
+        "exposure_pct": 10.18,
+        "exit_reasons": {
+          "ratio_or_time": 111,
+          "stop_intraday": 11,
+          "forced_end": 1
+        }
+      },
+      "benchmark": {
+        "total_return_pct": 1493.054,
+        "cagr_pct": 8.493,
+        "max_drawdown_pct": -53.779,
+        "sharpe": 0.555,
+        "exposure_pct": 100.0
+      },
+      "recent_trades": [
+        {
+          "entry_date": "2018-11-02",
+          "exit_date": "2018-11-08",
+          "entry_price": 25443.5996,
+          "exit_price": 26139.5898,
+          "return_pct": 2.7354,
+          "holding_days": 4,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2019-03-07",
+          "exit_date": "2019-03-18",
+          "entry_price": 25645.4492,
+          "exit_price": 25801.8809,
+          "return_pct": 0.61,
+          "holding_days": 7,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2019-03-21",
+          "exit_date": "2019-03-29",
+          "entry_price": 25688.4395,
+          "exit_price": 25827.3105,
+          "return_pct": 0.5406,
+          "holding_days": 6,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2019-08-12",
+          "exit_date": "2019-08-23",
+          "entry_price": 26169.9102,
+          "exit_price": 26134.2109,
+          "return_pct": -0.1364,
+          "holding_days": 9,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-09-13",
+          "exit_date": "2021-09-27",
+          "entry_price": 34665.5,
+          "exit_price": 34739.2695,
+          "return_pct": 0.2128,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-09-28",
+          "exit_date": "2021-10-07",
+          "entry_price": 34747.6992,
+          "exit_price": 34509.7188,
+          "return_pct": -0.6849,
+          "holding_days": 7,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2021-12-03",
+          "exit_date": "2021-12-13",
+          "entry_price": 34692.7812,
+          "exit_price": 35958.9297,
+          "return_pct": 3.6496,
+          "holding_days": 6,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2022-02-01",
+          "exit_date": "2022-02-15",
+          "entry_price": 35151.4688,
+          "exit_price": 34686.1914,
+          "return_pct": -1.3236,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2023-05-09",
+          "exit_date": "2023-05-23",
+          "entry_price": 33589.8516,
+          "exit_price": 33190.6016,
+          "return_pct": -1.1886,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2023-05-24",
+          "exit_date": "2023-06-08",
+          "entry_price": 33021.7617,
+          "exit_price": 33656.9805,
+          "return_pct": 1.9236,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-04-11",
+          "exit_date": "2024-04-25",
+          "entry_price": 38523.2617,
+          "exit_price": 38052.0898,
+          "return_pct": -1.2231,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-04-26",
+          "exit_date": "2024-05-03",
+          "entry_price": 38114.6992,
+          "exit_price": 38709.3594,
+          "return_pct": 1.5602,
+          "holding_days": 5,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-06-14",
+          "exit_date": "2024-06-24",
+          "entry_price": 38528.3906,
+          "exit_price": 39184.4883,
+          "return_pct": 1.7029,
+          "holding_days": 5,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-11-15",
+          "exit_date": "2024-11-25",
+          "entry_price": 43587.9297,
+          "exit_price": 44385.4883,
+          "return_pct": 1.8298,
+          "holding_days": 6,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-12-11",
+          "exit_date": "2024-12-26",
+          "entry_price": 44300.4102,
+          "exit_price": 43201.8516,
+          "return_pct": -2.4798,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2024-12-27",
+          "exit_date": "2025-01-14",
+          "entry_price": 43142.3711,
+          "exit_price": 42366.4219,
+          "return_pct": -1.7986,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-08-18",
+          "entry_price": 43724.0195,
+          "exit_price": 44963.1719,
+          "return_pct": 2.834,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-05-05",
+          "exit_date": "2026-05-19",
+          "entry_price": 49037.1211,
+          "exit_price": 49696.5312,
+          "return_pct": 1.3447,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-09-02",
+          "exit_date": "2026-09-17",
+          "entry_price": 52829.5781,
+          "exit_price": 51882.5312,
+          "return_pct": -1.7926,
+          "holding_days": 10,
+          "exit_reason": "ratio_or_time"
+        },
+        {
+          "entry_date": "2026-09-18",
+          "exit_date": "2026-09-30",
+          "entry_price": 51826.7812,
+          "exit_price": 50906.0508,
+          "return_pct": -1.7766,
+          "holding_days": 8,
+          "exit_reason": "forced_end"
+        }
+      ],
+      "name": "Dow Jones"
+    }
+  }
+}
