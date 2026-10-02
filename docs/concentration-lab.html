@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes">
+<title>历史涨跌集中度 · Market Structure Lab</title>
+<style>
+:root{--bg:#081016;--panel:#0f1b24;--panel2:#142530;--line:#243a47;--text:#dbe7ef;--muted:#91a6b5;--blue:#79a9ff;--green:#69d5b3;--amber:#ffcc77;--red:#ff8b8b;--cyan:#67c7e8}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#071017,#0a141b 35%,#081016);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1480px;margin:auto;padding:22px}.top,.sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--green)}a.btn,button,select,input{background:#10202a;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:9px 11px;text-decoration:none}button{cursor:pointer}.hero{padding:38px 0 22px}.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--green);font-weight:700}.hero h1{font-size:clamp(30px,5vw,58px);line-height:1.04;margin:9px 0 13px}.lead,.panel p,.hint,small{color:var(--muted)}.lead{max-width:1030px;font-size:16px}.notice{background:#111f29;border:1px solid var(--line);padding:13px 15px;border-radius:12px;color:var(--muted)}.panel{background:rgba(15,27,36,.96);border:1px solid var(--line);border-radius:15px;padding:18px;margin:16px 0;box-shadow:0 12px 40px #0005}.panel h2{margin:0 0 7px;font-size:clamp(22px,3.5vw,34px);line-height:1.15}.subhead{margin:18px 0 4px;font-weight:700;font-size:15px}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:end}.controls label{display:grid;gap:5px;font-size:12px;color:var(--muted)}.checks{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.checks label{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:13px}.checks input{width:auto;padding:0}.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0}.metric{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:13px}.metric small{display:block}.metric b{display:block;font-size:21px;margin-top:5px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.hcard{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}.hcard h3{margin:0 0 8px}.hcard .big{font-size:26px;font-weight:800}.up{color:var(--green)}.down{color:var(--red)}.mid{color:var(--amber)}.chartWrap{position:relative}.chart{display:block;width:100%;height:340px;background:#0b171f;border:1px solid var(--line);border-radius:12px;margin-top:8px}.chart.short{height:250px}.tooltip{position:absolute;display:none;pointer-events:none;background:#071017ef;border:1px solid #355364;border-radius:10px;padding:9px 11px;font-size:12px;box-shadow:0 8px 30px #0008;z-index:3}.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:7px;color:var(--muted);font-size:12px}.legend i{display:inline-block;width:18px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted);font-size:12px}.scroll{overflow:auto;max-height:660px;border:1px solid var(--line);border-radius:11px}table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#0f1b24;z-index:1}thead th{position:sticky;top:0;background:#12212b;color:var(--muted);z-index:2}thead th:first-child{z-index:3}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#b9c8d3;background:#0b171f;border:1px solid var(--line);border-radius:10px;padding:10px 12px;overflow:auto}.statusline{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.ok{color:var(--green)}.warn{color:var(--amber)}
+@media(max-width:1100px){.metrics{grid-template-columns:repeat(3,1fr)}.grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.wrap{padding:12px}.panel{padding:14px}.metrics{grid-template-columns:repeat(2,1fr)}.grid4{grid-template-columns:1fr}.metric b{font-size:18px}.chart{height:285px}.chart.short{height:220px}.hero{padding-top:24px}.hero h1{font-size:32px}.lead{font-size:14px}.controls label{flex:1 1 135px}.controls select,.controls input[type=date]{width:100%}}
+@media(max-width:440px){.metrics{grid-template-columns:1fr}.chart{height:260px}.sectionTitle h2{font-size:25px}}
+</style>
+</head>
+<body><main class="wrap">
+<div class="top"><div class="brand">MARKET <span>STRUCTURE</span> LAB</div><div style="display:flex;gap:7px;flex-wrap:wrap"><a class="btn" href="./ratio-history.html">历史涨跌比</a><a class="btn" href="./structure-lab.html">返回研究终端</a></div></div>
+<header class="hero">
+<div class="eyebrow">2026-09-28 IDEA · HISTORICAL PATTERN CONCENTRATION / ANALOG ENGINE</div>
+<h1>历史涨跌集中度 K 线<br>＋ 相似区间推演</h1>
+<p class="lead">把“连续涨跌几根 K 之后通常怎么走”从肉眼判断变成条件分布：当前形态只与此前已经发生的历史状态比较，输出 T+1 / T+3 / T+5 / T+10 的涨跌概率、P10–P90 集中区间、MFE / MAE，以及历史相似路径。V1 先使用仓库现有的 S&amp;P 500、Nasdaq Composite、Dow Jones 日 K。</p>
+<div id="status" class="notice">正在读取历史日 K 并构建 point-in-time 状态特征…</div>
+</header>
+
+<section class="panel">
+<div class="sectionTitle"><div><h2>当前状态与匹配条件</h2><p>选任意历史日期；系统只会从该日期之前找相似状态，不把未来信息反灌进特征。</p></div><span id="coverage" class="pill">—</span></div>
+<div class="controls">
+<label>指数<select id="symbol"></select></label>
+<label>观察日期<input id="anchor" type="date"></label>
+<label>最多相似样本<select id="topK"><option value="20">20</option><option value="40" selected>40</option><option value="60">60</option><option value="100">100</option></select></label>
+<label>连续 K 容差<select id="streakTol"><option value="0">完全相同</option><option value="1" selected>±1 根</option><option value="2">±2 根</option><option value="99">不限</option></select></label>
+<button id="latest">最新完整日</button><button id="run">重新匹配</button>
+</div>
+<div class="checks" style="margin-top:12px"><label><input id="sameDir" type="checkbox" checked>同连续涨跌方向</label><label><input id="sameRegime" type="checkbox" checked>同 MA200 状态</label><label><input id="decluster" type="checkbox" checked>相似样本至少间隔 5 个交易日</label></div>
+<div id="featureMetrics" class="metrics"></div>
+<div class="formula">Similarity features = streak + R1 + R3 + R5 + RSI14 + ATR14 percentile + Volume/ADV20 + distance(MA20) + 60D range position + S&amp;P 500 R5.  相似度仅用于历史检索，不等同于预测概率。</div>
+</section>
+
+<section class="panel">
+<div class="sectionTitle"><div><h2>当前 K 线形态</h2><p>显示观察日期之前最近 10 根日 K；最后一根即本次历史匹配锚点。</p></div><span id="anchorLabel" class="pill">—</span></div>
+<canvas id="recentChart" class="chart short"></canvas>
+</section>
+
+<section class="panel">
+<div class="sectionTitle"><div><h2>历史涨跌集中度 K 线</h2><p>每根“集中度 K 线”不是实际交易日：影线 = P10–P90，实体 = P25–P75，中横线 = Median；全部来自相似历史样本的未来收益分布。</p></div><span id="matchCount" class="pill">—</span></div>
+<canvas id="concentrationChart" class="chart"></canvas>
+<div id="horizonCards" class="grid4" style="margin-top:12px"></div>
+<div class="legend"><span><i style="background:var(--cyan)"></i>P10–P90</span><span><i style="background:var(--blue);height:8px"></i>P25–P75</span><span><i style="background:var(--amber)"></i>Median</span></div>
+</section>
+
+<section class="panel">
+<div class="sectionTitle"><div><h2>未来路径分布</h2><p>把每个历史相似日归一到 0%，观察之后 10 个交易日的 P10 / P25 / Median / P75 / P90 路径。</p></div><span class="pill">T+0 = 0%</span></div>
+<canvas id="fanChart" class="chart"></canvas>
+<div class="hint" style="margin-top:8px">路径带展示“历史上这些相似状态后来怎么走”，不是给明天指定单点目标价。相邻日期高度相似会夸大样本量，因此默认启用 5 个交易日去簇。</div>
+</section>
+
+<section class="panel">
+<div class="sectionTitle"><div><h2>连续涨跌 K 的基准规律</h2><p>不看其它特征，只看与当前完全相同的连续涨 / 连跌根数。用它与 Analog 结果比较，可以判断“信息来自连跌本身，还是来自更完整的市场状态”。</p></div><span id="streakLabel" class="pill">—</span></div>
+<div id="streakCards" class="grid4"></div>
+</section>
+
+<section class="panel">
+<div class="sectionTitle"><div><h2>最相似历史案例</h2><p>按状态距离排序。结果严格早于观察日期；T+10 未完成的历史点不会进入候选池。</p></div><span id="candidateInfo" class="pill">—</span></div>
+<div class="scroll"><table><thead><tr><th>历史日期</th><th>相似度</th><th>连续K</th><th>R1</th><th>R3</th><th>R5</th><th>RSI</th><th>ATR%</th><th>MA20偏离</th><th>60D位置</th><th>T+1</th><th>T+3</th><th>T+5</th><th>T+10</th></tr></thead><tbody id="rows"></tbody></table></div>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id),fmt=(v,n=2)=>v==null||!Number.isFinite(+v)?'—':(+v).toFixed(n),pct=v=>v==null||!Number.isFinite(+v)?'—':`${v>=0?'+':''}${fmt(v,2)}%`;
+let DATA=null,ROWS=[],TARGET=null,MATCHES=[],MARKET5=new Map();
+const H=[1,3,5,10];
+const F=[
+  ['streak',2.0,2.0],['r1',1.0,2.0],['r3',1.0,4.0],['r5',1.0,6.0],['rsi',1.0,15.0],
+  ['atrRank',.8,25.0],['volRatio',.4,.8],['ma20Dist',1.0,5.0],['pos60',.8,25.0],['market5',1.0,6.0]
+];
+function finite(v){return Number.isFinite(+v)}
+function quantile(a,q){const s=a.filter(finite).map(Number).sort((x,y)=>x-y);if(!s.length)return null;const p=(s.length-1)*q,i=Math.floor(p),f=p-i;return s[i]+(s[Math.min(i+1,s.length-1)]-s[i])*f}
+function mean(a){const s=a.filter(finite).map(Number);return s.length?s.reduce((x,y)=>x+y,0)/s.length:null}
+function cls(v){return v==null?'':v>0?'up':v<0?'down':'mid'}
+function streakText(v){if(!v)return'平';return`${v>0?'连涨':'连跌'} ${Math.abs(v)} 根`}
+function resize(c){const r=c.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);c.width=Math.max(300,Math.round(r.width*d));c.height=Math.max(160,Math.round(r.height*d));const x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);return[x,r.width,r.height]}
+function line(ctx,x1,y1,x2,y2,color,w=1){ctx.strokeStyle=color;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke()}
+function loadMarket5(){MARKET5=new Map();const b=DATA?.instruments?.['^GSPC']?.bars||[];for(let i=5;i<b.length;i++)MARKET5.set(b[i][0],100*(b[i][4]/b[i-5][4]-1))}
+function rollingRows(sym){
+  const bars=DATA?.instruments?.[sym]?.bars||[],n=bars.length;if(n<260)return[];
+  const out=[],cl=bars.map(b=>+b[4]),vol=bars.map(b=>+b[5]||0),pref=[0],vpref=[0];
+  for(let i=0;i<n;i++){pref.push(pref[i]+cl[i]);vpref.push(vpref[i]+vol[i])}
+  const tr=Array(n).fill(null),atr=Array(n).fill(null),streak=Array(n).fill(0);
+  for(let i=1;i<n;i++){tr[i]=Math.max(+bars[i][2]-+bars[i][3],Math.abs(+bars[i][2]-cl[i-1]),Math.abs(+bars[i][3]-cl[i-1]));const d=cl[i]>cl[i-1]?1:cl[i]<cl[i-1]?-1:0;streak[i]=d===0?0:(streak[i-1]&&Math.sign(streak[i-1])===d?streak[i-1]+d:d)}
+  let gains=0,losses=0;const rsi=Array(n).fill(null);for(let i=1;i<n;i++){const d=cl[i]-cl[i-1];gains+=Math.max(d,0);losses+=Math.max(-d,0);if(i>14){const old=cl[i-14]-cl[i-15];gains-=Math.max(old,0);losses-=Math.max(-old,0)}if(i>=14){const ag=gains/14,al=losses/14;rsi[i]=al===0?100:100-100/(1+ag/al)}}
+  let trsum=0;for(let i=1;i<n;i++){trsum+=tr[i]||0;if(i>14)trsum-=tr[i-14]||0;if(i>=14)atr[i]=100*(trsum/14)/cl[i]}
+  for(let i=252;i<n;i++){
+    const ma20=(pref[i+1]-pref[i-19])/20,ma200=(pref[i+1]-pref[i-199])/200;
+    const lo60=Math.min(...bars.slice(i-59,i+1).map(b=>+b[3])),hi60=Math.max(...bars.slice(i-59,i+1).map(b=>+b[2]));
+    const atrHist=atr.slice(Math.max(14,i-251),i+1).filter(finite),ar=atr[i],atrRank=atrHist.length?100*atrHist.filter(x=>x<=ar).length/atrHist.length:null;
+    const avgVol=(vpref[i]-vpref[Math.max(0,i-20)])/Math.min(20,i),vr=avgVol>0?vol[i]/avgVol:null;
+    out.push({idx:i,date:bars[i][0],open:+bars[i][1],high:+bars[i][2],low:+bars[i][3],close:cl[i],volume:vol[i],streak:streak[i],r1:100*(cl[i]/cl[i-1]-1),r3:100*(cl[i]/cl[i-3]-1),r5:100*(cl[i]/cl[i-5]-1),rsi:rsi[i],atr:ar,atrRank,volRatio:vr,ma20Dist:100*(cl[i]/ma20-1),pos60:hi60>lo60?100*(cl[i]-lo60)/(hi60-lo60):50,market5:MARKET5.get(bars[i][0]),regime:cl[i]>=ma200?'above200':'below200',ma200,bar:bars[i]});
+  }
+  return out;
+}
+function featureDistance(a,b){let s=0,w=0;for(const[k,wt,scale]of F){if(!finite(a[k])||!finite(b[k]))continue;let d=(+a[k]-+b[k])/scale;s+=wt*d*d;w+=wt}return w?Math.sqrt(s/w):Infinity}
+function outcome(row,h){const bars=DATA.instruments[$('symbol').value].bars,i=row.idx;if(i+h>=bars.length)return null;const base=+bars[i][4],future=bars.slice(i+1,i+h+1),ret=100*(+bars[i+h][4]/base-1),mfe=100*(Math.max(...future.map(b=>+b[2]))/base-1),mae=100*(Math.min(...future.map(b=>+b[3]))/base-1);return{ret,mfe,mae}}
+function path(row,maxH=10){const bars=DATA.instruments[$('symbol').value].bars,i=row.idx;if(i+maxH>=bars.length)return null;const base=+bars[i][4],a=[0];for(let h=1;h<=maxH;h++)a.push(100*(+bars[i+h][4]/base-1));return a}
+function findTarget(){const d=$('anchor').value;let t=null;for(const r of ROWS){if(r.date<=d)t=r;else break}return t}
+function findMatches(){
+  TARGET=findTarget();if(!TARGET)return[];const tol=+$('streakTol').value,sameDir=$('sameDir').checked,sameReg=$('sameRegime').checked,decl=$('decluster').checked,topK=+$('topK').value;
+  let c=ROWS.filter(r=>r.idx+10<TARGET.idx);
+  if(sameDir&&TARGET.streak)c=c.filter(r=>r.streak&&Math.sign(r.streak)===Math.sign(TARGET.streak));
+  if(tol<99)c=c.filter(r=>Math.abs(Math.abs(r.streak)-Math.abs(TARGET.streak))<=tol);
+  if(sameReg)c=c.filter(r=>r.regime===TARGET.regime);
+  c=c.map(r=>({...r,distance:featureDistance(TARGET,r)})).filter(r=>finite(r.distance)).sort((a,b)=>a.distance-b.distance);
+  const sel=[];for(const r of c){if(decl&&sel.some(x=>Math.abs(x.idx-r.idx)<5))continue;sel.push(r);if(sel.length>=topK)break}
+  sel.forEach(r=>r.similarity=100/(1+r.distance));
+  $('candidateInfo').textContent=`候选池 ${c.length.toLocaleString()} · 取 ${sel.length}`;
+  return sel;
+}
+function summary(matches,h){const os=matches.map(r=>outcome(r,h)).filter(Boolean),rets=os.map(x=>x.ret);return{n:rets.length,up:rets.length?100*rets.filter(x=>x>0).length/rets.length:null,mean:mean(rets),p10:quantile(rets,.1),p25:quantile(rets,.25),p50:quantile(rets,.5),p75:quantile(rets,.75),p90:quantile(rets,.9),mfe:mean(os.map(x=>x.mfe)),mae:mean(os.map(x=>x.mae))}}
+function featureCards(){if(!TARGET)return;$('featureMetrics').innerHTML=[
+  ['连续K',streakText(TARGET.streak)],['R1',pct(TARGET.r1)],['R3',pct(TARGET.r3)],['R5',pct(TARGET.r5)],['RSI14',fmt(TARGET.rsi,1)],['ATR分位',`${fmt(TARGET.atrRank,1)}%`],['量/ADV20',finite(TARGET.volRatio)?`${fmt(TARGET.volRatio,2)}×`:'无指数成交量'],['MA20偏离',pct(TARGET.ma20Dist)],['60D位置',`${fmt(TARGET.pos60,1)}%`],['S&P R5',pct(TARGET.market5)],['MA200状态',TARGET.regime==='above200'?'上方':'下方'],['收盘',fmt(TARGET.close,2)]
+].map(([k,v])=>`<div class="metric"><small>${k}</small><b>${v}</b></div>`).join('')}
+function drawRecent(){const c=$('recentChart'),[ctx,w,h]=resize(c);ctx.fillStyle='#0b171f';ctx.fillRect(0,0,w,h);if(!TARGET)return;const bars=DATA.instruments[$('symbol').value].bars.slice(Math.max(0,TARGET.idx-9),TARGET.idx+1),L=45,R=18,T=18,B=30,W=w-L-R,Hh=h-T-B,lo=Math.min(...bars.map(b=>+b[3])),hi=Math.max(...bars.map(b=>+b[2])),span=hi-lo||1,y=v=>T+(hi-v)/span*Hh;line(ctx,L,h-B,w-R,h-B,'#243a47');bars.forEach((b,j)=>{const x=L+(j+.5)*W/bars.length,up=+b[4]>=+b[1],col=up?'#69d5b3':'#ff8b8b',bw=Math.max(6,W/bars.length*.48);line(ctx,x,y(+b[2]),x,y(+b[3]),col,1.5);ctx.fillStyle=col;const yy=Math.min(y(+b[1]),y(+b[4])),hh=Math.max(2,Math.abs(y(+b[1])-y(+b[4])));ctx.fillRect(x-bw/2,yy,bw,hh);ctx.fillStyle='#91a6b5';ctx.font='11px system-ui';ctx.textAlign='center';ctx.fillText(b[0].slice(5),x,h-10)});ctx.textAlign='left';ctx.fillStyle='#91a6b5';ctx.fillText(fmt(hi,2),5,T+9);ctx.fillText(fmt(lo,2),5,h-B)}
+function drawConcentration(){const c=$('concentrationChart'),[ctx,w,h]=resize(c);ctx.fillStyle='#0b171f';ctx.fillRect(0,0,w,h);const sums=H.map(x=>summary(MATCHES,x)),vals=sums.flatMap(s=>[s.p10,s.p90]).filter(finite);if(!vals.length){ctx.fillStyle='#91a6b5';ctx.fillText('相似样本不足',30,40);return}let lo=Math.min(...vals,0),hi=Math.max(...vals,0),pad=(hi-lo||1)*.12;lo-=pad;hi+=pad;const L=60,R=25,T=20,B=42,W=w-L-R,Hh=h-T-B,y=v=>T+(hi-v)/(hi-lo)*Hh;line(ctx,L,y(0),w-R,y(0),'#355364',1.2);ctx.font='12px system-ui';ctx.fillStyle='#91a6b5';for(let k=0;k<5;k++){const v=lo+(hi-lo)*k/4,yy=y(v);line(ctx,L,yy,w-R,yy,'#18303c');ctx.fillText(`${fmt(v,1)}%`,8,yy+4)}sums.forEach((s,j)=>{const x=L+(j+.5)*W/sums.length,bw=Math.min(56,W/sums.length*.35);line(ctx,x,y(s.p90),x,y(s.p10),'#67c7e8',3);ctx.fillStyle='#79a9ff';ctx.globalAlpha=.75;ctx.fillRect(x-bw/2,Math.min(y(s.p75),y(s.p25)),bw,Math.max(3,Math.abs(y(s.p75)-y(s.p25))));ctx.globalAlpha=1;line(ctx,x-bw/2-5,y(s.p50),x+bw/2+5,y(s.p50),'#ffcc77',3);ctx.fillStyle='#dbe7ef';ctx.textAlign='center';ctx.fillText(`T+${H[j]}`,x,h-16)});ctx.textAlign='left'}
+function drawFan(){const c=$('fanChart'),[ctx,w,h]=resize(c);ctx.fillStyle='#0b171f';ctx.fillRect(0,0,w,h);const paths=MATCHES.map(r=>path(r,10)).filter(Boolean);if(paths.length<3){ctx.fillStyle='#91a6b5';ctx.fillText('相似样本不足',30,40);return}const qs=[.1,.25,.5,.75,.9],series=qs.map(q=>Array.from({length:11},(_,d)=>quantile(paths.map(p=>p[d]),q))),vals=series.flat().filter(finite);let lo=Math.min(...vals,0),hi=Math.max(...vals,0),pad=(hi-lo||1)*.1;lo-=pad;hi+=pad;const L=58,R=24,T=20,B=38,W=w-L-R,Hh=h-T-B,x=d=>L+d/10*W,y=v=>T+(hi-v)/(hi-lo)*Hh;for(let k=0;k<5;k++){const v=lo+(hi-lo)*k/4,yy=y(v);line(ctx,L,yy,w-R,yy,'#18303c');ctx.fillStyle='#91a6b5';ctx.font='12px system-ui';ctx.fillText(`${fmt(v,1)}%`,7,yy+4)}line(ctx,L,y(0),w-R,y(0),'#355364',1.2);
+  function band(low,high,color,alpha){ctx.fillStyle=color;ctx.globalAlpha=alpha;ctx.beginPath();for(let d=0;d<=10;d++)d?ctx.lineTo(x(d),y(high[d])):ctx.moveTo(x(d),y(high[d]));for(let d=10;d>=0;d--)ctx.lineTo(x(d),y(low[d]));ctx.closePath();ctx.fill();ctx.globalAlpha=1}
+  band(series[0],series[4],'#67c7e8',.12);band(series[1],series[3],'#79a9ff',.18);ctx.strokeStyle='#ffcc77';ctx.lineWidth=2.6;ctx.beginPath();series[2].forEach((v,d)=>d?ctx.lineTo(x(d),y(v)):ctx.moveTo(x(d),y(v)));ctx.stroke();ctx.fillStyle='#91a6b5';ctx.textAlign='center';for(let d=0;d<=10;d+=2)ctx.fillText(`T+${d}`,x(d),h-14);ctx.textAlign='left'}
+function renderHorizonCards(){const sums=H.map(h=>[h,summary(MATCHES,h)]);$('horizonCards').innerHTML=sums.map(([h,s])=>`<div class="hcard"><h3>T+${h}</h3><div class="big ${cls(s.p50)}">${pct(s.p50)}</div><small>上涨频率 ${fmt(s.up,1)}% · N=${s.n}</small><div class="statusline"><span class="pill">P10 ${pct(s.p10)}</span><span class="pill">P90 ${pct(s.p90)}</span></div><div class="statusline"><span class="pill">平均MFE ${pct(s.mfe)}</span><span class="pill">平均MAE ${pct(s.mae)}</span></div></div>`).join('')}
+function renderStreak(){if(!TARGET)return;const peers=ROWS.filter(r=>r.idx+10<TARGET.idx&&r.streak===TARGET.streak);$('streakLabel').textContent=`${streakText(TARGET.streak)} · 历史样本 ${peers.length}`;$('streakCards').innerHTML=H.map(h=>{const s=summary(peers,h);return`<div class="hcard"><h3>T+${h}</h3><div class="big ${cls(s.p50)}">${pct(s.p50)}</div><small>上涨频率 ${fmt(s.up,1)}% · N=${s.n}</small><div class="statusline"><span class="pill">P25 ${pct(s.p25)}</span><span class="pill">P75 ${pct(s.p75)}</span></div></div>`}).join('')}
+function renderRows(){const sym=$('symbol').value;$('rows').innerHTML=MATCHES.map(r=>{const o=H.map(h=>outcome(r,h)?.ret);return`<tr><td>${r.date}</td><td>${fmt(r.similarity,1)}%</td><td>${streakText(r.streak)}</td><td class="${cls(r.r1)}">${pct(r.r1)}</td><td class="${cls(r.r3)}">${pct(r.r3)}</td><td class="${cls(r.r5)}">${pct(r.r5)}</td><td>${fmt(r.rsi,1)}</td><td>${fmt(r.atrRank,1)}%</td><td>${pct(r.ma20Dist)}</td><td>${fmt(r.pos60,1)}%</td>${o.map(v=>`<td class="${cls(v)}">${pct(v)}</td>`).join('')}</tr>`}).join('')}
+function renderAll(){TARGET=findTarget();if(!TARGET){$('status').textContent='所选日期没有足够历史用于计算特征。';return}MATCHES=findMatches();featureCards();drawRecent();drawConcentration();drawFan();renderHorizonCards();renderStreak();renderRows();$('anchor').value=TARGET.date;$('anchorLabel').textContent=`${DATA.instruments[$('symbol').value].name} · ${TARGET.date} · ${streakText(TARGET.streak)}`;$('matchCount').textContent=`Analog N=${MATCHES.length}`;$('status').innerHTML=`<span class="ok">V1 已运行：</span>观察日 ${TARGET.date}；只从此前历史找相似状态。当前相似样本 ${MATCHES.length} 个。`}
+function prepare(){const sym=$('symbol').value,inst=DATA.instruments[sym];ROWS=rollingRows(sym);const start=ROWS[0]?.date,end=ROWS.at(-1)?.date;$('coverage').textContent=`可研究 ${start||'—'} → ${end||'—'}`;if(!$('anchor').value||$('anchor').value<start||$('anchor').value>end)$('anchor').value=end;renderAll()}
+async function init(){try{const r=await fetch('./data/structure_lab.json?ts='+Date.now());if(!r.ok)throw new Error(`HTTP ${r.status}`);DATA=await r.json();loadMarket5();const majors=['^GSPC','^IXIC','^DJI'].filter(s=>DATA.instruments?.[s]);$('symbol').innerHTML=majors.map(s=>`<option value="${s}">${DATA.instruments[s].name}</option>`).join('');prepare()}catch(e){$('status').textContent='读取失败：'+e.message}}
+$('symbol').onchange=prepare;$('run').onclick=renderAll;$('latest').onclick=()=>{$('anchor').value=ROWS.at(-1)?.date||'';renderAll()};['topK','streakTol','sameDir','sameRegime','decluster'].forEach(id=>$(id).onchange=renderAll);$('anchor').onchange=renderAll;addEventListener('resize',()=>{drawRecent();drawConcentration();drawFan()});init();
+</script>
+</body></html>
