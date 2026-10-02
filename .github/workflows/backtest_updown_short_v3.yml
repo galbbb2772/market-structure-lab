@@ -1,0 +1,32 @@
+name: Backtest UpDown Short V3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backtest_updown_short_v3.py'
+      - '.github/workflows/backtest_updown_short_v3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run short V3 backtest
+        run: python backtest_updown_short_v3.py
+      - name: Commit short V3 result
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/updown_short_v3.json
+          git diff --cached --quiet || git commit -m 'data: update updown short V3 backtest'
+          git push
