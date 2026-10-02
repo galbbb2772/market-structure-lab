@@ -1,0 +1,45 @@
+name: Run Historical Pattern Concentration V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'run_concentration_v1.py'
+      - '.github/workflows/run_concentration_v1.yml'
+      - 'docs/data/structure_lab.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: concentration-v1
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run latest analog research
+        run: python run_concentration_v1.py
+
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/concentration_latest.json
+          if git diff --cached --quiet; then
+            echo "No result change"
+          else
+            git commit -m "data: refresh concentration V1 result"
+            git push
+          fi
