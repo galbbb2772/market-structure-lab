@@ -35,5 +35,6 @@ jobs:
             echo "No result changes"
           else
             git commit -m "data: refresh purged pattern validation"
+            git pull --rebase origin main
             git push
           fi
