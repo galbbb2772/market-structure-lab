@@ -1,4 +1,4 @@
-"""OOS-style robustness study for bullish price-vs-up/down-ratio divergence.
+"""Strict OOS robustness study for bullish price-vs-up/down-ratio divergence.
 
 Focuses on the previously promising state:
 - negative divergence (price weak, up/down structure relatively stronger)
@@ -6,6 +6,8 @@ Focuses on the previously promising state:
 - positive ratio-leading correlation >= 0.25
 
 All signal features use only trailing data. Forward returns are evaluation only.
+Period boundaries are strict: a horizon is counted only if its exit date remains
+inside the same evaluation period.
 """
 from __future__ import annotations
 
@@ -29,15 +31,16 @@ PERIODS = {
 MIN_TRAIN_EVENTS = 10
 
 
-def period_indices(bars, start, end, max_h=40):
-    return [i for i, b in enumerate(bars) if start <= b["date"] <= end and i + max_h < len(bars)]
-
-
 def baseline_period(bars, start, end):
     out = {}
-    idx = period_indices(bars, start, end, max(HORIZONS))
     for h in HORIZONS:
-        vals = [bars[i + h]["close"] / bars[i]["close"] - 1 for i in idx if i + h < len(bars)]
+        vals = []
+        for i, b in enumerate(bars):
+            if not (start <= b["date"] <= end):
+                continue
+            if i + h >= len(bars) or bars[i + h]["date"] > end:
+                continue
+            vals.append(bars[i + h]["close"] / bars[i]["close"] - 1)
         if not vals:
             out[str(h)] = {"n": 0}
             continue
@@ -51,8 +54,6 @@ def baseline_period(bars, start, end):
 
 
 def event_indices_for_period(bars, f, threshold, start, end):
-    # Existing extractor resets cooldown at start_date and computes the lead filter
-    # using only trailing history available at each event date.
     idx = base.extract_events(
         bars,
         f,
@@ -63,6 +64,37 @@ def event_indices_for_period(bars, f, threshold, start, end):
         start_date=start,
     )
     return [i for i in idx if bars[i]["date"] <= end]
+
+
+def strict_forward_stats(bars, indices, side, end):
+    out = {}
+    for h in HORIZONS:
+        vals, adverse, favorable = [], [], []
+        for i in indices:
+            if i + h >= len(bars) or bars[i + h]["date"] > end:
+                continue
+            base_px = bars[i]["close"]
+            path = bars[i + 1 : i + h + 1]
+            vals.append(bars[i + h]["close"] / base_px - 1)
+            if side == "bull":
+                adverse.append(min(b["low"] for b in path) / base_px - 1)
+                favorable.append(max(b["high"] for b in path) / base_px - 1)
+            else:
+                adverse.append(max(b["high"] for b in path) / base_px - 1)
+                favorable.append(min(b["low"] for b in path) / base_px - 1)
+        if not vals:
+            out[str(h)] = {"n": 0}
+            continue
+        hit = sum(v > 0 for v in vals) / len(vals) if side == "bull" else sum(v < 0 for v in vals) / len(vals)
+        out[str(h)] = {
+            "n": len(vals),
+            "avg_return_pct": round(mean(vals) * 100, 3),
+            "median_return_pct": round(median(vals) * 100, 3),
+            "direction_hit_rate_pct": round(hit * 100, 2),
+            "avg_adverse_excursion_pct": round(mean(adverse) * 100, 3),
+            "avg_favorable_excursion_pct": round(mean(favorable) * 100, 3),
+        }
+    return out
 
 
 def enrich_forward(signal_stats, baseline):
@@ -83,7 +115,7 @@ def enrich_forward(signal_stats, baseline):
 def study_threshold(bars, f, threshold, start, end):
     idx = event_indices_for_period(bars, f, threshold, start, end)
     baseline = baseline_period(bars, start, end)
-    sig = base.forward_stats(bars, idx, "bull")
+    sig = strict_forward_stats(bars, idx, "bull", end)
     return {
         "events": len(idx),
         "baseline": baseline,
@@ -97,15 +129,24 @@ def choose_threshold(period_results):
     for th in THRESHOLDS:
         r = period_results[f"{th:.1f}"]
         h20 = r["forward"].get("20", {})
-        if r["events"] >= MIN_TRAIN_EVENTS and h20.get("n", 0) >= MIN_TRAIN_EVENTS:
-            candidates.append((h20.get("excess_avg_return_pct", float("-inf")), th))
+        excess_ret = h20.get("excess_avg_return_pct")
+        excess_hit = h20.get("excess_up_rate_pp")
+        if (
+            r["events"] >= MIN_TRAIN_EVENTS
+            and h20.get("n", 0) >= MIN_TRAIN_EVENTS
+            and excess_ret is not None
+            and excess_hit is not None
+            and excess_ret > 0
+            and excess_hit > 0
+        ):
+            candidates.append((excess_ret, th))
     return max(candidates)[1] if candidates else None
 
 
 def main():
     raw = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     out = {
-        "schema": "UPDOWN-DIVERGENCE-OOS-V1",
+        "schema": "UPDOWN-DIVERGENCE-OOS-V2",
         "method": {
             "signal": "bull divergence + corr>=0.25 + positive ratio-leading corr>=0.25",
             "thresholds": THRESHOLDS,
@@ -116,7 +157,8 @@ def main():
             "max_positive_lead_days": base.MAX_LEAD,
             "cooldown_trading_days": base.COOLDOWN,
             "periods": PERIODS,
-            "selection_rule": "within IS_1992_2009, choose threshold with highest 20d excess average return among thresholds with >=10 events; lock it for OOS",
+            "strict_period_boundaries": True,
+            "selection_rule": "within IS_1992_2009, choose threshold with highest positive 20d excess average return only if both excess average return and excess up-rate are positive and >=10 events; otherwise choose no threshold",
             "lookahead": "none in feature/signal construction; forward returns are evaluation only",
         },
         "results": {},
@@ -131,17 +173,17 @@ def main():
         f = base.features(bars)
         periods_out = {}
         for pname, (start, end) in PERIODS.items():
-            tmap = {}
-            for th in THRESHOLDS:
-                tmap[f"{th:.1f}"] = study_threshold(bars, f, th, start, end)
-            periods_out[pname] = tmap
+            periods_out[pname] = {
+                f"{th:.1f}": study_threshold(bars, f, th, start, end)
+                for th in THRESHOLDS
+            }
 
         selected = choose_threshold(periods_out["IS_1992_2009"])
         selected_key = f"{selected:.1f}" if selected is not None else None
-        locked = {}
-        if selected_key:
-            for pname in PERIODS:
-                locked[pname] = periods_out[pname][selected_key]
+        locked = {
+            pname: periods_out[pname][selected_key]
+            for pname in PERIODS
+        } if selected_key else {}
 
         out["results"][sym] = {
             "name": inst.get("name", sym),
@@ -160,7 +202,7 @@ def main():
                 h20 = r["forward"]["20"]
                 print(
                     "   th", th,
-                    "n", r["events"],
+                    "n", h20.get("n"),
                     "20d avg", h20.get("avg_return_pct"),
                     "excess", h20.get("excess_avg_return_pct"),
                     "up", h20.get("direction_hit_rate_pct"),
