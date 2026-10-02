@@ -1,0 +1,39 @@
+name: Run Purged Pattern Validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_pattern_purged_validation.py'
+      - '.github/workflows/run_pattern_purged_validation.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pattern-purged-validation
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run purged walk-forward FDR validation
+        run: python research_pattern_purged_validation.py
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/pattern_purged_validation.json
+          if git diff --cached --quiet; then
+            echo "No result changes"
+          else
+            git commit -m "data: refresh purged pattern validation"
+            git push
+          fi
