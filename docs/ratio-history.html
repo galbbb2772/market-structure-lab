@@ -8,7 +8,7 @@
 :root{--bg:#081016;--panel:#0f1b24;--panel2:#142530;--line:#243a47;--text:#dbe7ef;--muted:#91a6b5;--blue:#79a9ff;--green:#69d5b3;--amber:#ffcc77;--red:#ff8b8b}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#071017,#0a141b 35%,#081016);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1480px;margin:auto;padding:22px}.top,.sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--green)}a.btn,button,select,input{background:#10202a;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:9px 11px;text-decoration:none}button{cursor:pointer}.hero{padding:38px 0 22px}.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--green);font-weight:700}.hero h1{font-size:clamp(30px,5vw,58px);line-height:1.04;margin:9px 0 13px}.lead,.panel p,.hint,small{color:var(--muted)}.lead{max-width:980px;font-size:16px}.notice{background:#111f29;border:1px solid var(--line);padding:13px 15px;border-radius:12px;color:var(--muted)}.panel{background:rgba(15,27,36,.96);border:1px solid var(--line);border-radius:15px;padding:18px;margin:16px 0;box-shadow:0 12px 40px #0005}.panel h2{margin:0 0 7px;font-size:clamp(22px,3.5vw,34px);line-height:1.15}.subhead{margin:18px 0 4px;font-weight:700;font-size:15px}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:end}.controls label{display:grid;gap:5px;font-size:12px;color:var(--muted)}.quick{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.quick button.active{border-color:var(--green);background:#12302f}.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0}.metric{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:13px}.metric small{display:block}.metric b{display:block;font-size:21px;margin-top:5px}.chartWrap{position:relative}.chart{display:block;width:100%;height:320px;background:#0b171f;border:1px solid var(--line);border-radius:12px;margin-top:8px;cursor:grab;touch-action:none;user-select:none}.chart.ratio{height:380px}.chart.dragging{cursor:grabbing}.navigator{display:block;width:100%;height:64px;background:#0a151d;border:1px solid var(--line);border-radius:10px;margin-top:8px;touch-action:none;cursor:ew-resize}.tooltip{position:absolute;display:none;pointer-events:none;background:#071017ef;border:1px solid #355364;border-radius:10px;padding:9px 11px;font-size:12px;box-shadow:0 8px 30px #0008;z-index:3}.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:7px;color:var(--muted);font-size:12px}.legend span:before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;background:var(--blue);vertical-align:middle;margin-right:7px}.legend.balance span:nth-child(2):before{background:var(--amber)}.scroll{overflow:auto;max-height:620px;border:1px solid var(--line);border-radius:11px}.matrix{overflow:auto;border:1px solid var(--line);border-radius:11px}table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#0f1b24;z-index:1}thead th{position:sticky;top:0;background:#12212b;color:var(--muted);z-index:2}thead th:first-child{z-index:3}.ratioHigh{color:var(--green)}.ratioLow{color:var(--red)}.ratioMid{color:var(--amber)}.empty{color:#587080}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted);font-size:12px}.ok{color:var(--green)}.warn{color:var(--amber)}
 
-.gateGrid{display:grid;grid-template-columns:1.15fr 1fr;gap:12px;margin-top:14px}.gateHero,.gateBox{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px}.gateHero{display:grid;gap:9px}.gateState{font-size:clamp(26px,4vw,42px);font-weight:850;line-height:1}.gateState.normal{color:var(--green)}.gateState.heat{color:var(--amber)}.gateState.repair{color:var(--blue)}.gateState.watch{color:#d7b8ff}.gateAction{font-size:17px;font-weight:750;line-height:1.45}.gateWhy{color:var(--muted);font-size:13px;line-height:1.65}.gateLevels{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}.gateLevel{background:#0b171f;border:1px solid var(--line);border-radius:10px;padding:11px}.gateLevel small{display:block}.gateLevel b{display:block;font-size:20px;margin-top:4px}.gateTag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:12px;color:var(--muted)}.gateNote{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.6}
+.gateGrid{display:grid;grid-template-columns:1.15fr 1fr;gap:12px;margin-top:14px}.gateHero,.gateBox{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px}.gateHero{display:grid;gap:9px}.gateState{font-size:clamp(26px,4vw,42px);font-weight:850;line-height:1}.gateState.normal{color:var(--green)}.gateState.heat{color:var(--amber)}.gateState.repair{color:var(--blue)}.gateState.watch{color:#d7b8ff}.gateAction{font-size:17px;font-weight:750;line-height:1.45}.gateWhy{color:var(--muted);font-size:13px;line-height:1.65}.gateLevels{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}.gateLevel{background:#0b171f;border:1px solid var(--line);border-radius:10px;padding:11px}.gateLevel small{display:block}.gateLevel b{display:block;font-size:20px;margin-top:4px}.gateLevel.buy b{color:var(--green)}.gateLevel.observe b{color:var(--amber)}.gateLevel.sell b{color:var(--red)}.gateDelta{display:block;margin-top:5px;font-size:11px;color:var(--muted)}.gateTag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:12px;color:var(--muted)}.gateNote{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.6}
 @media(max-width:800px){.gateGrid{grid-template-columns:1fr}.gateLevels{grid-template-columns:1fr}}
 @media(max-width:1100px){.metrics{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.wrap{padding:12px}.panel{padding:14px}.metrics{grid-template-columns:repeat(2,1fr)}.metric b{font-size:18px}.chart{height:245px}.chart.ratio{height:300px}.navigator{height:54px}.hero{padding-top:24px}.hero h1{font-size:32px}.lead{font-size:14px}.sectionTitle>div{min-width:0;width:100%}.sectionTitle h2{font-size:28px}.controls label{flex:1 1 135px}.controls select,.controls input{width:100%}}
@@ -80,10 +80,10 @@
     <div id="gateMetrics" class="metrics" style="grid-template-columns:repeat(2,1fr);margin:8px 0 0"></div>
   </div>
 </div>
-<div class="subhead">具体结构参考位</div>
+<div class="subhead">具体操作点位</div>
 <div id="gateLevels" class="gateLevels"></div>
 <div id="gatePlan" class="notice" style="margin-top:12px">—</div>
-<div class="gateNote">“具体点位”是按当前20日价格结构动态计算的研究参考，不是对未来底部/顶部的保证。我们前面的回测支持它作为新增仓位过滤器，但没有证明单靠它择时能稳定提高长期收益。</div>
+<div class="gateNote">买入点、观察点、卖出点会随当前指数的20日价格结构动态变化。买点需要“修复确认”后执行，卖点需要“过热确认”后执行；观察点只用于等待，不机械下单。点位是研究系统的操作参考，不代表对未来顶部/底部的保证。</div>
 </section>
 
 <section class="panel"><div class="sectionTitle"><div><h2>逐期明细</h2><p>上方主图显示所选区间累计涨跌幅；本表中的月度/年度涨跌幅仍表示各自周期内涨跌幅。</p></div><span id="rowCount" class="pill">—</span></div><div id="detail" class="scroll"></div></section>
@@ -228,17 +228,54 @@ function renderEntryGate(){
  const nearHigh=q.close>=q.high20*.97,nearLow=q.close<=q.low20*1.03;
  const heat=Number.isFinite(q.divergence)&&q.divergence>=th&&q.ret20>0&&nearHigh;
  const repair=Number.isFinite(q.divergence)&&q.divergence<=-th&&q.ret20<0&&nearLow;
- let state='正常',clsName='normal',action='核心仓位：持有；固定定投：照常；机会仓：不因本指标单独加仓。',plan='当前没有明确的过热或修复信号。若想等更好的结构位置，可把20日中位作为普通回撤观察位，把20日低点附近作为更深的修复观察区。';
- if(heat){state='过热 / 谨慎追涨';clsName='heat';action='核心仓位：继续持有；固定定投：照常；机会仓：暂停追涨，等待过热解除。';plan=`当前不建议因为上涨而额外追仓。第一观察线：≤ ${fmt(q.high20*.97,2)}；普通回撤参考：约 ${fmt(q.mid20,2)}；若进一步进入 ${fmt(q.low20,2)}～${fmt(q.low20*1.03,2)}，再检查是否转为“修复观察”。`}
- else if(repair&&confirm){state='修复确认 / 机会仓观察';clsName='repair';action='核心仓位：持有；固定定投：照常；机会仓：可进入分批研究状态，不建议一次性满仓。';plan=`已进入历史研究中的修复区。研究执行参考：下一交易时段若仍≤ ${fmt(q.low20*1.03,2)}，可考虑机会仓首批；20日低点 ${fmt(q.low20,2)} 为更深一档结构参考。若价格快速脱离修复区，不追价，重新等待。`}
- else if(repair){state='修复观察 / 待确认';clsName='watch';action='核心仓位：持有；固定定投：照常；机会仓：先观察，等待相关性/领先确认。';plan=`价格已进入修复区域 ${fmt(q.low20,2)}～${fmt(q.low20*1.03,2)}，但确认条件不足。先不把它当正式加仓触发；等滚动相关≥0.25且涨跌比领先相关≥0.25后再升级。`}
+
+ // Explicit operating levels. The buy/sell levels sit inside the already-used 3% repair/heat bands.
+ let buyPoint=q.low20*1.015,watchPoint=q.mid20,sellPoint=q.high20*.985;
+ // Keep the three points ordered even during unusually narrow 20-day ranges.
+ if(buyPoint>=watchPoint)buyPoint=q.low20+(watchPoint-q.low20)*.5;
+ if(sellPoint<=watchPoint)sellPoint=watchPoint+(q.high20-watchPoint)*.5;
+ const dist=p=>q.close?100*(p/q.close-1):null;
+ const hitBuy=q.close<=buyPoint,hitSell=q.close>=sellPoint,belowWatch=q.close<=watchPoint;
+
+ let state='持仓观望',clsName='normal',action='',plan='';
+ if(hitBuy&&repair&&confirm){
+   state='买入触发';clsName='repair';
+   action=`当前操作：价格 ${fmt(q.close,2)} 已到建议买入点 ${fmt(buyPoint,2)} 以下，且修复确认成立 → 执行机会仓买入。`;
+   plan=`买入触发已成立。若下一交易时段仍在 ${fmt(buyPoint,2)} 附近或以下且修复确认没有消失，可执行买入；若快速反弹脱离该价位，不追价。`;
+ }else if(hitSell&&heat){
+   state='卖出 / 减仓触发';clsName='heat';
+   action=`当前操作：价格 ${fmt(q.close,2)} 已到建议卖出点 ${fmt(sellPoint,2)} 以上，且过热确认成立 → 机会仓执行卖出或减仓。`;
+   plan=`卖出触发已成立。若价格仍≥ ${fmt(sellPoint,2)} 且过热条件保持，可执行机会仓卖出/减仓；核心长期仓不因本模块单独清仓。`;
+ }else if(hitBuy){
+   state='买入点观察';clsName='watch';
+   action=`当前操作：价格已到建议买入点 ${fmt(buyPoint,2)}，但修复确认不足 → 暂不买，继续观察。`;
+   plan=`价格条件已经满足，但信号条件没有同时满足。等待背离≤ -${fmt(th,1)}σ、滚动相关≥0.25、领先相关≥0.25 后再把“观察”升级为“买入”。`;
+ }else if(hitSell){
+   state='卖出点观察';clsName='watch';
+   action=`当前操作：价格已到建议卖出点 ${fmt(sellPoint,2)}，但过热确认不足 → 暂不机械卖出，持仓观察。`;
+   plan=`价格到达上沿，但没有同时形成过热结构。只有过热条件成立时，这个价位才升级为机会仓卖出/减仓触发。`;
+ }else if(belowWatch){
+   state='观察';clsName='watch';
+   action=`当前操作：价格 ${fmt(q.close,2)} 已进入建议观察点 ${fmt(watchPoint,2)} 下方、尚未到买入点 ${fmt(buyPoint,2)} → 不追价，等待买入触发。`;
+   plan=`目前位于观察区。继续看价格是否靠近 ${fmt(buyPoint,2)}，以及修复确认是否同时成立；没有同时成立前不执行新增仓位。`;
+ }else{
+   state='持仓观望';clsName='normal';
+   action=`当前操作：持仓观望。下方建议观察点 ${fmt(watchPoint,2)}，进一步建议买入点 ${fmt(buyPoint,2)}；上方建议卖出点 ${fmt(sellPoint,2)}。`;
+   plan=`当前价格处在观察点与卖出点之间：已有仓位继续持有；不到买入触发不额外加仓，到卖出点也需要过热确认后才执行减仓/卖出。`;
+ }
+
  $('gateState').className='gateState '+clsName;$('gateState').textContent=state;$('gateAction').textContent=action;
  const leadText=q.bestLead?`+${q.bestLead.lag}日 / ${fmt(q.bestLead.corr,3)}`:'—';
  $('gateWhy').textContent=`${q.date} · 背离 ${fmt(q.divergence,2)}σ · 20日收益 ${fmt(q.ret20*100,2)}% · 涨跌比 ${q.ratio===Infinity?'∞':fmt(q.ratio,2)} · 60日相关 ${fmt(q.corr,3)} · 最强正向领先 ${leadText}`;
  const ms=[['当前点位',fmt(q.close,2)],['20日收益',fmt(q.ret20*100,2)+'%'],['背离强度',fmt(q.divergence,2)+'σ'],['领先确认',leadText]];
  $('gateMetrics').innerHTML=ms.map(([k,v])=>`<div class="metric"><small>${k}</small><b>${v}</b></div>`).join('');
- const levels=[['离开过热区观察线',q.high20*.97,`20日高 ${fmt(q.high20,2)} × 97%`],['20日区间中位',q.mid20,'普通回撤结构参考'],['修复观察区',q.low20,`${fmt(q.low20,2)} ～ ${fmt(q.low20*1.03,2)}`]];
- $('gateLevels').innerHTML=levels.map(([k,v,d])=>`<div class="gateLevel"><small>${k}</small><b>${fmt(v,2)}</b><small>${d}</small></div>`).join('');$('gatePlan').innerHTML=`<b>系统操作参考：</b> ${plan}`
+ const levels=[
+   ['建议买入点',buyPoint,'buy',`≤ ${fmt(buyPoint,2)} + 修复确认 → 执行买入`],
+   ['建议观察点',watchPoint,'observe',`约 ${fmt(watchPoint,2)} → 只观察，不下单`],
+   ['建议卖出点',sellPoint,'sell',`≥ ${fmt(sellPoint,2)} + 过热确认 → 卖出/减仓`]
+ ];
+ $('gateLevels').innerHTML=levels.map(([k,v,c,d])=>`<div class="gateLevel ${c}"><small>${k}</small><b>${fmt(v,2)}</b><small>${d}</small><span class="gateDelta">距当前 ${dist(v)>=0?'+':''}${fmt(dist(v),2)}%</span></div>`).join('');
+ $('gatePlan').innerHTML=`<b>当前具体操作：</b> ${plan}<br><br><b>执行规则：</b> ① 到买入点且修复确认 → 买入；② 到观察点 → 只观察；③ 到卖出点且过热确认 → 卖出/减仓。`
 }
 
 function stats(s){let up=0,down=0,flat=0;s.forEach(q=>{up+=q.up;down+=q.down;flat+=q.flat});const cum=s.map(q=>q.cumRetPct).filter(Number.isFinite),last=cum.at(-1);return{points:s.length,up,down,flat,overall:down?up/down:(up?Infinity:null),upShare:(up+down)?100*up/(up+down):null,lastCum:last}}
