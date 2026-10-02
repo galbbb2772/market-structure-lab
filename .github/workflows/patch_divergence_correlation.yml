@@ -1,0 +1,30 @@
+name: Patch Divergence Correlation Analysis
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'patch_divergence_correlation.py'
+      - '.github/workflows/patch_divergence_correlation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Patch divergence/correlation/lag analysis
+        run: python patch_divergence_correlation.py
+      - name: Commit patched page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/ratio-history.html
+          git diff --cached --quiet || git commit -m 'feat: add divergence correlation lag analysis'
+          git push
