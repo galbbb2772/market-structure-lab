@@ -1,0 +1,34 @@
+name: Patch Explicit Action Points
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'patch_explicit_action_points.py'
+      - '.github/workflows/patch_explicit_action_points.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: patch-explicit-action-points
+  cancel-in-progress: true
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Patch explicit action points
+        run: python patch_explicit_action_points.py
+      - name: Commit patched page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/ratio-history.html
+          git diff --cached --quiet || git commit -m 'feat: add explicit buy observe sell action points'
+          git push
