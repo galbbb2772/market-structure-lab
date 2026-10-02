@@ -9,6 +9,10 @@ on:
       - '.github/workflows/research_updown_divergence_events.yml'
       - 'docs/data/structure_lab.json'
 
+concurrency:
+  group: updown-divergence-events
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
