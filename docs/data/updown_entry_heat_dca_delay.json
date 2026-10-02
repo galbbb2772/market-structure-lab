@@ -1,0 +1,1232 @@
+{
+  "schema": "UPDOWN-ENTRY-HEAT-DCA-DELAY-V1",
+  "method": {
+    "universe": [
+      "^GSPC",
+      "^IXIC",
+      "^DJI"
+    ],
+    "sample_start": "1992-01-02",
+    "monthly_contribution": 1000.0,
+    "contribution_timing": "first trading day open; heat uses prior close only",
+    "release_rule": "waiting pool is invested at next session open after prior-close heat condition becomes false",
+    "heat_base": "positive divergence + positive 20d return + prior close within 3% of prior 20d high",
+    "divergence": "z(20d return over trailing 60)-z(log-smoothed 20d up/down ratio over trailing 60)",
+    "DIV": "base heat only",
+    "BOTH": "base heat + 60d corr>=0.25 + strongest positive-lag(1..20d) corr over prior 180d >=0.25",
+    "delay_modes": [
+      "DELAY_FULL",
+      "DELAY_HALF"
+    ],
+    "thresholds": [
+      1.0,
+      1.5,
+      2.0
+    ],
+    "cash_interest_pct": 0.0,
+    "fees_slippage_pct": 0.0,
+    "lookahead": "none; all heat/release decisions use previous close only"
+  },
+  "results": {
+    "^GSPC": {
+      "name": "S&P 500",
+      "start": "1992-01-02",
+      "end": "2026-10-01",
+      "months": 418,
+      "baseline": {
+        "ending_value": 2656513.23,
+        "total_contributed": 418000.0,
+        "cash_ending": 0.0,
+        "index_allocated_total": 418000.0,
+        "allocation_rate_pct": 100.0,
+        "xirr_pct": 9.006,
+        "twr_total_return_pct": 1738.15,
+        "twr_max_drawdown_pct": -56.771,
+        "forward_entry_quality": {
+          "20": {
+            "n": 417,
+            "weighted_avg_forward_return_pct": 0.837
+          },
+          "40": {
+            "n": 416,
+            "weighted_avg_forward_return_pct": 1.579
+          }
+        }
+      },
+      "tests": {
+        "DIV_DELAY_HALF_1.0": {
+          "ending_value": 2656536.63,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1738.782,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 36,
+          "delayed_lots_released": 36,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 18000.0,
+          "total_released_amount": 18000.0,
+          "avg_delay_calendar_days": 5.36,
+          "median_delay_calendar_days": 3.0,
+          "max_delay_calendar_days": 32,
+          "avg_entry_price_improvement_pct": -0.05,
+          "share_of_delayed_amount_bought_cheaper_pct": 41.67,
+          "forward_entry_quality": {
+            "20": {
+              "n": 453,
+              "weighted_avg_forward_return_pct": 0.835
+            },
+            "40": {
+              "n": 451,
+              "weighted_avg_forward_return_pct": 1.602
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.001
+        },
+        "DIV_DELAY_FULL_1.0": {
+          "ending_value": 2656560.02,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1739.414,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 36,
+          "delayed_lots_released": 36,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 36000.0,
+          "total_released_amount": 36000.0,
+          "avg_delay_calendar_days": 5.36,
+          "median_delay_calendar_days": 3.0,
+          "max_delay_calendar_days": 32,
+          "avg_entry_price_improvement_pct": -0.05,
+          "share_of_delayed_amount_bought_cheaper_pct": 41.67,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.834
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.624
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.002
+        },
+        "BOTH_DELAY_HALF_1.0": {
+          "ending_value": 2656614.79,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1739.376,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 31,
+          "delayed_lots_released": 31,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 15500.0,
+          "total_released_amount": 15500.0,
+          "avg_delay_calendar_days": 5.13,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 15,
+          "avg_entry_price_improvement_pct": 0.055,
+          "share_of_delayed_amount_bought_cheaper_pct": 45.16,
+          "forward_entry_quality": {
+            "20": {
+              "n": 448,
+              "weighted_avg_forward_return_pct": 0.837
+            },
+            "40": {
+              "n": 447,
+              "weighted_avg_forward_return_pct": 1.597
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.004
+        },
+        "BOTH_DELAY_FULL_1.0": {
+          "ending_value": 2656716.34,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1740.602,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 31,
+          "delayed_lots_released": 31,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 31000.0,
+          "total_released_amount": 31000.0,
+          "avg_delay_calendar_days": 5.13,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 15,
+          "avg_entry_price_improvement_pct": 0.055,
+          "share_of_delayed_amount_bought_cheaper_pct": 45.16,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.838
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.614
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.008
+        },
+        "DIV_DELAY_HALF_1.5": {
+          "ending_value": 2656664.26,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1738.636,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 13,
+          "delayed_lots_released": 13,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 6500.0,
+          "total_released_amount": 6500.0,
+          "avg_delay_calendar_days": 5.92,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 27,
+          "avg_entry_price_improvement_pct": 0.247,
+          "share_of_delayed_amount_bought_cheaper_pct": 61.54,
+          "forward_entry_quality": {
+            "20": {
+              "n": 430,
+              "weighted_avg_forward_return_pct": 0.837
+            },
+            "40": {
+              "n": 428,
+              "weighted_avg_forward_return_pct": 1.581
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.006
+        },
+        "DIV_DELAY_FULL_1.5": {
+          "ending_value": 2656815.29,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1739.123,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 13,
+          "delayed_lots_released": 13,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 13000.0,
+          "total_released_amount": 13000.0,
+          "avg_delay_calendar_days": 5.92,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 27,
+          "avg_entry_price_improvement_pct": 0.247,
+          "share_of_delayed_amount_bought_cheaper_pct": 61.54,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.838
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.583
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.011
+        },
+        "BOTH_DELAY_HALF_1.5": {
+          "ending_value": 2656684.29,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1738.651,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 11,
+          "delayed_lots_released": 11,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 5500.0,
+          "total_released_amount": 5500.0,
+          "avg_delay_calendar_days": 5.55,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 14,
+          "avg_entry_price_improvement_pct": 0.432,
+          "share_of_delayed_amount_bought_cheaper_pct": 63.64,
+          "forward_entry_quality": {
+            "20": {
+              "n": 428,
+              "weighted_avg_forward_return_pct": 0.838
+            },
+            "40": {
+              "n": 427,
+              "weighted_avg_forward_return_pct": 1.578
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.006
+        },
+        "BOTH_DELAY_FULL_1.5": {
+          "ending_value": 2656855.34,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1739.152,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 11,
+          "delayed_lots_released": 11,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 11000.0,
+          "total_released_amount": 11000.0,
+          "avg_delay_calendar_days": 5.55,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 14,
+          "avg_entry_price_improvement_pct": 0.432,
+          "share_of_delayed_amount_bought_cheaper_pct": 63.64,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.838
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.576
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.013
+        },
+        "DIV_DELAY_HALF_2.0": {
+          "ending_value": 2656469.01,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1738.191,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 6,
+          "delayed_lots_released": 6,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 3000.0,
+          "total_released_amount": 3000.0,
+          "avg_delay_calendar_days": 7.0,
+          "median_delay_calendar_days": 3.5,
+          "max_delay_calendar_days": 27,
+          "avg_entry_price_improvement_pct": -0.304,
+          "share_of_delayed_amount_bought_cheaper_pct": 33.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 423,
+              "weighted_avg_forward_return_pct": 0.84
+            },
+            "40": {
+              "n": 422,
+              "weighted_avg_forward_return_pct": 1.577
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.002
+        },
+        "DIV_DELAY_FULL_2.0": {
+          "ending_value": 2656424.79,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1738.233,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 6,
+          "delayed_lots_released": 6,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 6000.0,
+          "total_released_amount": 6000.0,
+          "avg_delay_calendar_days": 7.0,
+          "median_delay_calendar_days": 3.5,
+          "max_delay_calendar_days": 27,
+          "avg_entry_price_improvement_pct": -0.304,
+          "share_of_delayed_amount_bought_cheaper_pct": 33.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.843
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.575
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.003
+        },
+        "BOTH_DELAY_HALF_2.0": {
+          "ending_value": 2656482.67,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1738.201,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 6,
+          "delayed_lots_released": 6,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 3000.0,
+          "total_released_amount": 3000.0,
+          "avg_delay_calendar_days": 4.83,
+          "median_delay_calendar_days": 3.5,
+          "max_delay_calendar_days": 14,
+          "avg_entry_price_improvement_pct": -0.147,
+          "share_of_delayed_amount_bought_cheaper_pct": 33.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 423,
+              "weighted_avg_forward_return_pct": 0.839
+            },
+            "40": {
+              "n": 422,
+              "weighted_avg_forward_return_pct": 1.577
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.001
+        },
+        "BOTH_DELAY_FULL_2.0": {
+          "ending_value": 2656452.11,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 9.006,
+          "twr_total_return_pct": 1738.253,
+          "twr_max_drawdown_pct": -56.771,
+          "heat_months": 6,
+          "delayed_lots_released": 6,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 6000.0,
+          "total_released_amount": 6000.0,
+          "avg_delay_calendar_days": 4.83,
+          "median_delay_calendar_days": 3.5,
+          "max_delay_calendar_days": 14,
+          "avg_entry_price_improvement_pct": -0.147,
+          "share_of_delayed_amount_bought_cheaper_pct": 33.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.841
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.574
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.002
+        }
+      }
+    },
+    "^IXIC": {
+      "name": "Nasdaq Composite",
+      "start": "1992-01-02",
+      "end": "2026-10-01",
+      "months": 418,
+      "baseline": {
+        "ending_value": 5132564.11,
+        "total_contributed": 418000.0,
+        "cash_ending": 0.0,
+        "index_allocated_total": 418000.0,
+        "allocation_rate_pct": 100.0,
+        "xirr_pct": 11.822,
+        "twr_total_return_pct": 4543.982,
+        "twr_max_drawdown_pct": -77.934,
+        "forward_entry_quality": {
+          "20": {
+            "n": 417,
+            "weighted_avg_forward_return_pct": 0.996
+          },
+          "40": {
+            "n": 416,
+            "weighted_avg_forward_return_pct": 2.047
+          }
+        }
+      },
+      "tests": {
+        "DIV_DELAY_HALF_1.0": {
+          "ending_value": 5132158.29,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4506.802,
+          "twr_max_drawdown_pct": -77.933,
+          "heat_months": 31,
+          "delayed_lots_released": 31,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 15500.0,
+          "total_released_amount": 15500.0,
+          "avg_delay_calendar_days": 5.32,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 16,
+          "avg_entry_price_improvement_pct": 0.146,
+          "share_of_delayed_amount_bought_cheaper_pct": 48.39,
+          "forward_entry_quality": {
+            "20": {
+              "n": 448,
+              "weighted_avg_forward_return_pct": 0.961
+            },
+            "40": {
+              "n": 446,
+              "weighted_avg_forward_return_pct": 2.034
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.008
+        },
+        "DIV_DELAY_FULL_1.0": {
+          "ending_value": 5131752.47,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4469.634,
+          "twr_max_drawdown_pct": -77.931,
+          "heat_months": 31,
+          "delayed_lots_released": 31,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 31000.0,
+          "total_released_amount": 31000.0,
+          "avg_delay_calendar_days": 5.32,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 16,
+          "avg_entry_price_improvement_pct": 0.146,
+          "share_of_delayed_amount_bought_cheaper_pct": 48.39,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.926
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 2.021
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.016
+        },
+        "BOTH_DELAY_HALF_1.0": {
+          "ending_value": 5132252.81,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4506.894,
+          "twr_max_drawdown_pct": -77.933,
+          "heat_months": 30,
+          "delayed_lots_released": 30,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 15000.0,
+          "total_released_amount": 15000.0,
+          "avg_delay_calendar_days": 4.83,
+          "median_delay_calendar_days": 3.0,
+          "max_delay_calendar_days": 16,
+          "avg_entry_price_improvement_pct": 0.266,
+          "share_of_delayed_amount_bought_cheaper_pct": 53.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 447,
+              "weighted_avg_forward_return_pct": 0.968
+            },
+            "40": {
+              "n": 446,
+              "weighted_avg_forward_return_pct": 2.037
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.006
+        },
+        "BOTH_DELAY_FULL_1.0": {
+          "ending_value": 5131941.51,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4469.817,
+          "twr_max_drawdown_pct": -77.931,
+          "heat_months": 30,
+          "delayed_lots_released": 30,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 30000.0,
+          "total_released_amount": 30000.0,
+          "avg_delay_calendar_days": 4.83,
+          "median_delay_calendar_days": 3.0,
+          "max_delay_calendar_days": 16,
+          "avg_entry_price_improvement_pct": 0.266,
+          "share_of_delayed_amount_bought_cheaper_pct": 53.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.939
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 2.027
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.012
+        },
+        "DIV_DELAY_HALF_1.5": {
+          "ending_value": 5132472.9,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4543.853,
+          "twr_max_drawdown_pct": -77.934,
+          "heat_months": 6,
+          "delayed_lots_released": 6,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 3000.0,
+          "total_released_amount": 3000.0,
+          "avg_delay_calendar_days": 4.83,
+          "median_delay_calendar_days": 3.5,
+          "max_delay_calendar_days": 12,
+          "avg_entry_price_improvement_pct": -0.691,
+          "share_of_delayed_amount_bought_cheaper_pct": 33.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 423,
+              "weighted_avg_forward_return_pct": 0.99
+            },
+            "40": {
+              "n": 422,
+              "weighted_avg_forward_return_pct": 2.046
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.002
+        },
+        "DIV_DELAY_FULL_1.5": {
+          "ending_value": 5132381.7,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4543.724,
+          "twr_max_drawdown_pct": -77.934,
+          "heat_months": 6,
+          "delayed_lots_released": 6,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 6000.0,
+          "total_released_amount": 6000.0,
+          "avg_delay_calendar_days": 4.83,
+          "median_delay_calendar_days": 3.5,
+          "max_delay_calendar_days": 12,
+          "avg_entry_price_improvement_pct": -0.691,
+          "share_of_delayed_amount_bought_cheaper_pct": 33.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.984
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 2.045
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.004
+        },
+        "BOTH_DELAY_HALF_1.5": {
+          "ending_value": 5132486.21,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4543.866,
+          "twr_max_drawdown_pct": -77.934,
+          "heat_months": 6,
+          "delayed_lots_released": 6,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 3000.0,
+          "total_released_amount": 3000.0,
+          "avg_delay_calendar_days": 3.83,
+          "median_delay_calendar_days": 2.0,
+          "max_delay_calendar_days": 12,
+          "avg_entry_price_improvement_pct": -0.591,
+          "share_of_delayed_amount_bought_cheaper_pct": 33.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 423,
+              "weighted_avg_forward_return_pct": 0.99
+            },
+            "40": {
+              "n": 422,
+              "weighted_avg_forward_return_pct": 2.047
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.002
+        },
+        "BOTH_DELAY_FULL_1.5": {
+          "ending_value": 5132408.31,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4543.75,
+          "twr_max_drawdown_pct": -77.934,
+          "heat_months": 6,
+          "delayed_lots_released": 6,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 6000.0,
+          "total_released_amount": 6000.0,
+          "avg_delay_calendar_days": 3.83,
+          "median_delay_calendar_days": 2.0,
+          "max_delay_calendar_days": 12,
+          "avg_entry_price_improvement_pct": -0.591,
+          "share_of_delayed_amount_bought_cheaper_pct": 33.33,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.983
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 2.048
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.003
+        },
+        "DIV_DELAY_HALF_2.0": {
+          "ending_value": 5132566.09,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4543.984,
+          "twr_max_drawdown_pct": -77.934,
+          "heat_months": 3,
+          "delayed_lots_released": 3,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 1500.0,
+          "total_released_amount": 1500.0,
+          "avg_delay_calendar_days": 3.67,
+          "median_delay_calendar_days": 4,
+          "max_delay_calendar_days": 5,
+          "avg_entry_price_improvement_pct": 0.049,
+          "share_of_delayed_amount_bought_cheaper_pct": 66.67,
+          "forward_entry_quality": {
+            "20": {
+              "n": 420,
+              "weighted_avg_forward_return_pct": 0.997
+            },
+            "40": {
+              "n": 419,
+              "weighted_avg_forward_return_pct": 2.046
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.0
+        },
+        "DIV_DELAY_FULL_2.0": {
+          "ending_value": 5132568.07,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4543.986,
+          "twr_max_drawdown_pct": -77.934,
+          "heat_months": 3,
+          "delayed_lots_released": 3,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 3000.0,
+          "total_released_amount": 3000.0,
+          "avg_delay_calendar_days": 3.67,
+          "median_delay_calendar_days": 4,
+          "max_delay_calendar_days": 5,
+          "avg_entry_price_improvement_pct": 0.049,
+          "share_of_delayed_amount_bought_cheaper_pct": 66.67,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.999
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 2.045
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.0
+        },
+        "BOTH_DELAY_HALF_2.0": {
+          "ending_value": 5132566.09,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4543.984,
+          "twr_max_drawdown_pct": -77.934,
+          "heat_months": 3,
+          "delayed_lots_released": 3,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 1500.0,
+          "total_released_amount": 1500.0,
+          "avg_delay_calendar_days": 3.67,
+          "median_delay_calendar_days": 4,
+          "max_delay_calendar_days": 5,
+          "avg_entry_price_improvement_pct": 0.049,
+          "share_of_delayed_amount_bought_cheaper_pct": 66.67,
+          "forward_entry_quality": {
+            "20": {
+              "n": 420,
+              "weighted_avg_forward_return_pct": 0.997
+            },
+            "40": {
+              "n": 419,
+              "weighted_avg_forward_return_pct": 2.046
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.0
+        },
+        "BOTH_DELAY_FULL_2.0": {
+          "ending_value": 5132568.07,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.822,
+          "twr_total_return_pct": 4543.986,
+          "twr_max_drawdown_pct": -77.934,
+          "heat_months": 3,
+          "delayed_lots_released": 3,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 3000.0,
+          "total_released_amount": 3000.0,
+          "avg_delay_calendar_days": 3.67,
+          "median_delay_calendar_days": 4,
+          "max_delay_calendar_days": 5,
+          "avg_entry_price_improvement_pct": 0.049,
+          "share_of_delayed_amount_bought_cheaper_pct": 66.67,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.999
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 2.045
+            }
+          },
+          "ending_value_vs_baseline_pct": 0.0
+        }
+      }
+    },
+    "^DJI": {
+      "name": "Dow Jones",
+      "start": "1992-01-02",
+      "end": "2026-10-01",
+      "months": 418,
+      "baseline": {
+        "ending_value": 2077542.94,
+        "total_contributed": 418000.0,
+        "cash_ending": 0.0,
+        "index_allocated_total": 418000.0,
+        "allocation_rate_pct": 100.0,
+        "xirr_pct": 7.925,
+        "twr_total_return_pct": 1504.871,
+        "twr_max_drawdown_pct": -53.778,
+        "forward_entry_quality": {
+          "20": {
+            "n": 417,
+            "weighted_avg_forward_return_pct": 0.854
+          },
+          "40": {
+            "n": 416,
+            "weighted_avg_forward_return_pct": 1.558
+          }
+        }
+      },
+      "tests": {
+        "DIV_DELAY_HALF_1.0": {
+          "ending_value": 2077471.2,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.925,
+          "twr_total_return_pct": 1505.08,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 35,
+          "delayed_lots_released": 35,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 17500.0,
+          "total_released_amount": 17500.0,
+          "avg_delay_calendar_days": 5.31,
+          "median_delay_calendar_days": 4,
+          "max_delay_calendar_days": 20,
+          "avg_entry_price_improvement_pct": -0.299,
+          "share_of_delayed_amount_bought_cheaper_pct": 37.14,
+          "forward_entry_quality": {
+            "20": {
+              "n": 452,
+              "weighted_avg_forward_return_pct": 0.847
+            },
+            "40": {
+              "n": 451,
+              "weighted_avg_forward_return_pct": 1.564
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.003
+        },
+        "DIV_DELAY_FULL_1.0": {
+          "ending_value": 2077399.45,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.925,
+          "twr_total_return_pct": 1505.289,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 35,
+          "delayed_lots_released": 35,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 35000.0,
+          "total_released_amount": 35000.0,
+          "avg_delay_calendar_days": 5.31,
+          "median_delay_calendar_days": 4,
+          "max_delay_calendar_days": 20,
+          "avg_entry_price_improvement_pct": -0.299,
+          "share_of_delayed_amount_bought_cheaper_pct": 37.14,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.84
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.571
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.007
+        },
+        "BOTH_DELAY_HALF_1.0": {
+          "ending_value": 2077441.53,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.925,
+          "twr_total_return_pct": 1505.056,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 31,
+          "delayed_lots_released": 31,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 15500.0,
+          "total_released_amount": 15500.0,
+          "avg_delay_calendar_days": 5.42,
+          "median_delay_calendar_days": 4,
+          "max_delay_calendar_days": 20,
+          "avg_entry_price_improvement_pct": -0.453,
+          "share_of_delayed_amount_bought_cheaper_pct": 32.26,
+          "forward_entry_quality": {
+            "20": {
+              "n": 448,
+              "weighted_avg_forward_return_pct": 0.844
+            },
+            "40": {
+              "n": 447,
+              "weighted_avg_forward_return_pct": 1.555
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.005
+        },
+        "BOTH_DELAY_FULL_1.0": {
+          "ending_value": 2077340.12,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.924,
+          "twr_total_return_pct": 1505.241,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 31,
+          "delayed_lots_released": 31,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 31000.0,
+          "total_released_amount": 31000.0,
+          "avg_delay_calendar_days": 5.42,
+          "median_delay_calendar_days": 4,
+          "max_delay_calendar_days": 20,
+          "avg_entry_price_improvement_pct": -0.453,
+          "share_of_delayed_amount_bought_cheaper_pct": 32.26,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.834
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.553
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.01
+        },
+        "DIV_DELAY_HALF_1.5": {
+          "ending_value": 2077264.12,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.924,
+          "twr_total_return_pct": 1504.435,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 16,
+          "delayed_lots_released": 16,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 8000.0,
+          "total_released_amount": 8000.0,
+          "avg_delay_calendar_days": 5.12,
+          "median_delay_calendar_days": 4.0,
+          "max_delay_calendar_days": 19,
+          "avg_entry_price_improvement_pct": -0.836,
+          "share_of_delayed_amount_bought_cheaper_pct": 25.0,
+          "forward_entry_quality": {
+            "20": {
+              "n": 433,
+              "weighted_avg_forward_return_pct": 0.843
+            },
+            "40": {
+              "n": 432,
+              "weighted_avg_forward_return_pct": 1.541
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.013
+        },
+        "DIV_DELAY_FULL_1.5": {
+          "ending_value": 2076985.31,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.924,
+          "twr_total_return_pct": 1503.998,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 16,
+          "delayed_lots_released": 16,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 16000.0,
+          "total_released_amount": 16000.0,
+          "avg_delay_calendar_days": 5.12,
+          "median_delay_calendar_days": 4.0,
+          "max_delay_calendar_days": 19,
+          "avg_entry_price_improvement_pct": -0.836,
+          "share_of_delayed_amount_bought_cheaper_pct": 25.0,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.833
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.525
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.027
+        },
+        "BOTH_DELAY_HALF_1.5": {
+          "ending_value": 2077253.41,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.924,
+          "twr_total_return_pct": 1504.426,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 14,
+          "delayed_lots_released": 14,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 7000.0,
+          "total_released_amount": 7000.0,
+          "avg_delay_calendar_days": 5.29,
+          "median_delay_calendar_days": 4.0,
+          "max_delay_calendar_days": 19,
+          "avg_entry_price_improvement_pct": -1.015,
+          "share_of_delayed_amount_bought_cheaper_pct": 21.43,
+          "forward_entry_quality": {
+            "20": {
+              "n": 431,
+              "weighted_avg_forward_return_pct": 0.843
+            },
+            "40": {
+              "n": 430,
+              "weighted_avg_forward_return_pct": 1.538
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.014
+        },
+        "BOTH_DELAY_FULL_1.5": {
+          "ending_value": 2076963.88,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.924,
+          "twr_total_return_pct": 1503.98,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 14,
+          "delayed_lots_released": 14,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 14000.0,
+          "total_released_amount": 14000.0,
+          "avg_delay_calendar_days": 5.29,
+          "median_delay_calendar_days": 4.0,
+          "max_delay_calendar_days": 19,
+          "avg_entry_price_improvement_pct": -1.015,
+          "share_of_delayed_amount_bought_cheaper_pct": 21.43,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.832
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.518
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.028
+        },
+        "DIV_DELAY_HALF_2.0": {
+          "ending_value": 2077407.22,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.925,
+          "twr_total_return_pct": 1504.691,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 5,
+          "delayed_lots_released": 5,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 2500.0,
+          "total_released_amount": 2500.0,
+          "avg_delay_calendar_days": 4.2,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 10,
+          "avg_entry_price_improvement_pct": -1.17,
+          "share_of_delayed_amount_bought_cheaper_pct": 40.0,
+          "forward_entry_quality": {
+            "20": {
+              "n": 422,
+              "weighted_avg_forward_return_pct": 0.844
+            },
+            "40": {
+              "n": 421,
+              "weighted_avg_forward_return_pct": 1.551
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.007
+        },
+        "DIV_DELAY_FULL_2.0": {
+          "ending_value": 2077271.5,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.924,
+          "twr_total_return_pct": 1504.511,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 5,
+          "delayed_lots_released": 5,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 5000.0,
+          "total_released_amount": 5000.0,
+          "avg_delay_calendar_days": 4.2,
+          "median_delay_calendar_days": 3,
+          "max_delay_calendar_days": 10,
+          "avg_entry_price_improvement_pct": -1.17,
+          "share_of_delayed_amount_bought_cheaper_pct": 40.0,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.835
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.543
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.013
+        },
+        "BOTH_DELAY_HALF_2.0": {
+          "ending_value": 2077402.92,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.925,
+          "twr_total_return_pct": 1504.688,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 4,
+          "delayed_lots_released": 4,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 2000.0,
+          "total_released_amount": 2000.0,
+          "avg_delay_calendar_days": 4.5,
+          "median_delay_calendar_days": 3.5,
+          "max_delay_calendar_days": 10,
+          "avg_entry_price_improvement_pct": -1.673,
+          "share_of_delayed_amount_bought_cheaper_pct": 25.0,
+          "forward_entry_quality": {
+            "20": {
+              "n": 421,
+              "weighted_avg_forward_return_pct": 0.843
+            },
+            "40": {
+              "n": 420,
+              "weighted_avg_forward_return_pct": 1.549
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.007
+        },
+        "BOTH_DELAY_FULL_2.0": {
+          "ending_value": 2077262.9,
+          "total_contributed": 418000.0,
+          "cash_ending": 0.0,
+          "index_allocated_total": 418000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 7.924,
+          "twr_total_return_pct": 1504.505,
+          "twr_max_drawdown_pct": -53.778,
+          "heat_months": 4,
+          "delayed_lots_released": 4,
+          "waiting_lots_at_end": 0,
+          "total_waited_amount": 4000.0,
+          "total_released_amount": 4000.0,
+          "avg_delay_calendar_days": 4.5,
+          "median_delay_calendar_days": 3.5,
+          "max_delay_calendar_days": 10,
+          "avg_entry_price_improvement_pct": -1.673,
+          "share_of_delayed_amount_bought_cheaper_pct": 25.0,
+          "forward_entry_quality": {
+            "20": {
+              "n": 417,
+              "weighted_avg_forward_return_pct": 0.832
+            },
+            "40": {
+              "n": 416,
+              "weighted_avg_forward_return_pct": 1.541
+            }
+          },
+          "ending_value_vs_baseline_pct": -0.013
+        }
+      }
+    }
+  }
+}
