@@ -1,0 +1,56 @@
+name: Refresh Market State Box V2
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '10 4 * * 2-6'
+  push:
+    branches: [main]
+    paths:
+      - 'build_market_state_box_v2.py'
+      - '.github/workflows/market_state_box_v2.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: market-state-box-v2
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build continuous state retrieval dataset
+        run: python build_market_state_box_v2.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('docs/data/market_state_box_v2.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert d.get('schema') == 'MARKET-STATE-BOX-V2'
+          assert d.get('model',{}).get('hard_entry_thresholds') is False
+          assert d.get('coverage',{}).get('complete_states',0) > 100
+          assert d.get('coverage',{}).get('walk_forward_n',0) > 50
+          assert all(k in d.get('walk_forward_validation',{}) for k in ('3d','5d','10d'))
+          print(d['coverage'])
+          print(d['walk_forward_validation'])
+          PY
+      - name: Commit refreshed V2 research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/market_state_box_v2.json
+          if git diff --cached --quiet; then
+            echo 'No V2 dataset change.'
+          else
+            git commit -m 'data: refresh Market State Box V2'
+            git push
+          fi
