@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - 'build_market_state_box_v1.py'
+      - 'postprocess_market_state_box_v1.py'
       - '.github/workflows/market_state_box_v1.yml'
 
 permissions:
@@ -36,29 +37,34 @@ jobs:
       - name: Build joint market-state dataset
         run: python build_market_state_box_v1.py
 
+      - name: Normalize latest state and publish compact summary
+        run: python postprocess_market_state_box_v1.py
+
       - name: Validate output
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           p=Path('docs/data/market_state_box_v1.json')
+          s=Path('docs/data/market_state_box_v1_summary.json')
           d=json.loads(p.read_text(encoding='utf-8'))
+          q=json.loads(s.read_text(encoding='utf-8'))
           assert d.get('schema') == 'MARKET-STATE-BOX-V1'
           assert (d.get('coverage') or {}).get('observations', 0) > 100
           assert 'all_four' in (d.get('ablation') or {})
-          print(d['coverage'], d['ablation']['all_four'])
+          assert (d.get('latest') or {}).get('date') == (d.get('daily') or [])[-1].get('date')
+          assert q.get('latest', {}).get('date') == d.get('latest', {}).get('date')
+          print(d['coverage'], d['latest']['date'], d['ablation']['all_four'])
           PY
 
       - name: Commit refreshed research data
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/data/market_state_box_v1.json
+          git add docs/data/market_state_box_v1.json docs/data/market_state_box_v1_summary.json
           if git diff --cached --quiet; then
             echo 'No dataset change.'
           else
             git commit -m 'data: refresh Market State Box V1'
             git push
           fi
-
-# bootstrap: editing this workflow triggers the first dataset build on main.
