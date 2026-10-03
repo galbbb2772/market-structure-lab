@@ -1,0 +1,41 @@
+{
+  "schema": "NESTED-PATH-RISK-SUMMARY-V1",
+  "headline": "9 of 18 nested path/risk tests pass. MFE, adverse excursion and 10-day path range pass for all three indices; extreme timing and best fixed exit horizon do not.",
+  "tested": 18,
+  "confirmed": 9,
+  "interpretation": {
+    "supported": "D1 technical state contains repeatable information about the magnitude/envelope of the next several sessions.",
+    "not_supported": "The same state does not reliably predict when the future high/low occurs or which fixed exit among 1/3/5/10 days is best.",
+    "system_use": "Research/Shadow input for dynamic stop distance, profit-taking envelope, expected path range and position sizing; not a directional entry signal and not an automatic Frozen V4 MAIN change."
+  },
+  "instruments": {
+    "^GSPC": {
+      "name": "S&P 500",
+      "confirmed": {
+        "mfe5": {"outer_years":83,"n":4895,"positive_year_rate":0.8433734939759037,"q":9.154712839949735e-19,"normalized_skill":0.058456258604852866,"top_surface":"ma20_dist×dd20|bw=0.12","top_surface_years":59},
+        "adverse5": {"outer_years":83,"n":4895,"positive_year_rate":0.7710843373493976,"q":8.301246058594115e-11,"normalized_skill":0.07461828175297408,"top_surface":"ma20_dist×dd20|bw=0.12","top_surface_years":83},
+        "range10": {"outer_years":83,"n":4895,"positive_year_rate":0.8674698795180723,"q":6.815052791692914e-23,"normalized_skill":0.21682305203672006,"top_surface":"ma20_dist×dd20|bw=0.12","top_surface_years":64}
+      },
+      "failed": ["time_to_mfe10","time_to_mae10","best_hold"]
+    },
+    "^IXIC": {
+      "name": "Nasdaq Composite",
+      "confirmed": {
+        "mfe5": {"outer_years":38,"n":2271,"positive_year_rate":0.7631578947368421,"q":3.1836522715290454e-8,"normalized_skill":0.14882536067569618,"top_surface":"ma20_dist×dd20|bw=0.12","top_surface_years":35},
+        "adverse5": {"outer_years":38,"n":2271,"positive_year_rate":0.631578947368421,"q":0.0001297380088057305,"normalized_skill":0.14708045222544666,"top_surface":"ma20_dist×dd20|bw=0.12","top_surface_years":32},
+        "range10": {"outer_years":38,"n":2271,"positive_year_rate":0.868421052631579,"q":1.5109128232381994e-9,"normalized_skill":0.46895842533688653,"top_surface":"ma20_dist×dd20|bw=0.12","top_surface_years":38}
+      },
+      "failed": ["time_to_mfe10","time_to_mae10","best_hold"]
+    },
+    "^DJI": {
+      "name": "Dow Jones",
+      "confirmed": {
+        "mfe5": {"outer_years":19,"n":1200,"positive_year_rate":0.9473684210526315,"q":0.0001297380088057305,"normalized_skill":0.24721032514629648,"top_surface":"ma50_dist×ma200_dist|bw=0.12","top_surface_years":19},
+        "adverse5": {"outer_years":19,"n":1200,"positive_year_rate":0.6842105263157895,"q":0.010973137821852968,"normalized_skill":0.1311293623671997,"top_surface":"dd20×atr_rank|bw=0.12","top_surface_years":19},
+        "range10": {"outer_years":19,"n":1200,"positive_year_rate":1.0,"q":0.0001582262162277086,"normalized_skill":0.46484465045338325,"top_surface":"ma50_dist×ma200_dist|bw=0.12","top_surface_years":18}
+      },
+      "failed": ["time_to_mfe10","time_to_mae10","best_hold"]
+    }
+  },
+  "guardrail": "These are historical nested walk-forward results using a feature-pair menu developed during prior research. Treat as Shadow evidence. Validate on untouched forward data and actual strategy-entry samples before using for live sizing/stops/exits."
+}
