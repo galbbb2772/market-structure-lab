@@ -1,0 +1,40 @@
+name: Diagnose Market State Box V2.3
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'diagnose_market_state_box_v23_phase.py'
+      - '.github/workflows/market_state_box_v23_phase.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run phase diagnostics
+        run: python diagnose_market_state_box_v23_phase.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('docs/data/market_state_box_v23_phase.json')
+          x=json.loads(p.read_text())
+          assert x['schema']=='MARKET-STATE-BOX-V2.3-PHASE'
+          assert 'breadth_q1_cross_period' in x
+          print(x['breadth_q1_cross_period'])
+          PY
+      - name: Commit diagnostics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/market_state_box_v23_phase.json
+          git diff --cached --quiet || git commit -m "data: refresh Market State Box V2.3 phase diagnostics"
+          git push
