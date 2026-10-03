@@ -6,6 +6,7 @@ on:
     paths:
       - 'research_nested_path_risk.py'
       - '.github/workflows/run_nested_path_risk.yml'
+      - 'docs/data/nested_path_risk_trigger.json'
 
 permissions:
   contents: write
