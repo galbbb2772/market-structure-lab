@@ -1,0 +1,37 @@
+name: Run Nested Continuous Surface
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_nested_continuous_surface.py'
+      - '.github/workflows/run_nested_continuous_surface.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install NumPy
+        run: python -m pip install 'numpy>=2.0'
+      - name: Run nested surface
+        run: python research_nested_continuous_surface.py
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/nested_continuous_surface.json
+          if git diff --cached --quiet; then
+            echo "No nested-surface changes"
+          else
+            git commit -m "data: update nested continuous surface validation"
+            git pull --rebase origin main
+            git push
+          fi
