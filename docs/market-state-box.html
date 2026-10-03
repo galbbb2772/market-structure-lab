@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes">
+<title>Market State × Box Mean-Reversion V1</title>
+<style>
+:root{--bg:#081016;--panel:#0f1b24;--panel2:#142530;--line:#243a47;--text:#dbe7ef;--muted:#91a6b5;--blue:#79a9ff;--green:#69d5b3;--amber:#ffcc77;--red:#ff8b8b}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#071017,#0a141b 35%,#081016);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1460px;margin:auto;padding:22px}.top,.head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-weight:850;letter-spacing:.08em}.brand span{color:var(--green)}a,button,select{background:#10202a;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:9px 11px;text-decoration:none}
+.hero{padding:38px 0 22px}.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--green);font-weight:750}.hero h1{font-size:clamp(31px,5vw,58px);line-height:1.04;margin:9px 0 13px}
+.lead,.muted,.panel p,small{color:var(--muted)}.lead{max-width:1020px}.notice{background:#111f29;border:1px solid var(--line);padding:13px 15px;border-radius:12px;color:var(--muted)}
+.panel{background:rgba(15,27,36,.96);border:1px solid var(--line);border-radius:15px;padding:18px;margin:16px 0;box-shadow:0 12px 40px #0005}.panel h2{margin:0 0 7px}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0}.metric{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:13px}.metric small{display:block}.metric b{display:block;font-size:22px;margin-top:5px}
+.flag{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 8px;margin:4px 5px 0 0;font-size:12px;color:var(--muted)}.flag.y{border-color:#3e7667;color:#bff6e6;background:#11302a}.flag.n{border-color:#5f4747;color:#ffb1b1;background:#281719}
+.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:end}.controls label{display:grid;gap:5px;font-size:12px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.scroll{overflow:auto;border:1px solid var(--line);border-radius:11px}
+table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:right}th:first-child,td:first-child{text-align:left}th{color:var(--muted);background:#12212b;position:sticky;top:0}.pos{color:var(--green)}.neg{color:var(--red)}.warn{color:var(--amber)}
+.heatWrap{overflow:auto}.heat{display:grid;grid-template-columns:72px repeat(10,minmax(66px,1fr));gap:4px;min-width:830px}.cell,.axis{min-height:56px;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;padding:5px;font-size:11px}.axis{background:#101e27;color:var(--muted);min-height:34px}.cell{background:#13222c;flex-direction:column}.cell strong{font-size:13px}.cell.hot{background:#12302f}.cell.cold{background:#2b181a}.cell.empty{opacity:.35}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted);font-size:12px}.joint{font-size:clamp(27px,4vw,45px);font-weight:850}.joint.y{color:var(--green)}.joint.n{color:var(--amber)}
+.note{font-size:12px;line-height:1.65;color:var(--muted)}code{color:#cde8ff}
+@media(max-width:1100px){.metrics{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}}@media(max-width:700px){.wrap{padding:12px}.panel{padding:14px}.metrics{grid-template-columns:repeat(2,1fr)}.metric b{font-size:18px}.hero{padding-top:24px}}@media(max-width:440px){.metrics{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<div class="top"><div class="brand">MARKET <span>STATE × BOX</span></div><div><a href="./structure-lab.html">市场结构</a> <a href="./ratio-history.html">涨跌比</a></div></div>
+<header class="hero">
+<div class="eyebrow">JOINT STATE RESEARCH / V1 FROZEN RULES</div>
+<h1>箱体 × 情绪 × 三大指数涨跌比 × Market Score</h1>
+<p class="lead">把已经存在的四套历史数据按交易日连接，先做状态检索、联合条件统计、消融与历史相似日。V1 不直接修改 Frozen V4，也不通过调参追求更漂亮的回测结果。</p>
+<div id="status" class="notice">正在读取联合历史状态数据…</div>
+</header>
+
+<section class="panel">
+<div class="head"><div><h2>当前联合市场状态</h2><p>四个条件全部满足时只标记为研究触发，不等于自动下单。</p></div><span id="asof" class="pill">—</span></div>
+<div id="current" class="metrics"></div>
+<div id="joint" class="joint">—</div>
+<div id="flags"></div>
+</section>
+
+<section class="grid2">
+<div class="panel">
+<h2>V1 冻结定义</h2>
+<div id="definitions" class="note"></div>
+</div>
+<div class="panel">
+<h2>数据与验证边界</h2>
+<div id="warnings" class="note"></div>
+</div>
+</section>
+
+<section class="panel">
+<div class="head"><div><h2>情绪 × 涨跌比历史状态热力图</h2><p>X = 三大指数20日涨跌状态历史百分位；Y = 情绪压力历史百分位；单元格显示之后5日平均收益与样本数。</p></div>
+<div class="controls">
+<label>箱体过滤<select id="boxFilter"><option value="all">全部日期</option><option value="box_bottom" selected>仅箱体底部</option></select></label>
+<label>Market Score<select id="regFilter"><option value="all">全部灯号</option><option value="red">红</option><option value="yellow">黄</option><option value="blue">蓝</option><option value="green">绿</option></select></label>
+</div></div>
+<div class="heatWrap"><div id="heat" class="heat"></div></div>
+<div class="note" style="margin-top:8px">百分位均为当时可见历史的 expanding percentile；热力图用于寻找稳定区域，不应把单个高收益格子直接视为策略规则。</div>
+</section>
+
+<section class="panel">
+<div class="head"><div><h2>消融实验</h2><p>所有事件至少相隔5个交易日，统一比较 T+1 / T+3 / T+5 / T+10、MFE 与 MAE。</p></div><span id="coverage" class="pill">—</span></div>
+<div class="scroll"><table><thead><tr><th>条件</th><th>N</th><th>T+1均值</th><th>T+3均值</th><th>T+5均值</th><th>T+5胜率</th><th>T+10均值</th><th>T+10胜率</th><th>MFE10</th><th>MAE10</th></tr></thead><tbody id="ablation"></tbody></table></div>
+</section>
+
+<section class="panel">
+<h2>与当前最相似的历史日期</h2>
+<p>距离使用箱体位置、情绪压力分位、三大指数涨跌状态分位、Market Score 分位与 Score D3；相邻历史样本至少间隔10个交易日。</p>
+<div class="scroll" style="max-height:540px"><table><thead><tr><th>日期</th><th>距离</th><th>箱体位置</th><th>情绪压力%</th><th>涨跌状态%</th><th>Market Score</th><th>灯号</th><th>T+1</th><th>T+3</th><th>T+5</th><th>T+10</th><th>MFE10</th><th>MAE10</th></tr></thead><tbody id="analogs"></tbody></table></div>
+</section>
+
+<section class="panel">
+<h2>最近联合状态记录</h2>
+<p>用于检查四层条件是否真的同时出现，以及当前状态到底卡在哪一层。</p>
+<div class="scroll" style="max-height:520px"><table><thead><tr><th>日期</th><th>箱底</th><th>情绪极端</th><th>涨跌极端</th><th>Score修复</th><th>四层</th><th>箱体位置</th><th>情绪%</th><th>涨跌%</th><th>Score</th><th>D1</th><th>D3</th></tr></thead><tbody id="recent"></tbody></table></div>
+</section>
+
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const fmt=(v,n=2)=>v==null||Number.isNaN(+v)?'—':(+v).toFixed(n);
+const pct=(v,n=2)=>v==null||Number.isNaN(+v)?'—':`${(+v).toFixed(n)}%`;
+const yn=v=>v?'<span class="pos">✓</span>':'<span class="muted">—</span>';
+const cls=v=>v==null?'':(+v>0?'pos':(+v<0?'neg':''));
+let DATA=null;
+
+function renderCurrent(){
+  const r=DATA.latest||{};
+  $('asof').textContent=`截至 ${r.date||'—'}`;
+  const cards=[
+    ['箱体位置',r.box_position==null?'—':`${fmt(r.box_position*100,1)}%`,'≤25% = 箱底'],
+    ['情绪压力分位',pct(r.sentiment_stress_pct,1),'≥80% = 极端'],
+    ['三指数涨跌分位',pct(r.breadth_20d_pct,1),'至少2个指数≤20%'],
+    ['Market Score',fmt(r.market_score,2),`${r.market_regime||'—'} · D1 ${fmt(r.market_score_d1,2)} · D3 ${fmt(r.market_score_d3,2)}`],
+    ['SPX 20D涨跌比',fmt(r.sp500_ud20_ratio,2),`历史分位 ${pct(r.sp500_ud20_pct,1)}`],
+    ['Nasdaq 20D涨跌比',fmt(r.nasdaq_ud20_ratio,2),`历史分位 ${pct(r.nasdaq_ud20_pct,1)}`],
+    ['Dow 20D涨跌比',fmt(r.dow_ud20_ratio,2),`历史分位 ${pct(r.dow_ud20_pct,1)}`],
+  ];
+  $('current').innerHTML=cards.map(x=>`<div class="metric"><small>${x[0]}</small><b>${x[1]}</b><small>${x[2]}</small></div>`).join('');
+  const all=!!r.joint_4way;
+  $('joint').className=`joint ${all?'y':'n'}`;
+  $('joint').textContent=all?'FOUR-LAYER STATE: TRIGGERED':'FOUR-LAYER STATE: NOT TRIGGERED';
+  const flags=[
+    ['Box Bottom',r.box_bottom],['Sentiment Extreme',r.sentiment_extreme],
+    ['Breadth Extreme',r.breadth_extreme_low],['Score Recovering',r.score_recovering]
+  ];
+  $('flags').innerHTML=flags.map(([n,v])=>`<span class="flag ${v?'y':'n'}">${v?'✓':'×'} ${n}</span>`).join('');
+}
+
+function renderMeta(){
+  const d=DATA.definitions||{};
+  $('definitions').innerHTML=[
+    `<b>Box Bottom</b>：${d.box_bottom||'—'}`,
+    `<b>Sentiment Extreme</b>：${d.sentiment_extreme||'—'}`,
+    `<b>Breadth Extreme</b>：${d.breadth_extreme_low||'—'}`,
+    `<b>Score Recovering</b>：${d.score_recovering||'—'}`,
+    `<b>Sentiment Stress</b>：<code>${d.sentiment_stress||'—'}</code>`,
+    `<b>Breadth 20D</b>：${d.breadth_20d_pct||'—'}`
+  ].map(x=>`<div style="margin:7px 0">${x}</div>`).join('');
+  $('warnings').innerHTML=(DATA.warnings||[]).map(x=>`<div style="margin:7px 0">• ${x}</div>`).join('');
+  const c=DATA.coverage||{};
+  $('coverage').textContent=`${c.start||'—'} → ${c.end||'—'} · ${c.observations||0} observations`;
+}
+
+const labels={
+  baseline:'Baseline',
+  box_only:'Box',
+  box_sentiment:'Box + Sentiment',
+  box_breadth:'Box + Breadth',
+  box_score_recovery:'Box + Score↑',
+  box_sentiment_breadth:'Box + Sentiment + Breadth',
+  box_sentiment_score:'Box + Sentiment + Score↑',
+  box_breadth_score:'Box + Breadth + Score↑',
+  all_four:'ALL FOUR'
+};
+function renderAblation(){
+  const a=DATA.ablation||{};
+  $('ablation').innerHTML=Object.keys(labels).map(k=>{
+    const r=a[k]||{};
+    return `<tr><td>${labels[k]}</td><td>${r.n??0}</td>
+    <td class="${cls(r.fwd_1d_avg_pct)}">${pct(r.fwd_1d_avg_pct,3)}</td>
+    <td class="${cls(r.fwd_3d_avg_pct)}">${pct(r.fwd_3d_avg_pct,3)}</td>
+    <td class="${cls(r.fwd_5d_avg_pct)}">${pct(r.fwd_5d_avg_pct,3)}</td>
+    <td>${pct(r.fwd_5d_positive_pct,1)}</td>
+    <td class="${cls(r.fwd_10d_avg_pct)}">${pct(r.fwd_10d_avg_pct,3)}</td>
+    <td>${pct(r.fwd_10d_positive_pct,1)}</td>
+    <td class="${cls(r.mfe_10d_avg_pct)}">${pct(r.mfe_10d_avg_pct,3)}</td>
+    <td class="${cls(r.mae_10d_avg_pct)}">${pct(r.mae_10d_avg_pct,3)}</td></tr>`;
+  }).join('');
+}
+
+function renderAnalogs(){
+  $('analogs').innerHTML=(DATA.similar_days||[]).map(r=>`<tr>
+    <td>${r.date}</td><td>${fmt(r.distance,4)}</td><td>${r.box_position==null?'—':pct(r.box_position*100,1)}</td>
+    <td>${pct(r.sentiment_stress_pct,1)}</td><td>${pct(r.breadth_20d_pct,1)}</td><td>${fmt(r.market_score,2)}</td><td>${r.market_regime||'—'}</td>
+    <td class="${cls(r.fwd_1d)}">${pct(r.fwd_1d,2)}</td><td class="${cls(r.fwd_3d)}">${pct(r.fwd_3d,2)}</td>
+    <td class="${cls(r.fwd_5d)}">${pct(r.fwd_5d,2)}</td><td class="${cls(r.fwd_10d)}">${pct(r.fwd_10d,2)}</td>
+    <td class="${cls(r.mfe_10d)}">${pct(r.mfe_10d,2)}</td><td class="${cls(r.mae_10d)}">${pct(r.mae_10d,2)}</td>
+  </tr>`).join('')||'<tr><td colspan="13">暂无足够历史相似样本</td></tr>';
+}
+
+function renderRecent(){
+  const rows=(DATA.daily||[]).slice(-80).reverse();
+  $('recent').innerHTML=rows.map(r=>`<tr><td>${r.date}</td><td>${yn(r.box_bottom)}</td><td>${yn(r.sentiment_extreme)}</td>
+    <td>${yn(r.breadth_extreme_low)}</td><td>${yn(r.score_recovering)}</td><td>${yn(r.joint_4way)}</td>
+    <td>${r.box_position==null?'—':pct(r.box_position*100,1)}</td><td>${pct(r.sentiment_stress_pct,1)}</td>
+    <td>${pct(r.breadth_20d_pct,1)}</td><td>${fmt(r.market_score,2)}</td><td>${fmt(r.market_score_d1,2)}</td><td>${fmt(r.market_score_d3,2)}</td></tr>`).join('');
+}
+
+function renderHeat(){
+  const key=`${$('boxFilter').value}|${$('regFilter').value}`, cells=(DATA.heatmap||{})[key]||{};
+  let h='<div class="axis">情绪 \\ 涨跌</div>';
+  for(let x=0;x<10;x++) h+=`<div class="axis">${x*10}–${x*10+9}</div>`;
+  for(let y=9;y>=0;y--){
+    h+=`<div class="axis">${y*10}–${y*10+9}</div>`;
+    for(let x=0;x<10;x++){
+      const c=cells[`${x},${y}`];
+      if(!c){h+='<div class="cell empty">—</div>';continue}
+      const mood=c.n<8?'':(c.avg_fwd_5d_pct>0?'hot':(c.avg_fwd_5d_pct<0?'cold':''));
+      h+=`<div class="cell ${mood}" title="median ${pct(c.median_fwd_5d_pct,3)} · positive ${pct(c.positive_pct,1)}"><strong class="${cls(c.avg_fwd_5d_pct)}">${pct(c.avg_fwd_5d_pct,2)}</strong><span>N=${c.n}</span></div>`;
+    }
+  }
+  $('heat').innerHTML=h;
+}
+
+async function main(){
+  try{
+    const r=await fetch('./data/market_state_box_v1.json?ts='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error(`HTTP ${r.status}`);
+    DATA=await r.json();
+    $('status').textContent=`联合数据已加载 · ${DATA.generated_at||'—'} · Research only`;
+    renderCurrent();renderMeta();renderAblation();renderAnalogs();renderRecent();renderHeat();
+  }catch(e){
+    $('status').textContent='联合状态数据暂不可用：'+e.message;
+  }
+}
+$('boxFilter').onchange=renderHeat;$('regFilter').onchange=renderHeat;main();
+</script>
+</body></html>
