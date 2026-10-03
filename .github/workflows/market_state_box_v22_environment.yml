@@ -21,7 +21,8 @@ jobs:
       - name: Run environment diagnostics
         run: python diagnose_market_state_box_v22.py
       - name: Validate output
-        run: python - <<'PY'
+        run: |
+          python - <<'PY'
           import json
           from pathlib import Path
           p=Path('docs/data/market_state_box_v22_environment.json')
