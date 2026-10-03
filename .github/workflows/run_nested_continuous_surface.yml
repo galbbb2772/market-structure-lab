@@ -6,6 +6,7 @@ on:
     paths:
       - 'research_nested_continuous_surface.py'
       - '.github/workflows/run_nested_continuous_surface.yml'
+      - 'docs/data/nested_surface_trigger.json'
 
 permissions:
   contents: write
