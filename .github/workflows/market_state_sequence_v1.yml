@@ -8,8 +8,10 @@ on:
     branches: [main]
     paths:
       - 'build_market_state_sequence_v1.py'
+      - 'build_market_state_sequence_event_audit_v1.py'
       - 'validate_market_state_sequence_phase_onsets_v1.py'
       - 'research/market_state_sequence_v1/PREREGISTRATION.md'
+      - 'research/market_state_sequence_v1/EVENT_AUDIT_PREREGISTRATION.md'
       - '.github/workflows/market_state_sequence_v1.yml'
 
 permissions:
@@ -34,14 +36,20 @@ jobs:
         run: python build_market_state_sequence_v1.py
       - name: Run non-overlap phase-onset robustness check
         run: python validate_market_state_sequence_phase_onsets_v1.py
+      - name: Run event-by-event audit and observation-only OOS shadow
+        run: python build_market_state_sequence_event_audit_v1.py
       - name: Validate frozen research output
         run: |
           python - <<'PY'
           import json
           p='docs/data/market_state_sequence_v1.json'
           q='docs/data/market_state_sequence_phase_onsets_v1.json'
+          a='docs/data/market_state_sequence_event_audit_v1.json'
+          o='docs/data/market_state_sequence_forward_oos_v1.json'
           d=json.load(open(p,encoding='utf-8'))
           z=json.load(open(q,encoding='utf-8'))
+          x=json.load(open(a,encoding='utf-8'))
+          s=json.load(open(o,encoding='utf-8'))
           assert d['schema']=='MARKET-STATE-SEQUENCE-V1'
           assert d['research_only'] is True
           assert d['preregistered'] is True
@@ -57,13 +65,20 @@ jobs:
           assert z['schema']=='MARKET-STATE-SEQUENCE-PHASE-ONSETS-V1'
           assert z['thresholds_changed'] is False
           assert 'active_d11plus' in z['phase_onset_stats']['full']
-          print('MARKET_STATE_SEQUENCE_V1_VALID', d['coverage'], d['latest'])
+          assert x['schema']=='MARKET-STATE-SEQUENCE-EVENT-AUDIT-V1'
+          assert x['thresholds_changed'] is False
+          assert x['event_count']==12
+          assert len(x['events'])==12
+          assert s['schema']=='MARKET-STATE-SEQUENCE-FORWARD-OOS-V1'
+          assert s['observation_only'] is True
+          assert s['production_effect']=='none'
+          print('MARKET_STATE_SEQUENCE_V1_VALID', d['coverage'], d['latest'], x['shadow_decision'])
           PY
       - name: Commit refreshed research data
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/data/market_state_sequence_v1.json docs/data/market_state_sequence_phase_onsets_v1.json
+          git add docs/data/market_state_sequence_v1.json docs/data/market_state_sequence_phase_onsets_v1.json docs/data/market_state_sequence_event_audit_v1.json docs/data/market_state_sequence_forward_oos_v1.json
           if git diff --cached --quiet; then
             echo 'No dataset change.'
           else
