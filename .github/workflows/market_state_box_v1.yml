@@ -60,3 +60,5 @@ jobs:
             git commit -m 'data: refresh Market State Box V1'
             git push
           fi
+
+# bootstrap: editing this workflow triggers the first dataset build on main.
