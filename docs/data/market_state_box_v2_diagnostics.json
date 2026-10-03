@@ -1,0 +1,256 @@
+{
+  "schema": "MARKET-STATE-BOX-V2-DIAGNOSTICS",
+  "generated_at": "2026-10-03T04:57:27.853702+00:00",
+  "diagnostic_only": true,
+  "selection_warning": "Feature sets are inspected after the first full-8D result; do not treat the best row as fresh OOS model selection.",
+  "k": 40,
+  "feature_weighting": "equal; no optimized weights",
+  "results": {
+    "box_only": {
+      "features": [
+        "box_state"
+      ],
+      "validation": {
+        "3d": {
+          "n": 744,
+          "spearman": -0.0186,
+          "direction_accuracy_pct": 52.15,
+          "mae_improvement": -0.0525,
+          "brier_improvement": -0.00568
+        },
+        "5d": {
+          "n": 744,
+          "spearman": -0.1054,
+          "direction_accuracy_pct": 51.88,
+          "mae_improvement": -0.0564,
+          "brier_improvement": -0.0061
+        },
+        "10d": {
+          "n": 744,
+          "spearman": -0.086,
+          "direction_accuracy_pct": 56.72,
+          "mae_improvement": -0.0824,
+          "brier_improvement": -0.00405
+        }
+      }
+    },
+    "box_breadth_level": {
+      "features": [
+        "box_state",
+        "breadth_level"
+      ],
+      "validation": {
+        "3d": {
+          "n": 744,
+          "spearman": -0.037,
+          "direction_accuracy_pct": 52.15,
+          "mae_improvement": -0.0583,
+          "brier_improvement": -0.00753
+        },
+        "5d": {
+          "n": 744,
+          "spearman": -0.0127,
+          "direction_accuracy_pct": 53.9,
+          "mae_improvement": -0.0237,
+          "brier_improvement": -0.00393
+        },
+        "10d": {
+          "n": 744,
+          "spearman": -0.0725,
+          "direction_accuracy_pct": 56.18,
+          "mae_improvement": -0.0679,
+          "brier_improvement": -0.00467
+        }
+      }
+    },
+    "box_breadth_level_velocity": {
+      "features": [
+        "box_state",
+        "breadth_level",
+        "breadth_velocity"
+      ],
+      "validation": {
+        "3d": {
+          "n": 744,
+          "spearman": -0.0438,
+          "direction_accuracy_pct": 52.42,
+          "mae_improvement": -0.0511,
+          "brier_improvement": -0.00778
+        },
+        "5d": {
+          "n": 744,
+          "spearman": -0.0453,
+          "direction_accuracy_pct": 53.9,
+          "mae_improvement": -0.0309,
+          "brier_improvement": -0.00556
+        },
+        "10d": {
+          "n": 744,
+          "spearman": -0.087,
+          "direction_accuracy_pct": 56.59,
+          "mae_improvement": -0.0604,
+          "brier_improvement": -0.00291
+        }
+      }
+    },
+    "box_breadth_score_levels": {
+      "features": [
+        "box_state",
+        "breadth_level",
+        "score_level"
+      ],
+      "validation": {
+        "3d": {
+          "n": 744,
+          "spearman": -0.0286,
+          "direction_accuracy_pct": 51.21,
+          "mae_improvement": -0.0493,
+          "brier_improvement": -0.00685
+        },
+        "5d": {
+          "n": 744,
+          "spearman": -0.078,
+          "direction_accuracy_pct": 52.15,
+          "mae_improvement": -0.0217,
+          "brier_improvement": -0.00625
+        },
+        "10d": {
+          "n": 744,
+          "spearman": -0.0694,
+          "direction_accuracy_pct": 56.85,
+          "mae_improvement": -0.0403,
+          "brier_improvement": -0.00716
+        }
+      }
+    },
+    "box_breadth_score_momentum": {
+      "features": [
+        "box_state",
+        "breadth_level",
+        "breadth_velocity",
+        "score_level",
+        "score_d1_rank",
+        "score_d3_rank"
+      ],
+      "validation": {
+        "3d": {
+          "n": 744,
+          "spearman": -0.0006,
+          "direction_accuracy_pct": 52.69,
+          "mae_improvement": -0.0232,
+          "brier_improvement": -0.00535
+        },
+        "5d": {
+          "n": 744,
+          "spearman": -0.0272,
+          "direction_accuracy_pct": 54.17,
+          "mae_improvement": -0.0136,
+          "brier_improvement": 0.00102
+        },
+        "10d": {
+          "n": 744,
+          "spearman": -0.0806,
+          "direction_accuracy_pct": 56.45,
+          "mae_improvement": -0.0467,
+          "brier_improvement": -0.00819
+        }
+      }
+    },
+    "box_sentiment_breadth_levels": {
+      "features": [
+        "box_state",
+        "sentiment_level",
+        "breadth_level"
+      ],
+      "validation": {
+        "3d": {
+          "n": 744,
+          "spearman": -0.0614,
+          "direction_accuracy_pct": 50.67,
+          "mae_improvement": -0.0605,
+          "brier_improvement": -0.0101
+        },
+        "5d": {
+          "n": 744,
+          "spearman": -0.0631,
+          "direction_accuracy_pct": 50.67,
+          "mae_improvement": -0.0188,
+          "brier_improvement": -0.00281
+        },
+        "10d": {
+          "n": 744,
+          "spearman": -0.1277,
+          "direction_accuracy_pct": 54.7,
+          "mae_improvement": -0.0501,
+          "brier_improvement": -0.00619
+        }
+      }
+    },
+    "all_levels": {
+      "features": [
+        "box_state",
+        "sentiment_level",
+        "breadth_level",
+        "score_level"
+      ],
+      "validation": {
+        "3d": {
+          "n": 744,
+          "spearman": -0.0366,
+          "direction_accuracy_pct": 50.13,
+          "mae_improvement": -0.0508,
+          "brier_improvement": -0.00634
+        },
+        "5d": {
+          "n": 744,
+          "spearman": -0.1137,
+          "direction_accuracy_pct": 52.69,
+          "mae_improvement": -0.0302,
+          "brier_improvement": -0.00611
+        },
+        "10d": {
+          "n": 744,
+          "spearman": -0.1344,
+          "direction_accuracy_pct": 56.32,
+          "mae_improvement": -0.0524,
+          "brier_improvement": -0.00907
+        }
+      }
+    },
+    "full_8d": {
+      "features": [
+        "box_state",
+        "sentiment_level",
+        "sentiment_velocity",
+        "breadth_level",
+        "breadth_velocity",
+        "score_level",
+        "score_d1_rank",
+        "score_d3_rank"
+      ],
+      "validation": {
+        "3d": {
+          "n": 744,
+          "spearman": -0.006,
+          "direction_accuracy_pct": 51.88,
+          "mae_improvement": -0.021,
+          "brier_improvement": -0.00695
+        },
+        "5d": {
+          "n": 744,
+          "spearman": -0.0668,
+          "direction_accuracy_pct": 53.76,
+          "mae_improvement": -0.034,
+          "brier_improvement": -0.00375
+        },
+        "10d": {
+          "n": 744,
+          "spearman": -0.151,
+          "direction_accuracy_pct": 56.59,
+          "mae_improvement": -0.0624,
+          "brier_improvement": -0.00708
+        }
+      }
+    }
+  }
+}
