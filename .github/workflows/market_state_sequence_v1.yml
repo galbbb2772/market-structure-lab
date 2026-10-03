@@ -1,0 +1,65 @@
+name: Refresh Market State Sequence V1
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '10 4 * * 2-6'
+  push:
+    branches: [main]
+    paths:
+      - 'build_market_state_sequence_v1.py'
+      - 'research/market_state_sequence_v1/PREREGISTRATION.md'
+      - '.github/workflows/market_state_sequence_v1.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: market-state-sequence-v1
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build preregistered sequence study
+        run: python build_market_state_sequence_v1.py
+      - name: Validate frozen research output
+        run: |
+          python - <<'PY'
+          import json
+          p='docs/data/market_state_sequence_v1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['schema']=='MARKET-STATE-SEQUENCE-V1'
+          assert d['research_only'] is True
+          assert d['preregistered'] is True
+          assert d['coverage']['observations'] > 2000
+          assert d['coverage']['usable_10d'] > 1500
+          assert d['frozen_definitions']['breadth_low_pct']==20.0
+          assert d['frozen_definitions']['box_bottom_position']==0.25
+          for seg in ('full','pre_2022','post_2022','recent_2024'):
+              assert seg in d['phase_stats']
+              assert seg in d['sequence_onset_stats']
+              for f in ('D_TO_BREADTH_LOW','D_TO_BREADTH_REBOUND','D_TO_BOX_BOTTOM','D_TO_REBOUND_SCORE','D_TO_BOTH_REBOUND_SCORE'):
+                  assert f in d['sequence_onset_stats'][seg]
+          print('MARKET_STATE_SEQUENCE_V1_VALID', d['coverage'], d['latest'])
+          PY
+      - name: Commit refreshed research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/market_state_sequence_v1.json
+          if git diff --cached --quiet; then
+            echo 'No dataset change.'
+          else
+            git commit -m 'data: refresh Market State Sequence V1'
+            git pull --rebase origin main
+            git push
+          fi
