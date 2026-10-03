@@ -1,0 +1,341 @@
+{
+  "schema": "MARKET-STATE-BOX-V2.1-DIAGNOSTICS",
+  "generated_at": "2026-10-03T05:24:26.070290+00:00",
+  "diagnostic_only": true,
+  "selection_warning": "Buckets/pairs are inspected after V2 results; positives require later fresh OOS confirmation.",
+  "single_feature_bins": 10,
+  "pair_bins": 5,
+  "single_features": {
+    "box_state": {
+      "3d": {
+        "n": 738,
+        "spearman": 0.0037,
+        "direction_accuracy_pct": 54.47,
+        "mae_improvement": -0.0042,
+        "brier_improvement": 0.00066
+      },
+      "5d": {
+        "n": 737,
+        "spearman": -0.0483,
+        "direction_accuracy_pct": 52.65,
+        "mae_improvement": -0.0088,
+        "brier_improvement": 0.00102
+      },
+      "10d": {
+        "n": 736,
+        "spearman": -0.1078,
+        "direction_accuracy_pct": 57.88,
+        "mae_improvement": -0.0717,
+        "brier_improvement": -0.00288
+      }
+    },
+    "sentiment_level": {
+      "3d": {
+        "n": 1171,
+        "spearman": 0.0255,
+        "direction_accuracy_pct": 56.53,
+        "mae_improvement": 0.0007,
+        "brier_improvement": -0.00095
+      },
+      "5d": {
+        "n": 1171,
+        "spearman": 0.0159,
+        "direction_accuracy_pct": 58.07,
+        "mae_improvement": 0.0005,
+        "brier_improvement": -0.00107
+      },
+      "10d": {
+        "n": 1167,
+        "spearman": -0.0403,
+        "direction_accuracy_pct": 59.98,
+        "mae_improvement": -0.0092,
+        "brier_improvement": -0.00484
+      }
+    },
+    "sentiment_velocity": {
+      "3d": {
+        "n": 1182,
+        "spearman": 0.0442,
+        "direction_accuracy_pct": 56.43,
+        "mae_improvement": 0.0029,
+        "brier_improvement": 0.00028
+      },
+      "5d": {
+        "n": 1182,
+        "spearman": -0.0103,
+        "direction_accuracy_pct": 58.04,
+        "mae_improvement": -0.0009,
+        "brier_improvement": -0.00136
+      },
+      "10d": {
+        "n": 1182,
+        "spearman": -0.0248,
+        "direction_accuracy_pct": 60.49,
+        "mae_improvement": -0.0022,
+        "brier_improvement": -0.00052
+      }
+    },
+    "breadth_level": {
+      "3d": {
+        "n": 1170,
+        "spearman": -0.0102,
+        "direction_accuracy_pct": 55.9,
+        "mae_improvement": -0.0081,
+        "brier_improvement": -0.00078
+      },
+      "5d": {
+        "n": 1170,
+        "spearman": -0.0296,
+        "direction_accuracy_pct": 56.92,
+        "mae_improvement": -0.0067,
+        "brier_improvement": -0.00228
+      },
+      "10d": {
+        "n": 1170,
+        "spearman": -0.0578,
+        "direction_accuracy_pct": 59.83,
+        "mae_improvement": -0.0146,
+        "brier_improvement": -0.00119
+      }
+    },
+    "breadth_velocity": {
+      "3d": {
+        "n": 1182,
+        "spearman": -0.0465,
+        "direction_accuracy_pct": 56.51,
+        "mae_improvement": -0.0044,
+        "brier_improvement": -0.00246
+      },
+      "5d": {
+        "n": 1182,
+        "spearman": -0.0759,
+        "direction_accuracy_pct": 58.04,
+        "mae_improvement": -0.0075,
+        "brier_improvement": -0.00115
+      },
+      "10d": {
+        "n": 1182,
+        "spearman": -0.1253,
+        "direction_accuracy_pct": 60.49,
+        "mae_improvement": -0.02,
+        "brier_improvement": -0.00317
+      }
+    },
+    "score_level": {
+      "3d": {
+        "n": 1182,
+        "spearman": -0.0226,
+        "direction_accuracy_pct": 55.75,
+        "mae_improvement": -0.0039,
+        "brier_improvement": -0.00332
+      },
+      "5d": {
+        "n": 1182,
+        "spearman": -0.0365,
+        "direction_accuracy_pct": 58.04,
+        "mae_improvement": -0.0042,
+        "brier_improvement": -0.00318
+      },
+      "10d": {
+        "n": 1182,
+        "spearman": -0.0909,
+        "direction_accuracy_pct": 60.49,
+        "mae_improvement": -0.0054,
+        "brier_improvement": -0.0065
+      }
+    },
+    "score_d1_rank": {
+      "3d": {
+        "n": 1182,
+        "spearman": -0.0185,
+        "direction_accuracy_pct": 56.51,
+        "mae_improvement": -0.0081,
+        "brier_improvement": -0.00271
+      },
+      "5d": {
+        "n": 1182,
+        "spearman": -0.032,
+        "direction_accuracy_pct": 58.04,
+        "mae_improvement": -0.01,
+        "brier_improvement": -0.00214
+      },
+      "10d": {
+        "n": 1182,
+        "spearman": -0.012,
+        "direction_accuracy_pct": 60.49,
+        "mae_improvement": -0.0126,
+        "brier_improvement": -0.00062
+      }
+    },
+    "score_d3_rank": {
+      "3d": {
+        "n": 1182,
+        "spearman": -0.0478,
+        "direction_accuracy_pct": 56.51,
+        "mae_improvement": -0.0103,
+        "brier_improvement": -0.00253
+      },
+      "5d": {
+        "n": 1182,
+        "spearman": -0.0789,
+        "direction_accuracy_pct": 58.04,
+        "mae_improvement": -0.0129,
+        "brier_improvement": -0.00315
+      },
+      "10d": {
+        "n": 1182,
+        "spearman": -0.0194,
+        "direction_accuracy_pct": 60.49,
+        "mae_improvement": -0.0145,
+        "brier_improvement": -0.0018
+      }
+    }
+  },
+  "pairs": {
+    "box_state__breadth_level": {
+      "features": [
+        "box_state",
+        "breadth_level"
+      ],
+      "validation": {
+        "3d": {
+          "n": 665,
+          "spearman": -0.1499,
+          "direction_accuracy_pct": 52.48,
+          "mae_improvement": -0.0408,
+          "brier_improvement": -0.00814
+        },
+        "5d": {
+          "n": 662,
+          "spearman": -0.1037,
+          "direction_accuracy_pct": 53.78,
+          "mae_improvement": -0.046,
+          "brier_improvement": -0.00479
+        },
+        "10d": {
+          "n": 655,
+          "spearman": -0.1717,
+          "direction_accuracy_pct": 55.88,
+          "mae_improvement": -0.092,
+          "brier_improvement": -0.01178
+        }
+      }
+    },
+    "box_state__score_level": {
+      "features": [
+        "box_state",
+        "score_level"
+      ],
+      "validation": {
+        "3d": {
+          "n": 664,
+          "spearman": -0.0631,
+          "direction_accuracy_pct": 50.15,
+          "mae_improvement": -0.0298,
+          "brier_improvement": -0.00705
+        },
+        "5d": {
+          "n": 654,
+          "spearman": -0.121,
+          "direction_accuracy_pct": 51.68,
+          "mae_improvement": -0.0537,
+          "brier_improvement": -0.00813
+        },
+        "10d": {
+          "n": 643,
+          "spearman": -0.0764,
+          "direction_accuracy_pct": 55.05,
+          "mae_improvement": -0.0575,
+          "brier_improvement": -0.01812
+        }
+      }
+    },
+    "breadth_level__score_level": {
+      "features": [
+        "breadth_level",
+        "score_level"
+      ],
+      "validation": {
+        "3d": {
+          "n": 1111,
+          "spearman": -0.0256,
+          "direction_accuracy_pct": 54.28,
+          "mae_improvement": -0.0172,
+          "brier_improvement": -0.00574
+        },
+        "5d": {
+          "n": 1110,
+          "spearman": -0.0268,
+          "direction_accuracy_pct": 56.31,
+          "mae_improvement": -0.0138,
+          "brier_improvement": -0.00778
+        },
+        "10d": {
+          "n": 1107,
+          "spearman": -0.0687,
+          "direction_accuracy_pct": 59.62,
+          "mae_improvement": -0.0274,
+          "brier_improvement": -0.00964
+        }
+      }
+    },
+    "breadth_level__score_d3_rank": {
+      "features": [
+        "breadth_level",
+        "score_d3_rank"
+      ],
+      "validation": {
+        "3d": {
+          "n": 1148,
+          "spearman": 0.0704,
+          "direction_accuracy_pct": 56.88,
+          "mae_improvement": 0.0009,
+          "brier_improvement": -0.00201
+        },
+        "5d": {
+          "n": 1148,
+          "spearman": 0.0753,
+          "direction_accuracy_pct": 57.93,
+          "mae_improvement": 0.0067,
+          "brier_improvement": -0.00046
+        },
+        "10d": {
+          "n": 1142,
+          "spearman": -0.0216,
+          "direction_accuracy_pct": 59.63,
+          "mae_improvement": -0.0316,
+          "brier_improvement": -0.00311
+        }
+      }
+    },
+    "box_state__score_d3_rank": {
+      "features": [
+        "box_state",
+        "score_d3_rank"
+      ],
+      "validation": {
+        "3d": {
+          "n": 696,
+          "spearman": -0.1108,
+          "direction_accuracy_pct": 51.58,
+          "mae_improvement": -0.0398,
+          "brier_improvement": -0.00715
+        },
+        "5d": {
+          "n": 696,
+          "spearman": 0.0117,
+          "direction_accuracy_pct": 54.31,
+          "mae_improvement": -0.0265,
+          "brier_improvement": -0.00246
+        },
+        "10d": {
+          "n": 693,
+          "spearman": -0.056,
+          "direction_accuracy_pct": 57.43,
+          "mae_improvement": -0.0505,
+          "brier_improvement": -0.00804
+        }
+      }
+    }
+  }
+}
