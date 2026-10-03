@@ -1,0 +1,60 @@
+{
+  "schema": "EXCURSION-VS-ATR-SUMMARY-V1",
+  "headline": "Only 2 of 48 nested excursion/risk tests beat a prior-only ATR% baseline and pass the full confirmation gate.",
+  "tested": 48,
+  "confirmed": 2,
+  "main_conclusion": "Most of the strong MFE/MAE/range predictability versus a constant D1 mean is explained by simple volatility persistence captured by ATR. The remaining incremental signal is small and appears in Nasdaq excursion balance, not raw range magnitude.",
+  "confirmed_tests": [
+    {
+      "symbol": "^IXIC",
+      "name": "Nasdaq Composite",
+      "target": "balance",
+      "horizon": 1,
+      "outer_years": 38,
+      "outer_event_n": 2271,
+      "atr_mae": 1.3247291510106158,
+      "surface_mae": 1.3113453083041322,
+      "skill_pct_vs_atr": 0.969997060039825,
+      "positive_year_rate": 0.6578947368421053,
+      "q_value": 0.050187352724223915,
+      "dominant_surface": "ma20_dist×ma200_dist|bw=0.20",
+      "dominant_surface_years": 38
+    },
+    {
+      "symbol": "^IXIC",
+      "name": "Nasdaq Composite",
+      "target": "balance",
+      "horizon": 10,
+      "outer_years": 38,
+      "outer_event_n": 2271,
+      "atr_mae": 3.754300044811904,
+      "surface_mae": 3.7005619071666906,
+      "skill_pct_vs_atr": 1.3859049814666857,
+      "positive_year_rate": 0.7368421052631579,
+      "q_value": 0.061727437850464154,
+      "dominant_surface": "ma20_dist×ma200_dist|bw=0.20",
+      "dominant_surface_years": 35
+    }
+  ],
+  "near_misses": [
+    {
+      "symbol": "^GSPC",
+      "target": "downside",
+      "horizon": 10,
+      "skill_pct_vs_atr": 3.1247810486992478,
+      "positive_year_rate": 0.5783132530120482,
+      "q_value": 0.027926733243412723,
+      "reason_not_confirmed": "positive-year rate below frozen 60% gate"
+    },
+    {
+      "symbol": "^GSPC",
+      "target": "mfe",
+      "horizon": 10,
+      "skill_pct_vs_atr": 2.9796800153632073,
+      "positive_year_rate": 0.5060240963855421,
+      "q_value": 0.050187352724223915,
+      "reason_not_confirmed": "positive-year rate below frozen 60% gate"
+    }
+  ],
+  "guardrail": "Historical Shadow evidence only. Do not modify Frozen V4 MAIN or live execution from these results. The surviving Nasdaq balance edge is statistically filtered but economically small and should be prospectively monitored before any use in sizing/exits."
+}
