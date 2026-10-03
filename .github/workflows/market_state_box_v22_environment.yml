@@ -1,0 +1,39 @@
+name: Diagnose Market State Box V2.2
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'diagnose_market_state_box_v22.py'
+      - '.github/workflows/market_state_box_v22_environment.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run environment diagnostics
+        run: python diagnose_market_state_box_v22.py
+      - name: Validate output
+        run: python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('docs/data/market_state_box_v22_environment.json')
+          x=json.loads(p.read_text())
+          assert x['schema']=='MARKET-STATE-BOX-V2.2-ENVIRONMENT'
+          assert 'post_2022' in x['periods']
+          print(x['periods']['post_2022']['declustered_box_baseline'])
+          PY
+      - name: Commit diagnostics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/market_state_box_v22_environment.json
+          git diff --cached --quiet || git commit -m "data: refresh Market State Box V2.2 environment diagnostics"
+          git push
