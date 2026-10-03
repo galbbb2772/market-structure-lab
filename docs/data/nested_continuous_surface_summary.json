@@ -1,0 +1,30 @@
+{
+  "schema": "NESTED-CONTINUOUS-SURFACE-SUMMARY-V1",
+  "headline": "0 of 12 index×horizon tests pass the nested continuous-surface confirmation gate.",
+  "method": "Each test year uses only prior data. Pair+bandwidth selection is itself based only on earlier walk-forward years. Joint inference requires positive Brier skill, return-MAE skill, and positive-ridge return edge, with BH-FDR across 12 tests.",
+  "tested": 12,
+  "confirmed": 0,
+  "highlights": {
+    "sp500": {
+      "t1": {"outer_years":83,"outer_event_n":4895,"brier_improvement":0.00029208208402747523,"return_mae_improvement":0.0008183654992121964,"ridge_n":2108,"ridge_mean_edge":-0.019808375170464836,"ridge_positive_year_rate":0.3780487804878049,"q_joint":0.9928807601774249,"top_surface":"ma50_dist×ma200_dist|bw=0.20","top_surface_years":65},
+      "t5": {"outer_years":83,"outer_event_n":4895,"brier_improvement":-0.00014569005435236543,"return_mae_improvement":0.0011461746729891208,"ridge_n":2348,"ridge_mean_edge":-0.04903730875123161,"ridge_positive_year_rate":0.3614457831325301,"q_joint":0.9928807601774249,"top_surface":"dd20×atr_rank|bw=0.20","top_surface_years":44},
+      "t10": {"outer_years":83,"outer_event_n":4895,"brier_improvement":-0.000022527206260843887,"return_mae_improvement":0.002329405777468388,"ridge_n":2249,"ridge_mean_edge":0.11449533710805111,"ridge_positive_year_rate":0.5903614457831325,"q_joint":0.9928807601774249,"top_surface":"dd20×atr_rank|bw=0.20","top_surface_years":76}
+    },
+    "nasdaq": {
+      "t1": {"outer_years":38,"outer_event_n":2271,"brier_improvement":0.0011500489329105258,"return_mae_improvement":0.004361377039941273,"ridge_n":1003,"ridge_mean_edge":0.02191732808112784,"ridge_positive_year_rate":0.6578947368421053,"p_joint":0.2790118901376443,"q_joint":0.9928807601774249,"top_surface":"ma20_dist×ma200_dist|bw=0.20","top_surface_years":30},
+      "t5": {"outer_years":38,"outer_event_n":2271,"brier_improvement":0.0010980540028435236,"return_mae_improvement":0.009359646875646617,"ridge_n":1104,"ridge_mean_edge":-0.04474976647260957,"ridge_positive_year_rate":0.5,"q_joint":0.9928807601774249,"top_surface":"ma20_dist×ma200_dist|bw=0.20","top_surface_years":38},
+      "t10": {"outer_years":38,"outer_event_n":2271,"brier_improvement":0.0014384366216855418,"return_mae_improvement":0.01875319309354264,"ridge_n":944,"ridge_mean_edge":-0.024753189594337168,"ridge_positive_year_rate":0.5263157894736842,"q_joint":0.9928807601774249,"top_surface":"ma20_dist×ma200_dist|bw=0.12","top_surface_years":35}
+    },
+    "dow": {
+      "t5": {"outer_years":19,"outer_event_n":1200,"brier_improvement":-0.0018979321070566135,"return_mae_improvement":-0.011661428732227155,"ridge_n":390,"ridge_mean_edge":0.15403521167211257,"ridge_positive_year_rate":0.631578947368421,"q_joint":0.9928807601774249,"top_surface":"pre5×atr_rank|bw=0.20","top_surface_years":16},
+      "t10": {"outer_years":19,"outer_event_n":1200,"brier_improvement":-0.001155529455630505,"return_mae_improvement":-0.00565005468678898,"ridge_n":385,"ridge_mean_edge":0.16653995337020608,"ridge_positive_year_rate":0.6842105263157895,"q_joint":0.9928807601774249,"top_surface":"pre5×atr_rank|bw=0.20","top_surface_years":12}
+    }
+  },
+  "interpretation": [
+    "Broad bandwidth 0.20 is selected most often, suggesting any repeatable structure is smooth rather than a narrow historical pocket.",
+    "Nasdaq repeatedly selects MA20-distance × MA200-distance across horizons, especially T+5 (38/38 outer years), but the selected positive ridge does not deliver a stable realized return edge.",
+    "S&P changes dominant surface by horizon: MA50×MA200 at T+1, MA20×drawdown at T+3, and drawdown×ATR at T+5/T+10. This weakens the case for one universal D1 geometry.",
+    "Dow shows positive realized ridge return in some longer horizons while prediction losses worsen, so it does not support a forecastable surface.",
+    "This remains historical research/Shadow evidence and does not modify Frozen V4 MAIN rules."
+  ]
+}
