@@ -1,0 +1,37 @@
+name: Run Excursion vs ATR
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_excursion_vs_atr.py'
+      - '.github/workflows/run_excursion_vs_atr.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install NumPy
+        run: python -m pip install 'numpy>=2.0'
+      - name: Run ATR benchmark
+        run: python research_excursion_vs_atr.py
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/excursion_vs_atr.json
+          if git diff --cached --quiet; then
+            echo "No ATR benchmark changes"
+          else
+            git commit -m "data: update excursion ATR benchmark"
+            git pull --rebase origin main
+            git push
+          fi
