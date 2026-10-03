@@ -1,0 +1,51 @@
+name: Diagnose Market State Box V2.1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'diagnose_market_state_box_v21.py'
+      - '.github/workflows/market_state_box_v21_diagnostics.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: market-state-box-v21-diagnostics
+  cancel-in-progress: true
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bucket diagnostics
+        run: python diagnose_market_state_box_v21.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('docs/data/market_state_box_v21_diagnostics.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert d.get('schema') == 'MARKET-STATE-BOX-V2.1-DIAGNOSTICS'
+          assert len(d.get('single_features') or {}) == 8
+          assert len(d.get('pairs') or {}) >= 5
+          print('ok')
+          PY
+      - name: Commit diagnostics
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '4189824+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/market_state_box_v21_diagnostics.json
+          if git diff --cached --quiet; then
+            echo 'No diagnostic change.'
+          else
+            git commit -m 'data: refresh Market State Box V2.1 diagnostics'
+            git push
+          fi
