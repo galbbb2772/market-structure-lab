@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nested Continuous Surface · Market Structure Lab</title>
+<style>
+:root{--bg:#0b0f14;--panel:#111821;--panel2:#0f151d;--text:#e8eef6;--muted:#8fa0b3;--line:#253141;--good:#55d68a;--bad:#ff7b86;--warn:#f4c95d;--accent:#79a9ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1180px;margin:0 auto;padding:26px 18px 60px}.top{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.title{font-size:30px;font-weight:800;margin:8px 0 8px}.sub{color:var(--muted);max-width:820px;line-height:1.6}.pill{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:13px}.pill b{color:var(--text)}.banner{margin-top:18px;padding:16px 18px;border:1px solid #5b4920;background:#1d190f;border-radius:14px;color:#f2d889;line-height:1.55}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 16px}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--muted);padding:9px 13px;border-radius:10px;cursor:pointer;font-weight:700}.btn.active{color:#fff;border-color:#4d77b7;background:#17243a}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.k{color:var(--muted);font-size:12px;margin-bottom:6px}.v{font-size:25px;font-weight:800}.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}.section{margin-top:18px}.section h2{font-size:18px;margin:0 0 12px}.tableWrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;background:var(--panel)}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;font-size:13px}th:first-child,td:first-child{text-align:left}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}tr:last-child td{border-bottom:0}.barrow{display:grid;grid-template-columns:minmax(220px,1fr) 4fr 50px;gap:10px;align-items:center;margin:10px 0}.barname{color:var(--muted);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.track{height:9px;background:#202a37;border-radius:999px;overflow:hidden}.fill{height:100%;background:var(--accent);border-radius:999px}.n{font-variant-numeric:tabular-nums;text-align:right;color:var(--muted);font-size:12px}.note{color:var(--muted);line-height:1.65;font-size:13px}.split{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.status{font-weight:800}.status.fail{color:var(--bad)}.status.pass{color:var(--good)}a{color:#9bc0ff;text-decoration:none}a:hover{text-decoration:underline}@media(max-width:820px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:1fr}.title{font-size:25px}}@media(max-width:520px){.grid{grid-template-columns:1fr}.wrap{padding:20px 12px 50px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="eyebrow">Market Structure Lab · Research / Shadow</div>
+      <div class="title">Nested Walk-Forward Continuous Surface</div>
+      <div class="sub">每个测试年份的二维连续收益面只由此前数据拟合；当年使用哪一组特征面和带宽，也只由更早的 walk-forward 年份选择。用于检验“发现地形的方法本身”是否有泛化能力。</div>
+    </div>
+    <div class="pill">确认结果：<b id="headline">载入中…</b></div>
+  </div>
+  <div class="banner" id="banner">正在读取确认结果…</div>
+  <div class="controls" id="indexButtons"></div>
+  <div class="controls" id="hButtons"></div>
+  <div class="grid">
+    <div class="card"><div class="k">Outer OOS Events</div><div class="v" id="events">—</div></div>
+    <div class="card"><div class="k">Brier Improvement</div><div class="v" id="brier">—</div></div>
+    <div class="card"><div class="k">Return-MAE Improvement</div><div class="v" id="mae">—</div></div>
+    <div class="card"><div class="k">Joint FDR q</div><div class="v" id="q">—</div></div>
+  </div>
+  <div class="section split">
+    <div class="card">
+      <h2>正向 Ridge 的真实表现</h2>
+      <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+        <div><div class="k">Ridge N</div><div class="v" id="ridgeN">—</div></div>
+        <div><div class="k">Mean Edge vs same-year D1</div><div class="v" id="ridgeEdge">—</div></div>
+        <div><div class="k">Positive-year rate</div><div class="v" id="ridgeYears">—</div></div>
+      </div>
+      <p class="note">Ridge 定义：模型预测上涨概率高于当时训练集 D1 基准、预测均值收益也更高，并且核平滑有效样本数 ≥ 25。这里的 same-year D1 只用于事后评估，不参与当年区域选择。</p>
+    </div>
+    <div class="card">
+      <h2>当前结论</h2>
+      <div class="status fail" id="status">未确认</div>
+      <p class="note" id="interpretation"></p>
+    </div>
+  </div>
+  <div class="section card">
+    <h2>历年被选择的 Surface</h2>
+    <div id="bars"></div>
+  </div>
+  <div class="section">
+    <h2>12 个外层检验</h2>
+    <div class="tableWrap"><table><thead><tr><th>Index / Horizon</th><th>OOS N</th><th>Brier Δ</th><th>Return-MAE Δ</th><th>Ridge N</th><th>Ridge Mean Edge</th><th>Positive Years</th><th>q</th><th>Status</th></tr></thead><tbody id="tbody"></tbody></table></div>
+  </div>
+  <div class="section card">
+    <h2>方法边界</h2>
+    <p class="note">这是历史 nested walk-forward 方法学验证，不是新的独立 Forward OOS。六组二维特征面本身来自此前研究阶段，因此即使某一项通过，也仍应进入 Shadow/前瞻观察，而不能改写 Frozen V4 MAIN 规则或历史 OOS。</p>
+    <p class="note"><a href="./pattern-edge.html">Pattern Edge</a> · <a href="./sp500-survivor.html">S&P Survivor</a> · <a href="./structure-lab.html">Structure Lab</a></p>
+  </div>
+</div>
+<script>
+const fmt=(x,d=4)=>x==null?'—':Number(x).toFixed(d);
+const pct=(x,d=1)=>x==null?'—':(100*Number(x)).toFixed(d)+'%';
+const pp=x=>x==null?'—':(x>=0?'+':'')+Number(x).toFixed(3)+'%';
+const cls=x=>x>0?'good':x<0?'bad':'';
+let data, currentSym='^GSPC', currentH=5;
+const labels={'^GSPC':'S&P 500','^IXIC':'Nasdaq','^DJI':'Dow'};
+async function init(){
+  data=await fetch('./data/nested_continuous_surface.json').then(r=>r.json());
+  document.getElementById('headline').textContent=`${data.summary.confirmed}/${data.summary.tested} 通过`;
+  document.getElementById('banner').textContent=data.summary.confirmed===0?'严格结果：12 个 index × horizon 检验中 0 个通过。连续地形有结构性重复，但尚未形成可确认的预测 Alpha。':'存在通过项，请按下方逐项查看。';
+  buildButtons(); render(); renderTable();
+}
+function buildButtons(){
+  const ib=document.getElementById('indexButtons');
+  Object.keys(labels).forEach(s=>{const b=document.createElement('button');b.className='btn'+(s===currentSym?' active':'');b.textContent=labels[s];b.onclick=()=>{currentSym=s;[...ib.children].forEach(x=>x.classList.toggle('active',x===b));render();};ib.appendChild(b)});
+  const hb=document.getElementById('hButtons');
+  [1,3,5,10].forEach(h=>{const b=document.createElement('button');b.className='btn'+(h===currentH?' active':'');b.textContent='T+'+h;b.onclick=()=>{currentH=h;[...hb.children].forEach(x=>x.classList.toggle('active',x===b));render();};hb.appendChild(b)});
+}
+function getTest(sym=currentSym,h=currentH){return data.instruments[sym].tests.find(x=>x.horizon===h)}
+function render(){
+  const t=getTest(); if(!t)return;
+  document.getElementById('events').textContent=t.outer_event_n.toLocaleString();
+  let el=document.getElementById('brier');el.textContent=(t.brier_improvement>=0?'+':'')+fmt(t.brier_improvement,6);el.className='v '+cls(t.brier_improvement);
+  el=document.getElementById('mae');el.textContent=(t.return_mae_improvement>=0?'+':'')+fmt(t.return_mae_improvement,5);el.className='v '+cls(t.return_mae_improvement);
+  el=document.getElementById('q');el.textContent=fmt(t.q_joint,4);el.className='v '+(t.q_joint<=.1?'good':'bad');
+  document.getElementById('ridgeN').textContent=t.ridge_n.toLocaleString();
+  el=document.getElementById('ridgeEdge');el.textContent=pp(t.ridge_mean_edge_vs_same_year_D1);el.className='v '+cls(t.ridge_mean_edge_vs_same_year_D1);
+  el=document.getElementById('ridgeYears');el.textContent=pct(t.ridge_positive_year_rate);el.className='v '+(t.ridge_positive_year_rate>=.6?'good':'bad');
+  const st=document.getElementById('status');st.textContent=t.confirmed?'通过确认':'未通过确认';st.className='status '+(t.confirmed?'pass':'fail');
+  document.getElementById('interpretation').textContent=interpret(t);
+  renderBars(t);
+}
+function interpret(t){
+  if(t.confirmed)return '该 horizon 同时通过预测误差、ridge 实现收益与多重检验门槛；仍需作为 Shadow 做真正前瞻确认。';
+  if(t.brier_improvement>0&&t.return_mae_improvement>0&&t.ridge_mean_edge_vs_same_year_D1>0)return '三个方向都是正的，但统计联合证据仍不足；属于“有迹象、未确认”。';
+  if(t.ridge_mean_edge_vs_same_year_D1>0)return '局部正向 ridge 的实现收益偏强，但模型整体预测质量没有同步改善，不能把它解释为可预测的 surface alpha。';
+  return '模型预测或 ridge 实现收益至少有一项为负，当前不支持把这张连续地形当作可泛化 Alpha。';
+}
+function renderBars(t){
+  const host=document.getElementById('bars');host.innerHTML='';const entries=Object.entries(t.combo_frequency);const max=Math.max(...entries.map(x=>x[1]),1);
+  entries.slice(0,8).forEach(([name,n])=>{const r=document.createElement('div');r.className='barrow';r.innerHTML=`<div class="barname" title="${name}">${name}</div><div class="track"><div class="fill" style="width:${100*n/max}%"></div></div><div class="n">${n} 年</div>`;host.appendChild(r)});
+}
+function renderTable(){
+  const tb=document.getElementById('tbody');tb.innerHTML='';
+  data.summary.tests.forEach(t=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${labels[t.symbol]} · T+${t.horizon}</td><td>${t.outer_event_n}</td><td class="${cls(t.brier_improvement)}">${t.brier_improvement>=0?'+':''}${fmt(t.brier_improvement,6)}</td><td class="${cls(t.return_mae_improvement)}">${t.return_mae_improvement>=0?'+':''}${fmt(t.return_mae_improvement,5)}</td><td>${t.ridge_n}</td><td class="${cls(t.ridge_mean_edge_vs_same_year_D1)}">${pp(t.ridge_mean_edge_vs_same_year_D1)}</td><td>${pct(t.ridge_positive_year_rate)}</td><td>${fmt(t.q_joint,4)}</td><td class="${t.confirmed?'good':'bad'}">${t.confirmed?'PASS':'FAIL'}</td>`;tb.appendChild(tr)});
+}
+init().catch(e=>{document.getElementById('banner').textContent='载入失败：'+e.message});
+</script>
+</body>
+</html>
