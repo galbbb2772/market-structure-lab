@@ -11,11 +11,13 @@ on:
       - 'build_market_state_sequence_event_audit_v1.py'
       - 'diagnose_market_state_sequence_freshness_v1.py'
       - 'build_residual_mean_reversion_distance_v1.py'
+      - 'build_residual_mean_reversion_distance_forward_oos_v1.py'
       - 'validate_market_state_sequence_phase_onsets_v1.py'
       - 'research/market_state_sequence_v1/PREREGISTRATION.md'
       - 'research/market_state_sequence_v1/EVENT_AUDIT_PREREGISTRATION.md'
       - 'research/market_state_sequence_freshness_v1/PREREGISTRATION.md'
       - 'research/residual_mean_reversion_distance_v1/PREREGISTRATION.md'
+      - 'research/residual_mean_reversion_distance_forward_oos_v1/PREREGISTRATION.md'
       - '.github/workflows/market_state_sequence_v1.yml'
 
 permissions:
@@ -46,6 +48,8 @@ jobs:
         run: python diagnose_market_state_sequence_freshness_v1.py
       - name: Run Residual Mean-Reversion Distance diagnostic
         run: python build_residual_mean_reversion_distance_v1.py
+      - name: Update append-only RMD3 Forward OOS ledger
+        run: python build_residual_mean_reversion_distance_forward_oos_v1.py
       - name: Validate frozen research output
         run: |
           python - <<'PY'
@@ -56,12 +60,14 @@ jobs:
           o='docs/data/market_state_sequence_forward_oos_v1.json'
           f='docs/data/market_state_sequence_freshness_v1.json'
           m='docs/data/residual_mean_reversion_distance_v1.json'
+          g='docs/data/residual_mean_reversion_distance_forward_oos_v1.json'
           d=json.load(open(p,encoding='utf-8'))
           z=json.load(open(q,encoding='utf-8'))
           x=json.load(open(a,encoding='utf-8'))
           s=json.load(open(o,encoding='utf-8'))
           r=json.load(open(f,encoding='utf-8'))
           u=json.load(open(m,encoding='utf-8'))
+          v=json.load(open(g,encoding='utf-8'))
           assert d['schema']=='MARKET-STATE-SEQUENCE-V1'
           assert d['research_only'] is True
           assert d['preregistered'] is True
@@ -97,15 +103,26 @@ jobs:
           assert u['decision']['may_change_production'] is False
           assert u['decision']['may_change_existing_forward_oos_shadow'] is False
           assert len(u['events_ranked_by_rmd3'])==12
+          assert v['schema']=='RMD3-SEQUENCE-FORWARD-OOS-V1'
+          assert v['observation_only'] is True
+          assert v['production_effect']=='none'
+          assert v['freeze_reference_commit']=='14283ffc5c5f41156a580d4731d4c3b79d800246'
+          assert v['frozen_through_market_date']=='2026-10-02'
+          assert v['event_definition']=='D_TO_BOTH_REBOUND_SCORE'
+          assert v['score_definition']=='RMD3 = equal-weight mean(price_residual, breadth_residual, score_residual)'
+          for e in v['events']:
+              assert e['event_date'] > '2026-10-02'
+              assert 0.0 <= e['rmd3'] <= 1.0
           print('MARKET_STATE_SEQUENCE_V1_VALID', d['coverage'], d['latest'], x['shadow_decision'])
           print('SEQUENCE_FRESHNESS_V1_VALID', r['full_summary'], r['concentration'])
           print('RESIDUAL_MEAN_REVERSION_DISTANCE_V1_VALID', u['correlations'])
+          print('RMD3_FORWARD_OOS_VALID', v['forward_event_count'], v['mature_10d_event_count'], v['source_recompute_discrepancies'])
           PY
       - name: Commit refreshed research data
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/data/market_state_sequence_v1.json docs/data/market_state_sequence_phase_onsets_v1.json docs/data/market_state_sequence_event_audit_v1.json docs/data/market_state_sequence_forward_oos_v1.json docs/data/market_state_sequence_freshness_v1.json docs/data/residual_mean_reversion_distance_v1.json
+          git add docs/data/market_state_sequence_v1.json docs/data/market_state_sequence_phase_onsets_v1.json docs/data/market_state_sequence_event_audit_v1.json docs/data/market_state_sequence_forward_oos_v1.json docs/data/market_state_sequence_freshness_v1.json docs/data/residual_mean_reversion_distance_v1.json docs/data/residual_mean_reversion_distance_forward_oos_v1.json
           if git diff --cached --quiet; then
             echo 'No dataset change.'
           else
