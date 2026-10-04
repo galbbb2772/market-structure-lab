@@ -1,6 +1,6 @@
 {
   "schema": "MARKET-STATE-SEQUENCE-PHASE-ONSETS-V1",
-  "generated_at": "2026-10-03T12:25:03.515525+00:00",
+  "generated_at": "2026-10-04T01:45:18.867854+00:00",
   "research_only": true,
   "method": "first trading day entering each DUAL phase; same 5-session de-cluster guardrail",
   "thresholds_changed": false,
