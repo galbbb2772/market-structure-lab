@@ -1,0 +1,43 @@
+{
+  "schema": "RMD3-SEQUENCE-FORWARD-OOS-V1",
+  "generated_at": "2026-10-04T01:54:26.620464+00:00",
+  "research_only": true,
+  "observation_only": true,
+  "production_effect": "none",
+  "freeze_reference_commit": "14283ffc5c5f41156a580d4731d4c3b79d800246",
+  "frozen_through_market_date": "2026-10-02",
+  "event_definition": "D_TO_BOTH_REBOUND_SCORE",
+  "score_definition": "RMD3 = equal-weight mean(price_residual, breadth_residual, score_residual)",
+  "append_only_score_fields": [
+    "event_date",
+    "first_seen_at",
+    "first_seen_market_date",
+    "ret20_expanding_percentile",
+    "breadth_20d_pct",
+    "market_score_pct",
+    "price_residual",
+    "breadth_residual",
+    "score_residual",
+    "rmd3"
+  ],
+  "latest_market_date": "2026-10-01",
+  "forward_event_count": 0,
+  "mature_10d_event_count": 0,
+  "first_forward_event_date": null,
+  "events": [],
+  "source_recompute_discrepancies": [],
+  "promotion_gate": {
+    "minimum_forward_events": 20,
+    "minimum_calendar_months": 12,
+    "event_count_ready": false,
+    "calendar_gate_ready": false,
+    "ready": false,
+    "note": "Calendar gate is intentionally not inferred here; any promotion requires a separate preregistered review after both gates are met."
+  },
+  "warnings": [
+    "Historical development events through 2026-10-02 are excluded from Forward OOS counts.",
+    "Frozen event-date RMD3 values are never overwritten by later upstream revisions.",
+    "FRED current-history inputs can contain revisions and are not ALFRED vintage data.",
+    "Market Score history inherits reconstruction caveats from Market State Box V1."
+  ]
+}
