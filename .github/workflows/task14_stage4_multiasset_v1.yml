@@ -1,3 +1,4 @@
+# Activation marker: workflow existed before this push so this commit must create a real CI run.
 name: Task 1/4 Stage-4 Multi-Asset V1
 
 on:
