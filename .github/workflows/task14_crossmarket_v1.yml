@@ -1,0 +1,56 @@
+name: Task 1/4 Cross-Market Confirmation V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_task14_crossmarket_yahoo_v1.py'
+      - '.github/workflows/task14_crossmarket_v1.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: task14-crossmarket-v1
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build cross-market confirmation
+        run: python research_task14_crossmarket_yahoo_v1.py
+      - name: Validate diagnostic output
+        run: |
+          python - <<'PY'
+          import json
+          p='docs/data/task14_crossmarket_confirmation_v1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['schema']=='TASK14-CROSSMARKET-CONFIRMATION-V1'
+          assert d['research_only'] is True and d['diagnostic_only'] is True
+          assert d['production_effect']=='none'
+          assert d['event_count']==12
+          assert d['decision']['may_change_production'] is False
+          assert d['decision']['may_change_existing_forward_oos'] is False
+          print('TASK14_CROSSMARKET_V1_VALID', d['complete_crossmarket_event_count'], d['sources'], d['errors'], d['groups'])
+          PY
+      - name: Commit cross-market research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/task14_crossmarket_confirmation_v1.json
+          if git diff --cached --quiet; then
+            echo 'No dataset change.'
+          else
+            git commit -m 'data: refresh Task 1/4 cross-market confirmation V1'
+            git pull --rebase origin main
+            git push
+          fi
