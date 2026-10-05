@@ -1,0 +1,74 @@
+name: Task 1/4 Stage-3 Evidence Audit V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_task14_stage3_v1.py'
+      - 'research/task14_stage3_v1/STUDY_SPEC.md'
+      - '.github/workflows/task14_stage3_v1.yml'
+      - 'docs/data/market_state_box_v1.json'
+      - 'docs/data/market_state_sequence_event_audit_v1.json'
+      - 'docs/data/residual_mean_reversion_distance_v1.json'
+      - 'docs/data/task14_extended_diagnostics_v1.json'
+      - 'docs/data/task14_stage2_research_v1.json'
+      - 'docs/data/task14_challenger_forward_oos_v1.json'
+      - 'docs/data/residual_mean_reversion_distance_forward_oos_v1.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: task14-stage3-v1
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run Stage-3 evidence audit
+        run: python research_task14_stage3_v1.py
+      - name: Validate Stage-3 output
+        run: |
+          python - <<'PY'
+          import json
+          p='docs/data/task14_stage3_evidence_audit_v1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['schema']=='TASK14-STAGE3-EVIDENCE-AUDIT-V1'
+          assert d['research_only'] is True and d['diagnostic_only'] is True
+          assert d['production_effect']=='none'
+          assert d['thresholds_changed'] is False
+          assert d['coverage']['completion_events']==12
+          assert 'event_independence' in d
+          assert 'dplus1_paired_test' in d
+          assert 'rmd3_evidence' in d
+          assert 'hazard_loo_calibration' in d
+          assert 'multiple_testing' in d
+          assert d['decision']['may_change_production'] is False
+          assert d['decision']['may_change_existing_forward_oos'] is False
+          print('TASK14_STAGE3_VALID', d['event_independence']['cluster_sensitivity']['20'])
+          print('DPLUS1_10D', d['dplus1_paired_test']['10d'])
+          print('RMD3_10D', d['rmd3_evidence']['permutation']['10d'], d['rmd3_evidence']['partial_spearman_10d_controlling_severity_and_phase'])
+          print('HAZARD_BRIER', d['hazard_loo_calibration']['brier'])
+          print('EVIDENCE_GATES', d['evidence_gates'])
+          PY
+      - name: Commit Stage-3 research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/task14_stage3_evidence_audit_v1.json
+          if git diff --cached --quiet; then
+            echo 'No Stage-3 data change.'
+          else
+            git commit -m 'data: refresh Task 1/4 Stage-3 evidence audit V1'
+            git pull --rebase origin main
+            git push
+          fi
