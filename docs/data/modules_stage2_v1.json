@@ -1,6 +1,6 @@
 {
   "schema": "CROSS-MODULE-STAGE2-V1",
-  "generated_at": "2026-10-05T07:45:16.518608+00:00",
+  "generated_at": "2026-10-05T07:51:34.846678+00:00",
   "research_only": true,
   "diagnostic_only": true,
   "production_effect": "none",
@@ -12278,10 +12278,14 @@
     "definition_warning": "Recent-low + score-recovery event is a new diagnostic construction, not an existing production rule."
   },
   "concentration": {
-    "method": "strict past-only walk-forward using existing Concentration V1 distance/settings; targets abs(streak)>=2 and de-clustered 5 sessions",
+    "method": "Strict past-only Concentration V1 analog validation; abs(streak)>=2 targets, 5-session target decluster, same direction, streak tolerance 1, same MA200 regime, top40 analogs, 5-session candidate decluster.",
+    "engine": "vectorized equivalent of Concentration V1 distance/settings",
     "results": [
       {
         "symbol": "^GSPC",
+        "name": "S&P 500",
+        "source_start": "1927-12-30",
+        "source_end": "2026-10-02",
         "target_n": 4077,
         "evaluated_n": 4031,
         "5d": {
@@ -12293,7 +12297,8 @@
           "baseline_mae": 1.8019,
           "mae_improvement": -0.0097,
           "brier": 0.24921,
-          "baseline_brier": 0.24675
+          "baseline_brier": 0.24675,
+          "brier_improvement": -0.00246
         },
         "10d": {
           "n": 4031,
@@ -12304,7 +12309,8 @@
           "baseline_mae": 2.5033,
           "mae_improvement": -0.0354,
           "brier": 0.24983,
-          "baseline_brier": 0.24451
+          "baseline_brier": 0.24451,
+          "brier_improvement": -0.00531
         },
         "records": [
           {
@@ -80838,6 +80844,9 @@
       },
       {
         "symbol": "^IXIC",
+        "name": "Nasdaq Composite",
+        "source_start": "1971-02-05",
+        "source_end": "2026-10-02",
         "target_n": 2317,
         "evaluated_n": 2241,
         "5d": {
@@ -80849,7 +80858,8 @@
           "baseline_mae": 2.0264,
           "mae_improvement": -0.0206,
           "brier": 0.24723,
-          "baseline_brier": 0.24403
+          "baseline_brier": 0.24403,
+          "brier_improvement": -0.0032
         },
         "10d": {
           "n": 2241,
@@ -80860,7 +80870,8 @@
           "baseline_mae": 2.9297,
           "mae_improvement": -0.0081,
           "brier": 0.24237,
-          "baseline_brier": 0.24052
+          "baseline_brier": 0.24052,
+          "brier_improvement": -0.00185
         },
         "records": [
           {
@@ -118964,6 +118975,9 @@
       },
       {
         "symbol": "^DJI",
+        "name": "Dow Jones",
+        "source_start": "1992-01-02",
+        "source_end": "2026-10-02",
         "target_n": 1367,
         "evaluated_n": 1315,
         "5d": {
@@ -118975,7 +118989,8 @@
           "baseline_mae": 1.6014,
           "mae_improvement": -0.0156,
           "brier": 0.25099,
-          "baseline_brier": 0.24646
+          "baseline_brier": 0.24646,
+          "brier_improvement": -0.00454
         },
         "10d": {
           "n": 1315,
@@ -118986,7 +119001,8 @@
           "baseline_mae": 2.2533,
           "mae_improvement": -0.03,
           "brier": 0.24671,
-          "baseline_brier": 0.24222
+          "baseline_brier": 0.24222,
+          "brier_improvement": -0.00449
         },
         "records": [
           {
