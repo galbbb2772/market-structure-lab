@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-PAPER-PORTFOLIO-V1",
-  "generated_at": "2026-10-05T18:46:37.399378+00:00",
+  "generated_at": "2026-10-05T18:48:51.344140+00:00",
   "research_only": true,
   "diagnostic_only": true,
   "paper_only": true,
@@ -11,7 +11,9 @@
   "source": {
     "host": "query1.finance.yahoo.com",
     "rows": 2513,
-    "transport": "yahoo_chart_range_10y"
+    "transport": "yahoo_chart_range_10y",
+    "incomplete_current_session_excluded": true,
+    "latest_completed_spy_date": "2026-10-02"
   },
   "upstream_forward_signal_count": 0,
   "upstream_counts": {
@@ -25,13 +27,15 @@
         "policy": "full_only_100_dedup",
         "cost_model": "fixed_10bps_rt",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-05",
+        "latest_market_date": "2026-10-02",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
         "realized_trades": [],
         "open_positions": [],
         "total_modeled_cost_to_date_usd": 0.0,
+        "average_gross_exposure": 0.0,
+        "max_gross_exposure": 0.0,
         "equity_curve": [
           {
             "date": "2016-10-05",
@@ -12590,11 +12594,6 @@
           },
           {
             "date": "2026-10-02",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
-          {
-            "date": "2026-10-05",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -12604,13 +12603,15 @@
         "policy": "full_only_100_dedup",
         "cost_model": "square_root_impact",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-05",
+        "latest_market_date": "2026-10-02",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
         "realized_trades": [],
         "open_positions": [],
         "total_modeled_cost_to_date_usd": 0.0,
+        "average_gross_exposure": 0.0,
+        "max_gross_exposure": 0.0,
         "equity_curve": [
           {
             "date": "2016-10-05",
@@ -25169,11 +25170,6 @@
           },
           {
             "date": "2026-10-02",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
-          {
-            "date": "2026-10-05",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -25185,13 +25181,15 @@
         "policy": "early_full_100_dedup",
         "cost_model": "fixed_10bps_rt",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-05",
+        "latest_market_date": "2026-10-02",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
         "realized_trades": [],
         "open_positions": [],
         "total_modeled_cost_to_date_usd": 0.0,
+        "average_gross_exposure": 0.0,
+        "max_gross_exposure": 0.0,
         "equity_curve": [
           {
             "date": "2016-10-05",
@@ -37750,11 +37748,6 @@
           },
           {
             "date": "2026-10-02",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
-          {
-            "date": "2026-10-05",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -37764,13 +37757,15 @@
         "policy": "early_full_100_dedup",
         "cost_model": "square_root_impact",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-05",
+        "latest_market_date": "2026-10-02",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
         "realized_trades": [],
         "open_positions": [],
         "total_modeled_cost_to_date_usd": 0.0,
+        "average_gross_exposure": 0.0,
+        "max_gross_exposure": 0.0,
         "equity_curve": [
           {
             "date": "2016-10-05",
@@ -50329,11 +50324,6 @@
           },
           {
             "date": "2026-10-02",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
-          {
-            "date": "2026-10-05",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -50345,13 +50335,15 @@
         "policy": "early_full_vol10_dedup",
         "cost_model": "fixed_10bps_rt",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-05",
+        "latest_market_date": "2026-10-02",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
         "realized_trades": [],
         "open_positions": [],
         "total_modeled_cost_to_date_usd": 0.0,
+        "average_gross_exposure": 0.0,
+        "max_gross_exposure": 0.0,
         "equity_curve": [
           {
             "date": "2016-10-05",
@@ -62910,11 +62902,6 @@
           },
           {
             "date": "2026-10-02",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
-          {
-            "date": "2026-10-05",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -62924,13 +62911,15 @@
         "policy": "early_full_vol10_dedup",
         "cost_model": "square_root_impact",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-05",
+        "latest_market_date": "2026-10-02",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
         "realized_trades": [],
         "open_positions": [],
         "total_modeled_cost_to_date_usd": 0.0,
+        "average_gross_exposure": 0.0,
+        "max_gross_exposure": 0.0,
         "equity_curve": [
           {
             "date": "2016-10-05",
@@ -75489,11 +75478,6 @@
           },
           {
             "date": "2026-10-02",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
-          {
-            "date": "2026-10-05",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -75505,13 +75489,15 @@
         "policy": "early_full_stack25_cap100",
         "cost_model": "fixed_10bps_rt",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-05",
+        "latest_market_date": "2026-10-02",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
         "realized_trades": [],
         "open_positions": [],
         "total_modeled_cost_to_date_usd": 0.0,
+        "average_gross_exposure": 0.0,
+        "max_gross_exposure": 0.0,
         "equity_curve": [
           {
             "date": "2016-10-05",
@@ -88070,11 +88056,6 @@
           },
           {
             "date": "2026-10-02",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
-          {
-            "date": "2026-10-05",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -88084,13 +88065,15 @@
         "policy": "early_full_stack25_cap100",
         "cost_model": "square_root_impact",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-05",
+        "latest_market_date": "2026-10-02",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
         "realized_trades": [],
         "open_positions": [],
         "total_modeled_cost_to_date_usd": 0.0,
+        "average_gross_exposure": 0.0,
+        "max_gross_exposure": 0.0,
         "equity_curve": [
           {
             "date": "2016-10-05",
@@ -100649,11 +100632,6 @@
           },
           {
             "date": "2026-10-02",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
-          {
-            "date": "2026-10-05",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -100672,6 +100650,8 @@
   "warnings": [
     "This is a prospective paper portfolio only; no brokerage orders are enabled.",
     "Only post-2026-10-02 Forward-OOS Early Sequence and Full Sequence events are eligible.",
-    "Existing signal decisions are immutable; a later recompute mismatch causes the build to fail instead of rewriting history."
+    "Deduplication is decided at signal close; execution occurs at the next completed regular-session open.",
+    "An incomplete current U.S. trading session is excluded from the paper ledger.",
+    "Existing signal decisions are immutable; a later recompute mismatch fails the build instead of rewriting history."
   ]
 }
