@@ -1,0 +1,109 @@
+name: Task 1/4 Stage-4 Multi-Asset V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_task14_stage4_multiasset_v1.py'
+      - 'build_task14_paper_multiasset_v1.py'
+      - 'summarize_task14_stage4_multiasset_v1.py'
+      - 'research/task14_stage4_multiasset_v1/STUDY_SPEC.md'
+      - '.github/workflows/task14_stage4_multiasset_v1.yml'
+      - 'docs/data/market_state_box_v1.json'
+      - 'docs/data/task14_challenger_forward_oos_v1.json'
+  schedule:
+    - cron: '5 0 * * 2-6'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: task14-stage4-multiasset-v1
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build historical multi-asset diagnostic
+        run: python research_task14_stage4_multiasset_v1.py
+      - name: Build prospective multi-asset paper ledger
+        run: python build_task14_paper_multiasset_v1.py
+      - name: Build compact multi-asset risk summary
+        run: python summarize_task14_stage4_multiasset_v1.py
+      - name: Validate multi-asset outputs
+        run: |
+          python - <<'PY'
+          import json
+          h=json.load(open('docs/data/task14_stage4_multiasset_v1.json',encoding='utf-8'))
+          p=json.load(open('docs/data/task14_paper_multiasset_v1.json',encoding='utf-8'))
+          s=json.load(open('docs/data/task14_stage4_multiasset_v1_summary.json',encoding='utf-8'))
+          assert h['schema']=='TASK14-STAGE4-MULTIASSET-V1'
+          assert h['research_only'] is True and h['diagnostic_only'] is True
+          assert h['production_effect']=='none' and h['thresholds_changed'] is False
+          assert h['broker_orders_enabled'] is False
+          assert h['frozen_through_market_date']=='2026-10-02'
+          assert h['historical_signal_counts']=={'early_sequence':15,'full_sequence':12,'combined_records':27}
+          assert len(h['asset_universe'])==11
+          assert {x['symbol'] for x in h['asset_universe']}=={'XLC','XLY','XLP','XLE','XLF','XLV','XLI','XLB','XLRE','XLK','XLU'}
+          assert set(h['portfolio_results'])=={
+              'full_eq_sector_100_dedup','full_invvol_sector_100_dedup',
+              'early_full_stack25_invvol_cap100','early_full_stack25_beta100_cap100'
+          }
+          assert set(h['capital_scale_sweep'])=={'100000','1000000','10000000','100000000'}
+          assert h['guardrails']['stock_selection_inferred'] is False
+          for models in h['portfolio_results'].values():
+              for r in models.values():
+                  assert r['max_gross_exposure'] <= 1.000001, r['max_gross_exposure']
+                  assert r['closed_sleeve_count'] > 0
+                  assert r['max_asset_adv_participation_pct'] >= 0
+          assert p['schema']=='TASK14-PAPER-MULTIASSET-V1'
+          assert p['paper_only'] is True and p['production_effect']=='none'
+          assert p['broker_orders_enabled'] is False
+          assert p['frozen_through_market_date']=='2026-10-02'
+          assert p['guardrails']['stock_selection_inferred'] is False
+          assert len(p['immutable_recompute_discrepancies'])==0
+          assert s['schema']=='TASK14-STAGE4-MULTIASSET-V1-SUMMARY'
+          assert s['production_effect']=='none'
+          assert set(s['portfolio_results'])==set(h['portfolio_results'])
+          print('MULTIASSET_VALID', h['historical_signal_counts'])
+          print('UNIVERSE_VALID', [x['symbol'] for x in h['asset_universe']])
+          print('PAPER_VALID', p['upstream_counts'], p['latest_complete_market_date'])
+          print('SUMMARY_VALID')
+          PY
+      - name: Commit multi-asset data
+        run: |
+          set -e
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          mkdir -p /tmp/task14-multiasset
+          cp docs/data/task14_stage4_multiasset_v1.json /tmp/task14-multiasset/
+          cp docs/data/task14_paper_multiasset_v1.json /tmp/task14-multiasset/
+          cp docs/data/task14_stage4_multiasset_v1_summary.json /tmp/task14-multiasset/
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/task14-multiasset/task14_stage4_multiasset_v1.json docs/data/
+            cp /tmp/task14-multiasset/task14_paper_multiasset_v1.json docs/data/
+            cp /tmp/task14-multiasset/task14_stage4_multiasset_v1_summary.json docs/data/
+            git add docs/data/task14_stage4_multiasset_v1.json docs/data/task14_paper_multiasset_v1.json docs/data/task14_stage4_multiasset_v1_summary.json
+            if git diff --cached --quiet; then
+              echo 'No multi-asset data change.'
+              exit 0
+            fi
+            git commit -m 'data: refresh Task 1/4 Stage-4 multi-asset V1'
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push race on attempt ${attempt}; retrying from latest main."
+          done
+          echo 'Failed to publish multi-asset data after 3 attempts.' >&2
+          exit 1
