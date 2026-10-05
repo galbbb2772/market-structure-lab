@@ -1,0 +1,62 @@
+name: Sentiment Normalization Stage-2 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_sentiment_normalization_stage2_v1.py'
+      - 'research/sentiment_normalization_stage2_v1/STUDY_SPEC.md'
+      - 'docs/data/market_state_box_v1.json'
+      - 'research_modules_stage2_v1.py'
+      - '.github/workflows/sentiment_normalization_stage2_v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run sentiment normalization robustness
+        run: python research_sentiment_normalization_stage2_v1.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          p='docs/data/sentiment_normalization_stage2_v1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['schema']=='SENTIMENT-NORMALIZATION-STAGE2-V1'
+          assert d['research_only'] is True and d['diagnostic_only'] is True
+          assert d['production_effect']=='none' and d['thresholds_changed'] is False
+          assert set(d['variants'])=={'EXPANDING_EXISTING','ROLLING_252_DIAGNOSTIC','ROLLING_756_DIAGNOSTIC'}
+          assert d['variants']['EXPANDING_EXISTING']['event_count']==22
+          assert d['decision']['may_replace_existing_normalization'] is False
+          assert d['decision']['may_promote_rolling_variant'] is False
+          assert d['decision']['historical_best_variant_selection_allowed'] is False
+          print('SENTIMENT_NORMALIZATION_VALID', {
+              k: {
+                  'n': v['event_count'],
+                  'post2022': v['eras']['2022_2026']['event_count'],
+                  'p': v['placebo_10d']['empirical_one_sided_p'],
+                  'matched10': v['matched_control']['aggregate']['10d'].get('mean_lift_pp'),
+              } for k,v in d['variants'].items()
+          })
+          PY
+      - name: Commit research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add docs/data/sentiment_normalization_stage2_v1.json
+          if git diff --cached --quiet; then
+            echo 'No sentiment-normalization data change.'
+          else
+            git commit -m 'data: refresh sentiment normalization Stage-2 V1'
+            git pull --rebase origin main
+            git push
+          fi
