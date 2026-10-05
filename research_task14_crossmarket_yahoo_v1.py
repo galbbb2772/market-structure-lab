@@ -11,6 +11,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean, median
+from urllib.parse import quote
 
 import requests
 
@@ -18,7 +19,11 @@ ROOT = Path(__file__).resolve().parent
 AUDIT = ROOT / "docs/data/market_state_sequence_event_audit_v1.json"
 BOX = ROOT / "docs/data/market_state_box_v1.json"
 OUT = ROOT / "docs/data/task14_crossmarket_confirmation_v1.json"
-TICKERS = {"QQQ":"QQQ","IWM":"IWM","HYG":"HYG","LQD":"LQD","VIX":"^VIX"}
+PRIMARY = {"QQQ":"QQQ","IWM":"IWM","HYG":"HYG","LQD":"LQD","VIX":"^VIX"}
+AUXILIARY = {"TLT":"TLT","DXY":"DX-Y.NYB","TNX":"^TNX"}
+TICKERS = {**PRIMARY, **AUXILIARY}
+HTTP = requests.Session()
+HTTP.headers.update({"User-Agent":"Mozilla/5.0 MarketRegimeLab/1.1"})
 
 
 def num(x):
@@ -36,33 +41,45 @@ def qtile(vals,p):
     return a[i]+(a[j]-a[i])*f
 
 
-def fetch_yahoo(ticker):
-    params={"period1":1451606400,"period2":1791244800,"interval":"1d","events":"history","includeAdjustedClose":"true"}
-    headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
-    errors=[]
-    for host in ("query1.finance.yahoo.com","query2.finance.yahoo.com"):
-        url=f"https://{host}/v8/finance/chart/{requests.utils.quote(ticker,safe='')}"
-        for attempt in range(2):
+def request(url: str, timeout: int = 12):
+    last=None
+    for base in (url, url.replace("query1.finance.yahoo.com","query2.finance.yahoo.com")):
+        for wait in (0,2):
+            if wait:
+                time.sleep(wait)
             try:
-                r=requests.get(url,params=params,headers=headers,timeout=15)
-                r.raise_for_status()
-                obj=r.json()["chart"]["result"][0]
-                ts=obj.get("timestamp") or []
-                quote=((obj.get("indicators") or {}).get("quote") or [{}])[0]
-                closes=quote.get("close") or []
-                out=[]
-                for t,c in zip(ts,closes):
-                    c=num(c)
-                    if c is None: continue
-                    d=datetime.fromtimestamp(int(t),tz=timezone.utc).strftime("%Y-%m-%d")
-                    out.append((d,c))
-                if len(out)>=1000:
-                    return out,{"host":host,"rows":len(out)}
-                errors.append(f"{host}: short series {len(out)}")
-            except Exception as e:
-                errors.append(f"{host}: {type(e).__name__}: {e}")
-                time.sleep(1+attempt)
-    raise RuntimeError(" | ".join(errors))
+                r=HTTP.get(base,timeout=timeout)
+                if r.ok:
+                    return r
+                last=RuntimeError(f"HTTP {r.status_code}: {r.text[:160]}")
+            except Exception as exc:
+                last=exc
+    raise last or RuntimeError("request failed")
+
+
+def fetch_yahoo(ticker):
+    # Match the transport that is already working in market-indicators-v1:
+    # range=10y rather than period1/period2.  Prefer adjusted close.
+    sym=quote(ticker,safe="")
+    url=f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=10y&interval=1d&events=history&includeAdjustedClose=true"
+    data=request(url,12).json()
+    res=(data.get("chart") or {}).get("result")
+    if not res:
+        raise ValueError(str((data.get("chart") or {}).get("error")))
+    obj=res[0]
+    ts=obj.get("timestamp") or []
+    q=((obj.get("indicators") or {}).get("quote") or [{}])[0]
+    adj=((obj.get("indicators") or {}).get("adjclose") or [{}])[0].get("adjclose")
+    closes=adj if adj and len(adj)==len(ts) else (q.get("close") or [])
+    out=[]
+    for t,c in zip(ts,closes):
+        c=num(c)
+        if c is None: continue
+        d=datetime.fromtimestamp(int(t),tz=timezone.utc).strftime("%Y-%m-%d")
+        out.append((d,c))
+    if len(out)<1000:
+        raise RuntimeError(f"short Yahoo history: {len(out)}")
+    return out,{"transport":"yahoo_chart_range_10y","rows":len(out)}
 
 
 def ret_n(series,date,n=5):
@@ -102,7 +119,7 @@ def main():
         try:
             series[name],sources[name]=fetch_yahoo(ticker)
         except Exception as e:
-            errors[name]=str(e)
+            errors[name]=f"{type(e).__name__}: {e}"
     recs=[]
     for e in events:
         d=e["date"]; conf=0; avail=0; row={"date":d}
@@ -117,6 +134,12 @@ def main():
             avail+=1; conf+=int(v<0)
         row["confirmation_count"]=conf
         row["available_components"]=avail
+        aux_avail=0
+        for name in ("TLT","DXY","TNX"):
+            av=ret_n(series[name],d,5) if name in series else None
+            row[f"{name}_ret5_pct"]=None if av is None else round(av,4)
+            aux_avail += int(av is not None)
+        row["aux_available_components"]=aux_avail
         row.update(fwd.get(d,{}))
         recs.append(row)
     complete=[r for r in recs if r["available_components"]==5]
@@ -131,13 +154,13 @@ def main():
         "generated_at":datetime.now(timezone.utc).isoformat(),
         "research_only":True,"diagnostic_only":True,"production_effect":"none",
         "event_definition":"frozen D_TO_BOTH_REBOUND_SCORE historical event set",
-        "feature_definition":"5-session direction at/on event date: QQQ/IWM/HYG/LQD positive and VIX negative each count +1; no optimized weights or thresholds",
-        "source":"Yahoo Finance chart API fallback",
+        "feature_definition":"Primary confirmation is unchanged: 5-session direction at/on event date; QQQ/IWM/HYG/LQD positive and VIX negative each count +1. TLT/DXY/TNX are auxiliary descriptive context only and never enter confirmation_count.",
+        "source":"Yahoo Finance chart API, range=10y transport aligned with market-indicators-v1",
         "sources":sources,"errors":errors,
         "event_count":len(events),"complete_crossmarket_event_count":len(complete),
         "records":recs,"groups":groups,"by_confirmation_count":by_count,
         "decision":{"may_change_production":False,"may_change_existing_forward_oos":False,"status":"historical_diagnostic_only","promotion_requirement":"Any confirmation gate inspired by this table requires separate preregistration and Forward OOS."},
-        "warnings":["This is post-discovery historical evidence, not Forward OOS.","Twelve Sequence events are heavily concentrated in 2022.","Five-session direction and the 3+/4+ groupings are fixed diagnostics, not optimized production gates."],
+        "warnings":["This is post-discovery historical evidence, not Forward OOS.","Twelve Sequence events are heavily concentrated in 2022.","Five-session direction and the 3+/4+ groupings are fixed diagnostics, not optimized production gates.","TLT/DXY/TNX are auxiliary context and do not alter the frozen five-component confirmation score."],
     }
     OUT.write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps({"complete":len(complete),"sources":sources,"errors":errors,"groups":groups},ensure_ascii=False))
