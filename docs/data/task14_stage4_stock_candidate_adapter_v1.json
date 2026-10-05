@@ -1,0 +1,61 @@
+{
+  "schema": "TASK14-STAGE4-STOCK-CANDIDATE-ADAPTER-V1",
+  "generated_at": "2026-10-05T21:37:50.690909+00:00",
+  "research_only": true,
+  "paper_only": true,
+  "production_effect": "none",
+  "broker_orders_enabled": false,
+  "frozen_through_market_date": "2026-10-02",
+  "latest_upstream_market_date": "2026-10-01",
+  "study_spec": "research/task14_stage4_stock_candidate_adapter_v1/STUDY_SPEC.md",
+  "upstream_forward_oos": {
+    "early_sequence": {
+      "forward_event_count": 0,
+      "mature_10d_event_count": 0,
+      "event_dates": [],
+      "source_recompute_discrepancy_count": 0
+    },
+    "rmd2_price_score": {
+      "forward_event_count": 0,
+      "mature_10d_event_count": 0,
+      "event_dates": [],
+      "source_recompute_discrepancy_count": 0
+    },
+    "dplus1_entry": {
+      "forward_event_count": 0,
+      "mature_10d_event_count": 0,
+      "event_dates": [],
+      "source_recompute_discrepancy_count": 0
+    },
+    "dual_severity_hazard": {
+      "forward_event_count": 0,
+      "mature_10d_event_count": 0,
+      "event_dates": [],
+      "source_recompute_discrepancy_count": 0
+    }
+  },
+  "adapter": {
+    "status": "AWAITING_UPSTREAM_FEED",
+    "as_of_market_date": null,
+    "source_name": null,
+    "source_version": null,
+    "source_generated_at": null,
+    "candidate_count": 0,
+    "forward_eligible_count": 0,
+    "signal_aligned_count": 0,
+    "candidates": []
+  },
+  "guardrails": {
+    "historical_results_count_as_forward_oos": false,
+    "automatic_stock_selection": false,
+    "automatic_sector_exclusion": false,
+    "automatic_policy_promotion": false,
+    "rank_recomputed_by_adapter": false,
+    "future_outcome_fields_allowed": false
+  },
+  "warnings": [
+    "This adapter standardizes an upstream candidate feed; it does not create or optimize stock candidates.",
+    "Historical/backfilled candidates cannot become forward evidence.",
+    "Individual-stock execution requires a separately frozen candidate-generation rule and prospective validation."
+  ]
+}
