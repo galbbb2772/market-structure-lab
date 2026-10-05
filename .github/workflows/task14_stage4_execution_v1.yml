@@ -1,0 +1,70 @@
+name: Task 1/4 Stage-4 Execution V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_task14_stage4_execution_v1.py'
+      - 'build_task14_paper_execution_ledger_v1.py'
+      - 'research/task14_stage4_execution_v1/STUDY_SPEC.md'
+      - '.github/workflows/task14_stage4_execution_v1.yml'
+      - 'docs/data/market_state_sequence_event_audit_v1.json'
+      - 'docs/data/task14_challenger_forward_oos_v1.json'
+  schedule:
+    - cron: '20 23 * * 1-5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: task14-stage4-execution-v1
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build historical execution diagnostic
+        run: python research_task14_stage4_execution_v1.py
+      - name: Build paper execution ledger
+        run: python build_task14_paper_execution_ledger_v1.py
+      - name: Validate Stage-4 outputs
+        run: |
+          python - <<'PY'
+          import json
+          h=json.load(open('docs/data/task14_stage4_execution_v1.json',encoding='utf-8'))
+          p=json.load(open('docs/data/task14_paper_execution_ledger_v1.json',encoding='utf-8'))
+          assert h['schema']=='TASK14-STAGE4-EXECUTION-V1'
+          assert h['research_only'] is True and h['diagnostic_only'] is True
+          assert h['production_effect']=='none' and h['thresholds_changed'] is False
+          assert h['historical_event_count']==12
+          assert set(h['entry_modes'])=={'signal_close','next_open','next_close'}
+          assert h['guardrails']['broker_orders_enabled'] is False
+          assert p['schema']=='TASK14-PAPER-EXECUTION-LEDGER-V1'
+          assert p['paper_only'] is True and p['production_effect']=='none'
+          assert p['broker_orders_enabled'] is False
+          assert p['frozen_through_market_date']=='2026-10-02'
+          assert len(p['immutable_recompute_discrepancies'])==0
+          print('STAGE4_EXECUTION_VALID', h['summary']['entry_gap'], h['summary']['capacity'])
+          print('PAPER_LEDGER_VALID', {'events':p['paper_event_count'],'entries':p['entry_available_count'],'mature10':p['mature_10d_count']})
+          PY
+      - name: Commit Stage-4 data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/task14_stage4_execution_v1.json docs/data/task14_paper_execution_ledger_v1.json
+          if git diff --cached --quiet; then
+            echo 'No Stage-4 execution data change.'
+          else
+            git commit -m 'data: refresh Task 1/4 Stage-4 execution V1'
+            git pull --rebase origin main
+            git push
+          fi
