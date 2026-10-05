@@ -1,0 +1,77 @@
+name: Task 1/4 Stage-4 Portfolio V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_task14_stage4_portfolio_v1.py'
+      - 'build_task14_paper_portfolio_v1.py'
+      - 'research/task14_stage4_portfolio_v1/STUDY_SPEC.md'
+      - '.github/workflows/task14_stage4_portfolio_v1.yml'
+      - 'docs/data/market_state_box_v1.json'
+      - 'docs/data/task14_challenger_forward_oos_v1.json'
+  schedule:
+    - cron: '35 23 * * 1-5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: task14-stage4-portfolio-v1
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build historical Stage-4 portfolio diagnostic
+        run: python research_task14_stage4_portfolio_v1.py
+      - name: Build prospective paper portfolio
+        run: python build_task14_paper_portfolio_v1.py
+      - name: Validate portfolio outputs
+        run: |
+          python - <<'PY'
+          import json
+          h=json.load(open('docs/data/task14_stage4_portfolio_v1.json',encoding='utf-8'))
+          p=json.load(open('docs/data/task14_paper_portfolio_v1.json',encoding='utf-8'))
+          assert h['schema']=='TASK14-STAGE4-PORTFOLIO-V1'
+          assert h['research_only'] is True and h['diagnostic_only'] is True
+          assert h['production_effect']=='none' and h['thresholds_changed'] is False
+          assert h['broker_orders_enabled'] is False
+          assert h['frozen_through_market_date']=='2026-10-02'
+          assert h['historical_signal_counts']['early_sequence']==15
+          assert h['historical_signal_counts']['full_sequence']==12
+          assert set(h['portfolio_results'])=={
+              'full_only_100_dedup','early_full_100_dedup','early_full_vol10_dedup','early_full_stack25_cap100'
+          }
+          assert set(h['capital_scale_sweep'])=={'100000','1000000','10000000','100000000'}
+          assert p['schema']=='TASK14-PAPER-PORTFOLIO-V1'
+          assert p['paper_only'] is True and p['production_effect']=='none'
+          assert p['broker_orders_enabled'] is False
+          assert p['frozen_through_market_date']=='2026-10-02'
+          assert len(p['immutable_recompute_discrepancies'])==0
+          print('STAGE4_PORTFOLIO_VALID', h['historical_signal_counts'])
+          print('CAPACITY_VALID', h['capacity_threshold_summary'])
+          print('PAPER_PORTFOLIO_VALID', p['upstream_counts'])
+          PY
+      - name: Commit Stage-4 portfolio data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/task14_stage4_portfolio_v1.json docs/data/task14_paper_portfolio_v1.json
+          if git diff --cached --quiet; then
+            echo 'No Stage-4 portfolio data change.'
+          else
+            git commit -m 'data: refresh Task 1/4 Stage-4 portfolio V1'
+            git restore --worktree --staged .
+            git pull --rebase origin main
+            git push
+          fi
