@@ -13,6 +13,8 @@ A conclusion remains `PENDING` until all of the following are true for the relev
 - at least 8 independent event clusters using the frozen diagnostic convention that consecutive eligible events <=20 market sessions apart share a cluster;
 - no unresolved immutable-field recomputation discrepancy in the source ledger.
 
+The **primary confirmatory snapshot is frozen at the first moment the readiness gate is satisfied, using the first 20 mature eligible events**. Later cumulative observations are reported as ongoing monitoring only and do not replace the V1 primary snapshot. This prevents repeated peeking from silently changing the test.
+
 Passing a statistical test does not automatically promote a model. A separate review is required.
 
 ## Primary prospective tests
@@ -25,7 +27,7 @@ Primary outcome: 10D forward S&P 500 return.
 
 Primary statistic: Spearman correlation between frozen event-date RMD3 and 10D return.
 
-Pass condition after readiness: rho > 0 and two-sided permutation p <= 0.05 using 100,000 fixed-seed permutations.
+Pass condition after readiness: rho > 0 and two-sided permutation p <= 0.05 using 100,000 fixed-seed permutations on the first 20 mature eligible events.
 
 ### B. D+1 Entry Challenger
 
@@ -33,7 +35,7 @@ Population: the same Full Sequence event dates with both Day0 and D+1 10D outcom
 
 Primary statistic: paired mean difference `D+1 10D return - Day0 10D return`.
 
-Pass condition after readiness: mean paired difference > 0 and exact sign-flip two-sided p <= 0.05.
+Pass condition after readiness: mean paired difference > 0 and exact sign-flip two-sided p <= 0.05 on the first 20 mature paired events.
 
 ### C. DUAL Severity Hazard Challenger
 
@@ -45,7 +47,7 @@ Primary predictor: frozen `HIGH_DUAL_SEVERITY = severity_pp > 6.0`.
 
 Primary score: leave-one-out Brier score of severity-conditioned Laplace-smoothed probabilities versus leave-one-out unconditional base-rate probabilities.
 
-Pass condition after readiness: severity-conditioned Brier score < unconditional Brier score AND observed break rate is higher in HIGH_DUAL_SEVERITY than in the low-severity group.
+Pass condition after readiness: severity-conditioned Brier score < unconditional Brier score AND observed break rate is higher in HIGH_DUAL_SEVERITY than in the low-severity group, using the first 20 mature eligible events.
 
 ### D. Early Sequence Challenger
 
@@ -55,7 +57,7 @@ Primary outcome: 10D forward S&P 500 return.
 
 Reference: unconditional 10D return over all market dates in the Forward-OOS observation window with a mature 10D outcome.
 
-Pass condition after readiness: Early Sequence mean 10D return > reference mean and positive-return rate > 50%.
+Pass condition after readiness: Early Sequence mean 10D return > reference mean and positive-return rate > 50%, using the first 20 mature eligible events.
 
 ## Family-level reporting
 
@@ -66,6 +68,7 @@ The four primary tests are reported together. No single result changes MAIN auto
 - Random seed: 140401.
 - RMD3 permutations: 100,000.
 - Event clustering: <=20 market sessions joins adjacent eligible events.
+- Primary confirmatory sample: first 20 mature eligible events once the shared readiness gate is satisfied.
 - All first-seen signal/score fields remain append-only and immutable.
 - Historical development events <=2026-10-02 never enter prospective counts.
 - Missing or immature outcomes remain missing; they are never imputed as zero.
