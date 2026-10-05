@@ -140,3 +140,5 @@ It may not:
 - no automatic promotion
 - no signal-threshold changes
 - no broker order capability
+
+<!-- workflow-trigger: portfolio-v1 -->
