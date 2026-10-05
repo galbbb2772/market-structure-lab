@@ -1,0 +1,1856 @@
+{
+  "schema": "SENTIMENT-DRIFT-STAGE2-V1",
+  "generated_at": "2026-10-05T08:18:35.411112+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "production_effect": "none",
+  "thresholds_changed": false,
+  "study_spec": "research/sentiment_drift_stage2_v1/STUDY_SPEC.md",
+  "coverage": {
+    "start": "2016-12-27",
+    "end": "2026-10-01",
+    "observations": 2454
+  },
+  "reference_2018_2021": {
+    "raw_stress_mean": 54.7567,
+    "raw_stress_std": 16.4645,
+    "n": 1008
+  },
+  "calendar_year": {
+    "2016": {
+      "observations": 4,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 4,
+        "mean": 37.8358,
+        "median": 40.6055,
+        "std": 8.9592,
+        "p10": 27.8747,
+        "p90": 45.581,
+        "max": 47.0,
+        "min": 23.132
+      },
+      "expanding_percentile": {
+        "n": 4,
+        "mean": 40.15,
+        "median": 43.865,
+        "std": 11.7263,
+        "p10": 27.117,
+        "p90": 50.211,
+        "max": 52.02,
+        "min": 20.85
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -1.0277,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "80": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 0
+        },
+        "days_ge80": 0,
+        "onsets_ge80": 0
+      },
+      "rolling756": {
+        "stats": {
+          "n": 0
+        },
+        "days_ge80": 0,
+        "onsets_ge80": 0
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 0,
+        "D2": 0,
+        "D3": 1,
+        "D4": 0,
+        "D5": 2,
+        "D6": 1,
+        "D7": 0,
+        "D8": 0,
+        "D9": 0,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 4,
+          "mean": 32.8245,
+          "median": 34.6635,
+          "std": 9.2197,
+          "p10": 22.6585,
+          "p90": 41.5193,
+          "max": 43.607,
+          "min": 18.364
+        },
+        "total_negative": {
+          "n": 4,
+          "mean": 35.096,
+          "median": 36.934,
+          "std": 8.075,
+          "p10": 26.1959,
+          "p90": 42.5257,
+          "max": 44.275,
+          "min": 22.241
+        },
+        "inverted_euphoria": {
+          "n": 4,
+          "mean": 45.5865,
+          "median": 50.219,
+          "std": 9.8267,
+          "p10": 34.769,
+          "p90": 52.698,
+          "max": 53.118,
+          "min": 28.79
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 4,
+            "rho": 0.9994
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 4,
+            "rho": 0.9577
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 4,
+            "rho": 0.966
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2017": {
+      "observations": 251,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 251,
+        "mean": 30.3169,
+        "median": 28.066,
+        "std": 10.6008,
+        "p10": 18.651,
+        "p90": 45.865,
+        "max": 61.671,
+        "min": 12.873
+      },
+      "expanding_percentile": {
+        "n": 251,
+        "mean": 30.6053,
+        "median": 27.65,
+        "std": 13.8791,
+        "p10": 15.04,
+        "p90": 51.29,
+        "max": 69.81,
+        "min": 7.87
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -1.4844,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "80": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 196,
+          "mean": 51.0739,
+          "median": 48.7832,
+          "std": 28.9685,
+          "p10": 14.5423,
+          "p90": 91.4353,
+          "max": 100.0,
+          "min": 0.5102
+        },
+        "days_ge80": 48,
+        "onsets_ge80": 10
+      },
+      "rolling756": {
+        "stats": {
+          "n": 196,
+          "mean": 51.0735,
+          "median": 48.7832,
+          "std": 28.9679,
+          "p10": 14.5423,
+          "p90": 91.4353,
+          "max": 100.0,
+          "min": 0.5102
+        },
+        "days_ge80": 48,
+        "onsets_ge80": 10
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 3,
+        "D2": 67,
+        "D3": 69,
+        "D4": 49,
+        "D5": 34,
+        "D6": 17,
+        "D7": 12,
+        "D8": 0,
+        "D9": 0,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 251,
+          "mean": 22.7797,
+          "median": 20.121,
+          "std": 10.0034,
+          "p10": 13.007,
+          "p90": 34.039,
+          "max": 57.672,
+          "min": 8.26
+        },
+        "total_negative": {
+          "n": 251,
+          "mean": 28.4287,
+          "median": 26.04,
+          "std": 10.4041,
+          "p10": 18.059,
+          "p90": 43.816,
+          "max": 64.936,
+          "min": 12.048
+        },
+        "inverted_euphoria": {
+          "n": 251,
+          "mean": 39.7425,
+          "median": 39.579,
+          "std": 13.3739,
+          "p10": 22.111,
+          "p90": 58.489,
+          "max": 65.927,
+          "min": 14.074
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 251,
+            "rho": 0.9256
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 251,
+            "rho": 0.6968
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 251,
+            "rho": 0.8808
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2018": {
+      "observations": 251,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 251,
+        "mean": 42.7327,
+        "median": 43.287,
+        "std": 15.2218,
+        "p10": 22.786,
+        "p90": 60.602,
+        "max": 79.704,
+        "min": 12.568
+      },
+      "expanding_percentile": {
+        "n": 251,
+        "mean": 47.0596,
+        "median": 48.71,
+        "std": 19.4785,
+        "p10": 20.52,
+        "p90": 69.82,
+        "max": 88.39,
+        "min": 7.63
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -0.7303,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 23,
+          "onsets": 4
+        },
+        "80": {
+          "days_ge": 4,
+          "onsets": 2
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 251,
+          "mean": 65.7276,
+          "median": 72.619,
+          "std": 28.0952,
+          "p10": 25.7937,
+          "p90": 97.619,
+          "max": 100.0,
+          "min": 0.3968
+        },
+        "days_ge80": 102,
+        "onsets_ge80": 11
+      },
+      "rolling756": {
+        "stats": {
+          "n": 251,
+          "mean": 68.1558,
+          "median": 76.8328,
+          "std": 28.4717,
+          "p10": 27.3869,
+          "p90": 98.2684,
+          "max": 100.0,
+          "min": 0.3861
+        },
+        "days_ge80": 119,
+        "onsets_ge80": 10
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 7,
+        "D2": 18,
+        "D3": 39,
+        "D4": 32,
+        "D5": 36,
+        "D6": 35,
+        "D7": 61,
+        "D8": 19,
+        "D9": 4,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 251,
+          "mean": 38.2702,
+          "median": 39.521,
+          "std": 15.7353,
+          "p10": 18.585,
+          "p90": 56.981,
+          "max": 82.429,
+          "min": 11.699
+        },
+        "total_negative": {
+          "n": 251,
+          "mean": 43.7122,
+          "median": 41.63,
+          "std": 16.8468,
+          "p10": 22.729,
+          "p90": 66.244,
+          "max": 87.823,
+          "min": 12.566
+        },
+        "inverted_euphoria": {
+          "n": 251,
+          "mean": 46.2157,
+          "median": 49.845,
+          "std": 15.1386,
+          "p10": 24.027,
+          "p90": 63.786,
+          "max": 74.714,
+          "min": 10.876
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 251,
+            "rho": 0.97
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 251,
+            "rho": 0.783
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 251,
+            "rho": 0.8576
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2019": {
+      "observations": 252,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 252,
+        "mean": 55.6382,
+        "median": 53.612,
+        "std": 16.0178,
+        "p10": 34.2492,
+        "p90": 79.9894,
+        "max": 89.503,
+        "min": 27.213
+      },
+      "expanding_percentile": {
+        "n": 252,
+        "mean": 62.4376,
+        "median": 61.125,
+        "std": 18.3002,
+        "p10": 36.667,
+        "p90": 88.86,
+        "max": 96.8,
+        "min": 26.43
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": 0.0535,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 95,
+          "onsets": 9
+        },
+        "80": {
+          "days_ge": 50,
+          "onsets": 5
+        },
+        "90": {
+          "days_ge": 21,
+          "onsets": 3
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 252,
+          "mean": 61.741,
+          "median": 59.9206,
+          "std": 26.2091,
+          "p10": 27.8571,
+          "p90": 98.0159,
+          "max": 100.0,
+          "min": 13.0952
+        },
+        "days_ge80": 80,
+        "onsets_ge80": 7
+      },
+      "rolling756": {
+        "stats": {
+          "n": 252,
+          "mean": 76.6047,
+          "median": 78.0583,
+          "std": 18.9388,
+          "p10": 50.2584,
+          "p90": 99.2091,
+          "max": 100.0,
+          "min": 28.4734
+        },
+        "days_ge80": 124,
+        "onsets_ge80": 12
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 0,
+        "D2": 0,
+        "D3": 6,
+        "D4": 32,
+        "D5": 25,
+        "D6": 55,
+        "D7": 39,
+        "D8": 45,
+        "D9": 29,
+        "D10": 21
+      },
+      "components": {
+        "pessimism": {
+          "n": 252,
+          "mean": 61.6513,
+          "median": 61.9565,
+          "std": 16.7522,
+          "p10": 37.7346,
+          "p90": 86.1301,
+          "max": 94.841,
+          "min": 27.998
+        },
+        "total_negative": {
+          "n": 252,
+          "mean": 56.5583,
+          "median": 54.365,
+          "std": 16.4764,
+          "p10": 35.5346,
+          "p90": 82.9851,
+          "max": 93.662,
+          "min": 27.561
+        },
+        "inverted_euphoria": {
+          "n": 252,
+          "mean": 48.7048,
+          "median": 45.029,
+          "std": 17.4416,
+          "p10": 28.4378,
+          "p90": 71.8166,
+          "max": 90.31,
+          "min": 20.474
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 252,
+            "rho": 0.9223
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 252,
+            "rho": 0.7325
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 252,
+            "rho": 0.8971
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2020": {
+      "observations": 253,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 253,
+        "mean": 68.2442,
+        "median": 65.017,
+        "std": 12.9708,
+        "p10": 53.833,
+        "p90": 89.3704,
+        "max": 97.574,
+        "min": 45.118
+      },
+      "expanding_percentile": {
+        "n": 253,
+        "mean": 75.9321,
+        "median": 74.12,
+        "std": 13.3789,
+        "p10": 59.876,
+        "p90": 96.622,
+        "max": 99.78,
+        "min": 50.26
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": 0.8192,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 155,
+          "onsets": 13
+        },
+        "80": {
+          "days_ge": 106,
+          "onsets": 13
+        },
+        "90": {
+          "days_ge": 43,
+          "onsets": 4
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 253,
+          "mean": 54.6505,
+          "median": 55.1587,
+          "std": 26.9714,
+          "p10": 19.0476,
+          "p90": 96.2698,
+          "max": 100.0,
+          "min": 2.7778
+        },
+        "days_ge80": 47,
+        "onsets_ge80": 4
+      },
+      "rolling756": {
+        "stats": {
+          "n": 253,
+          "mean": 76.5622,
+          "median": 81.0847,
+          "std": 17.8225,
+          "p10": 49.2857,
+          "p90": 98.7566,
+          "max": 100.0,
+          "min": 31.746
+        },
+        "days_ge80": 132,
+        "onsets_ge80": 12
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 0,
+        "D2": 0,
+        "D3": 0,
+        "D4": 0,
+        "D5": 0,
+        "D6": 26,
+        "D7": 72,
+        "D8": 49,
+        "D9": 63,
+        "D10": 43
+      },
+      "components": {
+        "pessimism": {
+          "n": 253,
+          "mean": 82.4165,
+          "median": 82.892,
+          "std": 10.9667,
+          "p10": 67.025,
+          "p90": 98.5582,
+          "max": 99.941,
+          "min": 56.79
+        },
+        "total_negative": {
+          "n": 253,
+          "mean": 69.2048,
+          "median": 66.141,
+          "std": 14.7951,
+          "p10": 52.7526,
+          "p90": 96.6768,
+          "max": 99.886,
+          "min": 45.738
+        },
+        "inverted_euphoria": {
+          "n": 253,
+          "mean": 53.1114,
+          "median": 49.814,
+          "std": 15.7494,
+          "p10": 34.1432,
+          "p90": 74.7968,
+          "max": 96.958,
+          "min": 26.594
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 253,
+            "rho": 0.9116
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 253,
+            "rho": 0.6883
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 253,
+            "rho": 0.8441
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2021": {
+      "observations": 252,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 252,
+        "mean": 52.3107,
+        "median": 51.663,
+        "std": 9.7289,
+        "p10": 39.5387,
+        "p90": 64.4731,
+        "max": 75.162,
+        "min": 29.693
+      },
+      "expanding_percentile": {
+        "n": 252,
+        "mean": 57.5333,
+        "median": 56.86,
+        "std": 12.4874,
+        "p10": 40.899,
+        "p90": 73.003,
+        "max": 84.09,
+        "min": 27.59
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -0.1486,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 44,
+          "onsets": 17
+        },
+        "80": {
+          "days_ge": 7,
+          "onsets": 2
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 252,
+          "mean": 33.979,
+          "median": 25.9921,
+          "std": 28.9171,
+          "p10": 2.7778,
+          "p90": 77.7778,
+          "max": 100.0,
+          "min": 0.3968
+        },
+        "days_ge80": 22,
+        "onsets_ge80": 8
+      },
+      "rolling756": {
+        "stats": {
+          "n": 252,
+          "mean": 39.4652,
+          "median": 37.1032,
+          "std": 21.3891,
+          "p10": 14.0212,
+          "p90": 69.9735,
+          "max": 83.4656,
+          "min": 0.9259
+        },
+        "days_ge80": 5,
+        "onsets_ge80": 1
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 0,
+        "D2": 0,
+        "D3": 5,
+        "D4": 19,
+        "D5": 47,
+        "D6": 72,
+        "D7": 65,
+        "D8": 37,
+        "D9": 7,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 252,
+          "mean": 53.2881,
+          "median": 52.065,
+          "std": 10.2893,
+          "p10": 42.1013,
+          "p90": 67.0115,
+          "max": 80.835,
+          "min": 28.292
+        },
+        "total_negative": {
+          "n": 252,
+          "mean": 51.0338,
+          "median": 50.4485,
+          "std": 9.2894,
+          "p10": 39.6838,
+          "p90": 63.5818,
+          "max": 80.706,
+          "min": 30.956
+        },
+        "inverted_euphoria": {
+          "n": 252,
+          "mean": 52.6101,
+          "median": 53.8955,
+          "std": 12.5272,
+          "p10": 34.3783,
+          "p90": 67.9797,
+          "max": 76.621,
+          "min": 24.665
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 252,
+            "rho": 0.8737
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 252,
+            "rho": 0.5627
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 252,
+            "rho": 0.8193
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2022": {
+      "observations": 251,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 251,
+        "mean": 46.1878,
+        "median": 49.412,
+        "std": 11.8525,
+        "p10": 27.594,
+        "p90": 58.591,
+        "max": 61.729,
+        "min": 18.612
+      },
+      "expanding_percentile": {
+        "n": 251,
+        "mean": 49.297,
+        "median": 53.45,
+        "std": 15.8924,
+        "p10": 24.32,
+        "p90": 66.11,
+        "max": 70.71,
+        "min": 12.92
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -0.5205,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 3,
+          "onsets": 2
+        },
+        "80": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 251,
+          "mean": 40.6011,
+          "median": 42.4603,
+          "std": 25.6481,
+          "p10": 3.1746,
+          "p90": 73.0159,
+          "max": 90.0794,
+          "min": 0.3968
+        },
+        "days_ge80": 8,
+        "onsets_ge80": 4
+      },
+      "rolling756": {
+        "stats": {
+          "n": 251,
+          "mean": 26.9968,
+          "median": 26.1905,
+          "std": 19.7942,
+          "p10": 1.0582,
+          "p90": 53.1746,
+          "max": 66.2698,
+          "min": 0.1323
+        },
+        "days_ge80": 0,
+        "onsets_ge80": 0
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 0,
+        "D2": 20,
+        "D3": 23,
+        "D4": 23,
+        "D5": 44,
+        "D6": 48,
+        "D7": 90,
+        "D8": 3,
+        "D9": 0,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 251,
+          "mean": 41.0595,
+          "median": 42.681,
+          "std": 9.9878,
+          "p10": 27.579,
+          "p90": 53.006,
+          "max": 59.333,
+          "min": 18.901
+        },
+        "total_negative": {
+          "n": 251,
+          "mean": 47.9625,
+          "median": 50.14,
+          "std": 12.6467,
+          "p10": 28.406,
+          "p90": 62.177,
+          "max": 66.027,
+          "min": 20.433
+        },
+        "inverted_euphoria": {
+          "n": 251,
+          "mean": 49.5414,
+          "median": 53.924,
+          "std": 14.8746,
+          "p10": 24.407,
+          "p90": 66.564,
+          "max": 76.722,
+          "min": 14.923
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 251,
+            "rho": 0.9685
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 251,
+            "rho": 0.7605
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 251,
+            "rho": 0.8313
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2023": {
+      "observations": 250,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 250,
+        "mean": 28.2956,
+        "median": 27.8285,
+        "std": 11.331,
+        "p10": 13.0289,
+        "p90": 42.9692,
+        "max": 57.744,
+        "min": 9.433
+      },
+      "expanding_percentile": {
+        "n": 250,
+        "mean": 25.9917,
+        "median": 24.96,
+        "std": 14.7426,
+        "p10": 6.699,
+        "p90": 45.136,
+        "max": 65.7,
+        "min": 4.33
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -1.6072,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "80": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 250,
+          "mean": 30.8,
+          "median": 25.1984,
+          "std": 25.83,
+          "p10": 2.3413,
+          "p90": 71.8651,
+          "max": 95.2381,
+          "min": 0.3968
+        },
+        "days_ge80": 16,
+        "onsets_ge80": 3
+      },
+      "rolling756": {
+        "stats": {
+          "n": 250,
+          "mean": 13.6873,
+          "median": 9.4577,
+          "std": 13.7338,
+          "p10": 0.7804,
+          "p90": 33.5847,
+          "max": 64.5503,
+          "min": 0.1323
+        },
+        "days_ge80": 0,
+        "onsets_ge80": 0
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 50,
+        "D2": 47,
+        "D3": 52,
+        "D4": 59,
+        "D5": 29,
+        "D6": 8,
+        "D7": 5,
+        "D8": 0,
+        "D9": 0,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 250,
+          "mean": 17.4414,
+          "median": 15.6305,
+          "std": 9.3082,
+          "p10": 7.1639,
+          "p90": 30.5268,
+          "max": 49.596,
+          "min": 4.159
+        },
+        "total_negative": {
+          "n": 250,
+          "mean": 27.6832,
+          "median": 26.9785,
+          "std": 11.8566,
+          "p10": 12.4864,
+          "p90": 43.4447,
+          "max": 60.865,
+          "min": 9.678
+        },
+        "inverted_euphoria": {
+          "n": 250,
+          "mean": 39.762,
+          "median": 42.2075,
+          "std": 14.9752,
+          "p10": 17.6174,
+          "p90": 57.331,
+          "max": 72.4,
+          "min": 10.403
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 250,
+            "rho": 0.9078
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 250,
+            "rho": 0.6893
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 250,
+            "rho": 0.8772
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2024": {
+      "observations": 252,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 252,
+        "mean": 28.4377,
+        "median": 28.0545,
+        "std": 10.2125,
+        "p10": 16.4445,
+        "p90": 42.4339,
+        "max": 61.355,
+        "min": 9.097
+      },
+      "expanding_percentile": {
+        "n": 252,
+        "mean": 26.9287,
+        "median": 25.965,
+        "std": 13.9833,
+        "p10": 10.715,
+        "p90": 46.388,
+        "max": 72.03,
+        "min": 3.99
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -1.5985,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 1,
+          "onsets": 1
+        },
+        "80": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 252,
+          "mean": 56.883,
+          "median": 58.9286,
+          "std": 26.2251,
+          "p10": 21.5476,
+          "p90": 93.1746,
+          "max": 100.0,
+          "min": 0.3968
+        },
+        "days_ge80": 64,
+        "onsets_ge80": 13
+      },
+      "rolling756": {
+        "stats": {
+          "n": 252,
+          "mean": 32.8625,
+          "median": 28.4392,
+          "std": 21.9917,
+          "p10": 8.8624,
+          "p90": 67.4471,
+          "max": 96.4286,
+          "min": 0.1323
+        },
+        "days_ge80": 5,
+        "onsets_ge80": 2
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 17,
+        "D2": 87,
+        "D3": 53,
+        "D4": 47,
+        "D5": 30,
+        "D6": 15,
+        "D7": 2,
+        "D8": 1,
+        "D9": 0,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 252,
+          "mean": 20.415,
+          "median": 17.056,
+          "std": 11.722,
+          "p10": 8.4077,
+          "p90": 35.9032,
+          "max": 67.225,
+          "min": 5.049
+        },
+        "total_negative": {
+          "n": 252,
+          "mean": 26.6797,
+          "median": 24.2945,
+          "std": 10.5706,
+          "p10": 15.5772,
+          "p90": 41.6255,
+          "max": 66.002,
+          "min": 9.81
+        },
+        "inverted_euphoria": {
+          "n": 252,
+          "mean": 38.2183,
+          "median": 37.336,
+          "std": 10.6565,
+          "p10": 24.2417,
+          "p90": 52.7121,
+          "max": 62.527,
+          "min": 11.329
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 252,
+            "rho": 0.9401
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 252,
+            "rho": 0.6503
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 252,
+            "rho": 0.8013
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2025": {
+      "observations": 250,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 250,
+        "mean": 39.9805,
+        "median": 37.5625,
+        "std": 11.6235,
+        "p10": 25.9541,
+        "p90": 57.2546,
+        "max": 67.838,
+        "min": 20.606
+      },
+      "expanding_percentile": {
+        "n": 250,
+        "mean": 43.0921,
+        "median": 40.395,
+        "std": 16.135,
+        "p10": 23.071,
+        "p90": 67.407,
+        "max": 79.44,
+        "min": 15.82
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -0.8975,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 22,
+          "onsets": 3
+        },
+        "80": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 250,
+          "mean": 60.446,
+          "median": 58.7302,
+          "std": 28.0743,
+          "p10": 19.0476,
+          "p90": 96.8254,
+          "max": 100.0,
+          "min": 9.127
+        },
+        "days_ge80": 79,
+        "onsets_ge80": 8
+      },
+      "rolling756": {
+        "stats": {
+          "n": 250,
+          "mean": 65.8053,
+          "median": 67.1296,
+          "std": 22.7343,
+          "p10": 33.7963,
+          "p90": 97.2354,
+          "max": 100.0,
+          "min": 19.0476
+        },
+        "days_ge80": 85,
+        "onsets_ge80": 10
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 0,
+        "D2": 12,
+        "D3": 49,
+        "D4": 61,
+        "D5": 42,
+        "D6": 41,
+        "D7": 23,
+        "D8": 22,
+        "D9": 0,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 250,
+          "mean": 34.4132,
+          "median": 32.213,
+          "std": 12.1522,
+          "p10": 21.0801,
+          "p90": 53.7751,
+          "max": 69.408,
+          "min": 15.814
+        },
+        "total_negative": {
+          "n": 250,
+          "mean": 39.3527,
+          "median": 36.4035,
+          "std": 12.5451,
+          "p10": 25.5682,
+          "p90": 58.6498,
+          "max": 74.019,
+          "min": 21.102
+        },
+        "inverted_euphoria": {
+          "n": 250,
+          "mean": 46.1757,
+          "median": 46.4415,
+          "std": 12.6513,
+          "p10": 29.5705,
+          "p90": 61.1431,
+          "max": 74.285,
+          "min": 14.439
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 250,
+            "rho": 0.9633
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 250,
+            "rho": 0.676
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 250,
+            "rho": 0.7853
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    },
+    "2026": {
+      "observations": 188,
+      "missing_pct": {
+        "optimism": 0.0,
+        "pessimism": 0.0,
+        "total_negative": 0.0,
+        "euphoria": 0.0,
+        "sentiment_stress": 0.0,
+        "sentiment_stress_pct": 0.0
+      },
+      "raw_stress": {
+        "n": 188,
+        "mean": 41.9885,
+        "median": 40.498,
+        "std": 12.5691,
+        "p10": 26.3621,
+        "p90": 60.9512,
+        "max": 66.383,
+        "min": 17.221
+      },
+      "expanding_percentile": {
+        "n": 188,
+        "mean": 46.0062,
+        "median": 44.485,
+        "std": 17.6964,
+        "p10": 23.367,
+        "p90": 72.419,
+        "max": 78.46,
+        "min": 11.08
+      },
+      "raw_stress_mean_shift_z_vs_2018_2021": -0.7755,
+      "expanding_thresholds": {
+        "70": {
+          "days_ge": 32,
+          "onsets": 3
+        },
+        "80": {
+          "days_ge": 0,
+          "onsets": 0
+        },
+        "90": {
+          "days_ge": 0,
+          "onsets": 0
+        }
+      },
+      "rolling252": {
+        "stats": {
+          "n": 188,
+          "mean": 52.2944,
+          "median": 55.5556,
+          "std": 29.4205,
+          "p10": 10.3175,
+          "p90": 91.2698,
+          "max": 99.6032,
+          "min": 0.3968
+        },
+        "days_ge80": 38,
+        "onsets_ge80": 3
+      },
+      "rolling756": {
+        "stats": {
+          "n": 188,
+          "mean": 67.1331,
+          "median": 71.627,
+          "std": 24.6983,
+          "p10": 30.5688,
+          "p90": 96.9577,
+          "max": 99.8677,
+          "min": 8.2011
+        },
+        "days_ge80": 73,
+        "onsets_ge80": 7
+      },
+      "expanding_percentile_decile_occupancy": {
+        "D1": 0,
+        "D2": 10,
+        "D3": 33,
+        "D4": 35,
+        "D5": 36,
+        "D6": 31,
+        "D7": 11,
+        "D8": 32,
+        "D9": 0,
+        "D10": 0
+      },
+      "components": {
+        "pessimism": {
+          "n": 188,
+          "mean": 36.0654,
+          "median": 33.377,
+          "std": 12.9474,
+          "p10": 20.3709,
+          "p90": 56.5293,
+          "max": 63.962,
+          "min": 13.198
+        },
+        "total_negative": {
+          "n": 188,
+          "mean": 41.4598,
+          "median": 38.24,
+          "std": 12.9451,
+          "p10": 27.1336,
+          "p90": 62.6637,
+          "max": 70.517,
+          "min": 17.729
+        },
+        "inverted_euphoria": {
+          "n": 188,
+          "mean": 48.4404,
+          "median": 52.7195,
+          "std": 15.4902,
+          "p10": 23.6757,
+          "p90": 66.0695,
+          "max": 73.412,
+          "min": 19.217
+        },
+        "correlations": {
+          "pessimism|total_negative": {
+            "n": 188,
+            "rho": 0.9357
+          },
+          "pessimism|inverted_euphoria": {
+            "n": 188,
+            "rho": 0.5687
+          },
+          "total_negative|inverted_euphoria": {
+            "n": 188,
+            "rho": 0.7603
+          }
+        },
+        "near_zero_variance_flags": {
+          "pessimism": false,
+          "total_negative": false,
+          "inverted_euphoria": false
+        }
+      }
+    }
+  },
+  "fixed_eras": {
+    "2017_2019": {
+      "start": "2017-01-01",
+      "end": "2019-12-31",
+      "observations": 754,
+      "raw_stress": {
+        "n": 754,
+        "mean": 42.9128,
+        "median": 40.9695,
+        "std": 17.5282,
+        "p10": 21.4264,
+        "p90": 66.302,
+        "max": 89.503,
+        "min": 12.568
+      },
+      "expanding_percentile": {
+        "n": 754,
+        "mean": 46.7217,
+        "median": 45.41,
+        "std": 21.7119,
+        "p10": 18.78,
+        "p90": 75.652,
+        "max": 96.8,
+        "min": 7.63
+      },
+      "onset_ge80_n": 7,
+      "onset_ge80_dates": [
+        "2018-12-20",
+        "2018-12-31",
+        "2019-05-29",
+        "2019-07-19",
+        "2019-07-31",
+        "2019-09-24",
+        "2019-12-02"
+      ],
+      "onset_ge80_fwd10": {
+        "n": 7,
+        "mean_pct": 0.6808,
+        "median_pct": 2.4914,
+        "positive_pct": 57.14,
+        "p10_pct": -3.3633,
+        "p90_pct": 3.7381
+      }
+    },
+    "2020_2021": {
+      "start": "2020-01-01",
+      "end": "2021-12-31",
+      "observations": 505,
+      "raw_stress": {
+        "n": 505,
+        "mean": 60.2932,
+        "median": 58.74,
+        "std": 13.9638,
+        "p10": 43.8548,
+        "p90": 79.8642,
+        "max": 97.574,
+        "min": 29.693
+      },
+      "expanding_percentile": {
+        "n": 505,
+        "mean": 66.7509,
+        "median": 66.66,
+        "std": 15.8782,
+        "p10": 46.366,
+        "p90": 88.298,
+        "max": 99.78,
+        "min": 27.59
+      },
+      "onset_ge80_n": 15,
+      "onset_ge80_dates": [
+        "2020-01-27",
+        "2020-02-21",
+        "2020-04-13",
+        "2020-04-21",
+        "2020-05-01",
+        "2020-05-12",
+        "2020-06-11",
+        "2020-06-18",
+        "2020-07-13",
+        "2020-07-28",
+        "2020-09-03",
+        "2020-10-06",
+        "2020-10-26",
+        "2021-01-27",
+        "2021-11-26"
+      ],
+      "onset_ge80_fwd10": {
+        "n": 15,
+        "mean_pct": 1.8367,
+        "median_pct": 2.7201,
+        "positive_pct": 86.67,
+        "p10_pct": -2.1663,
+        "p90_pct": 4.6502
+      }
+    },
+    "2022_2026": {
+      "start": "2022-01-01",
+      "end": "2026-12-31",
+      "observations": 1191,
+      "raw_stress": {
+        "n": 1191,
+        "mean": 36.7106,
+        "median": 35.335,
+        "std": 13.6688,
+        "p10": 19.107,
+        "p90": 56.529,
+        "max": 67.838,
+        "min": 9.097
+      },
+      "expanding_percentile": {
+        "n": 1191,
+        "mean": 37.8503,
+        "median": 36.32,
+        "std": 18.5187,
+        "p10": 13.78,
+        "p90": 63.75,
+        "max": 79.44,
+        "min": 3.99
+      },
+      "onset_ge80_n": 0,
+      "onset_ge80_dates": [],
+      "onset_ge80_fwd10": {
+        "n": 0
+      }
+    }
+  },
+  "rolling_sensitivity": {
+    "expanding_vs_rolling252_corr": {
+      "n": 2395,
+      "rho": 0.6702
+    },
+    "expanding_vs_rolling756_corr": {
+      "n": 2395,
+      "rho": 0.7984
+    },
+    "expanding80_onsets": {
+      "n": 22,
+      "dates": [
+        "2018-12-20",
+        "2018-12-31",
+        "2019-05-29",
+        "2019-07-19",
+        "2019-07-31",
+        "2019-09-24",
+        "2019-12-02",
+        "2020-01-27",
+        "2020-02-21",
+        "2020-04-13",
+        "2020-04-21",
+        "2020-05-01",
+        "2020-05-12",
+        "2020-06-11",
+        "2020-06-18",
+        "2020-07-13",
+        "2020-07-28",
+        "2020-09-03",
+        "2020-10-06",
+        "2020-10-26",
+        "2021-01-27",
+        "2021-11-26"
+      ]
+    },
+    "rolling252_80_onsets": {
+      "n": 71,
+      "dates": [
+        "2017-03-23",
+        "2017-04-03",
+        "2017-05-17",
+        "2017-06-29",
+        "2017-07-10",
+        "2017-08-09",
+        "2017-09-05",
+        "2017-11-09",
+        "2017-11-17",
+        "2017-12-29",
+        "2018-01-30",
+        "2018-03-15",
+        "2018-04-24",
+        "2018-05-02",
+        "2018-05-29",
+        "2018-06-27",
+        "2018-08-15",
+        "2018-10-04",
+        "2018-11-12",
+        "2018-11-23",
+        "2018-12-04",
+        "2019-03-22",
+        "2019-05-07",
+        "2019-06-25",
+        "2019-07-17",
+        "2019-07-30",
+        "2019-09-24",
+        "2019-12-02",
+        "2020-01-24",
+        "2020-02-21",
+        "2020-05-15",
+        "2020-06-24",
+        "2021-07-19",
+        "2021-08-18",
+        "2021-09-10",
+        "2021-09-20",
+        "2021-10-04",
+        "2021-11-26",
+        "2021-12-09",
+        "2021-12-17",
+        "2022-01-31",
+        "2022-02-11",
+        "2022-07-01",
+        "2022-10-13",
+        "2023-03-13",
+        "2023-10-03",
+        "2023-10-13",
+        "2024-04-04",
+        "2024-04-12",
+        "2024-04-24",
+        "2024-07-25",
+        "2024-08-01",
+        "2024-08-22",
+        "2024-09-03",
+        "2024-10-01",
+        "2024-10-10",
+        "2024-10-23",
+        "2024-11-15",
+        "2024-12-18",
+        "2024-12-27",
+        "2025-02-03",
+        "2025-02-21",
+        "2025-06-17",
+        "2025-08-01",
+        "2025-10-10",
+        "2025-10-22",
+        "2025-11-04",
+        "2025-11-13",
+        "2026-02-05",
+        "2026-02-12",
+        "2026-02-26"
+      ]
+    },
+    "rolling756_80_onsets": {
+      "n": 64,
+      "dates": [
+        "2017-03-23",
+        "2017-04-03",
+        "2017-05-17",
+        "2017-06-29",
+        "2017-07-10",
+        "2017-08-09",
+        "2017-09-05",
+        "2017-11-09",
+        "2017-11-17",
+        "2017-12-29",
+        "2018-01-30",
+        "2018-03-14",
+        "2018-04-24",
+        "2018-05-29",
+        "2018-06-25",
+        "2018-08-13",
+        "2018-09-07",
+        "2018-10-04",
+        "2018-11-12",
+        "2018-11-29",
+        "2019-03-06",
+        "2019-03-22",
+        "2019-05-01",
+        "2019-06-12",
+        "2019-06-24",
+        "2019-07-08",
+        "2019-07-17",
+        "2019-07-25",
+        "2019-09-20",
+        "2019-11-20",
+        "2019-12-02",
+        "2019-12-30",
+        "2020-01-07",
+        "2020-01-24",
+        "2020-02-18",
+        "2020-04-30",
+        "2020-05-19",
+        "2020-05-28",
+        "2020-06-11",
+        "2020-07-13",
+        "2020-07-24",
+        "2020-09-03",
+        "2020-10-06",
+        "2020-10-26",
+        "2021-11-26",
+        "2024-08-05",
+        "2024-12-18",
+        "2025-02-25",
+        "2025-03-26",
+        "2025-06-13",
+        "2025-08-01",
+        "2025-08-21",
+        "2025-09-25",
+        "2025-10-07",
+        "2025-10-30",
+        "2025-12-01",
+        "2025-12-17",
+        "2026-01-20",
+        "2026-01-30",
+        "2026-06-05",
+        "2026-06-17",
+        "2026-07-17",
+        "2026-09-09",
+        "2026-09-30"
+      ]
+    },
+    "overlap_expanding_vs_rolling252": {
+      "a_n": 22,
+      "b_n": 71,
+      "window_sessions": 5,
+      "a_with_b_n": 9,
+      "a_with_b_pct": 40.91,
+      "b_with_a_n": 9,
+      "b_with_a_pct": 12.68
+    },
+    "overlap_expanding_vs_rolling756": {
+      "a_n": 22,
+      "b_n": 64,
+      "window_sessions": 5,
+      "a_with_b_n": 16,
+      "a_with_b_pct": 72.73,
+      "b_with_a_n": 15,
+      "b_with_a_pct": 23.44
+    }
+  },
+  "diagnostic_flags": {
+    "no_expanding80_onsets_2022_2026": true,
+    "rolling252_has_2022_2026_onsets": true,
+    "rolling756_has_2022_2026_onsets": true,
+    "material_component_missingness_years": [],
+    "near_zero_component_variance_years": []
+  },
+  "decision": {
+    "may_change_production": false,
+    "may_change_forward_oos": false,
+    "may_replace_expanding_percentile": false
+  },
+  "warnings": [
+    "Rolling percentiles are sensitivity diagnostics only, not candidate replacements.",
+    "Historical sentiment/model history is reconstructed, not a fully publication-time archive."
+  ]
+}
