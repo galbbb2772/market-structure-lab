@@ -1,0 +1,56 @@
+name: DUAL Revision Sensitivity Stage-2 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_dual_revision_sensitivity_stage2_v1.py'
+      - 'research/dual_revision_sensitivity_stage2_v1/STUDY_SPEC.md'
+      - 'docs/data/market_state_sequence_v1.json'
+      - 'build_market_state_sequence_v1.py'
+      - 'research_modules_stage2_v1.py'
+      - '.github/workflows/dual_revision_sensitivity_stage2_v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run DUAL revision sensitivity
+        run: python research_dual_revision_sensitivity_stage2_v1.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          p='docs/data/dual_revision_sensitivity_stage2_v1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['schema']=='DUAL-REVISION-SENSITIVITY-STAGE2-V1'
+          assert d['research_only'] is True and d['diagnostic_only'] is True
+          assert d['production_effect']=='none' and d['thresholds_changed'] is False
+          assert len(d['cells'])==9
+          assert d['center']['events']['dual']['count']==58
+          assert d['center']['events']['early']['count']==15
+          assert d['center']['events']['full']['count']==12
+          assert d['decision']['may_select_best_grid_cell'] is False
+          print('DUAL_REVISION_SENSITIVITY_VALID', d['aggregate_stability'])
+          PY
+      - name: Commit research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add docs/data/dual_revision_sensitivity_stage2_v1.json
+          if git diff --cached --quiet; then
+            echo 'No DUAL sensitivity data change.'
+          else
+            git commit -m 'data: refresh DUAL revision sensitivity Stage-2 V1'
+            git pull --rebase origin main
+            git push
+          fi
