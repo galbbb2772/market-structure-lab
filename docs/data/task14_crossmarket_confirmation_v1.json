@@ -1,0 +1,301 @@
+{
+  "schema": "TASK14-CROSSMARKET-CONFIRMATION-V1",
+  "generated_at": "2026-10-05T06:44:07.513697+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "production_effect": "none",
+  "event_definition": "frozen D_TO_BOTH_REBOUND_SCORE historical event set",
+  "feature_definition": "5-session direction at/on event date: QQQ/IWM/HYG/LQD positive and VIX negative each count +1; no optimized weights or thresholds",
+  "source": "Yahoo Finance chart API fallback",
+  "sources": {},
+  "errors": {
+    "QQQ": "query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/QQQ?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/QQQ?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/QQQ?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/QQQ?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true",
+    "IWM": "query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/IWM?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/IWM?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/IWM?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/IWM?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true",
+    "HYG": "query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/HYG?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/HYG?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/HYG?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/HYG?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true",
+    "LQD": "query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/LQD?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/LQD?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/LQD?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/LQD?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true",
+    "VIX": "query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query1.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/%5EVIX?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true | query2.finance.yahoo.com: HTTPError: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v8/finance/chart/%5EVIX?period1=1451606400&period2=1791244800&interval=1d&events=history&includeAdjustedClose=true"
+  },
+  "event_count": 12,
+  "complete_crossmarket_event_count": 0,
+  "records": [
+    {
+      "date": "2019-06-04",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": 2.941207946433977,
+      "fwd_10d": 4.083802131082637,
+      "fwd_20d": 6.055071398759315
+    },
+    {
+      "date": "2022-01-26",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": 5.504679132552526,
+      "fwd_10d": 5.454110505037524,
+      "fwd_20d": -1.4076087933548864
+    },
+    {
+      "date": "2022-03-09",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": 1.869617704788773,
+      "fwd_10d": 4.169362024399059,
+      "fwd_20d": 4.751652798854877
+    },
+    {
+      "date": "2022-05-13",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": -3.0450584644475587,
+      "fwd_10d": 3.3388165019127447,
+      "fwd_20d": -6.815792847612457
+    },
+    {
+      "date": "2022-05-23",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": 3.986156653035544,
+      "fwd_10d": 4.7041258257313645,
+      "fwd_20d": -5.381820698332806
+    },
+    {
+      "date": "2022-06-07",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": -10.219487669347904,
+      "fwd_10d": -9.632807154945478,
+      "fwd_20d": -6.202353644002723
+    },
+    {
+      "date": "2022-07-01",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": 0.760713434900695,
+      "fwd_10d": 0.14430127219609012,
+      "fwd_20d": 7.66730693385127
+    },
+    {
+      "date": "2022-07-12",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": 3.0870928040221957,
+      "fwd_10d": 2.677542683565526,
+      "fwd_20d": 7.951979679480448
+    },
+    {
+      "date": "2022-09-28",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": 1.7273274823610407,
+      "fwd_10d": -3.8184585269316784,
+      "fwd_20d": 2.999701535880228
+    },
+    {
+      "date": "2022-10-13",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": -0.11253409790795699,
+      "fwd_10d": 3.7436913641939906,
+      "fwd_20d": 7.80564667268806
+    },
+    {
+      "date": "2022-10-25",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": -0.07799725641410848,
+      "fwd_10d": -0.8032940029360613,
+      "fwd_20d": 3.7436091807797833
+    },
+    {
+      "date": "2023-01-04",
+      "QQQ_ret5_pct": null,
+      "IWM_ret5_pct": null,
+      "HYG_ret5_pct": null,
+      "LQD_ret5_pct": null,
+      "VIX_ret5_pct": null,
+      "confirmation_count": 0,
+      "available_components": 0,
+      "fwd_5d": 3.027277658533545,
+      "fwd_10d": 1.1907723133063763,
+      "fwd_20d": 8.481503878825936
+    }
+  ],
+  "groups": {
+    "confirm_0_2": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    },
+    "confirm_3_plus": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    },
+    "confirm_4_plus": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    }
+  },
+  "by_confirmation_count": {
+    "0": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    },
+    "1": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    },
+    "2": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    },
+    "3": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    },
+    "4": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    },
+    "5": {
+      "n": 0,
+      "5d": {
+        "n": 0
+      },
+      "10d": {
+        "n": 0
+      },
+      "20d": {
+        "n": 0
+      }
+    }
+  },
+  "decision": {
+    "may_change_production": false,
+    "may_change_existing_forward_oos": false,
+    "status": "historical_diagnostic_only",
+    "promotion_requirement": "Any confirmation gate inspired by this table requires separate preregistration and Forward OOS."
+  },
+  "warnings": [
+    "This is post-discovery historical evidence, not Forward OOS.",
+    "Twelve Sequence events are heavily concentrated in 2022.",
+    "Five-session direction and the 3+/4+ groupings are fixed diagnostics, not optimized production gates."
+  ]
+}
