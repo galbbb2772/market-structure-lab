@@ -1,0 +1,45 @@
+name: Cross Module Stage-2 Summary V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'summarize_modules_stage2_v1.py'
+      - 'docs/data/modules_stage2_v1.json'
+      - '.github/workflows/modules_stage2_summary_v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  summarize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Summarize
+        run: python summarize_modules_stage2_v1.py
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('docs/data/modules_stage2_v1_summary.json',encoding='utf-8'))
+          assert d['schema']=='CROSS-MODULE-STAGE2-SUMMARY-V1'
+          assert d['research_only'] is True and d['production_effect']=='none'
+          for k in ('box','sentiment','breadth','score','concentration'): assert k in d
+          print('CROSS_MODULE_STAGE2_SUMMARY_VALID')
+          PY
+      - name: Commit summary
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/modules_stage2_v1_summary.json
+          if git diff --cached --quiet; then
+            echo 'No summary change.'
+          else
+            git commit -m 'data: refresh cross-module Stage-2 summary V1'
+            git pull --rebase origin main
+            git push
+          fi
