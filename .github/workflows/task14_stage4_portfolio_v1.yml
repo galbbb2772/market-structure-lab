@@ -33,7 +33,15 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
       - name: Build historical Stage-4 portfolio diagnostic
-        run: python research_task14_stage4_portfolio_v1.py
+        run: |
+          python - <<'PY'
+          import research_task14_stage4_portfolio_v1 as m
+          # Output-format normalization only; membership semantics are unchanged.
+          for cfg in m.POLICIES.values():
+              if isinstance(cfg.get('families'), set):
+                  cfg['families'] = sorted(cfg['families'])
+          m.main()
+          PY
       - name: Build prospective paper portfolio
         run: python build_task14_paper_portfolio_v1.py
       - name: Validate portfolio outputs
