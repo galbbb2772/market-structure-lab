@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-STAGE4-MULTIASSET-V1",
-  "generated_at": "2026-10-05T20:38:14.314055+00:00",
+  "generated_at": "2026-10-05T21:12:11.695117+00:00",
   "research_only": true,
   "diagnostic_only": true,
   "production_effect": "none",
@@ -171905,7 +171905,7 @@
       "start_capital_usd": 100000.0,
       "final_equity_usd": 106439.38,
       "total_return_pct": 6.439379,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.154945,
       "eligible_signal_count": 27,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
@@ -172932,7 +172932,7 @@
       "start_capital_usd": 1000000.0,
       "final_equity_usd": 1064011.74,
       "total_return_pct": 6.401174,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.169602,
       "eligible_signal_count": 27,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
@@ -173959,7 +173959,7 @@
       "start_capital_usd": 10000000.0,
       "final_equity_usd": 10628048.32,
       "total_return_pct": 6.280483,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.215922,
       "eligible_signal_count": 27,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
@@ -174986,7 +174986,7 @@
       "start_capital_usd": 100000000.0,
       "final_equity_usd": 105898940.75,
       "total_return_pct": 5.898941,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.363097,
       "eligible_signal_count": 27,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
@@ -176020,6 +176020,9 @@
     "The sector ETF universe is a frozen multi-asset execution proxy, not a historical stock-selection strategy.",
     "Historical policy comparisons are post-discovery diagnostics and cannot promote a production rule.",
     "Trailing-60D beta is a simple SPY covariance beta, not a complete factor-risk model.",
-    "The square-root impact model is a stress envelope, not a calibrated broker fill model."
-  ]
+    "The square-root impact model is a stress envelope, not a calibrated broker fill model.",
+    "Capital-scale max drawdown was repaired by the frozen Multi-Asset Robustness V1 audit; no trading rule changed."
+  ],
+  "capital_scale_drawdown_repaired": true,
+  "capital_scale_drawdown_repair_note": "V1 robustness repair: max drawdown is now calculated with the equity path retained internally; the stored scale records still omit the full equity curve."
 }

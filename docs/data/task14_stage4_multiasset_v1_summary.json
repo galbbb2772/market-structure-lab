@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-STAGE4-MULTIASSET-V1-SUMMARY",
-  "generated_at": "2026-10-05T20:38:14.314055+00:00",
+  "generated_at": "2026-10-05T21:12:11.695117+00:00",
   "research_only": true,
   "diagnostic_only": true,
   "production_effect": "none",
@@ -487,7 +487,7 @@
   "capital_scale_sweep": {
     "100000": {
       "return_pct": 6.439379,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.154945,
       "average_modeled_rt_cost_bps": 1.25387,
       "max_asset_adv_participation_pct": 0.00250408,
       "max_beta_exposure": 0.833287,
@@ -495,7 +495,7 @@
     },
     "1000000": {
       "return_pct": 6.401174,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.169602,
       "average_modeled_rt_cost_bps": 1.80274,
       "max_asset_adv_participation_pct": 0.02504064,
       "max_beta_exposure": 0.833303,
@@ -503,7 +503,7 @@
     },
     "10000000": {
       "return_pct": 6.280483,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.215922,
       "average_modeled_rt_cost_bps": 3.53783,
       "max_asset_adv_participation_pct": 0.2504021,
       "max_beta_exposure": 0.833353,
@@ -511,7 +511,7 @@
     },
     "100000000": {
       "return_pct": 5.898941,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.363097,
       "average_modeled_rt_cost_bps": 9.018623,
       "max_asset_adv_participation_pct": 2.50388496,
       "max_beta_exposure": 0.833356,

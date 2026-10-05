@@ -1,0 +1,398 @@
+{
+  "schema": "TASK14-STAGE4-MULTIASSET-ROBUSTNESS-V1",
+  "generated_at": "2026-10-05T21:12:21.924924+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "production_effect": "none",
+  "thresholds_changed": false,
+  "frozen_through_market_date": "2026-10-02",
+  "study_spec": "research/task14_stage4_multiasset_robustness_v1/STUDY_SPEC.md",
+  "historical_signal_counts": {
+    "early_sequence": 15,
+    "full_sequence": 12,
+    "combined_records": 27
+  },
+  "data_sources": {
+    "SPY": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLC": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2085
+    },
+    "XLY": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLP": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLE": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLF": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLV": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLI": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLB": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLRE": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLK": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    },
+    "XLU": {
+      "provider": "yahoo_chart",
+      "host": "query1.finance.yahoo.com",
+      "rows": 2512
+    }
+  },
+  "capital_scale_drawdown_repair": {
+    "original_reported_max_drawdown_pct": {
+      "100000": 0.0,
+      "1000000": 0.0,
+      "10000000": 0.0,
+      "100000000": 0.0
+    },
+    "corrected": {
+      "100000": {
+        "return_pct": 6.439379,
+        "max_drawdown_pct": -6.154945,
+        "average_modeled_rt_cost_bps": 1.25387,
+        "max_asset_adv_participation_pct": 0.00250408
+      },
+      "1000000": {
+        "return_pct": 6.401174,
+        "max_drawdown_pct": -6.169602,
+        "average_modeled_rt_cost_bps": 1.80274,
+        "max_asset_adv_participation_pct": 0.02504064
+      },
+      "10000000": {
+        "return_pct": 6.280483,
+        "max_drawdown_pct": -6.215922,
+        "average_modeled_rt_cost_bps": 3.53783,
+        "max_asset_adv_participation_pct": 0.2504021
+      },
+      "100000000": {
+        "return_pct": 5.898941,
+        "max_drawdown_pct": -6.363097,
+        "average_modeled_rt_cost_bps": 9.018623,
+        "max_asset_adv_participation_pct": 2.50388496
+      }
+    },
+    "trading_rules_changed": false
+  },
+  "baseline": {
+    "policy": "early_full_stack25_invvol_cap100",
+    "cost_model": "square_root_impact",
+    "return_pct": 6.439379,
+    "max_drawdown_pct": -6.154945,
+    "closed_sleeve_count": 27,
+    "skipped_signal_count": 0,
+    "average_modeled_rt_cost_bps": 1.25387,
+    "max_asset_adv_participation_pct": 0.00250408,
+    "max_beta_exposure": 0.833287,
+    "max_sector_weight": 0.141898,
+    "sleeve_win_rate_pct": 74.07,
+    "sector_aggregate_net_pnl_usd": {
+      "Communication Services": 54.47,
+      "Consumer Discretionary": 530.78,
+      "Consumer Staples": -50.97,
+      "Energy": 1403.69,
+      "Financials": 848.9,
+      "Health Care": 1038.64,
+      "Industrials": 1002.43,
+      "Materials": 1078.39,
+      "Real Estate": 226.94,
+      "Technology": 778.87,
+      "Utilities": -472.82
+    }
+  },
+  "sector_leave_one_out": {
+    "XLC": {
+      "sector": "Communication Services",
+      "return_pct": 6.95513,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.246766,
+      "max_asset_adv_participation_pct": 0.00269235,
+      "max_beta_exposure": 0.814054,
+      "max_sector_weight": 0.153552,
+      "sleeve_win_rate_pct": 66.67,
+      "return_delta_vs_baseline_pp": 0.515751,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLY": {
+      "sector": "Consumer Discretionary",
+      "return_pct": 6.493935,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.262505,
+      "max_asset_adv_participation_pct": 0.00273292,
+      "max_beta_exposure": 0.795463,
+      "max_sector_weight": 0.151686,
+      "sleeve_win_rate_pct": 66.67,
+      "return_delta_vs_baseline_pp": 0.054556,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLP": {
+      "sector": "Consumer Staples",
+      "return_pct": 7.786697,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.279818,
+      "max_asset_adv_participation_pct": 0.00285134,
+      "max_beta_exposure": 0.873405,
+      "max_sector_weight": 0.131918,
+      "sleeve_win_rate_pct": 74.07,
+      "return_delta_vs_baseline_pp": 1.347318,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLE": {
+      "sector": "Energy",
+      "return_pct": 5.27266,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.268838,
+      "max_asset_adv_participation_pct": 0.00271867,
+      "max_beta_exposure": 0.834231,
+      "max_sector_weight": 0.149415,
+      "sleeve_win_rate_pct": 74.07,
+      "return_delta_vs_baseline_pp": -1.166719,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLF": {
+      "sector": "Financials",
+      "return_pct": 6.087723,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.27553,
+      "max_asset_adv_participation_pct": 0.00272742,
+      "max_beta_exposure": 0.830271,
+      "max_sector_weight": 0.157796,
+      "sleeve_win_rate_pct": 77.78,
+      "return_delta_vs_baseline_pp": -0.351656,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLV": {
+      "sector": "Health Care",
+      "return_pct": 6.073599,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.277669,
+      "max_asset_adv_participation_pct": 0.00281372,
+      "max_beta_exposure": 0.853959,
+      "max_sector_weight": 0.16001,
+      "sleeve_win_rate_pct": 74.07,
+      "return_delta_vs_baseline_pp": -0.36578,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLI": {
+      "sector": "Industrials",
+      "return_pct": 5.973458,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.270923,
+      "max_asset_adv_participation_pct": 0.00273028,
+      "max_beta_exposure": 0.836782,
+      "max_sector_weight": 0.157826,
+      "sleeve_win_rate_pct": 74.07,
+      "return_delta_vs_baseline_pp": -0.465921,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLB": {
+      "sector": "Materials",
+      "return_pct": 5.827484,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.259353,
+      "max_asset_adv_participation_pct": 0.00268617,
+      "max_beta_exposure": 0.831172,
+      "max_sector_weight": 0.156277,
+      "sleeve_win_rate_pct": 74.07,
+      "return_delta_vs_baseline_pp": -0.611895,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLRE": {
+      "sector": "Real Estate",
+      "return_pct": 6.915377,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.248053,
+      "max_asset_adv_participation_pct": 0.00112252,
+      "max_beta_exposure": 0.83649,
+      "max_sector_weight": 0.156492,
+      "sleeve_win_rate_pct": 74.07,
+      "return_delta_vs_baseline_pp": 0.475998,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLK": {
+      "sector": "Technology",
+      "return_pct": 6.125351,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.265694,
+      "max_asset_adv_participation_pct": 0.00267433,
+      "max_beta_exposure": 0.798007,
+      "max_sector_weight": 0.15352,
+      "sleeve_win_rate_pct": 66.67,
+      "return_delta_vs_baseline_pp": -0.314028,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "XLU": {
+      "sector": "Utilities",
+      "return_pct": 7.458429,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.27484,
+      "max_asset_adv_participation_pct": 0.00283378,
+      "max_beta_exposure": 0.865964,
+      "max_sector_weight": 0.156032,
+      "sleeve_win_rate_pct": 70.37,
+      "return_delta_vs_baseline_pp": 1.01905,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    }
+  },
+  "loo_summary": {
+    "n": 11,
+    "positive_return_count": 11,
+    "positive_return_pct": 100.0,
+    "min_return_pct": 5.27266,
+    "max_return_pct": 7.786697,
+    "median_return_pct": 6.125351,
+    "no_XLU": {
+      "sector": "Utilities",
+      "return_pct": 7.458429,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.27484,
+      "max_asset_adv_participation_pct": 0.00283378,
+      "max_beta_exposure": 0.865964,
+      "max_sector_weight": 0.156032,
+      "sleeve_win_rate_pct": 70.37,
+      "return_delta_vs_baseline_pp": 1.01905,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    },
+    "no_XLE": {
+      "sector": "Energy",
+      "return_pct": 5.27266,
+      "max_drawdown_pct": 0.0,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.268838,
+      "max_asset_adv_participation_pct": 0.00271867,
+      "max_beta_exposure": 0.834231,
+      "max_sector_weight": 0.149415,
+      "sleeve_win_rate_pct": 74.07,
+      "return_delta_vs_baseline_pp": -1.166719,
+      "drawdown_delta_vs_baseline_pp": 6.154945
+    }
+  },
+  "allocation_comparison": {
+    "inverse_volatility": {
+      "return_pct": 6.439379,
+      "max_drawdown_pct": -6.154945,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.25387,
+      "max_asset_adv_participation_pct": 0.00250408,
+      "max_beta_exposure": 0.833287,
+      "max_sector_weight": 0.141898,
+      "sleeve_win_rate_pct": 74.07
+    },
+    "equal_weight": {
+      "return_pct": 7.92508,
+      "max_drawdown_pct": -6.053336,
+      "closed_sleeve_count": 27,
+      "skipped_signal_count": 0,
+      "average_modeled_rt_cost_bps": 1.263815,
+      "max_asset_adv_participation_pct": 0.00192663,
+      "max_beta_exposure": 0.875445,
+      "max_sector_weight": 0.093565,
+      "sleeve_win_rate_pct": 74.07
+    },
+    "equal_minus_invvol_return_pp": 1.485701,
+    "equal_minus_invvol_drawdown_pp": 0.101609
+  },
+  "pnl_concentration": {
+    "absolute_pnl_total_usd": 7486.9,
+    "absolute_pnl_shares": {
+      "Energy": 18.7486,
+      "Materials": 14.4037,
+      "Health Care": 13.8728,
+      "Industrials": 13.3891,
+      "Financials": 11.3385,
+      "Technology": 10.4031,
+      "Consumer Discretionary": 7.0894,
+      "Utilities": 6.3153,
+      "Real Estate": 3.0312,
+      "Communication Services": 0.7275,
+      "Consumer Staples": 0.6808
+    },
+    "largest_sector": "Energy",
+    "largest_sector_share_pct": 18.7486,
+    "top2_share_pct": 33.1523,
+    "absolute_pnl_hhi": 0.126781,
+    "most_positive_sector": {
+      "sector": "Energy",
+      "net_pnl_usd": 1403.69
+    },
+    "most_negative_sector": {
+      "sector": "Utilities",
+      "net_pnl_usd": -472.82
+    }
+  },
+  "guardrails": {
+    "may_change_production": false,
+    "may_change_signal_definition": false,
+    "historical_results_count_as_forward_oos": false,
+    "automatic_sector_exclusion": false,
+    "automatic_policy_promotion": false,
+    "broker_orders_enabled": false,
+    "stock_selection_inferred": false
+  },
+  "warnings": [
+    "Leave-one-sector-out is a robustness audit, not authorization to remove a historically weak sector.",
+    "Equal-vs-inverse-vol is a post-discovery allocation diagnostic and cannot promote a policy.",
+    "The sector ETF basket remains an execution proxy, not a frozen stock-selection strategy."
+  ]
+}
