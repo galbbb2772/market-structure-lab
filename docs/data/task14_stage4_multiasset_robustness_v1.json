@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-STAGE4-MULTIASSET-ROBUSTNESS-V1",
-  "generated_at": "2026-10-05T21:12:21.924924+00:00",
+  "generated_at": "2026-10-05T21:36:23.717927+00:00",
   "research_only": true,
   "diagnostic_only": true,
   "production_effect": "none",
@@ -139,7 +139,7 @@
     "XLC": {
       "sector": "Communication Services",
       "return_pct": 6.95513,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.176351,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.246766,
@@ -148,12 +148,12 @@
       "max_sector_weight": 0.153552,
       "sleeve_win_rate_pct": 66.67,
       "return_delta_vs_baseline_pp": 0.515751,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.021406
     },
     "XLY": {
       "sector": "Consumer Discretionary",
       "return_pct": 6.493935,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.281697,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.262505,
@@ -162,12 +162,12 @@
       "max_sector_weight": 0.151686,
       "sleeve_win_rate_pct": 66.67,
       "return_delta_vs_baseline_pp": 0.054556,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.126752
     },
     "XLP": {
       "sector": "Consumer Staples",
       "return_pct": 7.786697,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.357931,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.279818,
@@ -176,12 +176,12 @@
       "max_sector_weight": 0.131918,
       "sleeve_win_rate_pct": 74.07,
       "return_delta_vs_baseline_pp": 1.347318,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.202986
     },
     "XLE": {
       "sector": "Energy",
       "return_pct": 5.27266,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.598976,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.268838,
@@ -190,12 +190,12 @@
       "max_sector_weight": 0.149415,
       "sleeve_win_rate_pct": 74.07,
       "return_delta_vs_baseline_pp": -1.166719,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.444031
     },
     "XLF": {
       "sector": "Financials",
       "return_pct": 6.087723,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.338446,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.27553,
@@ -204,12 +204,12 @@
       "max_sector_weight": 0.157796,
       "sleeve_win_rate_pct": 77.78,
       "return_delta_vs_baseline_pp": -0.351656,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.183501
     },
     "XLV": {
       "sector": "Health Care",
       "return_pct": 6.073599,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.495844,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.277669,
@@ -218,12 +218,12 @@
       "max_sector_weight": 0.16001,
       "sleeve_win_rate_pct": 74.07,
       "return_delta_vs_baseline_pp": -0.36578,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.340899
     },
     "XLI": {
       "sector": "Industrials",
       "return_pct": 5.973458,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.537035,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.270923,
@@ -232,12 +232,12 @@
       "max_sector_weight": 0.157826,
       "sleeve_win_rate_pct": 74.07,
       "return_delta_vs_baseline_pp": -0.465921,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.38209
     },
     "XLB": {
       "sector": "Materials",
       "return_pct": 5.827484,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.153043,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.259353,
@@ -246,12 +246,12 @@
       "max_sector_weight": 0.156277,
       "sleeve_win_rate_pct": 74.07,
       "return_delta_vs_baseline_pp": -0.611895,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": 0.001902
     },
     "XLRE": {
       "sector": "Real Estate",
       "return_pct": 6.915377,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.010443,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.248053,
@@ -260,12 +260,12 @@
       "max_sector_weight": 0.156492,
       "sleeve_win_rate_pct": 74.07,
       "return_delta_vs_baseline_pp": 0.475998,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": 0.144502
     },
     "XLK": {
       "sector": "Technology",
       "return_pct": 6.125351,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.296566,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.265694,
@@ -274,12 +274,12 @@
       "max_sector_weight": 0.15352,
       "sleeve_win_rate_pct": 66.67,
       "return_delta_vs_baseline_pp": -0.314028,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.141621
     },
     "XLU": {
       "sector": "Utilities",
       "return_pct": 7.458429,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -5.933699,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.27484,
@@ -288,7 +288,7 @@
       "max_sector_weight": 0.156032,
       "sleeve_win_rate_pct": 70.37,
       "return_delta_vs_baseline_pp": 1.01905,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": 0.221246
     }
   },
   "loo_summary": {
@@ -301,7 +301,7 @@
     "no_XLU": {
       "sector": "Utilities",
       "return_pct": 7.458429,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -5.933699,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.27484,
@@ -310,12 +310,12 @@
       "max_sector_weight": 0.156032,
       "sleeve_win_rate_pct": 70.37,
       "return_delta_vs_baseline_pp": 1.01905,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": 0.221246
     },
     "no_XLE": {
       "sector": "Energy",
       "return_pct": 5.27266,
-      "max_drawdown_pct": 0.0,
+      "max_drawdown_pct": -6.598976,
       "closed_sleeve_count": 27,
       "skipped_signal_count": 0,
       "average_modeled_rt_cost_bps": 1.268838,
@@ -324,7 +324,7 @@
       "max_sector_weight": 0.149415,
       "sleeve_win_rate_pct": 74.07,
       "return_delta_vs_baseline_pp": -1.166719,
-      "drawdown_delta_vs_baseline_pp": 6.154945
+      "drawdown_delta_vs_baseline_pp": -0.444031
     }
   },
   "allocation_comparison": {
