@@ -1,0 +1,60 @@
+name: Mechanism Graph Stage-2 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_mechanism_graph_stage2_v1.py'
+      - 'research/mechanism_graph_stage2_v1/STUDY_SPEC.md'
+      - 'docs/data/cross_family_transition_stage2_v1.json'
+      - 'research_cross_family_transition_stage2_v1.py'
+      - 'research_modules_stage2_v1.py'
+      - '.github/workflows/mechanism_graph_stage2_v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run mechanism graph bootstrap
+        run: python research_mechanism_graph_stage2_v1.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          p='docs/data/mechanism_graph_stage2_v1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['schema']=='MECHANISM-GRAPH-STAGE2-V1'
+          assert d['research_only'] is True and d['diagnostic_only'] is True
+          assert d['production_effect']=='none' and d['thresholds_changed'] is False
+          assert d['decision']['may_change_production'] is False
+          assert d['decision']['causal_claim_allowed'] is False
+          assert d['summary']['primary_pairs']==8
+          assert len(d['forward_reverse_pairs'])==8
+          assert d['event_counts']['full_sequence']==12
+          assert d['event_counts']['early_sequence']==15
+          for x in d['forward_reverse_pairs']:
+              assert x['forward_20d']['bootstrap_rounds']==20000
+              assert x['reverse_20d']['bootstrap_rounds']==20000
+          print('MECHANISM_GRAPH_VALID', d['summary'])
+          PY
+      - name: Commit research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add docs/data/mechanism_graph_stage2_v1.json
+          if git diff --cached --quiet; then
+            echo 'No mechanism-graph data change.'
+          else
+            git commit -m 'data: refresh mechanism graph Stage-2 V1'
+            git pull --rebase origin main
+            git push
+          fi
