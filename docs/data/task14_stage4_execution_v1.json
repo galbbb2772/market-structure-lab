@@ -1,0 +1,2087 @@
+{
+  "schema": "TASK14-STAGE4-EXECUTION-V1",
+  "generated_at": "2026-10-05T15:41:46.338272+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "production_effect": "none",
+  "thresholds_changed": false,
+  "frozen_through_market_date": "2026-10-02",
+  "study_spec": "research/task14_stage4_execution_v1/STUDY_SPEC.md",
+  "instrument": "SPY",
+  "instrument_role": "tradable execution proxy for the market-level Sequence signal; not a final production instrument decision",
+  "source": {
+    "host": "query1.finance.yahoo.com",
+    "rows": 2513,
+    "transport": "yahoo_chart_range_10y"
+  },
+  "historical_event_count": 12,
+  "entry_modes": [
+    "signal_close",
+    "next_open",
+    "next_close"
+  ],
+  "horizons_sessions_from_signal": [
+    5,
+    10,
+    20
+  ],
+  "round_trip_cost_bps_scenarios": [
+    0,
+    5,
+    10,
+    25
+  ],
+  "records": [
+    {
+      "event_date": "2019-06-04",
+      "signal_spy_close": 280.529999,
+      "next_session_date": "2019-06-05",
+      "next_open": 282.329987,
+      "next_close": 282.959991,
+      "gap_signal_close_to_next_open_pct": 0.641638,
+      "gap_signal_close_to_next_close_pct": 0.866215,
+      "adv20_usd": 24334885244.28,
+      "capacity_notional_usd": {
+        "1pct_adv": 243348852.44,
+        "5pct_adv": 1216744262.21,
+        "10pct_adv": 2433488524.43
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2019-06-11",
+          "exit_close": 288.899994,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 2.983636,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.983636,
+                "5": 2.933636,
+                "10": 2.883636,
+                "25": 2.733636
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 2.327067,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.327067,
+                "5": 2.277067,
+                "10": 2.227067,
+                "25": 2.077067
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 2.099238,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.099238,
+                "5": 2.049238,
+                "10": 1.999238,
+                "25": 1.849238
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -0.656569,
+            "next_close_minus_signal_close": -0.884398
+          }
+        },
+        "10": {
+          "exit_date": "2019-06-18",
+          "exit_close": 292.399994,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 4.231275,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.231275,
+                "5": 4.181275,
+                "10": 4.131275,
+                "25": 3.981275
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 3.566751,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.566751,
+                "5": 3.516751,
+                "10": 3.466751,
+                "25": 3.316751
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 3.336162,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.336162,
+                "5": 3.286162,
+                "10": 3.236162,
+                "25": 3.086162
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -0.664524,
+            "next_close_minus_signal_close": -0.895113
+          }
+        },
+        "20": {
+          "exit_date": "2019-07-02",
+          "exit_close": 296.429993,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 5.667841,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.667841,
+                "5": 5.617841,
+                "10": 5.567841,
+                "25": 5.417841
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 4.994158,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.994158,
+                "5": 4.944158,
+                "10": 4.894158,
+                "25": 4.744158
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 4.760391,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.760391,
+                "5": 4.710391,
+                "10": 4.660391,
+                "25": 4.510391
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -0.673683,
+            "next_close_minus_signal_close": -0.90745
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-01-26",
+      "signal_spy_close": 433.380005,
+      "next_session_date": "2022-01-27",
+      "next_open": 438.26001,
+      "next_close": 431.23999,
+      "gap_signal_close_to_next_open_pct": 1.126034,
+      "gap_signal_close_to_next_close_pct": -0.493796,
+      "adv20_usd": 49891263789.98,
+      "capacity_notional_usd": {
+        "1pct_adv": 498912637.9,
+        "5pct_adv": 2494563189.5,
+        "10pct_adv": 4989126379.0
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-02-02",
+          "exit_close": 457.350006,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 5.530943,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.530943,
+                "5": 5.480943,
+                "10": 5.430943,
+                "25": 5.280943
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 4.355861,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.355861,
+                "5": 4.305861,
+                "10": 4.255861,
+                "25": 4.105861
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 6.054637,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 6.054637,
+                "5": 6.004637,
+                "10": 5.954637,
+                "25": 5.804637
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -1.175082,
+            "next_close_minus_signal_close": 0.523694
+          }
+        },
+        "10": {
+          "exit_date": "2022-02-09",
+          "exit_close": 457.540009,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 5.574785,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.574785,
+                "5": 5.524785,
+                "10": 5.474785,
+                "25": 5.324785
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 4.399215,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.399215,
+                "5": 4.349215,
+                "10": 4.299215,
+                "25": 4.149215
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 6.098697,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 6.098697,
+                "5": 6.048697,
+                "10": 5.998697,
+                "25": 5.848697
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -1.17557,
+            "next_close_minus_signal_close": 0.523912
+          }
+        },
+        "20": {
+          "exit_date": "2022-02-24",
+          "exit_close": 428.299988,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -1.172185,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -1.172185,
+                "5": -1.222185,
+                "10": -1.272185,
+                "25": -1.422185
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -2.272629,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -2.272629,
+                "5": -2.322629,
+                "10": -2.372629,
+                "25": -2.522629
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -0.681756,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -0.681756,
+                "5": -0.731756,
+                "10": -0.781756,
+                "25": -0.931756
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -1.100444,
+            "next_close_minus_signal_close": 0.490429
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-03-09",
+      "signal_spy_close": 427.410004,
+      "next_session_date": "2022-03-10",
+      "next_open": 422.519989,
+      "next_close": 425.480011,
+      "gap_signal_close_to_next_open_pct": -1.144104,
+      "gap_signal_close_to_next_close_pct": -0.451555,
+      "adv20_usd": 55341160904.09,
+      "capacity_notional_usd": {
+        "1pct_adv": 553411609.04,
+        "5pct_adv": 2767058045.2,
+        "10pct_adv": 5534116090.41
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-03-16",
+          "exit_close": 435.619995,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 1.92087,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 1.92087,
+                "5": 1.87087,
+                "10": 1.82087,
+                "25": 1.67087
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 3.100446,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.100446,
+                "5": 3.050446,
+                "10": 3.000446,
+                "25": 2.850446
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 2.383187,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.383187,
+                "5": 2.333187,
+                "10": 2.283187,
+                "25": 2.133187
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.179576,
+            "next_close_minus_signal_close": 0.462317
+          }
+        },
+        "10": {
+          "exit_date": "2022-03-23",
+          "exit_close": 443.799988,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 3.834722,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.834722,
+                "5": 3.784722,
+                "10": 3.734722,
+                "25": 3.584722
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 5.036448,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.036448,
+                "5": 4.986448,
+                "10": 4.936448,
+                "25": 4.786448
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 4.30572,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.30572,
+                "5": 4.25572,
+                "10": 4.20572,
+                "25": 4.05572
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.201726,
+            "next_close_minus_signal_close": 0.470998
+          }
+        },
+        "20": {
+          "exit_date": "2022-04-06",
+          "exit_close": 446.519989,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 4.471113,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.471113,
+                "5": 4.421113,
+                "10": 4.371113,
+                "25": 4.221113
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 5.680205,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.680205,
+                "5": 5.630205,
+                "10": 5.580205,
+                "25": 5.430205
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 4.944998,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.944998,
+                "5": 4.894998,
+                "10": 4.844998,
+                "25": 4.694998
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.209092,
+            "next_close_minus_signal_close": 0.473885
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-05-13",
+      "signal_spy_close": 401.720001,
+      "next_session_date": "2022-05-16",
+      "next_open": 399.980011,
+      "next_close": 400.089996,
+      "gap_signal_close_to_next_open_pct": -0.433135,
+      "gap_signal_close_to_next_close_pct": -0.405756,
+      "adv20_usd": 50086722461.11,
+      "capacity_notional_usd": {
+        "1pct_adv": 500867224.61,
+        "5pct_adv": 2504336123.06,
+        "10pct_adv": 5008672246.11
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-05-20",
+          "exit_close": 389.630005,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -3.009558,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -3.009558,
+                "5": -3.059558,
+                "10": -3.109558,
+                "25": -3.259558
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -2.587631,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -2.587631,
+                "5": -2.637631,
+                "10": -2.687631,
+                "25": -2.837631
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -2.61441,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -2.61441,
+                "5": -2.66441,
+                "10": -2.71441,
+                "25": -2.86441
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.421927,
+            "next_close_minus_signal_close": 0.395148
+          }
+        },
+        "10": {
+          "exit_date": "2022-05-27",
+          "exit_close": 415.26001,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 3.370509,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.370509,
+                "5": 3.320509,
+                "10": 3.270509,
+                "25": 3.120509
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 3.820191,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.820191,
+                "5": 3.770191,
+                "10": 3.720191,
+                "25": 3.570191
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 3.79165,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.79165,
+                "5": 3.74165,
+                "10": 3.69165,
+                "25": 3.54165
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.449682,
+            "next_close_minus_signal_close": 0.421141
+          }
+        },
+        "20": {
+          "exit_date": "2022-06-13",
+          "exit_close": 375.0,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -6.651399,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -6.651399,
+                "5": -6.701399,
+                "10": -6.751399,
+                "25": -6.901399
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -6.245315,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -6.245315,
+                "5": -6.295315,
+                "10": -6.345315,
+                "25": -6.495315
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -6.271088,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -6.271088,
+                "5": -6.321088,
+                "10": -6.371088,
+                "25": -6.521088
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.406084,
+            "next_close_minus_signal_close": 0.380311
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-05-23",
+      "signal_spy_close": 396.920013,
+      "next_session_date": "2022-05-24",
+      "next_open": 392.559998,
+      "next_close": 393.890015,
+      "gap_signal_close_to_next_open_pct": -1.098462,
+      "gap_signal_close_to_next_close_pct": -0.763378,
+      "adv20_usd": 49771933337.24,
+      "capacity_notional_usd": {
+        "1pct_adv": 497719333.37,
+        "5pct_adv": 2488596666.86,
+        "10pct_adv": 4977193333.72
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-05-31",
+          "exit_close": 412.929993,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 4.033553,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.033553,
+                "5": 3.983553,
+                "10": 3.933553,
+                "25": 3.783553
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 5.189014,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.189014,
+                "5": 5.139014,
+                "10": 5.089014,
+                "25": 4.939014
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 4.833831,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.833831,
+                "5": 4.783831,
+                "10": 4.733831,
+                "25": 4.583831
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.155461,
+            "next_close_minus_signal_close": 0.800278
+          }
+        },
+        "10": {
+          "exit_date": "2022-06-07",
+          "exit_close": 415.73999,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 4.741504,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.741504,
+                "5": 4.691504,
+                "10": 4.641504,
+                "25": 4.491504
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 5.904828,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.904828,
+                "5": 5.854828,
+                "10": 5.804828,
+                "25": 5.654828
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 5.547228,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.547228,
+                "5": 5.497228,
+                "10": 5.447228,
+                "25": 5.297228
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.163324,
+            "next_close_minus_signal_close": 0.805724
+          }
+        },
+        "20": {
+          "exit_date": "2022-06-22",
+          "exit_close": 374.390015,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -5.676206,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -5.676206,
+                "5": -5.726206,
+                "10": -5.776206,
+                "25": -5.926206
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -4.628587,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -4.628587,
+                "5": -4.678587,
+                "10": -4.728587,
+                "25": -4.878587
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -4.950621,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -4.950621,
+                "5": -5.000621,
+                "10": -5.050621,
+                "25": -5.200621
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.047619,
+            "next_close_minus_signal_close": 0.725585
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-06-07",
+      "signal_spy_close": 415.73999,
+      "next_session_date": "2022-06-08",
+      "next_open": 413.929993,
+      "next_close": 411.220001,
+      "gap_signal_close_to_next_open_pct": -0.435368,
+      "gap_signal_close_to_next_close_pct": -1.087215,
+      "adv20_usd": 37905391029.43,
+      "capacity_notional_usd": {
+        "1pct_adv": 379053910.29,
+        "5pct_adv": 1895269551.47,
+        "10pct_adv": 3790539102.94
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-06-14",
+          "exit_close": 373.869995,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -10.071197,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -10.071197,
+                "5": -10.121197,
+                "10": -10.171197,
+                "25": -10.321197
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -9.677964,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -9.677964,
+                "5": -9.727964,
+                "10": -9.777964,
+                "25": -9.927964
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -9.082731,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -9.082731,
+                "5": -9.132731,
+                "10": -9.182731,
+                "25": -9.332731
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.393233,
+            "next_close_minus_signal_close": 0.988466
+          }
+        },
+        "10": {
+          "exit_date": "2022-06-22",
+          "exit_close": 374.390015,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -9.946115,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -9.946115,
+                "5": -9.996115,
+                "10": -10.046115,
+                "25": -10.196115
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -9.552335,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -9.552335,
+                "5": -9.602335,
+                "10": -9.652335,
+                "25": -9.802335
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -8.956273,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -8.956273,
+                "5": -9.006273,
+                "10": -9.056273,
+                "25": -9.206273
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.39378,
+            "next_close_minus_signal_close": 0.989842
+          }
+        },
+        "20": {
+          "exit_date": "2022-07-07",
+          "exit_close": 388.98999,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -6.43431,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -6.43431,
+                "5": -6.48431,
+                "10": -6.53431,
+                "25": -6.68431
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -6.025174,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -6.025174,
+                "5": -6.075174,
+                "10": -6.125174,
+                "25": -6.275174
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -5.405868,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -5.405868,
+                "5": -5.455868,
+                "10": -5.505868,
+                "25": -5.655868
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.409136,
+            "next_close_minus_signal_close": 1.028442
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-07-01",
+      "signal_spy_close": 381.23999,
+      "next_session_date": "2022-07-05",
+      "next_open": 375.880005,
+      "next_close": 381.959991,
+      "gap_signal_close_to_next_open_pct": -1.405935,
+      "gap_signal_close_to_next_close_pct": 0.188858,
+      "adv20_usd": 35814275756.44,
+      "capacity_notional_usd": {
+        "1pct_adv": 358142757.56,
+        "5pct_adv": 1790713787.82,
+        "10pct_adv": 3581427575.64
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-07-11",
+          "exit_close": 384.230011,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 0.784288,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 0.784288,
+                "5": 0.734288,
+                "10": 0.684288,
+                "25": 0.534288
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 2.221455,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.221455,
+                "5": 2.171455,
+                "10": 2.121455,
+                "25": 1.971455
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 0.594308,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 0.594308,
+                "5": 0.544308,
+                "10": 0.494308,
+                "25": 0.344308
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.437167,
+            "next_close_minus_signal_close": -0.18998
+          }
+        },
+        "10": {
+          "exit_date": "2022-07-18",
+          "exit_close": 381.950012,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 0.18624,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 0.18624,
+                "5": 0.13624,
+                "10": 0.08624,
+                "25": -0.06376
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 1.614879,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 1.614879,
+                "5": 1.564879,
+                "10": 1.514879,
+                "25": 1.364879
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -0.002613,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -0.002613,
+                "5": -0.052613,
+                "10": -0.102613,
+                "25": -0.252613
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.428639,
+            "next_close_minus_signal_close": -0.188853
+          }
+        },
+        "20": {
+          "exit_date": "2022-08-01",
+          "exit_close": 410.769989,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 7.745777,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 7.745777,
+                "5": 7.695777,
+                "10": 7.645777,
+                "25": 7.495777
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 9.282213,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 9.282213,
+                "5": 9.232213,
+                "10": 9.182213,
+                "25": 9.032213
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 7.542674,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 7.542674,
+                "5": 7.492674,
+                "10": 7.442674,
+                "25": 7.292674
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.536436,
+            "next_close_minus_signal_close": -0.203103
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-07-12",
+      "signal_spy_close": 380.829987,
+      "next_session_date": "2022-07-13",
+      "next_open": 375.100006,
+      "next_close": 378.829987,
+      "gap_signal_close_to_next_open_pct": -1.504603,
+      "gap_signal_close_to_next_close_pct": -0.525169,
+      "adv20_usd": 34150372527.3,
+      "capacity_notional_usd": {
+        "1pct_adv": 341503725.27,
+        "5pct_adv": 1707518626.36,
+        "10pct_adv": 3415037252.73
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-07-19",
+          "exit_close": 392.269989,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 3.003966,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.003966,
+                "5": 2.953966,
+                "10": 2.903966,
+                "25": 2.753966
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 4.577441,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.577441,
+                "5": 4.527441,
+                "10": 4.477441,
+                "25": 4.327441
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 3.547766,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.547766,
+                "5": 3.497766,
+                "10": 3.447766,
+                "25": 3.297766
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.573475,
+            "next_close_minus_signal_close": 0.5438
+          }
+        },
+        "10": {
+          "exit_date": "2022-07-26",
+          "exit_close": 390.890015,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 2.641606,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.641606,
+                "5": 2.591606,
+                "10": 2.541606,
+                "25": 2.391606
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 4.209546,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.209546,
+                "5": 4.159546,
+                "10": 4.109546,
+                "25": 3.959546
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 3.183494,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.183494,
+                "5": 3.133494,
+                "10": 3.083494,
+                "25": 2.933494
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.56794,
+            "next_close_minus_signal_close": 0.541888
+          }
+        },
+        "20": {
+          "exit_date": "2022-08-09",
+          "exit_close": 411.350006,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 8.01408,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 8.01408,
+                "5": 7.96408,
+                "10": 7.91408,
+                "25": 7.76408
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 9.664089,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 9.664089,
+                "5": 9.614089,
+                "10": 9.564089,
+                "25": 9.414089
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 8.584331,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 8.584331,
+                "5": 8.534331,
+                "10": 8.484331,
+                "25": 8.334331
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.650009,
+            "next_close_minus_signal_close": 0.570251
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-09-28",
+      "signal_spy_close": 370.529999,
+      "next_session_date": "2022-09-29",
+      "next_open": 366.809998,
+      "next_close": 362.790009,
+      "gap_signal_close_to_next_open_pct": -1.003968,
+      "gap_signal_close_to_next_close_pct": -2.088897,
+      "adv20_usd": 34870625362.94,
+      "capacity_notional_usd": {
+        "1pct_adv": 348706253.63,
+        "5pct_adv": 1743531268.15,
+        "10pct_adv": 3487062536.29
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-10-05",
+          "exit_close": 377.089996,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 1.770436,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 1.770436,
+                "5": 1.720436,
+                "10": 1.670436,
+                "25": 1.520436
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 2.802541,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.802541,
+                "5": 2.752541,
+                "10": 2.702541,
+                "25": 2.552541
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 3.941671,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.941671,
+                "5": 3.891671,
+                "10": 3.841671,
+                "25": 3.691671
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.032105,
+            "next_close_minus_signal_close": 2.171235
+          }
+        },
+        "10": {
+          "exit_date": "2022-10-12",
+          "exit_close": 356.559998,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -3.770275,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -3.770275,
+                "5": -3.820275,
+                "10": -3.870275,
+                "25": -4.020275
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -2.794362,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -2.794362,
+                "5": -2.844362,
+                "10": -2.894362,
+                "25": -3.044362
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -1.71725,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -1.71725,
+                "5": -1.76725,
+                "10": -1.81725,
+                "25": -1.96725
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.975913,
+            "next_close_minus_signal_close": 2.053025
+          }
+        },
+        "20": {
+          "exit_date": "2022-10-26",
+          "exit_close": 382.019989,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 3.100961,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.100961,
+                "5": 3.050961,
+                "10": 3.000961,
+                "25": 2.850961
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 4.146559,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.146559,
+                "5": 4.096559,
+                "10": 4.046559,
+                "25": 3.896559
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 5.300582,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 5.300582,
+                "5": 5.250582,
+                "10": 5.200582,
+                "25": 5.050582
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 1.045598,
+            "next_close_minus_signal_close": 2.199621
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-10-13",
+      "signal_spy_close": 365.970001,
+      "next_session_date": "2022-10-14",
+      "next_open": 368.549988,
+      "next_close": 357.630005,
+      "gap_signal_close_to_next_open_pct": 0.704972,
+      "gap_signal_close_to_next_close_pct": -2.278874,
+      "adv20_usd": 37180455517.33,
+      "capacity_notional_usd": {
+        "1pct_adv": 371804555.17,
+        "5pct_adv": 1859022775.87,
+        "10pct_adv": 3718045551.73
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-10-20",
+          "exit_close": 365.410004,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -0.153017,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -0.153017,
+                "5": -0.203017,
+                "10": -0.253017,
+                "25": -0.403017
+              }
+            },
+            "next_open": {
+              "gross_return_pct": -0.851983,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -0.851983,
+                "5": -0.901983,
+                "10": -0.951983,
+                "25": -1.101983
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 2.175432,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.175432,
+                "5": 2.125432,
+                "10": 2.075432,
+                "25": 1.925432
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -0.698966,
+            "next_close_minus_signal_close": 2.328449
+          }
+        },
+        "10": {
+          "exit_date": "2022-10-27",
+          "exit_close": 379.980011,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 3.828185,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.828185,
+                "5": 3.778185,
+                "10": 3.728185,
+                "25": 3.578185
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 3.101349,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.101349,
+                "5": 3.051349,
+                "10": 3.001349,
+                "25": 2.851349
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 6.249477,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 6.249477,
+                "5": 6.199477,
+                "10": 6.149477,
+                "25": 5.999477
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -0.726836,
+            "next_close_minus_signal_close": 2.421292
+          }
+        },
+        "20": {
+          "exit_date": "2022-11-10",
+          "exit_close": 394.690002,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 7.847638,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 7.847638,
+                "5": 7.797638,
+                "10": 7.747638,
+                "25": 7.597638
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 7.092665,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 7.092665,
+                "5": 7.042665,
+                "10": 6.992665,
+                "25": 6.842665
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 10.362665,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 10.362665,
+                "5": 10.312665,
+                "10": 10.262665,
+                "25": 10.112665
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": -0.754973,
+            "next_close_minus_signal_close": 2.515027
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2022-10-25",
+      "signal_spy_close": 384.920013,
+      "next_session_date": "2022-10-26",
+      "next_open": 381.619995,
+      "next_close": 382.019989,
+      "gap_signal_close_to_next_open_pct": -0.857326,
+      "gap_signal_close_to_next_close_pct": -0.75341,
+      "adv20_usd": 37087266154.21,
+      "capacity_notional_usd": {
+        "1pct_adv": 370872661.54,
+        "5pct_adv": 1854363307.71,
+        "10pct_adv": 3708726615.42
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2022-11-01",
+          "exit_close": 384.519989,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -0.103924,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -0.103924,
+                "5": -0.153924,
+                "10": -0.203924,
+                "25": -0.353924
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 0.759917,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 0.759917,
+                "5": 0.709917,
+                "10": 0.659917,
+                "25": 0.509917
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 0.654416,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 0.654416,
+                "5": 0.604416,
+                "10": 0.554416,
+                "25": 0.404416
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.863841,
+            "next_close_minus_signal_close": 0.75834
+          }
+        },
+        "10": {
+          "exit_date": "2022-11-08",
+          "exit_close": 382.0,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": -0.758603,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -0.758603,
+                "5": -0.808603,
+                "10": -0.858603,
+                "25": -1.008603
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 0.099577,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 0.099577,
+                "5": 0.049577,
+                "10": -0.000423,
+                "25": -0.150423
+              }
+            },
+            "next_close": {
+              "gross_return_pct": -0.005232,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": -0.005232,
+                "5": -0.055232,
+                "10": -0.105232,
+                "25": -0.255232
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.85818,
+            "next_close_minus_signal_close": 0.753371
+          }
+        },
+        "20": {
+          "exit_date": "2022-11-22",
+          "exit_close": 399.899994,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 3.891713,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.891713,
+                "5": 3.841713,
+                "10": 3.791713,
+                "25": 3.641713
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 4.790105,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.790105,
+                "5": 4.740105,
+                "10": 4.690105,
+                "25": 4.540105
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 4.680385,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.680385,
+                "5": 4.630385,
+                "10": 4.580385,
+                "25": 4.430385
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.898392,
+            "next_close_minus_signal_close": 0.788672
+          }
+        }
+      }
+    },
+    {
+      "event_date": "2023-01-04",
+      "signal_spy_close": 383.76001,
+      "next_session_date": "2023-01-05",
+      "next_open": 381.720001,
+      "next_close": 379.380005,
+      "gap_signal_close_to_next_open_pct": -0.531584,
+      "gap_signal_close_to_next_close_pct": -1.14134,
+      "adv20_usd": 32157564071.46,
+      "capacity_notional_usd": {
+        "1pct_adv": 321575640.71,
+        "5pct_adv": 1607878203.57,
+        "10pct_adv": 3215756407.15
+      },
+      "horizons": {
+        "5": {
+          "exit_date": "2023-01-11",
+          "exit_close": 395.519989,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 3.06441,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.06441,
+                "5": 3.01441,
+                "10": 2.96441,
+                "25": 2.81441
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 3.615212,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 3.615212,
+                "5": 3.565212,
+                "10": 3.515212,
+                "25": 3.365212
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 4.254305,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 4.254305,
+                "5": 4.204305,
+                "10": 4.154305,
+                "25": 4.004305
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.550802,
+            "next_close_minus_signal_close": 1.189895
+          }
+        },
+        "10": {
+          "exit_date": "2023-01-19",
+          "exit_close": 388.640015,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 1.271629,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 1.271629,
+                "5": 1.221629,
+                "10": 1.171629,
+                "25": 1.021629
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 1.812851,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 1.812851,
+                "5": 1.762851,
+                "10": 1.712851,
+                "25": 1.562851
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 2.440827,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 2.440827,
+                "5": 2.390827,
+                "10": 2.340827,
+                "25": 2.190827
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.541222,
+            "next_close_minus_signal_close": 1.169198
+          }
+        },
+        "20": {
+          "exit_date": "2023-02-02",
+          "exit_close": 416.779999,
+          "entry_modes": {
+            "signal_close": {
+              "gross_return_pct": 8.604333,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 8.604333,
+                "5": 8.554333,
+                "10": 8.504333,
+                "25": 8.354333
+              }
+            },
+            "next_open": {
+              "gross_return_pct": 9.184742,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 9.184742,
+                "5": 9.134742,
+                "10": 9.084742,
+                "25": 8.934742
+              }
+            },
+            "next_close": {
+              "gross_return_pct": 9.858188,
+              "net_return_pct_by_round_trip_cost_bps": {
+                "0": 9.858188,
+                "5": 9.808188,
+                "10": 9.758188,
+                "25": 9.608188
+              }
+            }
+          },
+          "delay_drag_pp": {
+            "next_open_minus_signal_close": 0.580409,
+            "next_close_minus_signal_close": 1.253855
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "entry_modes": {
+      "5": {
+        "signal_close": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 0.812867,
+            "median_pct": 1.845653,
+            "positive_pct": 66.67,
+            "min_pct": -10.071197,
+            "max_pct": 5.530943
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 0.812867,
+              "median_pct": 1.845653,
+              "positive_pct": 66.67,
+              "min_pct": -10.071197,
+              "max_pct": 5.530943
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 0.762867,
+              "median_pct": 1.795653,
+              "positive_pct": 66.67,
+              "min_pct": -10.121197,
+              "max_pct": 5.480943
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 0.712867,
+              "median_pct": 1.745653,
+              "positive_pct": 66.67,
+              "min_pct": -10.171197,
+              "max_pct": 5.430943
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 0.562867,
+              "median_pct": 1.595653,
+              "positive_pct": 66.67,
+              "min_pct": -10.321197,
+              "max_pct": 5.280943
+            }
+          }
+        },
+        "next_open": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 1.319281,
+            "median_pct": 2.564804,
+            "positive_pct": 75.0,
+            "min_pct": -9.677964,
+            "max_pct": 5.189014
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 1.319281,
+              "median_pct": 2.564804,
+              "positive_pct": 75.0,
+              "min_pct": -9.677964,
+              "max_pct": 5.189014
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 1.269281,
+              "median_pct": 2.514804,
+              "positive_pct": 75.0,
+              "min_pct": -9.727964,
+              "max_pct": 5.139014
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 1.219281,
+              "median_pct": 2.464804,
+              "positive_pct": 75.0,
+              "min_pct": -9.777964,
+              "max_pct": 5.089014
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 1.069281,
+              "median_pct": 2.314804,
+              "positive_pct": 75.0,
+              "min_pct": -9.927964,
+              "max_pct": 4.939014
+            }
+          }
+        },
+        "next_close": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 1.570137,
+            "median_pct": 2.27931,
+            "positive_pct": 83.33,
+            "min_pct": -9.082731,
+            "max_pct": 6.054637
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 1.570137,
+              "median_pct": 2.27931,
+              "positive_pct": 83.33,
+              "min_pct": -9.082731,
+              "max_pct": 6.054637
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 1.520137,
+              "median_pct": 2.22931,
+              "positive_pct": 83.33,
+              "min_pct": -9.132731,
+              "max_pct": 6.004637
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 1.470138,
+              "median_pct": 2.17931,
+              "positive_pct": 83.33,
+              "min_pct": -9.182731,
+              "max_pct": 5.954637
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 1.320137,
+              "median_pct": 2.02931,
+              "positive_pct": 83.33,
+              "min_pct": -9.332731,
+              "max_pct": 5.804637
+            }
+          }
+        }
+      },
+      "10": {
+        "signal_close": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 1.267122,
+            "median_pct": 3.006057,
+            "positive_pct": 75.0,
+            "min_pct": -9.946115,
+            "max_pct": 5.574785
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 1.267122,
+              "median_pct": 3.006057,
+              "positive_pct": 75.0,
+              "min_pct": -9.946115,
+              "max_pct": 5.574785
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 1.217122,
+              "median_pct": 2.956058,
+              "positive_pct": 75.0,
+              "min_pct": -9.996115,
+              "max_pct": 5.524785
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 1.167122,
+              "median_pct": 2.906058,
+              "positive_pct": 75.0,
+              "min_pct": -10.046115,
+              "max_pct": 5.474785
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 1.017122,
+              "median_pct": 2.756057,
+              "positive_pct": 66.67,
+              "min_pct": -10.196115,
+              "max_pct": 5.324785
+            }
+          }
+        },
+        "next_open": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 1.768245,
+            "median_pct": 3.33405,
+            "positive_pct": 83.33,
+            "min_pct": -9.552335,
+            "max_pct": 5.904828
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 1.768245,
+              "median_pct": 3.33405,
+              "positive_pct": 83.33,
+              "min_pct": -9.552335,
+              "max_pct": 5.904828
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 1.718245,
+              "median_pct": 3.28405,
+              "positive_pct": 83.33,
+              "min_pct": -9.602335,
+              "max_pct": 5.854828
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 1.668245,
+              "median_pct": 3.23405,
+              "positive_pct": 75.0,
+              "min_pct": -9.652335,
+              "max_pct": 5.804828
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 1.518245,
+              "median_pct": 3.08405,
+              "positive_pct": 75.0,
+              "min_pct": -9.802335,
+              "max_pct": 5.654828
+            }
+          }
+        },
+        "next_close": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 2.022657,
+            "median_pct": 3.259828,
+            "positive_pct": 66.67,
+            "min_pct": -8.956273,
+            "max_pct": 6.249477
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 2.022657,
+              "median_pct": 3.259828,
+              "positive_pct": 66.67,
+              "min_pct": -8.956273,
+              "max_pct": 6.249477
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 1.972657,
+              "median_pct": 3.209828,
+              "positive_pct": 66.67,
+              "min_pct": -9.006273,
+              "max_pct": 6.199477
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 1.922657,
+              "median_pct": 3.159828,
+              "positive_pct": 66.67,
+              "min_pct": -9.056273,
+              "max_pct": 6.149477
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 1.772657,
+              "median_pct": 3.009828,
+              "positive_pct": 66.67,
+              "min_pct": -9.206273,
+              "max_pct": 5.999477
+            }
+          }
+        }
+      },
+      "20": {
+        "signal_close": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 2.45078,
+            "median_pct": 4.181413,
+            "positive_pct": 66.67,
+            "min_pct": -6.651399,
+            "max_pct": 8.604333
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 2.45078,
+              "median_pct": 4.181413,
+              "positive_pct": 66.67,
+              "min_pct": -6.651399,
+              "max_pct": 8.604333
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 2.40078,
+              "median_pct": 4.131413,
+              "positive_pct": 66.67,
+              "min_pct": -6.701399,
+              "max_pct": 8.554333
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 2.35078,
+              "median_pct": 4.081413,
+              "positive_pct": 66.67,
+              "min_pct": -6.751399,
+              "max_pct": 8.504333
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 2.20078,
+              "median_pct": 3.931413,
+              "positive_pct": 66.67,
+              "min_pct": -6.901399,
+              "max_pct": 8.354333
+            }
+          }
+        },
+        "next_open": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 2.971919,
+            "median_pct": 4.892131,
+            "positive_pct": 66.67,
+            "min_pct": -6.245315,
+            "max_pct": 9.664089
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 2.971919,
+              "median_pct": 4.892131,
+              "positive_pct": 66.67,
+              "min_pct": -6.245315,
+              "max_pct": 9.664089
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 2.921919,
+              "median_pct": 4.842131,
+              "positive_pct": 66.67,
+              "min_pct": -6.295315,
+              "max_pct": 9.614089
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 2.871919,
+              "median_pct": 4.792131,
+              "positive_pct": 66.67,
+              "min_pct": -6.345315,
+              "max_pct": 9.564089
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 2.721919,
+              "median_pct": 4.642131,
+              "positive_pct": 66.67,
+              "min_pct": -6.495315,
+              "max_pct": 9.414089
+            }
+          }
+        },
+        "next_close": {
+          "gross": {
+            "n": 12,
+            "mean_pct": 3.227073,
+            "median_pct": 4.852695,
+            "positive_pct": 66.67,
+            "min_pct": -6.271088,
+            "max_pct": 10.362665
+          },
+          "net_by_round_trip_cost_bps": {
+            "0": {
+              "n": 12,
+              "mean_pct": 3.227073,
+              "median_pct": 4.852695,
+              "positive_pct": 66.67,
+              "min_pct": -6.271088,
+              "max_pct": 10.362665
+            },
+            "5": {
+              "n": 12,
+              "mean_pct": 3.177073,
+              "median_pct": 4.802695,
+              "positive_pct": 66.67,
+              "min_pct": -6.321088,
+              "max_pct": 10.312665
+            },
+            "10": {
+              "n": 12,
+              "mean_pct": 3.127073,
+              "median_pct": 4.752695,
+              "positive_pct": 66.67,
+              "min_pct": -6.371088,
+              "max_pct": 10.262665
+            },
+            "25": {
+              "n": 12,
+              "mean_pct": 2.977073,
+              "median_pct": 4.602695,
+              "positive_pct": 66.67,
+              "min_pct": -6.521088,
+              "max_pct": 10.112665
+            }
+          }
+        }
+      }
+    },
+    "delay_drag": {
+      "5": {
+        "next_open_minus_signal_close": {
+          "n": 12,
+          "mean_pct": 0.506414,
+          "median_pct": 0.707321,
+          "positive_pct": 75.0,
+          "min_pct": -1.175082,
+          "max_pct": 1.573475
+        },
+        "next_close_minus_signal_close": {
+          "n": 12,
+          "mean_pct": 0.75727,
+          "median_pct": 0.65107,
+          "positive_pct": 83.33,
+          "min_pct": -0.884398,
+          "max_pct": 2.328449
+        }
+      },
+      "10": {
+        "next_open_minus_signal_close": {
+          "n": 12,
+          "mean_pct": 0.501123,
+          "median_pct": 0.699701,
+          "positive_pct": 75.0,
+          "min_pct": -1.17557,
+          "max_pct": 1.56794
+        },
+        "next_close_minus_signal_close": {
+          "n": 12,
+          "mean_pct": 0.755535,
+          "median_pct": 0.64763,
+          "positive_pct": 83.33,
+          "min_pct": -0.895113,
+          "max_pct": 2.421292
+        }
+      },
+      "20": {
+        "next_open_minus_signal_close": {
+          "n": 12,
+          "mean_pct": 0.52114,
+          "median_pct": 0.7394,
+          "positive_pct": 75.0,
+          "min_pct": -1.100444,
+          "max_pct": 1.650009
+        },
+        "next_close_minus_signal_close": {
+          "n": 12,
+          "mean_pct": 0.776294,
+          "median_pct": 0.647918,
+          "positive_pct": 83.33,
+          "min_pct": -0.90745,
+          "max_pct": 2.515027
+        }
+      }
+    },
+    "capacity": {
+      "adv20_usd": {
+        "n": 12,
+        "median": 37133860835.77,
+        "min": 24334885244.28,
+        "max": 55341160904.09
+      },
+      "1pct_adv": {
+        "median_notional_usd": 371338608.36,
+        "min_notional_usd": 243348852.44,
+        "max_notional_usd": 553411609.04
+      },
+      "5pct_adv": {
+        "median_notional_usd": 1856693041.79,
+        "min_notional_usd": 1216744262.21,
+        "max_notional_usd": 2767058045.2
+      },
+      "10pct_adv": {
+        "median_notional_usd": 3713386083.58,
+        "min_notional_usd": 2433488524.43,
+        "max_notional_usd": 5534116090.41
+      }
+    },
+    "entry_gap": {
+      "next_open": {
+        "n": 12,
+        "mean_pct": -0.495153,
+        "median_pct": -0.694455,
+        "positive_pct": 25.0,
+        "min_pct": -1.504603,
+        "max_pct": 1.126034
+      },
+      "next_close": {
+        "n": 12,
+        "mean_pct": -0.744526,
+        "median_pct": -0.63929,
+        "positive_pct": 16.67,
+        "min_pct": -2.278874,
+        "max_pct": 0.866215
+      }
+    }
+  },
+  "guardrails": {
+    "may_change_production": false,
+    "may_change_signal_definition": false,
+    "historical_results_count_as_forward_oos": false,
+    "automatic_promotion": false,
+    "broker_orders_enabled": false
+  },
+  "warnings": [
+    "SPY raw daily OHLC is used for entry/exit mechanics; this is an execution proxy study.",
+    "Cost scenarios are fixed stress assumptions and are not broker-specific fill estimates.",
+    "Capacity is a simple ADV participation diagnostic and is not a sizing recommendation."
+  ]
+}
