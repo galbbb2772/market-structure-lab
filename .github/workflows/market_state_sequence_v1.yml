@@ -15,12 +15,14 @@ on:
       - 'build_task14_challenger_forward_oos_v1.py'
       - 'validate_market_state_sequence_phase_onsets_v1.py'
       - 'research_task14_extended_v1.py'
+      - 'research_task14_stage2_v1.py'
       - 'research/market_state_sequence_v1/PREREGISTRATION.md'
       - 'research/market_state_sequence_v1/EVENT_AUDIT_PREREGISTRATION.md'
       - 'research/market_state_sequence_freshness_v1/PREREGISTRATION.md'
       - 'research/residual_mean_reversion_distance_v1/PREREGISTRATION.md'
       - 'research/residual_mean_reversion_distance_forward_oos_v1/PREREGISTRATION.md'
       - 'research/task14_challengers_v1/PREREGISTRATION.md'
+      - 'research/task14_stage2_v1/STUDY_SPEC.md'
       - '.github/workflows/market_state_sequence_v1.yml'
 
 permissions:
@@ -53,6 +55,8 @@ jobs:
         run: python build_residual_mean_reversion_distance_v1.py
       - name: Run Task 1/4 extended diagnostics
         run: python research_task14_extended_v1.py
+      - name: Run Task 1/4 Stage-2 robustness suite
+        run: python research_task14_stage2_v1.py
       - name: Update append-only RMD3 Forward OOS ledger
         run: python build_residual_mean_reversion_distance_forward_oos_v1.py
       - name: Update four Task 1/4 challenger Forward-OOS ledgers
@@ -69,6 +73,7 @@ jobs:
           m='docs/data/residual_mean_reversion_distance_v1.json'
           g='docs/data/residual_mean_reversion_distance_forward_oos_v1.json'
           t='docs/data/task14_extended_diagnostics_v1.json'
+          h='docs/data/task14_stage2_research_v1.json'
           c='docs/data/task14_challenger_forward_oos_v1.json'
           d=json.load(open(p,encoding='utf-8'))
           z=json.load(open(q,encoding='utf-8'))
@@ -78,6 +83,7 @@ jobs:
           u=json.load(open(m,encoding='utf-8'))
           v=json.load(open(g,encoding='utf-8'))
           w=json.load(open(t,encoding='utf-8'))
+          k=json.load(open(h,encoding='utf-8'))
           y=json.load(open(c,encoding='utf-8'))
           assert d['schema']=='MARKET-STATE-SEQUENCE-V1'
           assert d['research_only'] is True
@@ -133,6 +139,16 @@ jobs:
           for key in ('sequence_ablation','failure_paths','rmd_component_ablation','freshness_decay','second_leg_hazard','state_transition_matrix'):
               assert key in w
           assert w['decision']['may_change_production'] is False
+          assert k['schema']=='TASK14-STAGE2-RESEARCH-V1'
+          assert k['research_only'] is True and k['diagnostic_only'] is True
+          assert k['production_effect']=='none'
+          assert k['thresholds_changed'] is False
+          assert k['coverage']['observations'] > 2000
+          assert k['coverage']['complete_sequence_events']==12
+          for key in ('regime_conditioning','leave_one_year_out','placebo_random_dates','order_necessity','continuous_sequence_maturity','rmd_x_dual_severity','competing_risk','entry_exit_matrix','cross_market_confirmation','historical_analogs'):
+              assert key in k
+          assert k['decision']['may_change_production'] is False
+          assert k['decision']['may_change_existing_forward_oos'] is False
           assert y['schema']=='TASK14-CHALLENGER-FORWARD-OOS-V1'
           assert y['research_only'] is True and y['observation_only'] is True
           assert y['production_effect']=='none'
@@ -150,6 +166,7 @@ jobs:
           print('SEQUENCE_FRESHNESS_V1_VALID', r['full_summary'], r['concentration'])
           print('RESIDUAL_MEAN_REVERSION_DISTANCE_V1_VALID', u['correlations'])
           print('TASK14_EXTENDED_V1_VALID', w['coverage'], {k:v['stats']['n'] for k,v in w['sequence_ablation'].items()}, w['failure_paths']['class_counts'])
+          print('TASK14_STAGE2_V1_VALID', k['coverage'], k['placebo_random_dates']['horizons'], k['cross_market_confirmation']['errors'])
           print('RMD3_FORWARD_OOS_VALID', v['forward_event_count'], v['mature_10d_event_count'], v['source_recompute_discrepancies'])
           print('TASK14_CHALLENGERS_FORWARD_OOS_VALID', {k:q['forward_event_count'] for k,q in y['challengers'].items()})
           PY
@@ -157,7 +174,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/data/market_state_sequence_v1.json docs/data/market_state_sequence_phase_onsets_v1.json docs/data/market_state_sequence_event_audit_v1.json docs/data/market_state_sequence_forward_oos_v1.json docs/data/market_state_sequence_freshness_v1.json docs/data/residual_mean_reversion_distance_v1.json docs/data/residual_mean_reversion_distance_forward_oos_v1.json docs/data/task14_extended_diagnostics_v1.json docs/data/task14_challenger_forward_oos_v1.json
+          git add docs/data/market_state_sequence_v1.json docs/data/market_state_sequence_phase_onsets_v1.json docs/data/market_state_sequence_event_audit_v1.json docs/data/market_state_sequence_forward_oos_v1.json docs/data/market_state_sequence_freshness_v1.json docs/data/residual_mean_reversion_distance_v1.json docs/data/residual_mean_reversion_distance_forward_oos_v1.json docs/data/task14_extended_diagnostics_v1.json docs/data/task14_stage2_research_v1.json docs/data/task14_challenger_forward_oos_v1.json
           if git diff --cached --quiet; then
             echo 'No dataset change.'
           else
