@@ -1,0 +1,204 @@
+{
+  "schema": "TASK14-PAPER-MULTIASSET-V1",
+  "generated_at": "2026-10-05T20:38:15.007092+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "paper_only": true,
+  "production_effect": "none",
+  "broker_orders_enabled": false,
+  "frozen_through_market_date": "2026-10-02",
+  "study_spec": "research/task14_stage4_multiasset_v1/STUDY_SPEC.md",
+  "data_sources": {
+    "market_data_fetch": "skipped_zero_forward_events"
+  },
+  "latest_complete_market_date": "2026-10-01",
+  "upstream_forward_signal_count": 0,
+  "upstream_counts": {
+    "early_sequence": 0,
+    "full_sequence": 0
+  },
+  "asset_universe": [
+    {
+      "symbol": "XLC",
+      "sector": "Communication Services"
+    },
+    {
+      "symbol": "XLY",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "symbol": "XLP",
+      "sector": "Consumer Staples"
+    },
+    {
+      "symbol": "XLE",
+      "sector": "Energy"
+    },
+    {
+      "symbol": "XLF",
+      "sector": "Financials"
+    },
+    {
+      "symbol": "XLV",
+      "sector": "Health Care"
+    },
+    {
+      "symbol": "XLI",
+      "sector": "Industrials"
+    },
+    {
+      "symbol": "XLB",
+      "sector": "Materials"
+    },
+    {
+      "symbol": "XLRE",
+      "sector": "Real Estate"
+    },
+    {
+      "symbol": "XLK",
+      "sector": "Technology"
+    },
+    {
+      "symbol": "XLU",
+      "sector": "Utilities"
+    }
+  ],
+  "start_capital_usd": 100000.0,
+  "portfolios": {
+    "full_eq_sector_100_dedup": {
+      "fixed_10bps_rt": {
+        "policy": "full_eq_sector_100_dedup",
+        "cost_model": "fixed_10bps_rt",
+        "start_capital_usd": 100000.0,
+        "latest_market_date": "2026-10-01",
+        "latest_equity_usd": 100000.0,
+        "return_to_date_pct": 0.0,
+        "signal_decisions": [],
+        "realized_sleeves": [],
+        "open_positions": [],
+        "pending_entry_count": 0,
+        "total_modeled_cost_to_date_usd": 0.0,
+        "equity_curve": []
+      },
+      "square_root_impact": {
+        "policy": "full_eq_sector_100_dedup",
+        "cost_model": "square_root_impact",
+        "start_capital_usd": 100000.0,
+        "latest_market_date": "2026-10-01",
+        "latest_equity_usd": 100000.0,
+        "return_to_date_pct": 0.0,
+        "signal_decisions": [],
+        "realized_sleeves": [],
+        "open_positions": [],
+        "pending_entry_count": 0,
+        "total_modeled_cost_to_date_usd": 0.0,
+        "equity_curve": []
+      }
+    },
+    "full_invvol_sector_100_dedup": {
+      "fixed_10bps_rt": {
+        "policy": "full_invvol_sector_100_dedup",
+        "cost_model": "fixed_10bps_rt",
+        "start_capital_usd": 100000.0,
+        "latest_market_date": "2026-10-01",
+        "latest_equity_usd": 100000.0,
+        "return_to_date_pct": 0.0,
+        "signal_decisions": [],
+        "realized_sleeves": [],
+        "open_positions": [],
+        "pending_entry_count": 0,
+        "total_modeled_cost_to_date_usd": 0.0,
+        "equity_curve": []
+      },
+      "square_root_impact": {
+        "policy": "full_invvol_sector_100_dedup",
+        "cost_model": "square_root_impact",
+        "start_capital_usd": 100000.0,
+        "latest_market_date": "2026-10-01",
+        "latest_equity_usd": 100000.0,
+        "return_to_date_pct": 0.0,
+        "signal_decisions": [],
+        "realized_sleeves": [],
+        "open_positions": [],
+        "pending_entry_count": 0,
+        "total_modeled_cost_to_date_usd": 0.0,
+        "equity_curve": []
+      }
+    },
+    "early_full_stack25_invvol_cap100": {
+      "fixed_10bps_rt": {
+        "policy": "early_full_stack25_invvol_cap100",
+        "cost_model": "fixed_10bps_rt",
+        "start_capital_usd": 100000.0,
+        "latest_market_date": "2026-10-01",
+        "latest_equity_usd": 100000.0,
+        "return_to_date_pct": 0.0,
+        "signal_decisions": [],
+        "realized_sleeves": [],
+        "open_positions": [],
+        "pending_entry_count": 0,
+        "total_modeled_cost_to_date_usd": 0.0,
+        "equity_curve": []
+      },
+      "square_root_impact": {
+        "policy": "early_full_stack25_invvol_cap100",
+        "cost_model": "square_root_impact",
+        "start_capital_usd": 100000.0,
+        "latest_market_date": "2026-10-01",
+        "latest_equity_usd": 100000.0,
+        "return_to_date_pct": 0.0,
+        "signal_decisions": [],
+        "realized_sleeves": [],
+        "open_positions": [],
+        "pending_entry_count": 0,
+        "total_modeled_cost_to_date_usd": 0.0,
+        "equity_curve": []
+      }
+    },
+    "early_full_stack25_beta100_cap100": {
+      "fixed_10bps_rt": {
+        "policy": "early_full_stack25_beta100_cap100",
+        "cost_model": "fixed_10bps_rt",
+        "start_capital_usd": 100000.0,
+        "latest_market_date": "2026-10-01",
+        "latest_equity_usd": 100000.0,
+        "return_to_date_pct": 0.0,
+        "signal_decisions": [],
+        "realized_sleeves": [],
+        "open_positions": [],
+        "pending_entry_count": 0,
+        "total_modeled_cost_to_date_usd": 0.0,
+        "equity_curve": []
+      },
+      "square_root_impact": {
+        "policy": "early_full_stack25_beta100_cap100",
+        "cost_model": "square_root_impact",
+        "start_capital_usd": 100000.0,
+        "latest_market_date": "2026-10-01",
+        "latest_equity_usd": 100000.0,
+        "return_to_date_pct": 0.0,
+        "signal_decisions": [],
+        "realized_sleeves": [],
+        "open_positions": [],
+        "pending_entry_count": 0,
+        "total_modeled_cost_to_date_usd": 0.0,
+        "equity_curve": []
+      }
+    }
+  },
+  "immutable_recompute_discrepancies": [],
+  "guardrails": {
+    "may_change_production": false,
+    "may_change_signal_definition": false,
+    "historical_results_count_as_forward_oos": false,
+    "automatic_promotion": false,
+    "broker_orders_enabled": false,
+    "stock_selection_inferred": false
+  },
+  "warnings": [
+    "This is a prospective sector-ETF paper portfolio only; no brokerage orders are enabled.",
+    "Current UTC-date daily bars are excluded to prevent partial U.S. sessions from entering the ledger.",
+    "Existing signal decisions and populated entry fields are immutable; recompute mismatches fail the build.",
+    "Scheduled exits require exact sector-ETF bars on the frozen +10D SPY exit session; exits are never silently delayed."
+  ]
+}
