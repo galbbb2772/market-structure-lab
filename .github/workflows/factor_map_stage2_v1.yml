@@ -1,0 +1,70 @@
+name: Cross Family Factor Map Stage-2 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_factor_map_stage2_v1.py'
+      - 'research/factor_map_stage2_v1/STUDY_SPEC.md'
+      - 'docs/data/market_state_box_v1.json'
+      - 'docs/data/structure_lab.json'
+      - 'docs/data/updown_divergence_oos.json'
+      - 'docs/data/updown_divergence_regime_gate_robust.json'
+      - 'build_market_state_sequence_v1.py'
+      - 'research_modules_stage2_v1.py'
+      - 'research_updown_divergence_events.py'
+      - 'research_updown_divergence_regime.py'
+      - 'research_updown_divergence_regime_gate_oos.py'
+      - '.github/workflows/factor_map_stage2_v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run cross-family factor map
+        run: python research_factor_map_stage2_v1.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          p='docs/data/factor_map_stage2_v1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['schema']=='CROSS-FAMILY-FACTOR-MAP-STAGE2-V1'
+          assert d['research_only'] is True and d['diagnostic_only'] is True
+          assert d['production_effect']=='none' and d['thresholds_changed'] is False
+          assert d['decision']['may_change_production'] is False
+          assert d['decision']['may_change_forward_oos'] is False
+          assert d['breadth_divergence_orthogonality']['locked_threshold']==1.5
+          assert d['breadth_divergence_orthogonality']['locked_robust_gate']=='NOT_HIGH_VOL'
+          fam=d['five_family_factor_map']['families']
+          assert set(fam)=={'liquidity','sentiment','breadth','box','score'}
+          assert d['five_family_factor_map']['orthogonal_ols_and_loyo']['10d']['complete_case_n']>100
+          print('CROSS_FAMILY_FACTOR_MAP_VALID', {
+              'sentiment_n': d['sentiment_regime_and_interactions']['event_count'],
+              'divergence_n': d['breadth_divergence_orthogonality']['raw_event_count_in_state_coverage'],
+              'full_sequence_n': d['coverage']['full_sequence_events'],
+              'early_sequence_n': d['coverage']['early_sequence_events'],
+              'factor_n_10d': d['five_family_factor_map']['orthogonal_ols_and_loyo']['10d']['complete_case_n'],
+          })
+          PY
+      - name: Commit research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/factor_map_stage2_v1.json
+          if git diff --cached --quiet; then
+            echo 'No factor-map data change.'
+          else
+            git commit -m 'data: refresh cross-family factor map Stage-2 V1'
+            git pull --rebase origin main
+            git push
+          fi
