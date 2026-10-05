@@ -7,6 +7,7 @@ on:
     paths:
       - 'research_task14_stage4_portfolio_v1.py'
       - 'build_task14_paper_portfolio_v1.py'
+      - 'summarize_task14_stage4_portfolio_v1.py'
       - 'research/task14_stage4_portfolio_v1/STUDY_SPEC.md'
       - '.github/workflows/task14_stage4_portfolio_v1.yml'
       - 'docs/data/market_state_box_v1.json'
@@ -44,12 +45,15 @@ jobs:
           PY
       - name: Build prospective paper portfolio
         run: python build_task14_paper_portfolio_v1.py
+      - name: Build compact risk summary
+        run: python summarize_task14_stage4_portfolio_v1.py
       - name: Validate portfolio outputs
         run: |
           python - <<'PY'
           import json
           h=json.load(open('docs/data/task14_stage4_portfolio_v1.json',encoding='utf-8'))
           p=json.load(open('docs/data/task14_paper_portfolio_v1.json',encoding='utf-8'))
+          s=json.load(open('docs/data/task14_stage4_portfolio_v1_summary.json',encoding='utf-8'))
           assert h['schema']=='TASK14-STAGE4-PORTFOLIO-V1'
           assert h['research_only'] is True and h['diagnostic_only'] is True
           assert h['production_effect']=='none' and h['thresholds_changed'] is False
@@ -66,15 +70,19 @@ jobs:
           assert p['broker_orders_enabled'] is False
           assert p['frozen_through_market_date']=='2026-10-02'
           assert len(p['immutable_recompute_discrepancies'])==0
+          assert s['schema']=='TASK14-STAGE4-PORTFOLIO-V1-SUMMARY'
+          assert s['production_effect']=='none'
+          assert set(s['portfolio_results'])==set(h['portfolio_results'])
           print('STAGE4_PORTFOLIO_VALID', h['historical_signal_counts'])
           print('CAPACITY_VALID', h['capacity_threshold_summary'])
           print('PAPER_PORTFOLIO_VALID', p['upstream_counts'])
+          print('SUMMARY_VALID')
           PY
       - name: Commit Stage-4 portfolio data
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/data/task14_stage4_portfolio_v1.json docs/data/task14_paper_portfolio_v1.json
+          git add docs/data/task14_stage4_portfolio_v1.json docs/data/task14_paper_portfolio_v1.json docs/data/task14_stage4_portfolio_v1_summary.json
           if git diff --cached --quiet; then
             echo 'No Stage-4 portfolio data change.'
           else
