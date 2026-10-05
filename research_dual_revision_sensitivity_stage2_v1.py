@@ -1,7 +1,8 @@
 """DUAL / FRED measurement-revision sensitivity diagnostics.
 
-Historical / diagnostic only. Uses the already reconstructed Sequence V1 daily
-panel and perturbs only the two frozen 4-week liquidity percentage-change fields.
+Historical / diagnostic only. Rebuilds the center DUAL daily panel with the
+existing Sequence V1 timing implementation, hard-validates frozen event identity,
+then perturbs only the two 4-week liquidity percentage-change fields.
 """
 from __future__ import annotations
 
@@ -14,10 +15,15 @@ import build_market_state_sequence_v1 as seq
 import research_modules_stage2_v1 as mod
 
 ROOT = Path(__file__).resolve().parent
-SRC = ROOT / "docs/data/market_state_sequence_v1.json"
+SRC = ROOT / "docs/data/market_state_box_v1.json"
 OUT = ROOT / "docs/data/dual_revision_sensitivity_stage2_v1.json"
 SHIFTS = (-0.50, 0.00, 0.50)
 H = (5, 10, 20)
+EXPECTED_FULL_DATES = [
+    "2019-06-04", "2022-01-26", "2022-03-09", "2022-05-13",
+    "2022-05-23", "2022-06-07", "2022-07-01", "2022-07-12",
+    "2022-09-28", "2022-10-13", "2022-10-25", "2023-01-04",
+]
 
 
 def num(x):
@@ -91,7 +97,6 @@ def shifted_rows(base_rows, net_shift, reserve_shift):
             r["sens_net_liq_4w_pct"] is not None and r["sens_reserves_4w_pct"] is not None
             and r["sens_net_liq_4w_pct"] <= -2.0 and r["sens_reserves_4w_pct"] <= -2.0
         )
-        # Remove state-machine outputs that must be recomputed from the perturbed DUAL path.
         for k in (
             "dual_episode_id", "dual_episode_day", "days_since_dual", "dual_phase", "dual_anchor_i", "recent_dual_10d",
             "breadth_trough_since_dual", "breadth_trough_i", "box_bottom_i_since_dual", "breadth_low_since_dual",
@@ -109,10 +114,12 @@ def event_identity(center, variant):
     cs, vs = set(ci), set(vi)
     union = cs | vs
     exact = len(cs & vs)
+
     def near_count(a, b, window=3):
         if not b:
             return 0
         return sum(min(abs(x - y) for y in b) <= window for x in a)
+
     nearest = [min(abs(x - y) for y in vi) for x in ci] if ci and vi else []
     return {
         "center_count": len(ci),
@@ -143,11 +150,25 @@ def aggregate_stability(cells, key):
     }
 
 
+def validate_center(center_sets):
+    counts = {k: len(v) for k, v in center_sets.items()}
+    if counts != {"dual": 58, "early": 15, "full": 12}:
+        raise RuntimeError(f"center reproduction count failure: {counts}")
+    full_dates = [r["date"] for r in center_sets["full"]]
+    if full_dates != EXPECTED_FULL_DATES:
+        raise RuntimeError(f"center Full Sequence date identity failure: {full_dates}")
+    return {"counts": counts, "full_dates_exact_match": True}
+
+
 def main():
     src = json.loads(SRC.read_text(encoding="utf-8"))
-    base = src.get("daily") or []
-    if not base:
-        raise RuntimeError("market_state_sequence_v1 daily rows missing")
+    raw = src.get("daily") or []
+    if not raw:
+        raise RuntimeError("market_state_box_v1 daily rows missing")
+
+    # Same existing current-history FRED reconstruction/timing as Sequence V1.
+    base = seq.add_dual([dict(r) for r in raw])
+    base = add_forwards(base)
 
     built = {}
     center_sets = None
@@ -162,6 +183,7 @@ def main():
                 center_sets = sets
     if center_sets is None:
         raise RuntimeError("center cell missing")
+    center_reproduction = validate_center(center_sets)
 
     cells = []
     for key, d in built.items():
@@ -195,6 +217,7 @@ def main():
         "study_spec": "research/dual_revision_sensitivity_stage2_v1/STUDY_SPEC.md",
         "source_schema": src.get("schema"),
         "coverage": src.get("coverage"),
+        "center_reproduction": center_reproduction,
         "perturbation_grid_pp": {"net_liq": list(SHIFTS), "reserves": list(SHIFTS)},
         "center": center,
         "cells": cells,
@@ -205,6 +228,7 @@ def main():
             "may_select_best_grid_cell": False,
         },
         "warnings": [
+            "Center DUAL history was rebuilt at runtime with the existing current-history FRED implementation and hard-validated against frozen event identities.",
             "+/-0.50 pp is a fixed synthetic sensitivity envelope, not an estimated FRED revision distribution.",
             "This is not ALFRED vintage reconstruction.",
             "Historical return differences across perturbation cells cannot be used to choose a new threshold.",
@@ -212,7 +236,7 @@ def main():
     }
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({
-        "center_counts": {k: center["events"][k]["count"] for k in ("dual", "early", "full")},
+        "center_reproduction": center_reproduction,
         "stability": out["aggregate_stability"],
         "cells": [
             {"key": c["key"], "counts": {k: c["events"][k]["count"] for k in ("dual", "early", "full")},
