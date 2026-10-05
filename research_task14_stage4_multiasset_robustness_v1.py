@@ -113,7 +113,7 @@ def main():
     loo = {}
     for drop_symbol in m.ASSETS:
         reduced = [signal_without_sector(s, drop_symbol) for s in signals]
-        r = m.simulate(data, reduced, BASE_POLICY, BASE_COST, m.START_CAPITAL, keep_curve=False)
+        r = m.simulate(data, reduced, BASE_POLICY, BASE_COST, m.START_CAPITAL, keep_curve=True)
         loo[drop_symbol] = {
             'sector': m.ASSETS[drop_symbol],
             **result_core(r),
