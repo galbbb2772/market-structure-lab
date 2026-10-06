@@ -29,6 +29,29 @@ FULL_FLAG = "D_TO_BOTH_REBOUND_SCORE"
 MIN_RET20_HISTORY = 252
 DECLUSTER = 5
 
+PRIORITY_POLICY = "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md"
+
+
+def research_priority_meta(key):
+    if FROZEN_THROUGH < "2026-10-06":
+        return {
+            "research_priority_tier": "LEGACY_V1_FROZEN",
+            "priority_status": "ORIGINAL_PREREGISTRATION",
+            "promotion_eligible_under_current_priority": True,
+        }
+    mapping = {
+        "early_sequence": ("T2_SECONDARY_FORWARD_WATCH", "FORWARD_ONLY_CHALLENGER", True),
+        "rmd2_price_score": ("T2_SECONDARY_FORWARD_WATCH", "FORWARD_ONLY_CHALLENGER", True),
+        "dplus1_entry": ("T2_SECONDARY_FORWARD_WATCH", "WEAK_MODERATE_HISTORICAL_EVIDENCE", True),
+        "dual_severity_hazard": ("T3_LEGACY_LOW_PRIORITY", "HISTORICAL_CALIBRATION_EDGE_LOST", False),
+    }
+    tier, status, eligible = mapping[key]
+    return {
+        "research_priority_tier": tier,
+        "priority_status": status,
+        "promotion_eligible_under_current_priority": eligible,
+    }
+
 
 def num(x):
     try:
@@ -371,10 +394,12 @@ def main():
         "production_effect": "none",
         "freeze_reference_commit": FREEZE_COMMIT,
         "preregistration_path": "research/task14_challengers_v1/PREREGISTRATION.md",
+        "research_priority_policy": PRIORITY_POLICY,
         "frozen_through_market_date": FROZEN_THROUGH,
         "latest_market_date": latest_market_date,
         "challengers": {
             "early_sequence": {
+                **research_priority_meta("early_sequence"),
                 "definition": "D_TO_BREADTH_LOW AND box_bottom_since_dual AND breadth_rebound_since_dual; onset only; 5-session decluster; no score-recovery requirement",
                 "forward_event_count": len(early_events),
                 "mature_10d_event_count": sum(bool(e.get("mature_10d")) for e in early_events),
@@ -383,6 +408,7 @@ def main():
                 "promotion_gate": promotion_gate(early_events),
             },
             "rmd2_price_score": {
+                **research_priority_meta("rmd2_price_score"),
                 "eligible_event_definition": FULL_FLAG,
                 "score_definition": "RMD2_PS = equal-weight mean(price_residual, score_residual)",
                 "primary_rank_horizon": "10d",
@@ -393,6 +419,7 @@ def main():
                 "promotion_gate": promotion_gate(rmd_events),
             },
             "dplus1_entry": {
+                **research_priority_meta("dplus1_entry"),
                 "eligible_event_definition": FULL_FLAG,
                 "entry_definition": "close of next trading session after signal onset",
                 "target_delay_sessions": 1,
@@ -404,6 +431,7 @@ def main():
                 "promotion_gate": promotion_gate(d1_events),
             },
             "dual_severity_hazard": {
+                **research_priority_meta("dual_severity_hazard"),
                 "eligible_event_definition": FULL_FLAG,
                 "severity_definition": "max(0,-2-net_liq_4w_pct_at_episode_start)+max(0,-2-reserves_4w_pct_at_episode_start)",
                 "candidate_flag_definition": "HIGH_DUAL_SEVERITY = severity_pp > 6.0",
@@ -417,6 +445,7 @@ def main():
         },
         "warnings": [
             "All four challenger definitions were selected after historical diagnostics and therefore require independent Forward-OOS evidence.",
+            "Under PRUNED16 V2, DUAL Severity is T3 Legacy / low priority and is not promotion-eligible without a new priority review.",
             "Historical development events through 2026-10-02 are excluded from Forward-OOS counts.",
             "First-seen score/state fields are immutable; later refreshes may only mature outcomes or report upstream discrepancies.",
             "No challenger automatically changes MAIN, production sizing, or existing Task 1/4 Forward-OOS ledgers.",
