@@ -1,0 +1,59 @@
+name: Research Pure Box Geometry RR V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/geometry_rr_v1/PREREGISTRATION.md'
+      - 'research_pure_box_geometry_rr.py'
+      - '.github/workflows/research_pure_box_geometry_rr_v1.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy scipy
+      - name: Download frozen broad-market artifacts
+        run: |
+          mkdir -p /tmp/pure_box_all
+          gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -D /tmp/pure_box_all
+      - name: Run geometry and R:R study
+        run: python research_pure_box_geometry_rr.py --indir /tmp/pure_box_all --outdir /tmp/geometry_rr
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/geometry_rr/summary.json'))
+          assert d['schema']=='PURE-BOX-GEOMETRY-RR-V1'
+          for cap in ('top300','top500'):
+              assert d['rank_caps'][cap]['isolated_opportunity_count']>1000
+              assert d['rank_caps'][cap]['portfolios']['rr_priority']['trade_stats_all']['trades']>0
+          print(json.dumps({cap:{k:v['portfolio'] for k,v in d['rank_caps'][cap]['portfolios'].items()} for cap in d['rank_caps']},indent=2))
+          PY
+      - name: Persist aggregate outputs
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/geometry_rr_v1
+          cp /tmp/geometry_rr/summary.json research/pure_box_liquid_leaders_v1/geometry_rr_v1/
+          cp /tmp/geometry_rr/geometry_quintiles.csv research/pure_box_liquid_leaders_v1/geometry_rr_v1/
+          cp /tmp/geometry_rr/monotonicity_receipt.csv research/pure_box_liquid_leaders_v1/geometry_rr_v1/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/geometry_rr_v1
+          if git diff --cached --quiet; then echo 'No aggregate change.'; else
+            git commit -m 'research: run Pure Box geometry R:R V1'
+            git push
+          fi
