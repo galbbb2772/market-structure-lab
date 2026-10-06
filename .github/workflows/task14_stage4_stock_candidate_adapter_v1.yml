@@ -11,6 +11,7 @@ on:
       - '.github/workflows/task14_stage4_stock_candidate_adapter_v1.yml'
   schedule:
     - cron: '15 8 * * 2-6'
+    - cron: '30 12 * * 2-6'
 
 permissions:
   contents: write
