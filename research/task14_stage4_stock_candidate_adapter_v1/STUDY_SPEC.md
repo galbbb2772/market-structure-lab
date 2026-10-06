@@ -2,75 +2,115 @@
 
 ## Purpose
 
-Provide a forward-only interface between an upstream U.S.-equity candidate generator and the existing Task 1/4 Stage-4 execution/paper infrastructure.
+Bridge the already-frozen Frozen V4 Strict V3 stock candidate engine into Task 1/4 Stage-4 research without creating a second stock-selection model.
 
-This adapter **does not discover, rank, optimize, or backfill stocks**. It only validates and standardizes an already-frozen upstream candidate snapshot.
+The adapter only:
+1. fetches the public, versioned candidate feed exported from Frozen V4;
+2. validates point-in-time integrity;
+3. preserves upstream rank/eligibility without recomputation;
+4. aligns candidate snapshots to Task 1/4 Forward-OOS event dates by exact market date.
 
-## Freeze boundary
+It does **not** discover, optimize, re-rank, backfill, or authorize stock trades.
 
-- Task 1/4 historical development is frozen through market date `2026-10-02`.
-- Only candidate snapshots with `as_of_market_date > 2026-10-02` may be marked `forward_eligible=true`.
-- Historical/backfilled candidate snapshots may be stored for engineering tests but never count as Forward-OOS evidence.
+## Frozen upstream
 
-## Optional upstream feed
+Source of truth: `galbbb2772/frozen-v4`.
 
-Expected path: `docs/data/stock_candidate_feed_v1.json`.
+Pinned public feed:
+`https://raw.githubusercontent.com/galbbb2772/frozen-v4-dashboard/main/data/stock_candidate_feed_v1.json`
 
-If the file is absent, the adapter must succeed with status `AWAITING_UPSTREAM_FEED` and emit zero candidates. It must never invent a candidate list.
+Pinned source identity:
+- `source_name = frozen-v4`
+- `source_version = FROZEN-V4-STRICT-V3-MASSIVE-EOD-V1`
+- upstream contract: `BASE_GENERATOR_CONTRACT.md`
 
-### Feed-level required fields
+Frozen V4 base candidate logic remains upstream-owned. The Task 1/4 adapter must never reproduce or mutate those rules.
 
-- `schema`: `STOCK-CANDIDATE-FEED-V1`
-- `generated_at`: timestamp
-- `as_of_market_date`: `YYYY-MM-DD`
-- `source_name`
-- `source_version`
-- `candidates`: array
+## Task 1/4 freeze boundary
 
-### Candidate-level required fields
+- Historical development frozen through market date `2026-10-02`.
+- A snapshot can be Task 1/4 Forward-OOS eligible only when `as_of_market_date > 2026-10-02`.
+- Historical or boundary-date snapshots may be retained for engineering/audit but never count as Forward-OOS evidence.
 
+## Feed structure
+
+Feed schema: `STOCK-CANDIDATE-FEED-V1`.
+
+The feed contains an append-style `snapshots` array so delayed workflows cannot erase a prior market day's candidate set.
+
+Each snapshot requires:
+- `as_of_market_date`
+- `candidate_count`
+- `snapshot_sha256`
+- `candidates`
+
+Each candidate requires:
 - `symbol`
-- `candidate_id` — immutable upstream identity
-- `first_seen_at` — timestamp of first publication
-- `rank` — upstream rank only; adapter may not recompute it
-- `trigger_reasons` — non-empty array of upstream reasons
+- `candidate_id` — immutable upstream `base_signal_id`
+- `first_seen_at`
+- `rank` — upstream rank only
+- `trigger_reasons` — non-empty upstream reasons
 
-Optional point-in-time metadata may include `sector`, `industry`, `price`, `adv20_usd`, `market_cap_usd`, and upstream diagnostic scores.
+Optional point-in-time fields include security identity, entry date, Frozen V4 selection rank, upstream eligibility, quality score, RSI, DVR, MA20 deviation, ADV20, raw signal close, SPY context, and frozen gate flags.
 
-## Validation rules
+Future return/PnL/outcome fields are forbidden.
 
-1. Symbols must be unique within a snapshot.
-2. `candidate_id` must be unique within a snapshot.
-3. `trigger_reasons` must be non-empty.
-4. The adapter may not add or modify `rank`.
-5. No field whose name indicates future outcome/return/PnL may be accepted in candidate payloads.
-6. `as_of_market_date` must not be later than the latest upstream market-state date used for alignment.
-7. `forward_eligible=true` only when `as_of_market_date > 2026-10-02`.
-8. The adapter performs no historical performance selection and no automatic sector exclusion.
+## Multi-date integrity
 
-## Task 1/4 signal alignment
+- Candidate symbols must be unique within one snapshot.
+- `candidate_id` must be unique across the complete feed.
+- Snapshot dates must be strictly increasing.
+- The adapter verifies each `snapshot_sha256`.
+- Repeated symbols across different dates are allowed because they represent distinct immutable candidate IDs.
 
-The adapter reads `docs/data/task14_challenger_forward_oos_v1.json` and reports current forward signal counts for:
+## Source timing / deferred snapshots
 
-- Early Sequence
-- RMD2 Price+Score
-- D+1 Entry
-- DUAL Severity Hazard
+Frozen V4 may update before Task 1/4's market-state ledger.
 
-A candidate snapshot is considered `signal_aligned=true` only if at least one Task 1/4 forward event has a signal date equal to the snapshot `as_of_market_date`. No nearest-date or future-date matching is allowed.
+Therefore:
+- snapshots with `as_of_market_date > latest_upstream_market_date` are retained as `adapter_snapshot_usable=false`;
+- they are not rejected, but they cannot align early;
+- once Task 1/4 catches up, the same immutable snapshot becomes usable without rewriting it.
+
+## Exact-date Task 1/4 alignment
+
+The adapter reads `docs/data/task14_challenger_forward_oos_v1.json`.
+
+A stock candidate can be:
+- `adapter_forward_eligible=true` only when its snapshot is usable and after 2026-10-02;
+- `adapter_signal_aligned=true` only when the snapshot date exactly equals a Task 1/4 Forward-OOS event date;
+- `adapter_trade_pool_eligible=true` only when exact-date aligned **and** Frozen V4 already marked the candidate `upstream_eligible=true`.
+
+No nearest-date, next-date, or future-date matching is allowed.
+
+`adapter_trade_pool_eligible` is still research/paper metadata. It is not an execution authorization.
+
+## Cache / transport
+
+The adapter refreshes the public feed on each run and stores a local audit copy at:
+`docs/data/stock_candidate_feed_v1.json`.
+
+If the public feed is temporarily unavailable:
+- an existing validated local copy may be used as `CACHED_LOCAL_FALLBACK`;
+- if no local copy exists, status is `AWAITING_UPSTREAM_FEED`;
+- the adapter must never invent candidates.
 
 ## Output
 
-Path: `docs/data/task14_stage4_stock_candidate_adapter_v1.json`.
+`docs/data/task14_stage4_stock_candidate_adapter_v1.json`
 
-The output is research/paper infrastructure only and must preserve:
-
+Required guardrails:
 - `production_effect = none`
 - `broker_orders_enabled = false`
 - `historical_results_count_as_forward_oos = false`
 - `automatic_stock_selection = false`
+- `automatic_sector_exclusion = false`
 - `automatic_policy_promotion = false`
+- `rank_recomputed_by_adapter = false`
+- `future_outcome_fields_allowed = false`
+- `nearest_date_alignment_allowed = false`
+- upstream source version pinned
 
-## Promotion / execution guardrail
+## Promotion guardrail
 
-This adapter is not authorization to trade individual stocks. A separate preregistered candidate-generation rule plus prospective evidence is required before any stock-selection logic can be promoted into execution.
+This bridge does not change Task 1/4 production. Any future individual-stock execution policy must be separately preregistered and judged on prospective evidence.
