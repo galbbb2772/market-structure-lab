@@ -1,16 +1,8 @@
 name: Task 1/4 Forward-OOS Evaluation V1
 
+# Legacy V1 reproduction only. Active daily research moved to PRUNED16 V2.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'evaluate_task14_forward_oos_v1.py'
-      - 'research/task14_prospective_evaluation_v1/PROTOCOL.md'
-      - '.github/workflows/task14_forward_oos_evaluation_v1.yml'
-      - 'docs/data/market_state_box_v1.json'
-      - 'docs/data/residual_mean_reversion_distance_forward_oos_v1.json'
-      - 'docs/data/task14_challenger_forward_oos_v1.json'
 
 permissions:
   contents: write
