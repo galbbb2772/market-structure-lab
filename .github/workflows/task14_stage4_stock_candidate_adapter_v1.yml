@@ -8,10 +8,9 @@ on:
       - 'build_task14_stage4_stock_candidate_adapter_v1.py'
       - 'research/task14_stage4_stock_candidate_adapter_v1/STUDY_SPEC.md'
       - 'docs/data/task14_challenger_forward_oos_v1.json'
-      - 'docs/data/stock_candidate_feed_v1.json'
       - '.github/workflows/task14_stage4_stock_candidate_adapter_v1.yml'
   schedule:
-    - cron: '20 0 * * 2-6'
+    - cron: '15 8 * * 2-6'
 
 permissions:
   contents: write
@@ -29,8 +28,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Build stock candidate adapter
+
+      - name: Refresh and build stock candidate adapter
         run: python build_task14_stage4_stock_candidate_adapter_v1.py
+
       - name: Validate adapter output
         run: |
           python - <<'PY'
@@ -48,25 +49,42 @@ jobs:
           assert g['automatic_policy_promotion'] is False
           assert g['rank_recomputed_by_adapter'] is False
           assert g['future_outcome_fields_allowed'] is False
+          assert g['nearest_date_alignment_allowed'] is False
+          assert g['upstream_source_version_pinned'] is True
           a=x['adapter']
-          assert a['status'] in {'AWAITING_UPSTREAM_FEED','EMPTY_FEED','READY'}
+          assert a['status'] in {'AWAITING_UPSTREAM_FEED','EMPTY_FEED','FEED_AHEAD_OF_UPSTREAM','READY'}
           assert a['candidate_count']==len(a['candidates'])
+          assert a['usable_snapshot_count']+a['deferred_snapshot_count']==a['snapshot_count']
+          assert a['trade_pool_eligible_count'] <= a['signal_aligned_count'] <= a['forward_eligible_count'] <= a['candidate_count']
           if a['status']=='AWAITING_UPSTREAM_FEED':
               assert a['candidate_count']==0
-          print('STOCK_CANDIDATE_ADAPTER_VALID', a['status'], a['candidate_count'])
+          if a['source_name'] is not None:
+              assert a['source_name']=='frozen-v4'
+              assert a['source_version']=='FROZEN-V4-STRICT-V3-MASSIVE-EOD-V1'
+          print('STOCK_CANDIDATE_ADAPTER_VALID',a['status'],a['feed_fetch_status'])
+          print('SNAPSHOTS',a['snapshot_count'],'usable',a['usable_snapshot_count'],'deferred',a['deferred_snapshot_count'])
+          print('CANDIDATES',a['candidate_count'],'forward',a['forward_eligible_count'],'aligned',a['signal_aligned_count'],'trade_pool',a['trade_pool_eligible_count'])
           PY
-      - name: Commit adapter data
+
+      - name: Commit feed cache and adapter data
         run: |
           set -e
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           mkdir -p /tmp/task14-stock-adapter
           cp docs/data/task14_stage4_stock_candidate_adapter_v1.json /tmp/task14-stock-adapter/
+          if [ -f docs/data/stock_candidate_feed_v1.json ]; then
+            cp docs/data/stock_candidate_feed_v1.json /tmp/task14-stock-adapter/
+          fi
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/task14-stock-adapter/task14_stage4_stock_candidate_adapter_v1.json docs/data/
+            if [ -f /tmp/task14-stock-adapter/stock_candidate_feed_v1.json ]; then
+              cp /tmp/task14-stock-adapter/stock_candidate_feed_v1.json docs/data/
+            fi
             git add docs/data/task14_stage4_stock_candidate_adapter_v1.json
+            [ ! -f docs/data/stock_candidate_feed_v1.json ] || git add docs/data/stock_candidate_feed_v1.json
             if git diff --cached --quiet; then
               echo 'No stock candidate adapter data change.'
               exit 0
