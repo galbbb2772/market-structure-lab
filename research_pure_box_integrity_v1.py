@@ -71,7 +71,12 @@ def build_breadth(bars,cap):
 
 def integrity_features(symdf,signal_date,detected_at,lower,upper):
     g=symdf
-    arr=g[(g.date>=detected_at)&(g.date<=signal_date)].copy()
+    # ISO dates sort lexicographically; use indexed slice instead of scanning the
+    # whole symbol history for every signal.
+    dates=g["date"].to_numpy(dtype=str)
+    i0=int(np.searchsorted(dates,detected_at,side="left"))
+    i1=int(np.searchsorted(dates,signal_date,side="right"))
+    arr=g.iloc[i0:i1].copy()
     if arr.empty:
         return dict(post_detection_lower_touch_days=0,post_detection_lower_touch_episodes=0,
                     touch_days_last10=0,touch_days_last20=0,days_since_prior_lower_touch=np.nan,
