@@ -74,7 +74,7 @@ jobs:
           d=json.load(open('/tmp/result/summary.json'))
           assert d['schema']=='PURE-BOX-ENTRY-BREADTH-V2'
           x=pd.read_csv('/tmp/result/annual_results.csv')
-          assert len(x)==72
+          assert len(x)==144
           for cap in ('top300','top500'):
               for sleeve in ('fresh','wide_fresh'):
                   assert d['lanes'][cap][sleeve]['baseline_next_open__no_breadth_gate']['years']==6
