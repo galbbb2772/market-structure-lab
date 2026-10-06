@@ -24,7 +24,9 @@
       "primary_sample_n": 0,
       "rho_10d": null,
       "permutation_two_sided_p": null,
-      "holm_adjusted_p_two_test_family": null
+      "holm_adjusted_p_two_test_family": null,
+      "research_priority_tier": "T3_LEGACY_LOW_PRIORITY",
+      "promotion_eligible_under_current_priority": false
     },
     "dplus1_entry": {
       "status": "PENDING",
@@ -41,7 +43,9 @@
       "primary_sample_n": 0,
       "mean_paired_improvement_pp": null,
       "exact_signflip_two_sided_p": null,
-      "holm_adjusted_p_two_test_family": null
+      "holm_adjusted_p_two_test_family": null,
+      "research_priority_tier": "T2_SECONDARY_FORWARD_WATCH",
+      "promotion_eligible_under_current_priority": true
     },
     "dual_severity_hazard": {
       "status": "PENDING",
@@ -59,7 +63,9 @@
       "brier_base": null,
       "brier_severity": null,
       "high_severity_break_rate": null,
-      "low_severity_break_rate": null
+      "low_severity_break_rate": null,
+      "research_priority_tier": "T3_LEGACY_LOW_PRIORITY",
+      "promotion_eligible_under_current_priority": false
     },
     "early_sequence": {
       "status": "PENDING",
@@ -76,17 +82,30 @@
       "primary_sample_n": 0,
       "mean_10d_pct": null,
       "reference_all_days_mean_10d_pct": null,
-      "positive_rate": null
+      "positive_rate": null,
+      "research_priority_tier": "T2_SECONDARY_FORWARD_WATCH",
+      "promotion_eligible_under_current_priority": true
     }
   },
   "overall": {
     "any_ready": false,
     "automatic_production_change": false,
-    "note": "Primary V1 snapshot locks at the first 20 mature events once all readiness gates for that test are satisfied; later observations are monitoring only."
+    "note": "Primary V1 snapshot locks at the first 20 mature events once all readiness gates for that test are satisfied; later observations are monitoring only.",
+    "primary_research_thesis": "matched_control_relative_state_edge",
+    "legacy_low_priority_tests": [
+      "rmd3",
+      "dual_severity_hazard"
+    ],
+    "secondary_forward_watch_tests": [
+      "dplus1_entry",
+      "early_sequence"
+    ]
   },
   "warnings": [
     "Historical development events through 2026-10-06 are excluded.",
     "No PENDING result should be interpreted as failure or success.",
-    "No PASS result changes MAIN automatically; a separate preregistered review is required."
-  ]
+    "No PASS result changes MAIN automatically; a separate preregistered review is required.",
+    "RMD3 and DUAL Severity are Legacy T3 monitors under PRUNED16 V2; PASS/FAIL is audit-only unless a new priority review promotes them."
+  ],
+  "research_priority_policy": "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md"
 }
