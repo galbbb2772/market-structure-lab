@@ -1,0 +1,51 @@
+name: Research Pure Box Breadth Permission V1
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/pure-box-long-liquid-leaders-v1]
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/breadth_permission_v1/PREREGISTRATION.md'
+      - 'research_pure_box_breadth_permission_v1.py'
+      - '.github/workflows/research_pure_box_breadth_permission_v1.yml'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  breadth:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas numpy
+      - run: |
+          mkdir -p /tmp/pure_box_all
+          gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -D /tmp/pure_box_all
+      - run: python research_pure_box_breadth_permission_v1.py --indir /tmp/pure_box_all --outdir /tmp/breadth
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json, pandas as pd
+          d=json.load(open('/tmp/breadth/summary.json'))
+          assert d['schema']=='PURE-BOX-BREADTH-PERMISSION-V1'
+          x=pd.read_csv('/tmp/breadth/annual_breadth_permission.csv')
+          assert len(x)>=200
+          for cap in ('top300','top500'):
+              for sleeve in ('fresh','wide_fresh'):
+                  assert d['lanes'][cap][sleeve]['all']['years']==6
+          print(x.groupby(['rank_cap','sleeve','gate']).agg({'total_return':'mean','sharpe':'mean','trades':'sum'}).tail(40))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/breadth_permission_v1
+          cp /tmp/breadth/summary.json research/pure_box_liquid_leaders_v1/breadth_permission_v1/
+          cp /tmp/breadth/annual_breadth_permission.csv research/pure_box_liquid_leaders_v1/breadth_permission_v1/
+          cp /tmp/breadth/breadth_year_receipt.csv research/pure_box_liquid_leaders_v1/breadth_permission_v1/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/breadth_permission_v1
+          if git diff --cached --quiet; then echo no-change; else git commit -m 'research: run Pure Box breadth permission V1' && git push; fi
