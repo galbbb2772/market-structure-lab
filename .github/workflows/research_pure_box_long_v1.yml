@@ -1,0 +1,48 @@
+name: Research Pure Box Long V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-v1
+    paths:
+      - 'research/pure_box_long_v1.py'
+      - 'research/pure_box_long_v1/PREREGISTRATION.md'
+      - '.github/workflows/research_pure_box_long_v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run pure box long ETF pilot
+        run: python research/pure_box_long_v1.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('research/pure_box_long_v1/summary.json'))
+          assert d['schema']=='PURE-BOX-LONG-V1'
+          assert d['rules']['extra_filters']=='none'
+          assert d['trade_stats_all']['trades'] > 0
+          print(d['portfolio'])
+          print(d['trade_stats_all'])
+          PY
+      - name: Commit research outputs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_long_v1/summary.json research/pure_box_long_v1/trades.csv research/pure_box_long_v1/equity.csv research/pure_box_long_v1/RESULT.md
+          if git diff --cached --quiet; then
+            echo 'No result change.'
+          else
+            git commit -m 'research: run Pure Box Long V1 ETF pilot'
+            git push
+          fi
