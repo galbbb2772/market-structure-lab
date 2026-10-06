@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-STAGE4-STOCK-CANDIDATE-ADAPTER-V1",
-  "generated_at": "2026-10-06T05:37:18.102047+00:00",
+  "generated_at": "2026-10-06T05:38:03.565363+00:00",
   "research_only": true,
   "paper_only": true,
   "production_effect": "none",
@@ -37,7 +37,7 @@
   "adapter": {
     "status": "READY",
     "feed_fetch_status": "REMOTE_MIRROR_REFRESHED",
-    "feed_fetch_error": null,
+    "feed_fetch_error": "https://api.github.com/repos/galbbb2772/frozen-v4/contents/docs/data/stock_candidate_feed_v1.json?ref=main: HTTPError: HTTP Error 403: rate limit exceeded",
     "source_url": "https://raw.githubusercontent.com/galbbb2772/frozen-v4-dashboard/main/data/stock_candidate_feed_v1.json",
     "source_name": "frozen-v4",
     "source_version": "FROZEN-V4-STRICT-V3-MASSIVE-EOD-V1",
