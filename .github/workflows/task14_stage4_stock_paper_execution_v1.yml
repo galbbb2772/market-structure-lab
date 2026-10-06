@@ -1,0 +1,110 @@
+name: Task 1/4 Stage-4 Stock Paper Execution V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'build_task14_stage4_stock_paper_execution_v1.py'
+      - 'research/task14_stage4_stock_paper_execution_v1/STUDY_SPEC.md'
+      - 'docs/data/task14_stage4_stock_candidate_adapter_v1.json'
+      - '.github/workflows/task14_stage4_stock_paper_execution_v1.yml'
+  schedule:
+    - cron: '35 8 * * 2-6'
+    - cron: '50 12 * * 2-6'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: task14-stage4-stock-paper-execution-v1
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Build prospective stock paper execution ledger
+        run: python build_task14_stage4_stock_paper_execution_v1.py
+
+      - name: Validate stock paper execution output
+        run: |
+          python - <<'PY'
+          import json
+          p='docs/data/task14_stage4_stock_paper_execution_v1.json'
+          x=json.load(open(p,encoding='utf-8'))
+          assert x['schema']=='TASK14-PAPER-STOCK-EXECUTION-V1'
+          assert x['research_only'] is True
+          assert x['paper_only'] is True
+          assert x['diagnostic_only'] is True
+          assert x['production_effect']=='none'
+          assert x['broker_orders_enabled'] is False
+          assert x['frozen_through_market_date']=='2026-10-02'
+          g=x['guardrails']
+          assert g['may_change_production'] is False
+          assert g['automatic_stock_selection'] is False
+          assert g['rank_recomputed'] is False
+          assert g['historical_results_count_as_forward_oos'] is False
+          assert g['historical_candidate_backfill_allowed'] is False
+          assert g['automatic_promotion'] is False
+          assert g['broker_orders_enabled'] is False
+          assert g['nearest_date_alignment_allowed'] is False
+          r=x['portfolio_rule']
+          assert r['event_sleeve_target']==0.25
+          assert r['single_name_cap']==0.10
+          assert r['gross_cap']==1.0
+          assert r['upstream_rank_changes_weight'] is False
+          assert set(x['portfolios'])=={'fixed_25bps_rt','fixed_50bps_rt'}
+          assert len(x['immutable_recompute_discrepancies'])==0
+          upstream=x['upstream_trade_pool_eligible_count']
+          assert upstream==x['reconstructed_trade_pool_count']
+          for name,pf in x['portfolios'].items():
+              assert pf['max_gross_exposure'] <= 1.000001
+              assert pf['max_single_name_weight'] <= 0.100001
+              assert pf['max_adv_participation_pct'] >= 0
+              assert len(pf['candidate_decisions'])==upstream
+          if upstream==0:
+              assert x['market_data_sources']=={'market_data_fetch':'skipped_zero_trade_pool_candidates'}
+              for pf in x['portfolios'].values():
+                  assert pf['latest_equity_usd']==100000.0
+                  assert len(pf['candidate_decisions'])==0
+                  assert len(pf['realized_positions'])==0
+                  assert len(pf['open_positions'])==0
+          print('STOCK_PAPER_EXECUTION_VALID', upstream)
+          print('COST_MODELS', list(x['portfolios']))
+          print('DISCREPANCIES', len(x['immutable_recompute_discrepancies']))
+          PY
+
+      - name: Commit stock paper execution data
+        run: |
+          set -e
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          mkdir -p /tmp/task14-stock-paper
+          cp docs/data/task14_stage4_stock_paper_execution_v1.json /tmp/task14-stock-paper/
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/task14-stock-paper/task14_stage4_stock_paper_execution_v1.json docs/data/
+            git add docs/data/task14_stage4_stock_paper_execution_v1.json
+            if git diff --cached --quiet; then
+              echo 'No stock paper execution data change.'
+              exit 0
+            fi
+            git commit -m 'data: refresh Task 1/4 stock paper execution V1'
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push race on attempt ${attempt}; retrying from latest main."
+          done
+          echo 'Failed to publish stock paper execution data after 3 attempts.' >&2
+          exit 1
