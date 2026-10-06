@@ -89,6 +89,14 @@ jobs:
                   s=re.sub(r'PREREG_COMMIT = "[0-9a-f]+"','PREREG_COMMIT = "cf5a0d9c92c28176bf33f98e6f68c574675a19f6"',s)
               if p in ('build_residual_mean_reversion_distance_forward_oos_v1.py','build_task14_challenger_forward_oos_v1.py'):
                   s=re.sub(r'FREEZE_COMMIT = "[0-9a-f]+"','FREEZE_COMMIT = "cf5a0d9c92c28176bf33f98e6f68c574675a19f6"',s)
+              if p=='research_dual_revision_sensitivity_stage2_v1.py':
+                  new_dates='''EXPECTED_FULL_DATES = [
+    "2019-06-04", "2022-01-28", "2022-05-13", "2022-05-23",
+    "2022-06-07", "2022-07-01", "2022-07-12", "2022-09-28",
+    "2022-10-13", "2022-10-25", "2023-01-04",
+]'''
+                  s=re.sub(r'EXPECTED_FULL_DATES = \[.*?\n\]',new_dates,s,flags=re.S)
+                  s=s.replace('{"dual": 58, "early": 15, "full": 12}','{"dual": 58, "early": 15, "full": 11}')
               q.write_text(s,encoding='utf-8')
           PY
 
