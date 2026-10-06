@@ -1,0 +1,107 @@
+{
+  "schema": "PURE-BOX-LONG-V1",
+  "research_only": true,
+  "dataset_generated_at": "2026-10-06T03:09:54.357322+00:00",
+  "window": [
+    "2019-01-02",
+    "2026-09-30"
+  ],
+  "universe": [
+    "DIA",
+    "QQQ",
+    "SPY",
+    "XLB",
+    "XLC",
+    "XLE",
+    "XLF",
+    "XLI",
+    "XLK",
+    "XLP",
+    "XLRE",
+    "XLU",
+    "XLV",
+    "XLY"
+  ],
+  "rules": {
+    "bottom_fraction": 0.2,
+    "small_weight": 0.5,
+    "large_weight": 1.0,
+    "stop": "box_lower",
+    "take_profit": "box_upper",
+    "both_intraday": "stop_first",
+    "entry": "next_session_open",
+    "cost_per_side_bps": 5.0,
+    "extra_filters": "none"
+  },
+  "portfolio": {
+    "start_equity": 1.0,
+    "end_equity": 1.3627439149910898,
+    "total_return": 0.3627439149910898,
+    "cagr": 0.040782305273300734,
+    "max_drawdown": -0.2868201319123308,
+    "daily_sharpe": 0.3675246476864242,
+    "avg_exposure": 0.6362180288022539,
+    "max_exposure": 1.0000000000000002
+  },
+  "trade_stats_all": {
+    "trades": 510,
+    "win_rate": 0.2,
+    "mean_return": 0.0033038728290133226,
+    "median_return": -0.007919460059190808,
+    "profit_factor": 1.3069345024508032,
+    "avg_hold_sessions": 8.843137254901961,
+    "target_exits": 102,
+    "stop_exits": 407,
+    "end_mark_exits": 1
+  },
+  "trade_stats_small": {
+    "trades": 347,
+    "win_rate": 0.21902017291066284,
+    "mean_return": 0.0038771291443831634,
+    "median_return": -0.006850060705428929,
+    "profit_factor": 1.453274035454918,
+    "avg_hold_sessions": 6.755043227665706,
+    "target_exits": 76,
+    "stop_exits": 271,
+    "end_mark_exits": 0
+  },
+  "trade_stats_large": {
+    "trades": 163,
+    "win_rate": 0.15950920245398773,
+    "mean_return": 0.002083505090158508,
+    "median_return": -0.011529396903820821,
+    "profit_factor": 1.1346815803569699,
+    "avg_hold_sessions": 13.28834355828221,
+    "target_exits": 26,
+    "stop_exits": 136,
+    "end_mark_exits": 1
+  },
+  "rejected_entries": {
+    "gap_below_stop": 199,
+    "gap_above_target": 0,
+    "no_cash": 270,
+    "already_held": 642
+  },
+  "benchmarks": {
+    "SPY": {
+      "start": "2019-01-02",
+      "end": "2026-09-30",
+      "price_return": 2.0483252058517865
+    },
+    "QQQ": {
+      "start": "2019-01-02",
+      "end": "2026-09-30",
+      "price_return": 3.776407541322314
+    },
+    "DIA": {
+      "start": "2019-01-02",
+      "end": "2026-09-30",
+      "price_return": 1.1792509427494
+    }
+  },
+  "notes": [
+    "ETF/index-proxy pilot only; this is not the final all-stock 2019-2026 result.",
+    "No alpha filters were added beyond the pre-existing bottom-20% box location rule.",
+    "End-mark trades exist only to describe currently open positions at sample end."
+  ]
+}
