@@ -1,0 +1,101 @@
+name: Research Structure Decay Portfolio V1.2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/structure_decay_v1/portfolio_v1_2/PREREGISTRATION.md'
+      - 'research_pure_box_structure_decay_portfolio_annotate.py'
+      - 'research_pure_box_structure_decay_portfolio_combine.py'
+      - '.github/workflows/research_pure_box_structure_decay_portfolio_v1_2.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  annotate:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - name: Download source year
+        run: |
+          mkdir -p /tmp/source
+          gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-${{ matrix.year }}" -D /tmp/source
+      - name: Annotate signals
+        run: |
+          python research_pure_box_structure_decay_portfolio_annotate.py             --year ${{ matrix.year }}             --indir /tmp/source             --outdir /tmp/anno
+      - uses: actions/upload-artifact@v4
+        with:
+          name: decay-portfolio-anno-${{ matrix.year }}
+          path: /tmp/anno/*
+          retention-days: 7
+
+  combine:
+    needs: annotate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: decay-portfolio-anno-*
+          path: /tmp/anno
+      - name: Download source bars
+        run: |
+          mkdir -p /tmp/source
+          for y in 2023 2024 2025 2026; do
+            mkdir -p "/tmp/source/$y"
+            gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$y" -D "/tmp/source/$y"
+          done
+      - name: Run portfolio comparison
+        run: |
+          python research_pure_box_structure_decay_portfolio_combine.py             --annodir /tmp/anno             --bardir /tmp/source             --outdir /tmp/result
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/result/summary.json'))
+          assert d['schema']=='STRUCTURE-DECAY-PORTFOLIO-V1.2'
+          c=pd.read_csv('/tmp/result/comparison.csv')
+          assert len(c)==8
+          for cap in ('top300','top500'):
+              assert d['results'][cap]['fresh_all']['trades']>500
+              assert d['results'][cap]['fresh_no3plus']['trades']>500
+          print(c.to_string(index=False))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/structure_decay_v1/portfolio_v1_2
+          cp /tmp/result/summary.json research/pure_box_liquid_leaders_v1/structure_decay_v1/portfolio_v1_2/
+          cp /tmp/result/comparison.csv research/pure_box_liquid_leaders_v1/structure_decay_v1/portfolio_v1_2/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/structure_decay_v1/portfolio_v1_2
+          if git diff --cached --quiet; then
+            echo no-change
+          else
+            git commit -m 'research: run Structure Decay portfolio V1.2'
+            git push
+          fi
