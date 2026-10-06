@@ -3,7 +3,7 @@ name: PRUNED16 Full Downstream Rebaseline V2
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["PRUNED16 Snapshot Only", "PRUNED16 Lightweight Publish"]
+    workflows: ["PRUNED16 Snapshot Only", "PRUNED16 Lightweight Publish", "PRUNED16 Snapshot via Validation Engine"]
     types: [completed]
 
 permissions:
