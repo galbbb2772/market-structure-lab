@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-STAGE4-PORTFOLIO-V1",
-  "generated_at": "2026-10-05T18:48:50.560349+00:00",
+  "generated_at": "2026-10-06T03:18:20.546902+00:00",
   "research_only": true,
   "diagnostic_only": true,
   "production_effect": "none",
@@ -11,7 +11,7 @@
   "instrument": "SPY",
   "source": {
     "host": "query1.finance.yahoo.com",
-    "rows": 2513,
+    "rows": 2512,
     "transport": "yahoo_chart_range_10y"
   },
   "historical_signal_counts": {
@@ -73,10 +73,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2019-05-30",
-      "signal_spy_index": 665,
-      "entry_spy_index": 666,
+      "signal_spy_index": 664,
+      "entry_spy_index": 665,
       "entry_date": "2019-05-31",
-      "exit_spy_index": 675,
+      "exit_spy_index": 674,
       "exit_date": "2019-06-13",
       "signal_close": 279.029999,
       "entry_open": 276.200012,
@@ -88,10 +88,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2019-06-04",
-      "signal_spy_index": 668,
-      "entry_spy_index": 669,
+      "signal_spy_index": 667,
+      "entry_spy_index": 668,
       "entry_date": "2019-06-05",
-      "exit_spy_index": 678,
+      "exit_spy_index": 677,
       "exit_date": "2019-06-18",
       "signal_close": 280.529999,
       "entry_open": 282.329987,
@@ -103,10 +103,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-01-26",
-      "signal_spy_index": 1336,
-      "entry_spy_index": 1337,
+      "signal_spy_index": 1335,
+      "entry_spy_index": 1336,
       "entry_date": "2022-01-27",
-      "exit_spy_index": 1346,
+      "exit_spy_index": 1345,
       "exit_date": "2022-02-09",
       "signal_close": 433.380005,
       "entry_open": 438.26001,
@@ -118,10 +118,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-01-26",
-      "signal_spy_index": 1336,
-      "entry_spy_index": 1337,
+      "signal_spy_index": 1335,
+      "entry_spy_index": 1336,
       "entry_date": "2022-01-27",
-      "exit_spy_index": 1346,
+      "exit_spy_index": 1345,
       "exit_date": "2022-02-09",
       "signal_close": 433.380005,
       "entry_open": 438.26001,
@@ -133,10 +133,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-02-18",
-      "signal_spy_index": 1353,
-      "entry_spy_index": 1354,
+      "signal_spy_index": 1352,
+      "entry_spy_index": 1353,
       "entry_date": "2022-02-22",
-      "exit_spy_index": 1363,
+      "exit_spy_index": 1362,
       "exit_date": "2022-03-07",
       "signal_close": 434.230011,
       "entry_open": 431.890015,
@@ -148,10 +148,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-03-04",
-      "signal_spy_index": 1362,
-      "entry_spy_index": 1363,
+      "signal_spy_index": 1361,
+      "entry_spy_index": 1362,
       "entry_date": "2022-03-07",
-      "exit_spy_index": 1372,
+      "exit_spy_index": 1371,
       "exit_date": "2022-03-18",
       "signal_close": 432.170013,
       "entry_open": 431.549988,
@@ -163,10 +163,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-03-09",
-      "signal_spy_index": 1365,
-      "entry_spy_index": 1366,
+      "signal_spy_index": 1364,
+      "entry_spy_index": 1365,
       "entry_date": "2022-03-10",
-      "exit_spy_index": 1375,
+      "exit_spy_index": 1374,
       "exit_date": "2022-03-23",
       "signal_close": 427.410004,
       "entry_open": 422.519989,
@@ -178,10 +178,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-04-28",
-      "signal_spy_index": 1400,
-      "entry_spy_index": 1401,
+      "signal_spy_index": 1399,
+      "entry_spy_index": 1400,
       "entry_date": "2022-04-29",
-      "exit_spy_index": 1410,
+      "exit_spy_index": 1409,
       "exit_date": "2022-05-12",
       "signal_close": 427.809998,
       "entry_open": 423.589996,
@@ -193,10 +193,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-05-10",
-      "signal_spy_index": 1408,
-      "entry_spy_index": 1409,
+      "signal_spy_index": 1407,
+      "entry_spy_index": 1408,
       "entry_date": "2022-05-11",
-      "exit_spy_index": 1418,
+      "exit_spy_index": 1417,
       "exit_date": "2022-05-24",
       "signal_close": 399.089996,
       "entry_open": 398.070007,
@@ -208,10 +208,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-05-13",
-      "signal_spy_index": 1411,
-      "entry_spy_index": 1412,
+      "signal_spy_index": 1410,
+      "entry_spy_index": 1411,
       "entry_date": "2022-05-16",
-      "exit_spy_index": 1421,
+      "exit_spy_index": 1420,
       "exit_date": "2022-05-27",
       "signal_close": 401.720001,
       "entry_open": 399.980011,
@@ -223,10 +223,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-05-19",
-      "signal_spy_index": 1415,
-      "entry_spy_index": 1416,
+      "signal_spy_index": 1414,
+      "entry_spy_index": 1415,
       "entry_date": "2022-05-20",
-      "exit_spy_index": 1425,
+      "exit_spy_index": 1424,
       "exit_date": "2022-06-03",
       "signal_close": 389.459991,
       "entry_open": 393.25,
@@ -238,10 +238,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-05-23",
-      "signal_spy_index": 1417,
-      "entry_spy_index": 1418,
+      "signal_spy_index": 1416,
+      "entry_spy_index": 1417,
       "entry_date": "2022-05-24",
-      "exit_spy_index": 1427,
+      "exit_spy_index": 1426,
       "exit_date": "2022-06-07",
       "signal_close": 396.920013,
       "entry_open": 392.559998,
@@ -253,10 +253,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-06-02",
-      "signal_spy_index": 1424,
-      "entry_spy_index": 1425,
+      "signal_spy_index": 1423,
+      "entry_spy_index": 1424,
       "entry_date": "2022-06-03",
-      "exit_spy_index": 1434,
+      "exit_spy_index": 1433,
       "exit_date": "2022-06-16",
       "signal_close": 417.390015,
       "entry_open": 412.399994,
@@ -268,10 +268,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-06-07",
-      "signal_spy_index": 1427,
-      "entry_spy_index": 1428,
+      "signal_spy_index": 1426,
+      "entry_spy_index": 1427,
       "entry_date": "2022-06-08",
-      "exit_spy_index": 1437,
+      "exit_spy_index": 1436,
       "exit_date": "2022-06-22",
       "signal_close": 415.73999,
       "entry_open": 413.929993,
@@ -283,10 +283,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-07-01",
-      "signal_spy_index": 1444,
-      "entry_spy_index": 1445,
+      "signal_spy_index": 1443,
+      "entry_spy_index": 1444,
       "entry_date": "2022-07-05",
-      "exit_spy_index": 1454,
+      "exit_spy_index": 1453,
       "exit_date": "2022-07-18",
       "signal_close": 381.23999,
       "entry_open": 375.880005,
@@ -298,10 +298,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-07-01",
-      "signal_spy_index": 1444,
-      "entry_spy_index": 1445,
+      "signal_spy_index": 1443,
+      "entry_spy_index": 1444,
       "entry_date": "2022-07-05",
-      "exit_spy_index": 1454,
+      "exit_spy_index": 1453,
       "exit_date": "2022-07-18",
       "signal_close": 381.23999,
       "entry_open": 375.880005,
@@ -313,10 +313,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-07-12",
-      "signal_spy_index": 1450,
-      "entry_spy_index": 1451,
+      "signal_spy_index": 1449,
+      "entry_spy_index": 1450,
       "entry_date": "2022-07-13",
-      "exit_spy_index": 1460,
+      "exit_spy_index": 1459,
       "exit_date": "2022-07-26",
       "signal_close": 380.829987,
       "entry_open": 375.100006,
@@ -328,10 +328,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-07-14",
-      "signal_spy_index": 1452,
-      "entry_spy_index": 1453,
+      "signal_spy_index": 1451,
+      "entry_spy_index": 1452,
       "entry_date": "2022-07-15",
-      "exit_spy_index": 1462,
+      "exit_spy_index": 1461,
       "exit_date": "2022-07-28",
       "signal_close": 377.910004,
       "entry_open": 382.549988,
@@ -343,10 +343,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-09-26",
-      "signal_spy_index": 1503,
-      "entry_spy_index": 1504,
+      "signal_spy_index": 1502,
+      "entry_spy_index": 1503,
       "entry_date": "2022-09-27",
-      "exit_spy_index": 1513,
+      "exit_spy_index": 1512,
       "exit_date": "2022-10-10",
       "signal_close": 364.309998,
       "entry_open": 368.019989,
@@ -358,10 +358,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-09-28",
-      "signal_spy_index": 1505,
-      "entry_spy_index": 1506,
+      "signal_spy_index": 1504,
+      "entry_spy_index": 1505,
       "entry_date": "2022-09-29",
-      "exit_spy_index": 1515,
+      "exit_spy_index": 1514,
       "exit_date": "2022-10-12",
       "signal_close": 370.529999,
       "entry_open": 366.809998,
@@ -373,10 +373,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-10-03",
-      "signal_spy_index": 1508,
-      "entry_spy_index": 1509,
+      "signal_spy_index": 1507,
+      "entry_spy_index": 1508,
       "entry_date": "2022-10-04",
-      "exit_spy_index": 1518,
+      "exit_spy_index": 1517,
       "exit_date": "2022-10-17",
       "signal_close": 366.609985,
       "entry_open": 372.399994,
@@ -388,10 +388,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-10-11",
-      "signal_spy_index": 1514,
-      "entry_spy_index": 1515,
+      "signal_spy_index": 1513,
+      "entry_spy_index": 1514,
       "entry_date": "2022-10-12",
-      "exit_spy_index": 1524,
+      "exit_spy_index": 1523,
       "exit_date": "2022-10-25",
       "signal_close": 357.73999,
       "entry_open": 358.170013,
@@ -403,10 +403,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-10-13",
-      "signal_spy_index": 1516,
-      "entry_spy_index": 1517,
+      "signal_spy_index": 1515,
+      "entry_spy_index": 1516,
       "entry_date": "2022-10-14",
-      "exit_spy_index": 1526,
+      "exit_spy_index": 1525,
       "exit_date": "2022-10-27",
       "signal_close": 365.970001,
       "entry_open": 368.549988,
@@ -418,10 +418,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2022-10-25",
-      "signal_spy_index": 1524,
-      "entry_spy_index": 1525,
+      "signal_spy_index": 1523,
+      "entry_spy_index": 1524,
       "entry_date": "2022-10-26",
-      "exit_spy_index": 1534,
+      "exit_spy_index": 1533,
       "exit_date": "2022-11-08",
       "signal_close": 384.920013,
       "entry_open": 381.619995,
@@ -433,10 +433,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2022-10-27",
-      "signal_spy_index": 1526,
-      "entry_spy_index": 1527,
+      "signal_spy_index": 1525,
+      "entry_spy_index": 1526,
       "entry_date": "2022-10-28",
-      "exit_spy_index": 1536,
+      "exit_spy_index": 1535,
       "exit_date": "2022-11-10",
       "signal_close": 379.980011,
       "entry_open": 379.869995,
@@ -448,10 +448,10 @@
     {
       "family": "full_sequence",
       "signal_date": "2023-01-04",
-      "signal_spy_index": 1572,
-      "entry_spy_index": 1573,
+      "signal_spy_index": 1571,
+      "entry_spy_index": 1572,
       "entry_date": "2023-01-05",
-      "exit_spy_index": 1582,
+      "exit_spy_index": 1581,
       "exit_date": "2023-01-19",
       "signal_close": 383.76001,
       "entry_open": 381.720001,
@@ -463,10 +463,10 @@
     {
       "family": "early_sequence",
       "signal_date": "2023-01-04",
-      "signal_spy_index": 1572,
-      "entry_spy_index": 1573,
+      "signal_spy_index": 1571,
+      "entry_spy_index": 1572,
       "entry_date": "2023-01-05",
-      "exit_spy_index": 1582,
+      "exit_spy_index": 1581,
       "exit_date": "2023-01-19",
       "signal_close": 383.76001,
       "entry_open": 381.720001,
@@ -1151,10 +1151,10 @@
             "reason": "active_same_instrument_position_at_signal_close"
           }
         ],
-        "exposure_day_pct": 3.5814,
-        "average_gross_exposure": 0.032232,
+        "exposure_day_pct": 3.5828,
+        "average_gross_exposure": 0.032245,
         "max_gross_exposure": 1.0,
-        "market_beta_proxy_average_exposure": 0.032232,
+        "market_beta_proxy_average_exposure": 0.032245,
         "turnover_multiple_start_capital": 19.46004,
         "total_modeled_cost_usd": 973.0,
         "total_modeled_cost_bps_start_capital": 97.300199,
@@ -1282,11 +1282,6 @@
           }
         ],
         "equity_curve": [
-          {
-            "date": "2016-10-05",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
           {
             "date": "2016-10-06",
             "equity": 100000.0,
@@ -13878,10 +13873,10 @@
             "reason": "active_same_instrument_position_at_signal_close"
           }
         ],
-        "exposure_day_pct": 3.5814,
-        "average_gross_exposure": 0.032232,
+        "exposure_day_pct": 3.5828,
+        "average_gross_exposure": 0.032245,
         "max_gross_exposure": 1.0,
-        "market_beta_proxy_average_exposure": 0.032232,
+        "market_beta_proxy_average_exposure": 0.032245,
         "turnover_multiple_start_capital": 19.537199,
         "total_modeled_cost_usd": 122.11,
         "total_modeled_cost_bps_start_capital": 12.210903,
@@ -14009,11 +14004,6 @@
           }
         ],
         "equity_curve": [
-          {
-            "date": "2016-10-05",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
           {
             "date": "2016-10-06",
             "equity": 100000.0,
@@ -26667,10 +26657,10 @@
             "reason": "active_same_instrument_position_at_signal_close"
           }
         ],
-        "exposure_day_pct": 4.7752,
-        "average_gross_exposure": 0.042977,
+        "exposure_day_pct": 4.7771,
+        "average_gross_exposure": 0.042994,
         "max_gross_exposure": 1.0,
-        "market_beta_proxy_average_exposure": 0.042977,
+        "market_beta_proxy_average_exposure": 0.042994,
         "turnover_multiple_start_capital": 24.582092,
         "total_modeled_cost_usd": 1229.1,
         "total_modeled_cost_bps_start_capital": 122.910461,
@@ -26837,11 +26827,6 @@
           }
         ],
         "equity_curve": [
-          {
-            "date": "2016-10-05",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
           {
             "date": "2016-10-06",
             "equity": 100000.0,
@@ -39493,10 +39478,10 @@
             "reason": "active_same_instrument_position_at_signal_close"
           }
         ],
-        "exposure_day_pct": 4.7752,
-        "average_gross_exposure": 0.042977,
+        "exposure_day_pct": 4.7771,
+        "average_gross_exposure": 0.042994,
         "max_gross_exposure": 1.0,
-        "market_beta_proxy_average_exposure": 0.042977,
+        "market_beta_proxy_average_exposure": 0.042994,
         "turnover_multiple_start_capital": 24.70995,
         "total_modeled_cost_usd": 152.88,
         "total_modeled_cost_bps_start_capital": 15.287918,
@@ -39663,11 +39648,6 @@
           }
         ],
         "equity_curve": [
-          {
-            "date": "2016-10-05",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
           {
             "date": "2016-10-06",
             "equity": 100000.0,
@@ -52321,10 +52301,10 @@
             "reason": "active_same_instrument_position_at_signal_close"
           }
         ],
-        "exposure_day_pct": 4.7752,
-        "average_gross_exposure": 0.019487,
+        "exposure_day_pct": 4.7771,
+        "average_gross_exposure": 0.019495,
         "max_gross_exposure": 0.74979,
-        "market_beta_proxy_average_exposure": 0.019487,
+        "market_beta_proxy_average_exposure": 0.019495,
         "turnover_multiple_start_capital": 11.242561,
         "total_modeled_cost_usd": 562.13,
         "total_modeled_cost_bps_start_capital": 56.212804,
@@ -52491,11 +52471,6 @@
           }
         ],
         "equity_curve": [
-          {
-            "date": "2016-10-05",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
           {
             "date": "2016-10-06",
             "equity": 100000.0,
@@ -65147,10 +65122,10 @@
             "reason": "active_same_instrument_position_at_signal_close"
           }
         ],
-        "exposure_day_pct": 4.7752,
-        "average_gross_exposure": 0.019487,
+        "exposure_day_pct": 4.7771,
+        "average_gross_exposure": 0.019495,
         "max_gross_exposure": 0.74979,
-        "market_beta_proxy_average_exposure": 0.019487,
+        "market_beta_proxy_average_exposure": 0.019495,
         "turnover_multiple_start_capital": 11.26958,
         "total_modeled_cost_usd": 64.81,
         "total_modeled_cost_bps_start_capital": 6.481313,
@@ -65317,11 +65292,6 @@
           }
         ],
         "equity_curve": [
-          {
-            "date": "2016-10-05",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
           {
             "date": "2016-10-06",
             "equity": 100000.0,
@@ -77899,10 +77869,10 @@
         "skipped_signal_count": 0,
         "skipped_overlap_count": 0,
         "skipped_signals": [],
-        "exposure_day_pct": 5.6904,
-        "average_gross_exposure": 0.024225,
+        "exposure_day_pct": 5.6927,
+        "average_gross_exposure": 0.024235,
         "max_gross_exposure": 1.0,
-        "market_beta_proxy_average_exposure": 0.024225,
+        "market_beta_proxy_average_exposure": 0.024235,
         "turnover_multiple_start_capital": 14.062187,
         "total_modeled_cost_usd": 703.11,
         "total_modeled_cost_bps_start_capital": 70.310934,
@@ -78264,11 +78234,6 @@
           }
         ],
         "equity_curve": [
-          {
-            "date": "2016-10-05",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
           {
             "date": "2016-10-06",
             "equity": 100000.0,
@@ -90844,10 +90809,10 @@
         "skipped_signal_count": 0,
         "skipped_overlap_count": 0,
         "skipped_signals": [],
-        "exposure_day_pct": 5.6904,
-        "average_gross_exposure": 0.024223,
+        "exposure_day_pct": 5.6927,
+        "average_gross_exposure": 0.024232,
         "max_gross_exposure": 1.0,
-        "market_beta_proxy_average_exposure": 0.024223,
+        "market_beta_proxy_average_exposure": 0.024232,
         "turnover_multiple_start_capital": 14.103272,
         "total_modeled_cost_usd": 79.42,
         "total_modeled_cost_bps_start_capital": 7.94225,
@@ -91209,11 +91174,6 @@
           }
         ],
         "equity_curve": [
-          {
-            "date": "2016-10-05",
-            "equity": 100000.0,
-            "gross_exposure": 0.0
-          },
           {
             "date": "2016-10-06",
             "equity": 100000.0,
@@ -103868,10 +103828,10 @@
           "reason": "active_same_instrument_position_at_signal_close"
         }
       ],
-      "exposure_day_pct": 4.7752,
-      "average_gross_exposure": 0.019487,
+      "exposure_day_pct": 4.7771,
+      "average_gross_exposure": 0.019495,
       "max_gross_exposure": 0.74979,
-      "market_beta_proxy_average_exposure": 0.019487,
+      "market_beta_proxy_average_exposure": 0.019495,
       "turnover_multiple_start_capital": 11.26958,
       "total_modeled_cost_usd": 64.81,
       "total_modeled_cost_bps_start_capital": 6.481313,
@@ -104128,10 +104088,10 @@
           "reason": "active_same_instrument_position_at_signal_close"
         }
       ],
-      "exposure_day_pct": 4.7752,
-      "average_gross_exposure": 0.019487,
+      "exposure_day_pct": 4.7771,
+      "average_gross_exposure": 0.019495,
       "max_gross_exposure": 0.74979,
-      "market_beta_proxy_average_exposure": 0.019487,
+      "market_beta_proxy_average_exposure": 0.019495,
       "turnover_multiple_start_capital": 11.268637,
       "total_modeled_cost_usd": 831.09,
       "total_modeled_cost_bps_start_capital": 8.310904,
@@ -104388,10 +104348,10 @@
           "reason": "active_same_instrument_position_at_signal_close"
         }
       ],
-      "exposure_day_pct": 4.7752,
-      "average_gross_exposure": 0.019487,
+      "exposure_day_pct": 4.7771,
+      "average_gross_exposure": 0.019495,
       "max_gross_exposure": 0.74979,
-      "market_beta_proxy_average_exposure": 0.019487,
+      "market_beta_proxy_average_exposure": 0.019495,
       "turnover_multiple_start_capital": 11.265657,
       "total_modeled_cost_usd": 14093.39,
       "total_modeled_cost_bps_start_capital": 14.093394,
@@ -104648,10 +104608,10 @@
           "reason": "active_same_instrument_position_at_signal_close"
         }
       ],
-      "exposure_day_pct": 4.7752,
-      "average_gross_exposure": 0.019487,
+      "exposure_day_pct": 4.7771,
+      "average_gross_exposure": 0.019495,
       "max_gross_exposure": 0.74979,
-      "market_beta_proxy_average_exposure": 0.019487,
+      "market_beta_proxy_average_exposure": 0.019495,
       "turnover_multiple_start_capital": 11.256243,
       "total_modeled_cost_usd": 323474.32,
       "total_modeled_cost_bps_start_capital": 32.347432,
