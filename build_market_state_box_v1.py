@@ -433,10 +433,30 @@ def main() -> None:
         x.pop("_i", None)
         public_rows.append(x)
 
+    structure_latest = dates[-1] if dates else None
+    sentiment_latest = max(sentiment_map) if sentiment_map else None
+    market_score_latest = max(score_map) if score_map else None
+    output_latest = public_rows[-1]["date"] if public_rows else None
+    source_latest = {
+        "structure_sp500": structure_latest,
+        "sentiment_history": sentiment_latest,
+        "market_score_history": market_score_latest,
+    }
+    blockers = [
+        name for name, d in source_latest.items()
+        if d is not None and structure_latest is not None and d < structure_latest
+    ]
+
     payload = {
         "schema": "MARKET-STATE-BOX-V1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "research_only": True,
+        "upstream_freshness": {
+            "source_latest_dates": source_latest,
+            "joint_output_latest_date": output_latest,
+            "blocked_by": blockers,
+            "all_sources_at_structure_latest": not blockers and output_latest == structure_latest,
+        },
         "warnings": [
             "Sentiment and composite market-score history are reconstructed and are not fully publication-time point-in-time archives.",
             "Box eligibility is next-session-only after detected_at; breakout day is excluded.",
