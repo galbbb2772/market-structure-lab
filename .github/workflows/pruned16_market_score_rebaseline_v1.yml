@@ -1,0 +1,151 @@
+name: PRUNED16 Market-Score Rebaseline V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pruned16_market_score_rebaseline_v1.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pruned16-market-score-rebaseline-v1
+  cancel-in-progress: true
+
+jobs:
+  rebaseline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Wait for PRUNED16 Market Model publication
+        run: |
+          python - <<'PY'
+          import json, time, urllib.request
+          url='https://raw.githubusercontent.com/galbbb2772/market-indicators-v1/main/docs/data/current.json'
+          want='MARKET-MODEL-V2-PRUNED16-2026-10-06'
+          last=None
+          for _ in range(50):
+              try:
+                  with urllib.request.urlopen(url+'?t='+str(time.time()), timeout=30) as r:
+                      d=json.load(r)
+                  last=((d.get('market_model_v2') or {}).get('version'))
+                  if last==want:
+                      print('PRUNED16_PUBLISHED', last)
+                      break
+              except Exception as e:
+                  last=repr(e)
+              time.sleep(30)
+          else:
+              raise RuntimeError(f'PRUNED16 current.json not published; last={last}')
+          PY
+
+      - name: Snapshot prior frozen outputs
+        run: |
+          mkdir -p /tmp/pruned16-before
+          cp docs/data/market_state_box_v1.json /tmp/pruned16-before/
+          cp docs/data/market_state_sequence_event_audit_v1.json /tmp/pruned16-before/
+          cp docs/data/residual_mean_reversion_distance_v1.json /tmp/pruned16-before/
+          cp docs/data/task14_stage2_final_v1.json /tmp/pruned16-before/ || true
+          cp docs/data/task14_stage3_evidence_audit_v1.json /tmp/pruned16-before/ || true
+
+      - name: Rebuild Market State Box V1
+        run: |
+          python build_market_state_box_v1.py
+          python postprocess_market_state_box_v1.py
+          python validate_market_state_box_v1.py
+          python summarize_market_state_box_v1_validation.py
+
+      - name: Rebuild continuous Market State V2 diagnostics
+        run: |
+          python build_market_state_box_v2.py
+          python diagnose_market_state_box_v2.py
+          python diagnose_market_state_box_v21.py
+          python diagnose_market_state_box_v22.py
+          python diagnose_market_state_box_v23_phase.py
+
+      - name: Rebuild historical Sequence and Task 1/4 core
+        run: |
+          python build_market_state_sequence_v1.py
+          python validate_market_state_sequence_phase_onsets_v1.py
+          python build_market_state_sequence_event_audit_v1.py
+          python diagnose_market_state_sequence_freshness_v1.py
+          python build_residual_mean_reversion_distance_v1.py
+          python research_task14_extended_v1.py
+          python research_task14_stage2_v1.py
+          python research_task14_stage2_final_v1.py
+
+      - name: Rebuild Stage2 modules and mechanism graph
+        run: |
+          python research_concentration_stage2_v1.py
+          python research_modules_stage2_driver_v1.py
+          python summarize_modules_stage2_v1.py
+          python research_cross_family_transition_stage2_v1.py
+          python research_mechanism_graph_stage2_v1.py
+
+      - name: Compatibility audit versus pre-PRUNED16 frozen study
+        run: |
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+
+          old=json.load(open('/tmp/pruned16-before/market_state_box_v1.json',encoding='utf-8'))
+          new=json.load(open('docs/data/market_state_box_v1.json',encoding='utf-8'))
+          om={r['date']:r for r in old.get('daily',[]) if r.get('date')}
+          nm={r['date']:r for r in new.get('daily',[]) if r.get('date')}
+          dates=sorted(set(om)&set(nm))
+          a=[]; b=[]; rec_changed=0; eligible=0
+          for d in dates:
+              x=om[d].get('market_score'); y=nm[d].get('market_score')
+              if x is not None and y is not None:
+                  a.append(float(x)); b.append(float(y))
+              if om[d].get('score_recovering') is not None and nm[d].get('score_recovering') is not None:
+                  eligible += 1
+                  rec_changed += int(bool(om[d].get('score_recovering')) != bool(nm[d].get('score_recovering')))
+          def corr(x,y):
+              import numpy as np
+              return None if len(x)<3 else float(np.corrcoef(x,y)[0,1])
+          oe=json.load(open('/tmp/pruned16-before/market_state_sequence_event_audit_v1.json',encoding='utf-8'))
+          ne=json.load(open('docs/data/market_state_sequence_event_audit_v1.json',encoding='utf-8'))
+          old_events=[x.get('date') for x in oe.get('events',[])]
+          new_events=[x.get('date') for x in ne.get('events',[])]
+          out={
+            'schema':'PRUNED16-DOWNSTREAM-COMPATIBILITY-AUDIT-V1',
+            'market_model_version':'MARKET-MODEL-V2-PRUNED16-2026-10-06',
+            'overlap_days':len(dates),
+            'market_score_corr':corr(a,b),
+            'market_score_mean_abs_diff':sum(abs(x-y) for x,y in zip(a,b))/len(a) if a else None,
+            'score_recovering_compared_days':eligible,
+            'score_recovering_changed_days':rec_changed,
+            'old_complete_sequence_events':old_events,
+            'new_complete_sequence_events':new_events,
+            'sequence_event_identity_exact':old_events==new_events,
+            'old_event_count':len(old_events),
+            'new_event_count':len(new_events),
+            'forward_oos_note':'Historical rebaseline only in this run. Forward-OOS freeze reset is a separate guarded step because definitions changed.'
+          }
+          Path('docs/data/pruned16_downstream_compatibility_v1.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Commit rebaseline outputs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin main
+          git add             docs/data/market_state_box_v1.json             docs/data/market_state_box_v1_summary.json             docs/data/market_state_box_v1_validation.json             docs/data/market_state_box_v1_validation_summary.json             docs/data/market_state_box_v2.json             docs/data/market_state_box_v2_diagnostics.json             docs/data/market_state_box_v21_diagnostics.json             docs/data/market_state_box_v22_environment.json             docs/data/market_state_box_v23_phase.json             docs/data/market_state_sequence_v1.json             docs/data/market_state_sequence_phase_onsets_v1.json             docs/data/market_state_sequence_event_audit_v1.json             docs/data/market_state_sequence_forward_oos_v1.json             docs/data/market_state_sequence_freshness_v1.json             docs/data/residual_mean_reversion_distance_v1.json             docs/data/task14_extended_diagnostics_v1.json             docs/data/task14_stage2_research_v1.json             docs/data/task14_stage2_final_v1.json             docs/data/concentration_stage2_walkforward_v1.json             docs/data/modules_stage2_v1.json             docs/data/modules_stage2_v1_summary.json             docs/data/cross_family_transition_stage2_v1.json             docs/data/mechanism_graph_stage2_v1.json             docs/data/pruned16_downstream_compatibility_v1.json
+          if git diff --cached --quiet; then
+            echo 'No PRUNED16 rebaseline changes.'
+          else
+            git commit -m 'research: rebaseline market-score systems on PRUNED16'
+            git pull --rebase origin main
+            git push
+          fi
