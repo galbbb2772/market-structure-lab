@@ -265,7 +265,10 @@ def main():
         for feature in ["rr","entry_fraction","downside_pct","upside_pct","box_width_pct","box_age_sessions"]:
             for period in ["full","discovery","validation"]:
                 for scale in ["all","small","large"]:
-                    rows=bin_feature(df,feature,period,scale)\n                    for row in rows: row["rank_cap"]=cap\n                    bin_rows.extend(rows)
+                    rows=bin_feature(df,feature,period,scale)
+                    for row in rows:
+                        row["rank_cap"]=cap
+                    bin_rows.extend(rows)
         portfolios={}
         for mode in ["baseline","rr_priority","upside_priority","lower_edge_priority"]:
             portfolios[mode]=portfolio(candidates,calendar,bar_map,mode=mode)
@@ -283,7 +286,7 @@ def main():
         g=g.sort_values("quintile")
         if len(g)<2:continue
         receipt.append({
-            "feature":feature,"period":period,"scale":scale,
+            "rank_cap":int(rank_cap),"feature":feature,"period":period,"scale":scale,
             "q1_mean":float(g.iloc[0].mean_return),"q5_mean":float(g.iloc[-1].mean_return),
             "q1_pf":float(g.iloc[0].profit_factor),"q5_pf":float(g.iloc[-1].profit_factor),
             "mean_spearman":float(g.quintile.corr(g.mean_return,method="spearman")),
