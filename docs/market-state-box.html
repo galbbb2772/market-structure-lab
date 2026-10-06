@@ -23,7 +23,7 @@ table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}th,t
 @media(max-width:1100px){.metrics{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}}@media(max-width:700px){.wrap{padding:12px}.panel{padding:14px}.metrics{grid-template-columns:repeat(2,1fr)}.metric b{font-size:18px}.hero{padding-top:24px}}@media(max-width:440px){.metrics{grid-template-columns:1fr}}
 </style>
 </head>
-<body><main class="wrap">
+<body><div style="padding:8px 12px;background:#eef;border-bottom:1px solid #ccd;font:600 13px system-ui">PRUNED16 V2 · Market Model active set = 16 · legacy V1 retained in repository</div><main class="wrap">
 <div class="top"><div class="brand">MARKET <span>STATE × BOX</span></div><div><a href="./structure-lab.html">市场结构</a> <a href="./ratio-history.html">涨跌比</a></div></div>
 <header class="hero">
 <div class="eyebrow">JOINT STATE RESEARCH / V1 FROZEN RULES</div>
@@ -187,7 +187,7 @@ function renderHeat(){
 
 async function main(){
   try{
-    const r=await fetch('./data/market_state_box_v1.json?ts='+Date.now(),{cache:'no-store'});
+    const r=await fetch('./data/pruned16_v2/market_state_box_v1.json?ts='+Date.now(),{cache:'no-store'});
     if(!r.ok) throw new Error(`HTTP ${r.status}`);
     DATA=await r.json();
     $('status').textContent=`联合数据已加载 · ${DATA.generated_at||'—'} · Research only`;
