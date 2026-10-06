@@ -1,0 +1,258 @@
+name: PRUNED16 Task14 V2 Full Rebuild
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pruned16_task14_v2_full_rebuild.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pruned16-task14-v2-full-rebuild
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+
+      - name: Wait for PRUNED16 upstream
+        run: |
+          python - <<'PY'
+          import json,time,urllib.request
+          want='MARKET-MODEL-V2-PRUNED16-2026-10-06'
+          last=None
+          for _ in range(60):
+              try:
+                  u='https://raw.githubusercontent.com/galbbb2772/market-indicators-v1/main/docs/data/current.json?t='+str(time.time())
+                  with urllib.request.urlopen(u,timeout=45) as r:d=json.load(r)
+                  m=d.get('market_model_v2') or {}
+                  last=(m.get('version'),m.get('active_indicator_count'))
+                  if last==(want,16):
+                      print('UPSTREAM_OK',last);break
+              except Exception as e:last=repr(e)
+              time.sleep(30)
+          else: raise RuntimeError(f'PRUNED16 upstream unavailable: {last}')
+          PY
+
+      - name: Patch inherited engines locally for V2 definition
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          files=[
+            'build_market_state_sequence_event_audit_v1.py',
+            'diagnose_market_state_sequence_freshness_v1.py',
+            'build_residual_mean_reversion_distance_v1.py',
+            'research_task14_extended_v1.py',
+            'research_task14_stage2_v1.py',
+            'research_task14_stage2_final_v1.py',
+            'build_residual_mean_reversion_distance_forward_oos_v1.py',
+            'build_task14_challenger_forward_oos_v1.py',
+            'evaluate_task14_forward_oos_v1.py',
+            'research_task14_stage3_v1.py',
+            'research_task14_stage4_execution_v1.py',
+            'build_task14_paper_execution_ledger_v1.py',
+            'research_task14_stage4_multiasset_v1.py',
+            'research_task14_stage4_multiasset_robustness_v1.py',
+            'build_task14_paper_multiasset_v1.py',
+            'research_task14_stage4_portfolio_v1.py',
+            'build_task14_paper_portfolio_v1.py',
+            'build_task14_stage4_stock_candidate_adapter_v1.py',
+            'build_task14_stage4_stock_paper_execution_v1.py',
+          ]
+          for p in files:
+              q=Path(p); s=q.read_text(encoding='utf-8')
+              s=s.replace('2026-10-02','2026-10-06')
+              s=s.replace('len(events) != 12','len(events) != 11')
+              s=s.replace('len(event_ix) != 12','len(event_ix) != 11')
+              s=s.replace('len(full_ix) != 12','len(full_ix) != 11')
+              s=s.replace('!= 12:', '!= 11:')
+              s=s.replace('!=12:', '!=11:')
+              s=s.replace('12-event identity','11-event identity')
+              s=s.replace('12 complete sequence','11 complete sequence')
+              s=s.replace('12 frozen completion','11 frozen completion')
+              s=s.replace('12 frozen events','11 frozen events')
+              s=s.replace('Twelve Sequence events','Eleven PRUNED16 Sequence events')
+              s=s.replace('The 12 historical events','The 11 PRUNED16 historical events')
+              s=s.replace('The 12 complete historical sequence events','The 11 PRUNED16 complete historical sequence events')
+              if p=='build_market_state_sequence_event_audit_v1.py':
+                  s=re.sub(r'PREREG_COMMIT = "[0-9a-f]+"','PREREG_COMMIT = "cf5a0d9c92c28176bf33f98e6f68c574675a19f6"',s)
+              if p in ('build_residual_mean_reversion_distance_forward_oos_v1.py','build_task14_challenger_forward_oos_v1.py'):
+                  s=re.sub(r'FREEZE_COMMIT = "[0-9a-f]+"','FREEZE_COMMIT = "cf5a0d9c92c28176bf33f98e6f68c574675a19f6"',s)
+              q.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Remove legacy ledgers inside disposable V2 workspace
+        run: |
+          rm -f docs/data/market_state_sequence_forward_oos_v1.json
+          rm -f docs/data/residual_mean_reversion_distance_forward_oos_v1.json
+          rm -f docs/data/task14_challenger_forward_oos_v1.json
+          rm -f docs/data/task14_forward_oos_evaluation_v1.json
+          rm -f docs/data/task14_paper_execution_ledger_v1.json
+          rm -f docs/data/task14_paper_multiasset_v1.json
+          rm -f docs/data/task14_paper_portfolio_v1.json
+          rm -f docs/data/task14_stage4_stock_candidate_adapter_v1.json
+          rm -f docs/data/task14_stage4_stock_paper_execution_v1.json
+
+      - name: Rebuild PRUNED16 Market State family
+        run: |
+          python build_market_state_box_v1.py
+          python postprocess_market_state_box_v1.py
+          python validate_market_state_box_v1.py
+          python summarize_market_state_box_v1_validation.py
+          python build_market_state_box_v2.py
+          python diagnose_market_state_box_v2.py
+          python diagnose_market_state_box_v21.py
+          python diagnose_market_state_box_v22.py
+          python diagnose_market_state_box_v23_phase.py
+
+      - name: Rebuild PRUNED16 Sequence and Task14 historical core
+        run: |
+          python build_market_state_sequence_v1.py
+          python validate_market_state_sequence_phase_onsets_v1.py
+          python build_market_state_sequence_event_audit_v1.py
+          python diagnose_market_state_sequence_freshness_v1.py
+          python build_residual_mean_reversion_distance_v1.py
+          python research_task14_extended_v1.py
+          python research_task14_stage2_v1.py
+          python research_task14_stage2_final_v1.py
+
+      - name: Rebuild every Stage2 score-dependent diagnostic
+        run: |
+          python research_concentration_stage2_v1.py
+          python research_modules_stage2_driver_v1.py
+          python summarize_modules_stage2_v1.py
+          python research_factor_map_stage2_v1.py
+          python research_cross_family_transition_stage2_v1.py
+          python research_mechanism_graph_stage2_v1.py
+          python research_sentiment_normalization_stage2_v1.py
+          python research_sentiment_drift_stage2_v1.py
+          python research_dual_revision_sensitivity_stage2_v1.py
+          python research_task14_crossmarket_yahoo_v1.py
+
+      - name: Re-freeze V2 Forward-OOS ledgers
+        run: |
+          python build_residual_mean_reversion_distance_forward_oos_v1.py
+          python build_task14_challenger_forward_oos_v1.py
+          python evaluate_task14_forward_oos_v1.py
+
+      - name: Rebuild V2 Stage3
+        run: python research_task14_stage3_v1.py
+
+      - name: Rebuild V2 Stage4 execution
+        run: |
+          for i in 1 2 3; do python research_task14_stage4_execution_v1.py && break || sleep $((i*5)); done
+          python build_task14_paper_execution_ledger_v1.py
+
+      - name: Rebuild V2 Stage4 multi-asset
+        run: |
+          for i in 1 2 3; do python research_task14_stage4_multiasset_v1.py && break || sleep $((i*5)); done
+          python research_task14_stage4_multiasset_robustness_v1.py
+          python build_task14_paper_multiasset_v1.py
+          python summarize_task14_stage4_multiasset_v1.py
+
+      - name: Rebuild V2 Stage4 portfolio
+        run: |
+          python - <<'PY'
+          import research_task14_stage4_portfolio_v1 as m
+          for cfg in m.POLICIES.values():
+              if isinstance(cfg.get('families'),set):cfg['families']=sorted(cfg['families'])
+          m.main()
+          PY
+          python build_task14_paper_portfolio_v1.py
+          python summarize_task14_stage4_portfolio_v1.py
+
+      - name: Rebuild V2 stock adapter and paper execution
+        run: |
+          python build_task14_stage4_stock_candidate_adapter_v1.py
+          python build_task14_stage4_stock_paper_execution_v1.py
+
+      - name: Validate 11-event PRUNED16 definition
+        run: |
+          python - <<'PY'
+          import json
+          a=json.load(open('docs/data/market_state_sequence_event_audit_v1.json',encoding='utf-8'))
+          assert len(a.get('events') or [])==11,len(a.get('events') or [])
+          f=json.load(open('docs/data/residual_mean_reversion_distance_forward_oos_v1.json',encoding='utf-8'))
+          c=json.load(open('docs/data/task14_challenger_forward_oos_v1.json',encoding='utf-8'))
+          assert f.get('frozen_through_market_date')=='2026-10-06'
+          assert c.get('frozen_through_market_date')=='2026-10-06'
+          assert int(f.get('forward_event_count',0))==0
+          assert all(int(v.get('forward_event_count',0))==0 for v in (c.get('challengers') or {}).values())
+          print('PRUNED16_V2_VALID', [e.get('date') for e in a.get('events',[])])
+          PY
+
+      - name: Package every rebuilt output into pruned16_v2
+        run: |
+          python - <<'PY'
+          import json, shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          out=Path('/tmp/pruned16_v2'); out.mkdir(parents=True,exist_ok=True)
+          names=[
+            'market_state_box_v1.json','market_state_box_v1_summary.json','market_state_box_v1_validation.json','market_state_box_v1_validation_summary.json',
+            'market_state_box_v2.json','market_state_box_v2_diagnostics.json','market_state_box_v21_diagnostics.json','market_state_box_v22_environment.json','market_state_box_v23_phase.json',
+            'market_state_sequence_v1.json','market_state_sequence_phase_onsets_v1.json','market_state_sequence_event_audit_v1.json','market_state_sequence_forward_oos_v1.json','market_state_sequence_freshness_v1.json',
+            'residual_mean_reversion_distance_v1.json','residual_mean_reversion_distance_forward_oos_v1.json',
+            'task14_extended_diagnostics_v1.json','task14_stage2_research_v1.json','task14_stage2_final_v1.json',
+            'concentration_stage2_walkforward_v1.json','modules_stage2_v1.json','modules_stage2_v1_summary.json','factor_map_stage2_v1.json','cross_family_transition_stage2_v1.json','mechanism_graph_stage2_v1.json',
+            'sentiment_normalization_stage2_v1.json','sentiment_drift_stage2_v1.json','dual_revision_sensitivity_stage2_v1.json','task14_crossmarket_confirmation_v1.json',
+            'task14_challenger_forward_oos_v1.json','task14_forward_oos_evaluation_v1.json','task14_stage3_evidence_audit_v1.json',
+            'task14_stage4_execution_v1.json','task14_paper_execution_ledger_v1.json',
+            'task14_stage4_multiasset_v1.json','task14_stage4_multiasset_robustness_v1.json','task14_stage4_multiasset_v1_summary.json','task14_paper_multiasset_v1.json',
+            'task14_stage4_portfolio_v1.json','task14_stage4_portfolio_v1_summary.json','task14_paper_portfolio_v1.json',
+            'task14_stage4_stock_candidate_adapter_v1.json','task14_stage4_stock_paper_execution_v1.json',
+          ]
+          copied=[]
+          for n in names:
+              p=Path('docs/data')/n
+              if p.exists():
+                  shutil.copy2(p,out/n);copied.append(n)
+          old=json.load(open('docs/data/archive/pre_pruned16_2026-10-02/market_state_sequence_forward_oos_v1.json',encoding='utf-8'))
+          audit=json.load(open(out/'market_state_sequence_event_audit_v1.json',encoding='utf-8'))
+          manifest={
+            'schema':'PRUNED16-TASK14-V2-MANIFEST',
+            'generated_at':datetime.now(timezone.utc).isoformat(),
+            'market_model_version':'MARKET-MODEL-V2-PRUNED16-2026-10-06',
+            'legacy_lineage':'Task1/4 V1 remains frozen under pre-PRUNED16 Market Score',
+            'legacy_complete_event_count':12,
+            'pruned16_v2_complete_event_count':len(audit.get('events') or []),
+            'pruned16_v2_complete_event_dates':[e.get('date') for e in audit.get('events',[])],
+            'forward_oos_freeze':'2026-10-06',
+            'legacy_forward_oos_event_count':int(old.get('forward_event_count',0)),
+            'production_effect':'none',
+            'outputs':copied,
+            'note':'Files in this directory are parallel PRUNED16 V2 research outputs generated by inherited V1 engines under the new Market Score definition. Legacy root Task1/4 V1 outputs are restored and remain unchanged.'
+          }
+          (out/'MANIFEST.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Restore legacy root and commit only V2 package
+        run: |
+          set -e
+          git fetch origin main
+          git reset --hard origin/main
+          rm -rf docs/data/pruned16_v2
+          mkdir -p docs/data/pruned16_v2
+          cp /tmp/pruned16_v2/* docs/data/pruned16_v2/
+          git add docs/data/pruned16_v2
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'research: rebuild full Task1/4 PRUNED16 V2 lineage'
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep 3
+          done
+          exit 1
