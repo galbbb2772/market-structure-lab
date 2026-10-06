@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import base64
 import hashlib
 import json
 from datetime import datetime, timezone
@@ -13,7 +14,7 @@ OUT = ROOT / 'docs/data/task14_stage4_stock_candidate_adapter_v1.json'
 SPEC = 'research/task14_stage4_stock_candidate_adapter_v1/STUDY_SPEC.md'
 FROZEN_THROUGH = '2026-10-02'
 
-CANONICAL_FEED_URL = 'https://raw.githubusercontent.com/galbbb2772/frozen-v4/main/docs/data/stock_candidate_feed_v1.json'
+CANONICAL_FEED_URL = 'https://api.github.com/repos/galbbb2772/frozen-v4/contents/docs/data/stock_candidate_feed_v1.json?ref=main'
 MIRROR_FEED_URL = 'https://raw.githubusercontent.com/galbbb2772/frozen-v4-dashboard/main/data/stock_candidate_feed_v1.json'
 REMOTE_FEED_URLS = (CANONICAL_FEED_URL, MIRROR_FEED_URL)
 EXPECTED_SOURCE_NAME = 'frozen-v4'
@@ -44,12 +45,18 @@ def refresh_remote_feed():
         try:
             with urlopen(req, timeout=20) as r:
                 raw = r.read().decode('utf-8')
+            if 'api.github.com/repos/' in url and '/contents/' in url:
+                meta = json.loads(raw)
+                if meta.get('encoding') != 'base64' or not meta.get('content'):
+                    raise RuntimeError('canonical GitHub contents response missing base64 content')
+                raw = base64.b64decode(meta['content']).decode('utf-8')
             obj = json.loads(raw)
             if obj.get('schema') != 'STOCK-CANDIDATE-FEED-V1':
                 raise RuntimeError(f"unexpected remote feed schema: {obj.get('schema')!r}")
             atomic_write_json(FEED, obj)
             status = 'REMOTE_CANONICAL_REFRESHED' if i == 0 else 'REMOTE_MIRROR_REFRESHED'
-            return status, None, url
+            prior_errors = ' | '.join(errors) if errors else None
+            return status, prior_errors, url
         except Exception as exc:
             errors.append(f'{url}: {type(exc).__name__}: {exc}')
     detail = ' | '.join(errors)
