@@ -1,0 +1,198 @@
+name: PRUNED16 Forward OOS Stage3-4 Migration
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["PRUNED16 Full Downstream Rebaseline V2"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pruned16-forward-stage34-migration
+  cancel-in-progress: true
+
+jobs:
+  migrate:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+
+      - name: Verify compatibility gate and zero pre-reset Forward-OOS
+        run: |
+          python - <<'PY'
+          import json
+          c=json.load(open('docs/data/pruned16_downstream_compatibility_v2.json',encoding='utf-8'))
+          assert c['task14_v1_compatible'] is True,c
+          assert c['new_event_count']==12,c
+          base='docs/data/archive/pre_pruned16_2026-10-02/'
+          r=json.load(open(base+'residual_mean_reversion_distance_forward_oos_v1.json',encoding='utf-8'))
+          q=json.load(open(base+'task14_challenger_forward_oos_v1.json',encoding='utf-8'))
+          assert int(r.get('forward_event_count',0))==0,r.get('forward_event_count')
+          assert all(int(v.get('forward_event_count',0))==0 for v in (q.get('challengers') or {}).values())
+          print('MIGRATION_GATE_OK')
+          PY
+
+      - name: Migrate source freeze boundary to PRUNED16
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          freeze_files=[
+            'build_market_state_sequence_event_audit_v1.py',
+            'build_residual_mean_reversion_distance_forward_oos_v1.py',
+            'build_task14_challenger_forward_oos_v1.py',
+            'evaluate_task14_forward_oos_v1.py',
+            'research_task14_stage4_execution_v1.py',
+            'build_task14_paper_execution_ledger_v1.py',
+            'research_task14_stage4_multiasset_v1.py',
+            'build_task14_paper_multiasset_v1.py',
+            'research_task14_stage4_portfolio_v1.py',
+            'build_task14_paper_portfolio_v1.py',
+            'build_task14_stage4_stock_candidate_adapter_v1.py',
+            'build_task14_stage4_stock_paper_execution_v1.py',
+          ]
+          workflow_files=[
+            '.github/workflows/task14_forward_oos_evaluation_v1.yml',
+            '.github/workflows/task14_stage4_execution_v1.yml',
+            '.github/workflows/task14_stage4_multiasset_v1.yml',
+            '.github/workflows/task14_stage4_portfolio_v1.yml',
+            '.github/workflows/task14_stage4_stock_candidate_adapter_v1.yml',
+            '.github/workflows/task14_stage4_stock_paper_execution_v1.yml',
+          ]
+          for p in freeze_files+workflow_files:
+              path=Path(p)
+              s=path.read_text(encoding='utf-8')
+              s=s.replace('2026-10-02','2026-10-06')
+              if p=='build_market_state_sequence_event_audit_v1.py':
+                  s=s.replace('PREREG_COMMIT = "0ab2f08dffe2dcd6d8c43afe721cd4d59824ba63"','PREREG_COMMIT = "cf5a0d9c92c28176bf33f98e6f68c574675a19f6"')
+              if p=='build_residual_mean_reversion_distance_forward_oos_v1.py':
+                  import re
+                  s=re.sub(r'FREEZE_COMMIT = "[0-9a-f]+"','FREEZE_COMMIT = "cf5a0d9c92c28176bf33f98e6f68c574675a19f6"',s)
+              if p=='build_task14_challenger_forward_oos_v1.py':
+                  import re
+                  s=re.sub(r'FREEZE_COMMIT = "[0-9a-f]+"','FREEZE_COMMIT = "cf5a0d9c92c28176bf33f98e6f68c574675a19f6"',s)
+              path.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Reset zero-event ledgers at new freeze boundary
+        run: |
+          rm -f docs/data/market_state_sequence_forward_oos_v1.json
+          rm -f docs/data/residual_mean_reversion_distance_forward_oos_v1.json
+          rm -f docs/data/task14_challenger_forward_oos_v1.json
+          rm -f docs/data/task14_forward_oos_evaluation_v1.json
+          rm -f docs/data/task14_paper_execution_ledger_v1.json
+          rm -f docs/data/task14_paper_multiasset_v1.json
+          rm -f docs/data/task14_paper_portfolio_v1.json
+          rm -f docs/data/task14_stage4_stock_candidate_adapter_v1.json
+          rm -f docs/data/task14_stage4_stock_paper_execution_v1.json
+
+      - name: Re-freeze Sequence RMD3 and challengers
+        run: |
+          python build_market_state_sequence_event_audit_v1.py
+          python build_residual_mean_reversion_distance_forward_oos_v1.py
+          python build_task14_challenger_forward_oos_v1.py
+          python evaluate_task14_forward_oos_v1.py
+
+      - name: Rebuild Task1/4 Stage3
+        run: python research_task14_stage3_v1.py
+
+      - name: Rebuild Stage4 execution and paper ledger
+        run: |
+          python research_task14_stage4_execution_v1.py
+          python build_task14_paper_execution_ledger_v1.py
+
+      - name: Rebuild Stage4 multi-asset family
+        run: |
+          python research_task14_stage4_multiasset_v1.py
+          python research_task14_stage4_multiasset_robustness_v1.py
+          python build_task14_paper_multiasset_v1.py
+          python summarize_task14_stage4_multiasset_v1.py
+
+      - name: Rebuild Stage4 portfolio family
+        run: |
+          python - <<'PY'
+          import research_task14_stage4_portfolio_v1 as m
+          for cfg in m.POLICIES.values():
+              if isinstance(cfg.get('families'),set):
+                  cfg['families']=sorted(cfg['families'])
+          m.main()
+          PY
+          python build_task14_paper_portfolio_v1.py
+          python summarize_task14_stage4_portfolio_v1.py
+
+      - name: Rebuild stock adapter and stock paper layer
+        run: |
+          python build_task14_stage4_stock_candidate_adapter_v1.py
+          python build_task14_stage4_stock_paper_execution_v1.py
+
+      - name: Write and validate migration manifest
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime,timezone
+          from pathlib import Path
+          freeze='2026-10-06'
+          files=[
+            'market_state_sequence_forward_oos_v1.json',
+            'residual_mean_reversion_distance_forward_oos_v1.json',
+            'task14_challenger_forward_oos_v1.json',
+            'task14_forward_oos_evaluation_v1.json',
+            'task14_paper_execution_ledger_v1.json',
+            'task14_paper_multiasset_v1.json',
+            'task14_paper_portfolio_v1.json',
+            'task14_stage4_stock_candidate_adapter_v1.json',
+            'task14_stage4_stock_paper_execution_v1.json',
+          ]
+          seen={}
+          for f in files:
+              d=json.load(open('docs/data/'+f,encoding='utf-8'))
+              assert d.get('frozen_through_market_date')==freeze,(f,d.get('frozen_through_market_date'))
+              seen[f]=d.get('schema')
+          r=json.load(open('docs/data/residual_mean_reversion_distance_forward_oos_v1.json',encoding='utf-8'))
+          q=json.load(open('docs/data/task14_challenger_forward_oos_v1.json',encoding='utf-8'))
+          assert int(r.get('forward_event_count',0))==0
+          assert all(int(v.get('forward_event_count',0))==0 for v in (q.get('challengers') or {}).values())
+          manifest={
+            'schema':'PRUNED16-FORWARD-OOS-MIGRATION-V1',
+            'generated_at':datetime.now(timezone.utc).isoformat(),
+            'old_freeze':'2026-10-02',
+            'new_freeze':freeze,
+            'market_model_version':'MARKET-MODEL-V2-PRUNED16-2026-10-06',
+            'new_preregistration_commit':'cf5a0d9c92c28176bf33f98e6f68c574675a19f6',
+            'pre_reset_forward_event_count':0,
+            'post_reset_forward_event_count':0,
+            'archived_old_ledgers':'docs/data/archive/pre_pruned16_2026-10-02/',
+            'rebuilt_outputs':seen,
+            'production_effect':'none_for_task14_research_layers',
+            'note':'Historical development evidence remains historical; only events strictly after 2026-10-06 can enter the new Forward-OOS ledgers.'
+          }
+          Path('docs/data/pruned16_forward_oos_migration_v1.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Commit migrated definitions and all Stage3-4 outputs
+        run: |
+          set -e
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No migration changes.'
+            exit 0
+          fi
+          git commit -m 'research: migrate Task1/4 Forward-OOS and Stage3-4 to PRUNED16'
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep 2
+          done
+          exit 1
