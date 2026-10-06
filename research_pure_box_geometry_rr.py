@@ -157,7 +157,7 @@ def bin_feature(df,feature,period,scale):
     for b,g in z.groupby("bin",sort=True):
         rr=g.net_return.astype(float).tolist()
         rows.append({
-            "feature":feature,"period":period,"scale":scale,"quintile":int(b),
+            "rank_cap":int(rank_cap),"feature":feature,"period":period,"scale":scale,"quintile":int(b),
             "n":len(g),"feature_min":float(g[feature].min()),"feature_median":float(g[feature].median()),"feature_max":float(g[feature].max()),
             "mean_return":float(g.net_return.mean()),"median_return":float(g.net_return.median()),
             "win_rate":float((g.net_return>0).mean()),"profit_factor":pf(rr),
@@ -265,7 +265,7 @@ def main():
         for feature in ["rr","entry_fraction","downside_pct","upside_pct","box_width_pct","box_age_sessions"]:
             for period in ["full","discovery","validation"]:
                 for scale in ["all","small","large"]:
-                    bin_rows.extend(bin_feature(df,feature,period,scale))
+                    rows=bin_feature(df,feature,period,scale)\n                    for row in rows: row["rank_cap"]=cap\n                    bin_rows.extend(rows)
         portfolios={}
         for mode in ["baseline","rr_priority","upside_priority","lower_edge_priority"]:
             portfolios[mode]=portfolio(candidates,calendar,bar_map,mode=mode)
@@ -279,7 +279,7 @@ def main():
     bdf=pd.DataFrame(bin_rows);bdf.to_csv(out/"geometry_quintiles.csv",index=False)
     # Compact monotonicity receipt: Q1 vs Q5 and rank correlation of quintile with mean return/PF.
     receipt=[]
-    for (feature,period,scale),g in bdf.groupby(["feature","period","scale"]):
+    for (rank_cap,feature,period,scale),g in bdf.groupby(["rank_cap","feature","period","scale"]):
         g=g.sort_values("quintile")
         if len(g)<2:continue
         receipt.append({
