@@ -13,7 +13,9 @@ OUT = ROOT / 'docs/data/task14_stage4_stock_candidate_adapter_v1.json'
 SPEC = 'research/task14_stage4_stock_candidate_adapter_v1/STUDY_SPEC.md'
 FROZEN_THROUGH = '2026-10-02'
 
-REMOTE_FEED_URL = 'https://raw.githubusercontent.com/galbbb2772/frozen-v4-dashboard/main/data/stock_candidate_feed_v1.json'
+CANONICAL_FEED_URL = 'https://raw.githubusercontent.com/galbbb2772/frozen-v4/main/docs/data/stock_candidate_feed_v1.json'
+MIRROR_FEED_URL = 'https://raw.githubusercontent.com/galbbb2772/frozen-v4-dashboard/main/data/stock_candidate_feed_v1.json'
+REMOTE_FEED_URLS = (CANONICAL_FEED_URL, MIRROR_FEED_URL)
 EXPECTED_SOURCE_NAME = 'frozen-v4'
 EXPECTED_SOURCE_VERSION = 'FROZEN-V4-STRICT-V3-MASSIVE-EOD-V1'
 
@@ -36,19 +38,24 @@ def atomic_write_json(path: Path, obj):
 
 
 def refresh_remote_feed():
-    req = Request(REMOTE_FEED_URL, headers={'User-Agent': 'market-structure-lab-task14-adapter-v1'})
-    try:
-        with urlopen(req, timeout=20) as r:
-            raw = r.read().decode('utf-8')
-        obj = json.loads(raw)
-        if obj.get('schema') != 'STOCK-CANDIDATE-FEED-V1':
-            raise RuntimeError(f"unexpected remote feed schema: {obj.get('schema')!r}")
-        atomic_write_json(FEED, obj)
-        return 'REMOTE_REFRESHED', None
-    except Exception as exc:
-        if FEED.exists():
-            return 'CACHED_LOCAL_FALLBACK', f'{type(exc).__name__}: {exc}'
-        return 'REMOTE_UNAVAILABLE_NO_CACHE', f'{type(exc).__name__}: {exc}'
+    errors = []
+    for i, url in enumerate(REMOTE_FEED_URLS):
+        req = Request(url, headers={'User-Agent': 'market-structure-lab-task14-adapter-v1'})
+        try:
+            with urlopen(req, timeout=20) as r:
+                raw = r.read().decode('utf-8')
+            obj = json.loads(raw)
+            if obj.get('schema') != 'STOCK-CANDIDATE-FEED-V1':
+                raise RuntimeError(f"unexpected remote feed schema: {obj.get('schema')!r}")
+            atomic_write_json(FEED, obj)
+            status = 'REMOTE_CANONICAL_REFRESHED' if i == 0 else 'REMOTE_MIRROR_REFRESHED'
+            return status, None, url
+        except Exception as exc:
+            errors.append(f'{url}: {type(exc).__name__}: {exc}')
+    detail = ' | '.join(errors)
+    if FEED.exists():
+        return 'CACHED_LOCAL_FALLBACK', detail, None
+    return 'REMOTE_UNAVAILABLE_NO_CACHE', detail, None
 
 
 def iso_date(value):
@@ -101,7 +108,7 @@ def find_forbidden_keys(obj, prefix=''):
     return bad
 
 
-def validate_feed(feed, latest_market_date, aligned_dates, fetch_status, fetch_error):
+def validate_feed(feed, latest_market_date, aligned_dates, fetch_status, fetch_error, fetched_from_url):
     if feed.get('schema') != 'STOCK-CANDIDATE-FEED-V1':
         raise RuntimeError('candidate feed schema must be STOCK-CANDIDATE-FEED-V1')
     for key in ('generated_at', 'source_name', 'source_version', 'future_outcomes_included', 'snapshots'):
@@ -225,7 +232,7 @@ def validate_feed(feed, latest_market_date, aligned_dates, fetch_status, fetch_e
         'status': status,
         'feed_fetch_status': fetch_status,
         'feed_fetch_error': fetch_error,
-        'source_url': REMOTE_FEED_URL,
+        'source_url': fetched_from_url or CANONICAL_FEED_URL,
         'source_name': feed['source_name'],
         'source_version': feed['source_version'],
         'source_generated_at': feed['generated_at'],
@@ -258,15 +265,15 @@ def main():
         iso_date(latest_market_date)
     challengers, aligned_dates = challenger_snapshot(upstream)
 
-    fetch_status, fetch_error = refresh_remote_feed()
+    fetch_status, fetch_error, fetched_from_url = refresh_remote_feed()
     if FEED.exists():
-        adapter = validate_feed(load_json(FEED), latest_market_date, aligned_dates, fetch_status, fetch_error)
+        adapter = validate_feed(load_json(FEED), latest_market_date, aligned_dates, fetch_status, fetch_error, fetched_from_url)
     else:
         adapter = {
             'status': 'AWAITING_UPSTREAM_FEED',
             'feed_fetch_status': fetch_status,
             'feed_fetch_error': fetch_error,
-            'source_url': REMOTE_FEED_URL,
+            'source_url': CANONICAL_FEED_URL,
             'source_name': None,
             'source_version': None,
             'source_generated_at': None,
