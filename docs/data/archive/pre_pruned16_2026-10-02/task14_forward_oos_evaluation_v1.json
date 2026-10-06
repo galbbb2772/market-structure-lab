@@ -1,0 +1,92 @@
+{
+  "schema": "TASK14-FORWARD-OOS-EVALUATION-V1",
+  "generated_at": "2026-10-05T07:23:08.433647+00:00",
+  "research_only": true,
+  "observation_only": true,
+  "production_effect": "none",
+  "protocol_path": "research/task14_prospective_evaluation_v1/PROTOCOL.md",
+  "frozen_through_market_date": "2026-10-02",
+  "primary_confirmatory_n": 20,
+  "latest_market_date": "2026-10-01",
+  "tests": {
+    "rmd3": {
+      "status": "PENDING",
+      "readiness": {
+        "mature_event_count": 0,
+        "event_count_ready": false,
+        "calendar_12m_ready": false,
+        "independent_cluster_count_20sessions": 0,
+        "cluster_gate_ready": false,
+        "unresolved_discrepancy_count": 0,
+        "discrepancy_gate_ready": true,
+        "ready": false
+      },
+      "primary_sample_n": 0,
+      "rho_10d": null,
+      "permutation_two_sided_p": null,
+      "holm_adjusted_p_two_test_family": null
+    },
+    "dplus1_entry": {
+      "status": "PENDING",
+      "readiness": {
+        "mature_event_count": 0,
+        "event_count_ready": false,
+        "calendar_12m_ready": false,
+        "independent_cluster_count_20sessions": 0,
+        "cluster_gate_ready": false,
+        "unresolved_discrepancy_count": 0,
+        "discrepancy_gate_ready": true,
+        "ready": false
+      },
+      "primary_sample_n": 0,
+      "mean_paired_improvement_pp": null,
+      "exact_signflip_two_sided_p": null,
+      "holm_adjusted_p_two_test_family": null
+    },
+    "dual_severity_hazard": {
+      "status": "PENDING",
+      "readiness": {
+        "mature_event_count": 0,
+        "event_count_ready": false,
+        "calendar_12m_ready": false,
+        "independent_cluster_count_20sessions": 0,
+        "cluster_gate_ready": false,
+        "unresolved_discrepancy_count": 0,
+        "discrepancy_gate_ready": true,
+        "ready": false
+      },
+      "primary_sample_n": 0,
+      "brier_base": null,
+      "brier_severity": null,
+      "high_severity_break_rate": null,
+      "low_severity_break_rate": null
+    },
+    "early_sequence": {
+      "status": "PENDING",
+      "readiness": {
+        "mature_event_count": 0,
+        "event_count_ready": false,
+        "calendar_12m_ready": false,
+        "independent_cluster_count_20sessions": 0,
+        "cluster_gate_ready": false,
+        "unresolved_discrepancy_count": 0,
+        "discrepancy_gate_ready": true,
+        "ready": false
+      },
+      "primary_sample_n": 0,
+      "mean_10d_pct": null,
+      "reference_all_days_mean_10d_pct": null,
+      "positive_rate": null
+    }
+  },
+  "overall": {
+    "any_ready": false,
+    "automatic_production_change": false,
+    "note": "Primary V1 snapshot locks at the first 20 mature events once all readiness gates for that test are satisfied; later observations are monitoring only."
+  },
+  "warnings": [
+    "Historical development events through 2026-10-02 are excluded.",
+    "No PENDING result should be interpreted as failure or success.",
+    "No PASS result changes MAIN automatically; a separate preregistered review is required."
+  ]
+}
