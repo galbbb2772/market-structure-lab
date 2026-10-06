@@ -1,0 +1,97 @@
+{
+  "schema": "TASK14-PAPER-STOCK-EXECUTION-V1",
+  "generated_at": "2026-10-06T06:06:48.517983+00:00",
+  "research_only": true,
+  "paper_only": true,
+  "diagnostic_only": true,
+  "production_effect": "none",
+  "broker_orders_enabled": false,
+  "frozen_through_market_date": "2026-10-02",
+  "study_spec": "research/task14_stage4_stock_paper_execution_v1/STUDY_SPEC.md",
+  "upstream_adapter_status": "READY",
+  "upstream_feed_fetch_status": "REMOTE_MIRROR_REFRESHED",
+  "upstream_feed_latest_as_of_market_date": "2026-10-02",
+  "upstream_trade_pool_eligible_count": 0,
+  "reconstructed_trade_pool_count": 0,
+  "latest_complete_market_date": "2026-10-01",
+  "portfolio_rule": {
+    "long_only": true,
+    "signal_decision_time": "signal_date_close",
+    "entry": "next_regular_SPY_session_open",
+    "exit": "close_at_signal_plus_10_SPY_sessions",
+    "event_sleeve_target": 0.25,
+    "single_name_cap": 0.1,
+    "gross_cap": 1.0,
+    "within_event_allocation": "equal_before_single_name_cap",
+    "unallocated_sleeve_stays_cash": true,
+    "upstream_rank_changes_weight": false
+  },
+  "cost_models": {
+    "fixed_25bps_rt": 25.0,
+    "fixed_50bps_rt": 50.0
+  },
+  "sector_classification_status": "NOT_IN_FROZEN_CANDIDATE_CONTRACT",
+  "market_data_sources": {
+    "market_data_fetch": "skipped_zero_trade_pool_candidates"
+  },
+  "portfolios": {
+    "fixed_25bps_rt": {
+      "cost_model": "fixed_25bps_rt",
+      "round_trip_cost_bps": 25.0,
+      "start_capital_usd": 100000.0,
+      "latest_market_date": "2026-10-01",
+      "latest_equity_usd": 100000.0,
+      "return_to_date_pct": 0.0,
+      "max_drawdown_to_date_pct": 0.0,
+      "candidate_decisions": [],
+      "realized_positions": [],
+      "open_positions": [],
+      "pending_event_count": 0,
+      "total_modeled_cost_to_date_usd": 0.0,
+      "turnover_multiple_start_capital": 0.0,
+      "max_adv_participation_pct": 0.0,
+      "max_gross_exposure": 0.0,
+      "max_beta_exposure": 0.0,
+      "max_single_name_weight": 0.0,
+      "equity_curve": []
+    },
+    "fixed_50bps_rt": {
+      "cost_model": "fixed_50bps_rt",
+      "round_trip_cost_bps": 50.0,
+      "start_capital_usd": 100000.0,
+      "latest_market_date": "2026-10-01",
+      "latest_equity_usd": 100000.0,
+      "return_to_date_pct": 0.0,
+      "max_drawdown_to_date_pct": 0.0,
+      "candidate_decisions": [],
+      "realized_positions": [],
+      "open_positions": [],
+      "pending_event_count": 0,
+      "total_modeled_cost_to_date_usd": 0.0,
+      "turnover_multiple_start_capital": 0.0,
+      "max_adv_participation_pct": 0.0,
+      "max_gross_exposure": 0.0,
+      "max_beta_exposure": 0.0,
+      "max_single_name_weight": 0.0,
+      "equity_curve": []
+    }
+  },
+  "immutable_recompute_discrepancies": [],
+  "guardrails": {
+    "may_change_production": false,
+    "automatic_stock_selection": false,
+    "rank_recomputed": false,
+    "historical_results_count_as_forward_oos": false,
+    "historical_candidate_backfill_allowed": false,
+    "automatic_promotion": false,
+    "broker_orders_enabled": false,
+    "nearest_date_alignment_allowed": false
+  },
+  "warnings": [
+    "This is a prospective individual-stock paper ledger; no brokerage orders are enabled.",
+    "Candidates are accepted only from the exact-date Frozen V4 x Task 1/4 adapter trade pool.",
+    "Insufficient candidate count leaves sleeve capital in cash; weights are never expanded to fill 25%.",
+    "25bp round-trip is the primary paper execution assumption and 50bp is a stress case; neither is a calibrated broker fill model.",
+    "Point-in-time sector classification is not inferred in V1."
+  ]
+}
