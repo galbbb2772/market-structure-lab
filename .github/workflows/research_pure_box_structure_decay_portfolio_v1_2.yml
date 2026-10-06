@@ -97,5 +97,6 @@ jobs:
             echo no-change
           else
             git commit -m 'research: run Structure Decay portfolio V1.2'
+            git pull --rebase origin "$GITHUB_REF_NAME"
             git push
           fi
