@@ -1,0 +1,37 @@
+{
+  "schema": "TASK14-PAPER-EXECUTION-LEDGER-V1",
+  "generated_at": "2026-10-06T02:59:50.816817+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "paper_only": true,
+  "production_effect": "none",
+  "broker_orders_enabled": false,
+  "frozen_through_market_date": "2026-10-02",
+  "study_spec": "research/task14_stage4_execution_v1/STUDY_SPEC.md",
+  "instrument": "SPY",
+  "execution_policy": "next_regular_session_open",
+  "base_round_trip_cost_bps": 10,
+  "source": {
+    "host": "query1.finance.yahoo.com",
+    "rows": 2512,
+    "transport": "yahoo_chart_range_10y"
+  },
+  "upstream_forward_event_count": 0,
+  "paper_event_count": 0,
+  "entry_available_count": 0,
+  "mature_10d_count": 0,
+  "events": [],
+  "immutable_recompute_discrepancies": [],
+  "guardrails": {
+    "may_change_production": false,
+    "may_change_signal_definition": false,
+    "historical_results_count_as_forward_oos": false,
+    "automatic_promotion": false,
+    "broker_orders_enabled": false
+  },
+  "warnings": [
+    "This ledger observes paper execution only and is not a brokerage order system.",
+    "Full Sequence future events are carried from the frozen RMD2 challenger event stream; RMD2 score magnitude does not change paper eligibility.",
+    "The execution proxy is SPY V1 and may be expanded only in a separately versioned study."
+  ]
+}
