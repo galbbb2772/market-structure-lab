@@ -24,6 +24,7 @@ on:
       - 'research/task14_challengers_v1/PREREGISTRATION.md'
       - 'research/task14_stage2_v1/STUDY_SPEC.md'
       - '.github/workflows/market_state_sequence_v1.yml'
+      - 'docs/data/market_state_box_v1.json'
 
 permissions:
   contents: write
