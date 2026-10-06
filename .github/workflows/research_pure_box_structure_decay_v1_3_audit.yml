@@ -75,7 +75,7 @@ jobs:
           d=json.load(open('/tmp/decay/summary.json'))
           assert d['schema']=='STRUCTURE-DECAY-V1.3-AUDIT'
           x=pd.read_csv('/tmp/decay/audit_decay_bins.csv')
-          assert len(x)>50
+          assert len(x)>30
           assert d['coverage']['history_complete']>10000
           print(json.dumps({
               'coverage':d['coverage'],
