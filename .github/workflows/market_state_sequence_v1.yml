@@ -1,31 +1,8 @@
 name: Refresh Market State Sequence V1
 
+# Legacy V1 reproduction only. Active daily research moved to PRUNED16 V2.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '10 4 * * 2-6'
-    - cron: '0 12 * * 2-6'
-  push:
-    branches: [main]
-    paths:
-      - 'build_market_state_sequence_v1.py'
-      - 'build_market_state_sequence_event_audit_v1.py'
-      - 'diagnose_market_state_sequence_freshness_v1.py'
-      - 'build_residual_mean_reversion_distance_v1.py'
-      - 'build_residual_mean_reversion_distance_forward_oos_v1.py'
-      - 'build_task14_challenger_forward_oos_v1.py'
-      - 'validate_market_state_sequence_phase_onsets_v1.py'
-      - 'research_task14_extended_v1.py'
-      - 'research_task14_stage2_v1.py'
-      - 'research/market_state_sequence_v1/PREREGISTRATION.md'
-      - 'research/market_state_sequence_v1/EVENT_AUDIT_PREREGISTRATION.md'
-      - 'research/market_state_sequence_freshness_v1/PREREGISTRATION.md'
-      - 'research/residual_mean_reversion_distance_v1/PREREGISTRATION.md'
-      - 'research/residual_mean_reversion_distance_forward_oos_v1/PREREGISTRATION.md'
-      - 'research/task14_challengers_v1/PREREGISTRATION.md'
-      - 'research/task14_stage2_v1/STUDY_SPEC.md'
-      - '.github/workflows/market_state_sequence_v1.yml'
-      - 'docs/data/market_state_box_v1.json'
 
 permissions:
   contents: write
