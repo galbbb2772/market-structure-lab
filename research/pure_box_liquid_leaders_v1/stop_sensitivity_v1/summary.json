@@ -1,0 +1,1182 @@
+{
+  "schema": "PURE-BOX-STOP-SENSITIVITY-V1",
+  "research_only": true,
+  "window": [
+    "2019-01-02",
+    "2026-03-31"
+  ],
+  "universe": "same causal prior-ADV20 Top200/300/500 liquid-leader proxy as Pure Box Liquid Leaders V1",
+  "frozen_except_stop": true,
+  "stop_lanes": {
+    "box_lower": "existing baseline",
+    "fixed_2pct": "2% below entry",
+    "fixed_3pct": "3% below entry",
+    "fixed_5pct": "5% below entry",
+    "fixed_7pct": "7% below entry",
+    "fixed_10pct": "10% below entry"
+  },
+  "take_profit": "unchanged box upper",
+  "results": {
+    "top200": {
+      "box_lower": {
+        "rank_cap": 200,
+        "stop_name": "box_lower",
+        "stop_pct": null,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.2569442347327284,
+          "total_return": 0.2569442347327284,
+          "cagr": 0.03208232237726705,
+          "max_drawdown": -0.27874782838320067,
+          "daily_sharpe": 0.28082784223364543,
+          "avg_exposure": 0.9014031692082609,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 7473,
+          "win_rate": 0.16606449886257194,
+          "mean_return": 0.0019273446339980707,
+          "median_return": -0.010460174395265143,
+          "profit_factor": 1.1303819657433627,
+          "avg_hold_sessions": 9.019670814933761,
+          "target_exits": 1222,
+          "stop_exits": 6227,
+          "end_mark_exits": 24
+        },
+        "trade_stats_small": {
+          "trades": 4690,
+          "win_rate": 0.18272921108742005,
+          "mean_return": 0.0016951627339740337,
+          "median_return": -0.008653016106427769,
+          "profit_factor": 1.1479694368887503,
+          "avg_hold_sessions": 5.843070362473347,
+          "target_exits": 846,
+          "stop_exits": 3829,
+          "end_mark_exits": 15
+        },
+        "trade_stats_large": {
+          "trades": 2783,
+          "win_rate": 0.13798059647862018,
+          "mean_return": 0.002318624947010192,
+          "median_return": -0.015355548825545351,
+          "profit_factor": 1.1137272761458439,
+          "avg_hold_sessions": 14.37297879985627,
+          "target_exits": 376,
+          "stop_exits": 2398,
+          "end_mark_exits": 9
+        },
+        "rejected_entries": {
+          "already_held": 12101,
+          "no_cash": 367,
+          "gap_below_stop": 2210,
+          "missing_next_open": 5,
+          "gap_above_target": 2
+        },
+        "yearly_returns": {
+          "2019": 0.2861895629771194,
+          "2020": 0.016575609813150205,
+          "2021": 0.10528601104052493,
+          "2022": -0.18210554769250487,
+          "2023": 0.20268816005394097,
+          "2024": -0.051878355291649525,
+          "2025": -0.0053631913893644745,
+          "2026": -0.08778099337968326
+        }
+      },
+      "fixed_2pct": {
+        "rank_cap": 200,
+        "stop_name": "fixed_2pct",
+        "stop_pct": 0.02,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.036195133215243,
+          "total_return": 0.036195133215243036,
+          "cagr": 0.004921854164333217,
+          "max_drawdown": -0.3034586012117454,
+          "daily_sharpe": 0.10919762466476449,
+          "avg_exposure": 0.9291137643165036,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 6656,
+          "win_rate": 0.19786658653846154,
+          "mean_return": 0.0018400590514266832,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.0983568132288832,
+          "avg_hold_sessions": 11.5390625,
+          "target_exits": 1290,
+          "stop_exits": 5333,
+          "end_mark_exits": 33
+        },
+        "trade_stats_small": {
+          "trades": 3753,
+          "win_rate": 0.2499333866240341,
+          "mean_return": 0.0015403515879905483,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.088330400652755,
+          "avg_hold_sessions": 9.356514788169465,
+          "target_exits": 919,
+          "stop_exits": 2810,
+          "end_mark_exits": 24
+        },
+        "trade_stats_large": {
+          "trades": 2903,
+          "win_rate": 0.1305545986910093,
+          "mean_return": 0.0022275210253418793,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.1094649162072958,
+          "avg_hold_sessions": 14.360661384774371,
+          "target_exits": 371,
+          "stop_exits": 2523,
+          "end_mark_exits": 9
+        },
+        "rejected_entries": {
+          "already_held": 14905,
+          "no_cash": 591,
+          "missing_next_open": 4,
+          "gap_above_target": 2
+        },
+        "yearly_returns": {
+          "2019": 0.1679767889221655,
+          "2020": 0.017510487042006417,
+          "2021": 0.13733156498587462,
+          "2022": -0.2344575200876805,
+          "2023": 0.06266675345596617,
+          "2024": 0.036765897496712,
+          "2025": -0.03950388184194409,
+          "2026": -0.059201575213151614
+        }
+      },
+      "fixed_3pct": {
+        "rank_cap": 200,
+        "stop_name": "fixed_3pct",
+        "stop_pct": 0.03,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.1098613885586681,
+          "total_return": 0.10986138855866812,
+          "cagr": 0.01449769752043406,
+          "max_drawdown": -0.3437309472498985,
+          "daily_sharpe": 0.17023822994829366,
+          "avg_exposure": 0.944097332923041,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 5263,
+          "win_rate": 0.26486794603838115,
+          "mean_return": 0.00264384034739822,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.10532455933322,
+          "avg_hold_sessions": 15.71461143834315,
+          "target_exits": 1368,
+          "stop_exits": 3857,
+          "end_mark_exits": 38
+        },
+        "trade_stats_small": {
+          "trades": 3120,
+          "win_rate": 0.3230769230769231,
+          "mean_return": 0.0016265711510497973,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.0710443826170761,
+          "avg_hold_sessions": 12.594871794871795,
+          "target_exits": 990,
+          "stop_exits": 2105,
+          "end_mark_exits": 25
+        },
+        "trade_stats_large": {
+          "trades": 2143,
+          "win_rate": 0.18012132524498367,
+          "mean_return": 0.0041248855609339555,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.1456806079898454,
+          "avg_hold_sessions": 20.25664955669622,
+          "target_exits": 378,
+          "stop_exits": 1752,
+          "end_mark_exits": 13
+        },
+        "rejected_entries": {
+          "already_held": 16208,
+          "no_cash": 681,
+          "missing_next_open": 4,
+          "gap_above_target": 2
+        },
+        "yearly_returns": {
+          "2019": 0.24398458537057732,
+          "2020": 0.0023817382794457664,
+          "2021": 0.19794238542166842,
+          "2022": -0.27110391884200224,
+          "2023": 0.06912475512474603,
+          "2024": 0.0730387303048814,
+          "2025": -0.06600653163953396,
+          "2026": -0.045886683670642525
+        }
+      },
+      "fixed_5pct": {
+        "rank_cap": 200,
+        "stop_name": "fixed_5pct",
+        "stop_pct": 0.05,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 0.9300741448978544,
+          "total_return": -0.06992585510214555,
+          "cagr": -0.009960191428106668,
+          "max_drawdown": -0.3577198456682985,
+          "daily_sharpe": 0.020226996094077694,
+          "avg_exposure": 0.9528916103031458,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 4073,
+          "win_rate": 0.37368033390621164,
+          "mean_return": 0.003076880637338859,
+          "median_return": -0.05094976249999983,
+          "profit_factor": 1.0891625568733947,
+          "avg_hold_sessions": 23.8900073655782,
+          "target_exits": 1493,
+          "stop_exits": 2526,
+          "end_mark_exits": 54
+        },
+        "trade_stats_small": {
+          "trades": 2598,
+          "win_rate": 0.43918398768283295,
+          "mean_return": 0.0032773665163871265,
+          "median_return": -0.05094976249999983,
+          "profit_factor": 1.1073590701405547,
+          "avg_hold_sessions": 18.933410315627405,
+          "target_exits": 1122,
+          "stop_exits": 1440,
+          "end_mark_exits": 36
+        },
+        "trade_stats_large": {
+          "trades": 1475,
+          "win_rate": 0.2583050847457627,
+          "mean_return": 0.002723753644954182,
+          "median_return": -0.05094976249999994,
+          "profit_factor": 1.0655985958865424,
+          "avg_hold_sessions": 32.62033898305085,
+          "target_exits": 371,
+          "stop_exits": 1086,
+          "end_mark_exits": 18
+        },
+        "rejected_entries": {
+          "already_held": 17468,
+          "no_cash": 612,
+          "missing_next_open": 3,
+          "gap_above_target": 2
+        },
+        "yearly_returns": {
+          "2019": 0.23816303799964045,
+          "2020": 0.022727449692474533,
+          "2021": 0.08127322902472822,
+          "2022": -0.22912648404644087,
+          "2023": 0.04105848227706299,
+          "2024": -0.06633888291850942,
+          "2025": -0.05220111186709664,
+          "2026": -0.04222197245922199
+        }
+      },
+      "fixed_7pct": {
+        "rank_cap": 200,
+        "stop_name": "fixed_7pct",
+        "stop_pct": 0.07,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.7306508658724904,
+          "total_return": 0.7306508658724904,
+          "cagr": 0.07868302663841509,
+          "max_drawdown": -0.2673657584013067,
+          "daily_sharpe": 0.547701760758232,
+          "avg_exposure": 0.9569956956578186,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 3513,
+          "win_rate": 0.4605750071164247,
+          "mean_return": 0.006077437424229959,
+          "median_return": -0.0709297674999998,
+          "profit_factor": 1.1501134190776943,
+          "avg_hold_sessions": 30.596925704526047,
+          "target_exits": 1587,
+          "stop_exits": 1861,
+          "end_mark_exits": 65
+        },
+        "trade_stats_small": {
+          "trades": 2343,
+          "win_rate": 0.5335040546308152,
+          "mean_return": 0.008262946376107137,
+          "median_return": 0.024536824437869864,
+          "profit_factor": 1.238262708552225,
+          "avg_hold_sessions": 25.30388390951771,
+          "target_exits": 1229,
+          "stop_exits": 1068,
+          "end_mark_exits": 46
+        },
+        "trade_stats_large": {
+          "trades": 1170,
+          "win_rate": 0.3145299145299145,
+          "mean_return": 0.0017008156513682237,
+          "median_return": -0.07092976749999991,
+          "profit_factor": 1.0326378003853274,
+          "avg_hold_sessions": 41.1965811965812,
+          "target_exits": 358,
+          "stop_exits": 793,
+          "end_mark_exits": 19
+        },
+        "rejected_entries": {
+          "already_held": 17708,
+          "no_cash": 934,
+          "missing_next_open": 2,
+          "gap_above_target": 1
+        },
+        "yearly_returns": {
+          "2019": 0.2938130947331479,
+          "2020": 0.13947879741328073,
+          "2021": 0.3088741853208927,
+          "2022": -0.18767672444552075,
+          "2023": 0.09924669971255229,
+          "2024": 0.08022829796626119,
+          "2025": -0.02743272047871348,
+          "2026": -0.04585479167461681
+        }
+      },
+      "fixed_10pct": {
+        "rank_cap": 200,
+        "stop_name": "fixed_10pct",
+        "stop_pct": 0.1,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.3705562578596313,
+          "total_return": 0.3705562578596313,
+          "cagr": 0.044488832900530406,
+          "max_drawdown": -0.3003805800945416,
+          "daily_sharpe": 0.341217681663315,
+          "avg_exposure": 0.9618696646570708,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 3003,
+          "win_rate": 0.5434565434565435,
+          "mean_return": 0.010162017506292639,
+          "median_return": 0.029365753706311226,
+          "profit_factor": 1.211469766344955,
+          "avg_hold_sessions": 40.81718281718282,
+          "target_exits": 1598,
+          "stop_exits": 1335,
+          "end_mark_exits": 70
+        },
+        "trade_stats_small": {
+          "trades": 2108,
+          "win_rate": 0.6166982922201139,
+          "mean_return": 0.01493312522493742,
+          "median_return": 0.042914687520759776,
+          "profit_factor": 1.3694282478982354,
+          "avg_hold_sessions": 32.982447817836814,
+          "target_exits": 1277,
+          "stop_exits": 783,
+          "end_mark_exits": 48
+        },
+        "trade_stats_large": {
+          "trades": 895,
+          "win_rate": 0.37094972067039106,
+          "mean_return": -0.001075407153934402,
+          "median_return": -0.1008997749999998,
+          "profit_factor": 0.983713323738013,
+          "avg_hold_sessions": 59.270391061452514,
+          "target_exits": 321,
+          "stop_exits": 552,
+          "end_mark_exits": 22
+        },
+        "rejected_entries": {
+          "already_held": 18031,
+          "no_cash": 1122,
+          "missing_next_open": 1,
+          "gap_above_target": 1
+        },
+        "yearly_returns": {
+          "2019": 0.2690004903222263,
+          "2020": 0.17561909534154307,
+          "2021": 0.14127410314589195,
+          "2022": -0.17901125434859588,
+          "2023": 0.06043106810106802,
+          "2024": 0.035114009501535204,
+          "2025": -0.01371999786981859,
+          "2026": -0.08503011877346389
+        }
+      }
+    },
+    "top300": {
+      "box_lower": {
+        "rank_cap": 300,
+        "stop_name": "box_lower",
+        "stop_pct": null,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.6901150059901147,
+          "total_return": 0.6901150059901147,
+          "cagr": 0.07515846305281193,
+          "max_drawdown": -0.2964504704719362,
+          "daily_sharpe": 0.533429616004316,
+          "avg_exposure": 0.9064380917274822,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 11490,
+          "win_rate": 0.16440382941688425,
+          "mean_return": 0.0019065877130360843,
+          "median_return": -0.010543585768763741,
+          "profit_factor": 1.1266092447919929,
+          "avg_hold_sessions": 8.830200174064403,
+          "target_exits": 1860,
+          "stop_exits": 9595,
+          "end_mark_exits": 35
+        },
+        "trade_stats_small": {
+          "trades": 7215,
+          "win_rate": 0.17823977823977824,
+          "mean_return": 0.0012145356716908836,
+          "median_return": -0.008870580889168145,
+          "profit_factor": 1.1026377495438295,
+          "avg_hold_sessions": 5.717117117117117,
+          "target_exits": 1270,
+          "stop_exits": 5924,
+          "end_mark_exits": 21
+        },
+        "trade_stats_large": {
+          "trades": 4275,
+          "win_rate": 0.14105263157894737,
+          "mean_return": 0.0030745772986046508,
+          "median_return": -0.015199907222435582,
+          "profit_factor": 1.1499592090114539,
+          "avg_hold_sessions": 14.08421052631579,
+          "target_exits": 590,
+          "stop_exits": 3671,
+          "end_mark_exits": 14
+        },
+        "rejected_entries": {
+          "already_held": 18405,
+          "gap_below_stop": 3260,
+          "no_cash": 309,
+          "gap_above_target": 3,
+          "missing_next_open": 9
+        },
+        "yearly_returns": {
+          "2019": 0.24743476982400692,
+          "2020": 0.22381729589881227,
+          "2021": 0.13391184139553847,
+          "2022": -0.202736344675722,
+          "2023": 0.22070579100859966,
+          "2024": -0.020394419329637814,
+          "2025": 0.05289019568179776,
+          "2026": -0.042116426161352805
+        }
+      },
+      "fixed_2pct": {
+        "rank_cap": 300,
+        "stop_name": "fixed_2pct",
+        "stop_pct": 0.02,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.2821761128104718,
+          "total_return": 0.28217611281047184,
+          "cagr": 0.03491878231657175,
+          "max_drawdown": -0.2845238505437234,
+          "daily_sharpe": 0.3036922179361171,
+          "avg_exposure": 0.9301422665013558,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 10351,
+          "win_rate": 0.19418413679837696,
+          "mean_return": 0.0015416469794886825,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.081451102856886,
+          "avg_hold_sessions": 11.128586609989373,
+          "target_exits": 1972,
+          "stop_exits": 8329,
+          "end_mark_exits": 50
+        },
+        "trade_stats_small": {
+          "trades": 5904,
+          "win_rate": 0.24322493224932248,
+          "mean_return": 0.0008745232056244775,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.0490101730476744,
+          "avg_hold_sessions": 9.196476964769648,
+          "target_exits": 1410,
+          "stop_exits": 4457,
+          "end_mark_exits": 37
+        },
+        "trade_stats_large": {
+          "trades": 4447,
+          "win_rate": 0.12907578142568024,
+          "mean_return": 0.0024273449243715846,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.1191870419645145,
+          "avg_hold_sessions": 13.693726107488194,
+          "target_exits": 562,
+          "stop_exits": 3872,
+          "end_mark_exits": 13
+        },
+        "rejected_entries": {
+          "already_held": 22557,
+          "no_cash": 560,
+          "gap_above_target": 3,
+          "missing_next_open": 5
+        },
+        "yearly_returns": {
+          "2019": 0.1760893616612631,
+          "2020": 0.07992123918801686,
+          "2021": 0.12294563435624917,
+          "2022": -0.2161624150899064,
+          "2023": 0.05539798021896347,
+          "2024": 0.015738967601105935,
+          "2025": 0.12472685638046399,
+          "2026": -0.0507335365404491
+        }
+      },
+      "fixed_3pct": {
+        "rank_cap": 300,
+        "stop_name": "fixed_3pct",
+        "stop_pct": 0.03,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.29452975132963,
+          "total_return": 0.2945297513296301,
+          "cagr": 0.03629002025691741,
+          "max_drawdown": -0.28376359963289954,
+          "daily_sharpe": 0.3099037541167389,
+          "avg_exposure": 0.9494129173409974,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 8163,
+          "win_rate": 0.26215852015190494,
+          "mean_return": 0.0023929942433841022,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.0941987151452528,
+          "avg_hold_sessions": 15.274776430233983,
+          "target_exits": 2100,
+          "stop_exits": 6002,
+          "end_mark_exits": 61
+        },
+        "trade_stats_small": {
+          "trades": 4851,
+          "win_rate": 0.31849103277674706,
+          "mean_return": 0.001126026679198874,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.0479652426764448,
+          "avg_hold_sessions": 12.51288394145537,
+          "target_exits": 1517,
+          "stop_exits": 3289,
+          "end_mark_exits": 45
+        },
+        "trade_stats_large": {
+          "trades": 3312,
+          "win_rate": 0.17964975845410627,
+          "mean_return": 0.004248688583318444,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.15051715086166,
+          "avg_hold_sessions": 19.320048309178745,
+          "target_exits": 583,
+          "stop_exits": 2713,
+          "end_mark_exits": 16
+        },
+        "rejected_entries": {
+          "already_held": 24671,
+          "no_cash": 634,
+          "gap_above_target": 3,
+          "missing_next_open": 5
+        },
+        "yearly_returns": {
+          "2019": 0.20136873864546168,
+          "2020": 0.06316005923420698,
+          "2021": 0.10576561803762718,
+          "2022": -0.18795322758558752,
+          "2023": 0.07178354659196384,
+          "2024": 0.043695868045484865,
+          "2025": 0.037206360281838435,
+          "2026": -0.0392206262753273
+        }
+      },
+      "fixed_5pct": {
+        "rank_cap": 300,
+        "stop_name": "fixed_5pct",
+        "stop_pct": 0.05,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.2096630403823332,
+          "total_return": 0.2096630403823332,
+          "cagr": 0.026632373721904967,
+          "max_drawdown": -0.2922176915308726,
+          "daily_sharpe": 0.24009951371033098,
+          "avg_exposure": 0.9564622731535317,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 6299,
+          "win_rate": 0.37386886807429753,
+          "mean_return": 0.0041329072133157755,
+          "median_return": -0.05094976249999983,
+          "profit_factor": 1.118489422268982,
+          "avg_hold_sessions": 23.21971741546277,
+          "target_exits": 2309,
+          "stop_exits": 3900,
+          "end_mark_exits": 90
+        },
+        "trade_stats_small": {
+          "trades": 4026,
+          "win_rate": 0.43616492796820666,
+          "mean_return": 0.0025810795066758185,
+          "median_return": -0.05094976249999983,
+          "profit_factor": 1.0820127633156174,
+          "avg_hold_sessions": 18.57377049180328,
+          "target_exits": 1727,
+          "stop_exits": 2236,
+          "end_mark_exits": 63
+        },
+        "trade_stats_large": {
+          "trades": 2273,
+          "win_rate": 0.2635283765948086,
+          "mean_return": 0.006881547049185755,
+          "median_return": -0.05094976249999994,
+          "profit_factor": 1.1681838236375917,
+          "avg_hold_sessions": 31.448746150461943,
+          "target_exits": 582,
+          "stop_exits": 1664,
+          "end_mark_exits": 27
+        },
+        "rejected_entries": {
+          "already_held": 26551,
+          "no_cash": 618,
+          "gap_above_target": 3,
+          "missing_next_open": 5
+        },
+        "yearly_returns": {
+          "2019": 0.11846099690680512,
+          "2020": 0.20844446570298159,
+          "2021": 0.048818258602816966,
+          "2022": -0.1989623010122462,
+          "2023": 0.10598479008790229,
+          "2024": -0.043183600092953744,
+          "2025": 0.05201635794631776,
+          "2026": -0.055104433973225286
+        }
+      },
+      "fixed_7pct": {
+        "rank_cap": 300,
+        "stop_name": "fixed_7pct",
+        "stop_pct": 0.07,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.7244523185572815,
+          "total_return": 0.7244523185572815,
+          "cagr": 0.07814870685928343,
+          "max_drawdown": -0.25883146227861864,
+          "daily_sharpe": 0.554171975022756,
+          "avg_exposure": 0.9641467839766922,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 5505,
+          "win_rate": 0.46103542234332423,
+          "mean_return": 0.006755959317148393,
+          "median_return": -0.0709297674999998,
+          "profit_factor": 1.1652347776385499,
+          "avg_hold_sessions": 30.07920072661217,
+          "target_exits": 2487,
+          "stop_exits": 2907,
+          "end_mark_exits": 111
+        },
+        "trade_stats_small": {
+          "trades": 3691,
+          "win_rate": 0.5291248984015172,
+          "mean_return": 0.007495580814469946,
+          "median_return": 0.02258026760517584,
+          "profit_factor": 1.2086258700496932,
+          "avg_hold_sessions": 24.380655648875642,
+          "target_exits": 1920,
+          "stop_exits": 1693,
+          "end_mark_exits": 78
+        },
+        "trade_stats_large": {
+          "trades": 1814,
+          "win_rate": 0.3224917309812569,
+          "mean_return": 0.005251029357603822,
+          "median_return": -0.07092976749999991,
+          "profit_factor": 1.1030085651253596,
+          "avg_hold_sessions": 41.674200661521496,
+          "target_exits": 567,
+          "stop_exits": 1214,
+          "end_mark_exits": 33
+        },
+        "rejected_entries": {
+          "already_held": 27190,
+          "no_cash": 775,
+          "gap_above_target": 2,
+          "missing_next_open": 4
+        },
+        "yearly_returns": {
+          "2019": 0.2206827700838323,
+          "2020": 0.28721654064598123,
+          "2021": 0.09407388006175665,
+          "2022": -0.18494162140206483,
+          "2023": 0.10418070711928262,
+          "2024": 0.060665261883433574,
+          "2025": 0.07226350888941169,
+          "2026": -0.024271323382379473
+        }
+      },
+      "fixed_10pct": {
+        "rank_cap": 300,
+        "stop_name": "fixed_10pct",
+        "stop_pct": 0.1,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.6201893098120914,
+          "total_return": 0.6201893098120914,
+          "cagr": 0.06890349327551637,
+          "max_drawdown": -0.29583497007164994,
+          "daily_sharpe": 0.4833931458993261,
+          "avg_exposure": 0.969177979935813,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 4825,
+          "win_rate": 0.5376165803108808,
+          "mean_return": 0.008075419146217186,
+          "median_return": 0.02858830263866463,
+          "profit_factor": 1.1652565637266648,
+          "avg_hold_sessions": 39.15564766839378,
+          "target_exits": 2541,
+          "stop_exits": 2144,
+          "end_mark_exits": 140
+        },
+        "trade_stats_small": {
+          "trades": 3414,
+          "win_rate": 0.6066198008201523,
+          "mean_return": 0.011563240033710474,
+          "median_return": 0.04233622489947286,
+          "profit_factor": 1.2765493503671432,
+          "avg_hold_sessions": 31.680433509080256,
+          "target_exits": 2040,
+          "stop_exits": 1277,
+          "end_mark_exits": 97
+        },
+        "trade_stats_large": {
+          "trades": 1411,
+          "win_rate": 0.3706591070163005,
+          "mean_return": -0.00036357483670420616,
+          "median_return": -0.1008997749999998,
+          "profit_factor": 0.9944856109768221,
+          "avg_hold_sessions": 57.24238128986534,
+          "target_exits": 501,
+          "stop_exits": 867,
+          "end_mark_exits": 43
+        },
+        "rejected_entries": {
+          "already_held": 27637,
+          "no_cash": 1011,
+          "gap_above_target": 2,
+          "missing_next_open": 1
+        },
+        "yearly_returns": {
+          "2019": 0.1971425734721124,
+          "2020": 0.2158475510294493,
+          "2021": 0.10486339262634092,
+          "2022": -0.1874938127038558,
+          "2023": 0.08694371666883782,
+          "2024": 0.08459636795598957,
+          "2025": 0.11425540681817759,
+          "2026": -0.057313767857735454
+        }
+      }
+    },
+    "top500": {
+      "box_lower": {
+        "rank_cap": 500,
+        "stop_name": "box_lower",
+        "stop_pct": null,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 2.035847153626614,
+          "total_return": 1.035847153626614,
+          "cagr": 0.10314848417704026,
+          "max_drawdown": -0.27122059358252093,
+          "daily_sharpe": 0.7194307218323727,
+          "avg_exposure": 0.910067249205651,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 19917,
+          "win_rate": 0.16473364462519455,
+          "mean_return": 0.0026335739222903194,
+          "median_return": -0.010306342985261563,
+          "profit_factor": 1.1789958905891849,
+          "avg_hold_sessions": 8.655068534417834,
+          "target_exits": 3226,
+          "stop_exits": 16624,
+          "end_mark_exits": 67
+        },
+        "trade_stats_small": {
+          "trades": 12546,
+          "win_rate": 0.1768691216323928,
+          "mean_return": 0.0013275222949186002,
+          "median_return": -0.008783045248653365,
+          "profit_factor": 1.1138988719411382,
+          "avg_hold_sessions": 5.5481428343695205,
+          "target_exits": 2187,
+          "stop_exits": 10317,
+          "end_mark_exits": 42
+        },
+        "trade_stats_large": {
+          "trades": 7371,
+          "win_rate": 0.14407814407814407,
+          "mean_return": 0.004856572662896151,
+          "median_return": -0.014418701154981006,
+          "profit_factor": 1.2438332680426507,
+          "avg_hold_sessions": 13.94329127662461,
+          "target_exits": 1039,
+          "stop_exits": 6307,
+          "end_mark_exits": 25
+        },
+        "rejected_entries": {
+          "already_held": 31194,
+          "gap_below_stop": 5581,
+          "no_cash": 316,
+          "gap_above_target": 12,
+          "missing_next_open": 12
+        },
+        "yearly_returns": {
+          "2019": 0.22547201507395176,
+          "2020": 0.2810558714494775,
+          "2021": 0.1441886680497424,
+          "2022": -0.1589937496553343,
+          "2023": 0.18165104217433603,
+          "2024": 0.05948456005691605,
+          "2025": 0.080245024928423,
+          "2026": -0.008352532882984876
+        }
+      },
+      "fixed_2pct": {
+        "rank_cap": 500,
+        "stop_name": "fixed_2pct",
+        "stop_pct": 0.02,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.6012185438033235,
+          "total_return": 0.6012185438033235,
+          "cagr": 0.06716643185537596,
+          "max_drawdown": -0.26732616295001654,
+          "daily_sharpe": 0.5329680968613434,
+          "avg_exposure": 0.934259009327654,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 17827,
+          "win_rate": 0.19840691086554102,
+          "mean_return": 0.0032007941365456987,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.1706092437961462,
+          "avg_hold_sessions": 11.158747966567566,
+          "target_exits": 3461,
+          "stop_exits": 14268,
+          "end_mark_exits": 98
+        },
+        "trade_stats_small": {
+          "trades": 10181,
+          "win_rate": 0.24575189077693743,
+          "mean_return": 0.001546905260571077,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.0877409273203709,
+          "avg_hold_sessions": 9.036145761712994,
+          "target_exits": 2451,
+          "stop_exits": 7663,
+          "end_mark_exits": 67
+        },
+        "trade_stats_large": {
+          "trades": 7646,
+          "win_rate": 0.13536489667800156,
+          "mean_return": 0.00540302309891787,
+          "median_return": -0.020979754999999933,
+          "profit_factor": 1.266600022049159,
+          "avg_hold_sessions": 13.985090243264452,
+          "target_exits": 1010,
+          "stop_exits": 6605,
+          "end_mark_exits": 31
+        },
+        "rejected_entries": {
+          "already_held": 38589,
+          "no_cash": 596,
+          "gap_above_target": 12,
+          "missing_next_open": 8
+        },
+        "yearly_returns": {
+          "2019": 0.16446338577581399,
+          "2020": 0.07567872223008432,
+          "2021": 0.14060875344584933,
+          "2022": -0.16980048574186324,
+          "2023": 0.05046787175531464,
+          "2024": 0.12191607937233373,
+          "2025": 0.18964486900189126,
+          "2026": -0.0411841266658074
+        }
+      },
+      "fixed_3pct": {
+        "rank_cap": 500,
+        "stop_name": "fixed_3pct",
+        "stop_pct": 0.03,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.7828153354737692,
+          "total_return": 0.7828153354737692,
+          "cagr": 0.08311544921251168,
+          "max_drawdown": -0.28616279372214426,
+          "daily_sharpe": 0.6145198029531427,
+          "avg_exposure": 0.9527595460033856,
+          "max_exposure": 1.0
+        },
+        "trade_stats_all": {
+          "trades": 14074,
+          "win_rate": 0.2662356117663777,
+          "mean_return": 0.003993216535332328,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.1590106688532325,
+          "avg_hold_sessions": 15.256075031973852,
+          "target_exits": 3669,
+          "stop_exits": 10293,
+          "end_mark_exits": 112
+        },
+        "trade_stats_small": {
+          "trades": 8359,
+          "win_rate": 0.3218088288072736,
+          "mean_return": 0.001902285201812269,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.0820441555498885,
+          "avg_hold_sessions": 12.352673764804402,
+          "target_exits": 2636,
+          "stop_exits": 5645,
+          "end_mark_exits": 78
+        },
+        "trade_stats_large": {
+          "trades": 5715,
+          "win_rate": 0.18495188101487314,
+          "mean_return": 0.007051500877746006,
+          "median_return": -0.03096975749999986,
+          "profit_factor": 1.252460922316226,
+          "avg_hold_sessions": 19.50271216097988,
+          "target_exits": 1033,
+          "stop_exits": 4648,
+          "end_mark_exits": 34
+        },
+        "rejected_entries": {
+          "already_held": 42303,
+          "no_cash": 636,
+          "gap_above_target": 12,
+          "missing_next_open": 7
+        },
+        "yearly_returns": {
+          "2019": 0.17605083211807182,
+          "2020": 0.02753361346001104,
+          "2021": 0.15083701178236364,
+          "2022": -0.144797539037117,
+          "2023": 0.09750002246651635,
+          "2024": 0.15490806168486282,
+          "2025": 0.211210042659137,
+          "2026": -0.026717959760537813
+        }
+      },
+      "fixed_5pct": {
+        "rank_cap": 500,
+        "stop_name": "fixed_5pct",
+        "stop_pct": 0.05,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.6862655934185362,
+          "total_return": 0.6862655934185362,
+          "cagr": 0.07481998307395332,
+          "max_drawdown": -0.2919911368047473,
+          "daily_sharpe": 0.5438044307242095,
+          "avg_exposure": 0.9606843869184494,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 10869,
+          "win_rate": 0.37629956757751404,
+          "mean_return": 0.00595310361369477,
+          "median_return": -0.05094976249999983,
+          "profit_factor": 1.1724620244774013,
+          "avg_hold_sessions": 22.894654522035147,
+          "target_exits": 4005,
+          "stop_exits": 6713,
+          "end_mark_exits": 151
+        },
+        "trade_stats_small": {
+          "trades": 6920,
+          "win_rate": 0.43959537572254337,
+          "mean_return": 0.003986398575312559,
+          "median_return": -0.05094976249999983,
+          "profit_factor": 1.1283273334086532,
+          "avg_hold_sessions": 18.18034682080925,
+          "target_exits": 2986,
+          "stop_exits": 3827,
+          "end_mark_exits": 107
+        },
+        "trade_stats_large": {
+          "trades": 3949,
+          "win_rate": 0.2653836414282097,
+          "mean_return": 0.009399444172217155,
+          "median_return": -0.05094976249999994,
+          "profit_factor": 1.2316787940708964,
+          "avg_hold_sessions": 31.155735629273234,
+          "target_exits": 1019,
+          "stop_exits": 2886,
+          "end_mark_exits": 44
+        },
+        "rejected_entries": {
+          "already_held": 45476,
+          "no_cash": 667,
+          "gap_above_target": 12,
+          "missing_next_open": 8
+        },
+        "yearly_returns": {
+          "2019": 0.17200705466870359,
+          "2020": 0.1361463036577799,
+          "2021": 0.15253186723060597,
+          "2022": -0.14696102406551548,
+          "2023": 0.10712470500730786,
+          "2024": 0.06560418373610011,
+          "2025": 0.1257282745751902,
+          "2026": -0.03759007148289606
+        }
+      },
+      "fixed_7pct": {
+        "rank_cap": 500,
+        "stop_name": "fixed_7pct",
+        "stop_pct": 0.07,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 2.004898336939177,
+          "total_return": 1.0048983369391769,
+          "cagr": 0.10081743525969489,
+          "max_drawdown": -0.25796846909015003,
+          "daily_sharpe": 0.7061211177362954,
+          "avg_exposure": 0.9675770230540659,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 9562,
+          "win_rate": 0.4623509725998745,
+          "mean_return": 0.008066485845989874,
+          "median_return": -0.0709297674999998,
+          "profit_factor": 1.1982388462421625,
+          "avg_hold_sessions": 29.544760510353484,
+          "target_exits": 4327,
+          "stop_exits": 5047,
+          "end_mark_exits": 188
+        },
+        "trade_stats_small": {
+          "trades": 6441,
+          "win_rate": 0.5263157894736842,
+          "mean_return": 0.007469439960944204,
+          "median_return": 0.02102978888560747,
+          "profit_factor": 1.2081569431959365,
+          "avg_hold_sessions": 23.873001086787767,
+          "target_exits": 3328,
+          "stop_exits": 2980,
+          "end_mark_exits": 133
+        },
+        "trade_stats_large": {
+          "trades": 3121,
+          "win_rate": 0.33034283883370713,
+          "mean_return": 0.009298646225861438,
+          "median_return": -0.07092976749999991,
+          "profit_factor": 1.1837265165862059,
+          "avg_hold_sessions": 41.24991989746876,
+          "target_exits": 999,
+          "stop_exits": 2067,
+          "end_mark_exits": 55
+        },
+        "rejected_entries": {
+          "already_held": 46701,
+          "no_cash": 752,
+          "gap_above_target": 11,
+          "missing_next_open": 6
+        },
+        "yearly_returns": {
+          "2019": 0.20419461134220662,
+          "2020": 0.17014388072465025,
+          "2021": 0.21039380190986146,
+          "2022": -0.13769002079391257,
+          "2023": 0.09570603954263102,
+          "2024": 0.07847093111688963,
+          "2025": 0.1868154007359839,
+          "2026": -0.028807077254766056
+        }
+      },
+      "fixed_10pct": {
+        "rank_cap": 500,
+        "stop_name": "fixed_10pct",
+        "stop_pct": 0.1,
+        "portfolio": {
+          "start_equity": 1.0,
+          "end_equity": 1.7563730036174847,
+          "total_return": 0.7563730036174847,
+          "cagr": 0.08088282030548832,
+          "max_drawdown": -0.20660225425439427,
+          "daily_sharpe": 0.6019872914239061,
+          "avg_exposure": 0.9726175787123478,
+          "max_exposure": 1.0000000000000002
+        },
+        "trade_stats_all": {
+          "trades": 8341,
+          "win_rate": 0.5447788035007792,
+          "mean_return": 0.010072843586887665,
+          "median_return": 0.03199516833503013,
+          "profit_factor": 1.2106229756999214,
+          "avg_hold_sessions": 38.43352116053231,
+          "target_exits": 4453,
+          "stop_exits": 3654,
+          "end_mark_exits": 234
+        },
+        "trade_stats_small": {
+          "trades": 5956,
+          "win_rate": 0.607622565480188,
+          "mean_return": 0.011711266926236138,
+          "median_return": 0.0446440548212913,
+          "profit_factor": 1.2837817775499039,
+          "avg_hold_sessions": 31.34637340496978,
+          "target_exits": 3559,
+          "stop_exits": 2232,
+          "end_mark_exits": 165
+        },
+        "trade_stats_large": {
+          "trades": 2385,
+          "win_rate": 0.38784067085953877,
+          "mean_return": 0.005981250543214915,
+          "median_return": -0.1008997749999998,
+          "profit_factor": 1.0931733088617916,
+          "avg_hold_sessions": 56.132075471698116,
+          "target_exits": 894,
+          "stop_exits": 1422,
+          "end_mark_exits": 69
+        },
+        "rejected_entries": {
+          "already_held": 47559,
+          "no_cash": 1118,
+          "gap_above_target": 11,
+          "missing_next_open": 3
+        },
+        "yearly_returns": {
+          "2019": 0.18287307765491434,
+          "2020": 0.20493220103324905,
+          "2021": 0.12982268840636402,
+          "2022": -0.13733749164607167,
+          "2023": 0.11412627162308375,
+          "2024": 0.09157641842182662,
+          "2025": 0.06916876321141507,
+          "2026": -0.030706711804300624
+        }
+      }
+    }
+  }
+}
