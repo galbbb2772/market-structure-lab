@@ -21,6 +21,7 @@ FLAG = "D_TO_BOTH_REBOUND_SCORE"
 FROZEN_THROUGH = "2026-10-02"
 FREEZE_COMMIT = "14283ffc5c5f41156a580d4731d4c3b79d800246"
 MIN_RET20_HISTORY = 252
+PRIORITY_POLICY = "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md"
 IMMUTABLE_FIELDS = (
     "event_date", "first_seen_at", "first_seen_market_date",
     "ret20_expanding_percentile", "breadth_20d_pct", "market_score_pct",
@@ -169,6 +170,10 @@ def main():
         "frozen_through_market_date": FROZEN_THROUGH,
         "event_definition": FLAG,
         "score_definition": "RMD3 = equal-weight mean(price_residual, breadth_residual, score_residual)",
+        "research_priority_policy": PRIORITY_POLICY,
+        "research_priority_tier": "T3_LEGACY_LOW_PRIORITY" if FROZEN_THROUGH >= "2026-10-06" else "LEGACY_V1_FROZEN",
+        "priority_status": "HISTORICAL_REPLICATION_WEAKENED" if FROZEN_THROUGH >= "2026-10-06" else "ORIGINAL_PREREGISTRATION",
+        "promotion_eligible_under_current_priority": False if FROZEN_THROUGH >= "2026-10-06" else True,
         "append_only_score_fields": list(IMMUTABLE_FIELDS),
         "latest_market_date": latest_market_date,
         "forward_event_count": len(events),
@@ -187,6 +192,7 @@ def main():
         "warnings": [
             "Historical development events through 2026-10-02 are excluded from Forward OOS counts.",
             "Frozen event-date RMD3 values are never overwritten by later upstream revisions.",
+            "Under PRUNED16 V2, RMD3 is T3 Legacy / low priority because its historical replication weakened materially.",
             "FRED current-history inputs can contain revisions and are not ALFRED vintage data.",
             "Market Score history inherits reconstruction caveats from Market State Box V1.",
         ],
