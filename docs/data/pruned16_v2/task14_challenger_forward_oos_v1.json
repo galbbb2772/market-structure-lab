@@ -23,7 +23,10 @@
         "ready": false,
         "automatic_promotion": false,
         "note": "A separate preregistered review is required after both minimum gates are met."
-      }
+      },
+      "research_priority_tier": "T2_SECONDARY_FORWARD_WATCH",
+      "priority_status": "FORWARD_ONLY_CHALLENGER",
+      "promotion_eligible_under_current_priority": true
     },
     "rmd2_price_score": {
       "eligible_event_definition": "D_TO_BOTH_REBOUND_SCORE",
@@ -41,7 +44,10 @@
         "ready": false,
         "automatic_promotion": false,
         "note": "A separate preregistered review is required after both minimum gates are met."
-      }
+      },
+      "research_priority_tier": "T2_SECONDARY_FORWARD_WATCH",
+      "priority_status": "FORWARD_ONLY_CHALLENGER",
+      "promotion_eligible_under_current_priority": true
     },
     "dplus1_entry": {
       "eligible_event_definition": "D_TO_BOTH_REBOUND_SCORE",
@@ -60,7 +66,10 @@
         "ready": false,
         "automatic_promotion": false,
         "note": "A separate preregistered review is required after both minimum gates are met."
-      }
+      },
+      "research_priority_tier": "T2_SECONDARY_FORWARD_WATCH",
+      "priority_status": "WEAK_MODERATE_HISTORICAL_EVIDENCE",
+      "promotion_eligible_under_current_priority": true
     },
     "dual_severity_hazard": {
       "eligible_event_definition": "D_TO_BOTH_REBOUND_SCORE",
@@ -79,7 +88,10 @@
         "ready": false,
         "automatic_promotion": false,
         "note": "A separate preregistered review is required after both minimum gates are met."
-      }
+      },
+      "research_priority_tier": "T3_LEGACY_LOW_PRIORITY",
+      "priority_status": "HISTORICAL_CALIBRATION_EDGE_LOST",
+      "promotion_eligible_under_current_priority": false
     }
   },
   "warnings": [
@@ -87,6 +99,8 @@
     "Historical development events through 2026-10-06 are excluded from Forward-OOS counts.",
     "First-seen score/state fields are immutable; later refreshes may only mature outcomes or report upstream discrepancies.",
     "No challenger automatically changes MAIN, production sizing, or existing Task 1/4 Forward-OOS ledgers.",
-    "FRED current-history inputs can contain revisions and are not ALFRED vintage data."
-  ]
+    "FRED current-history inputs can contain revisions and are not ALFRED vintage data.",
+    "PRUNED16 V2 priority policy: DUAL Severity is T3 Legacy / low priority and cannot promote without a new priority review."
+  ],
+  "research_priority_policy": "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md"
 }
