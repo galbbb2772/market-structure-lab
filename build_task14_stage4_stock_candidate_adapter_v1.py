@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import base64
 import hashlib
 import json
 from datetime import datetime, timezone
@@ -14,9 +13,9 @@ OUT = ROOT / 'docs/data/task14_stage4_stock_candidate_adapter_v1.json'
 SPEC = 'research/task14_stage4_stock_candidate_adapter_v1/STUDY_SPEC.md'
 FROZEN_THROUGH = '2026-10-02'
 
-CANONICAL_FEED_URL = 'https://api.github.com/repos/galbbb2772/frozen-v4/contents/docs/data/stock_candidate_feed_v1.json?ref=main'
+CANONICAL_AUTHORITY = 'galbbb2772/frozen-v4:docs/data/stock_candidate_feed_v1.json'
 MIRROR_FEED_URL = 'https://raw.githubusercontent.com/galbbb2772/frozen-v4-dashboard/main/data/stock_candidate_feed_v1.json'
-REMOTE_FEED_URLS = (CANONICAL_FEED_URL, MIRROR_FEED_URL)
+REMOTE_FEED_URLS = (MIRROR_FEED_URL,)
 EXPECTED_SOURCE_NAME = 'frozen-v4'
 EXPECTED_SOURCE_VERSION = 'FROZEN-V4-STRICT-V3-MASSIVE-EOD-V1'
 
@@ -45,16 +44,11 @@ def refresh_remote_feed():
         try:
             with urlopen(req, timeout=20) as r:
                 raw = r.read().decode('utf-8')
-            if 'api.github.com/repos/' in url and '/contents/' in url:
-                meta = json.loads(raw)
-                if meta.get('encoding') != 'base64' or not meta.get('content'):
-                    raise RuntimeError('canonical GitHub contents response missing base64 content')
-                raw = base64.b64decode(meta['content']).decode('utf-8')
             obj = json.loads(raw)
             if obj.get('schema') != 'STOCK-CANDIDATE-FEED-V1':
                 raise RuntimeError(f"unexpected remote feed schema: {obj.get('schema')!r}")
             atomic_write_json(FEED, obj)
-            status = 'REMOTE_CANONICAL_REFRESHED' if i == 0 else 'REMOTE_MIRROR_REFRESHED'
+            status = 'REMOTE_MIRROR_REFRESHED'
             prior_errors = ' | '.join(errors) if errors else None
             return status, prior_errors, url
         except Exception as exc:
@@ -239,7 +233,8 @@ def validate_feed(feed, latest_market_date, aligned_dates, fetch_status, fetch_e
         'status': status,
         'feed_fetch_status': fetch_status,
         'feed_fetch_error': fetch_error,
-        'source_url': fetched_from_url or CANONICAL_FEED_URL,
+        'source_authority': CANONICAL_AUTHORITY,
+        'source_url': fetched_from_url or MIRROR_FEED_URL,
         'source_name': feed['source_name'],
         'source_version': feed['source_version'],
         'source_generated_at': feed['generated_at'],
@@ -280,7 +275,8 @@ def main():
             'status': 'AWAITING_UPSTREAM_FEED',
             'feed_fetch_status': fetch_status,
             'feed_fetch_error': fetch_error,
-            'source_url': CANONICAL_FEED_URL,
+            'source_authority': CANONICAL_AUTHORITY,
+            'source_url': MIRROR_FEED_URL,
             'source_name': None,
             'source_version': None,
             'source_generated_at': None,
