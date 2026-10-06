@@ -1,0 +1,302 @@
+{
+  "schema": "TASK14-STAGE4-PORTFOLIO-V1-SUMMARY",
+  "generated_at": "2026-10-06T10:49:23.215365+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "production_effect": "none",
+  "frozen_through_market_date": "2026-10-06",
+  "historical_signal_counts": {
+    "early_sequence": 15,
+    "full_sequence": 11,
+    "combined_records": 26
+  },
+  "execution_convention": {
+    "entry": "next_regular_session_open",
+    "primary_exit": "close_at_signal_plus_10_trading_sessions",
+    "same_day_priority": [
+      "full_sequence",
+      "early_sequence"
+    ],
+    "dedup_decision_time": "signal_close"
+  },
+  "portfolio_results": {
+    "full_only_100_dedup": {
+      "fixed_10bps_rt": {
+        "return_pct": -0.144387,
+        "max_drawdown_pct": -13.787268,
+        "trade_count": 8,
+        "skipped_signal_count": 3,
+        "exposure_day_pct": 3.1847,
+        "average_gross_exposure": 0.028662,
+        "max_gross_exposure": 1.0,
+        "turnover_multiple_start_capital": 16.038446,
+        "total_modeled_cost_usd": 801.92,
+        "average_modeled_rt_cost_bps": 10.0,
+        "max_adv_participation_pct": 0.00041073,
+        "trade_win_rate_pct": 62.5,
+        "observations": 2512,
+        "annualized_vol_pct": 4.3697,
+        "sharpe0": 0.018606,
+        "cagr_pct": -0.0145
+      },
+      "square_root_impact": {
+        "return_pct": 0.557418,
+        "max_drawdown_pct": -13.410001,
+        "trade_count": 8,
+        "skipped_signal_count": 3,
+        "exposure_day_pct": 3.1847,
+        "average_gross_exposure": 0.028662,
+        "max_gross_exposure": 1.0,
+        "turnover_multiple_start_capital": 16.094065,
+        "total_modeled_cost_usd": 100.2,
+        "average_modeled_rt_cost_bps": 1.245484,
+        "max_adv_participation_pct": 0.00041091,
+        "trade_win_rate_pct": 62.5,
+        "observations": 2512,
+        "annualized_vol_pct": 4.366957,
+        "sharpe0": 0.034683,
+        "cagr_pct": 0.055802
+      }
+    },
+    "early_full_100_dedup": {
+      "fixed_10bps_rt": {
+        "return_pct": -2.138578,
+        "max_drawdown_pct": -19.642257,
+        "trade_count": 11,
+        "skipped_signal_count": 15,
+        "exposure_day_pct": 4.379,
+        "average_gross_exposure": 0.039411,
+        "max_gross_exposure": 1.0,
+        "turnover_multiple_start_capital": 21.654914,
+        "total_modeled_cost_usd": 1082.75,
+        "average_modeled_rt_cost_bps": 10.0,
+        "max_adv_participation_pct": 0.00041508,
+        "trade_win_rate_pct": 54.55,
+        "observations": 2512,
+        "annualized_vol_pct": 5.387023,
+        "sharpe0": -0.013249,
+        "cagr_pct": -0.216717
+      },
+      "square_root_impact": {
+        "return_pct": -1.190479,
+        "max_drawdown_pct": -19.290464,
+        "trade_count": 11,
+        "skipped_signal_count": 15,
+        "exposure_day_pct": 4.379,
+        "average_gross_exposure": 0.039411,
+        "max_gross_exposure": 1.0,
+        "turnover_multiple_start_capital": 21.757272,
+        "total_modeled_cost_usd": 134.13,
+        "average_modeled_rt_cost_bps": 1.234955,
+        "max_adv_participation_pct": 0.00041526,
+        "trade_win_rate_pct": 63.64,
+        "observations": 2512,
+        "annualized_vol_pct": 5.379991,
+        "sharpe0": 0.004645,
+        "cagr_pct": -0.120119
+      }
+    },
+    "early_full_vol10_dedup": {
+      "fixed_10bps_rt": {
+        "return_pct": 2.350985,
+        "max_drawdown_pct": -8.43327,
+        "trade_count": 11,
+        "skipped_signal_count": 15,
+        "exposure_day_pct": 4.379,
+        "average_gross_exposure": 0.018084,
+        "max_gross_exposure": 0.74979,
+        "turnover_multiple_start_capital": 10.286254,
+        "total_modeled_cost_usd": 514.31,
+        "average_modeled_rt_cost_bps": 10.0,
+        "max_adv_participation_pct": 0.00028155,
+        "trade_win_rate_pct": 54.55,
+        "observations": 2512,
+        "annualized_vol_pct": 2.401916,
+        "sharpe0": 0.109099,
+        "cagr_pct": 0.233483
+      },
+      "square_root_impact": {
+        "return_pct": 2.808334,
+        "max_drawdown_pct": -8.282989,
+        "trade_count": 11,
+        "skipped_signal_count": 15,
+        "exposure_day_pct": 4.379,
+        "average_gross_exposure": 0.018084,
+        "max_gross_exposure": 0.74979,
+        "turnover_multiple_start_capital": 10.309092,
+        "total_modeled_cost_usd": 59.27,
+        "average_modeled_rt_cost_bps": 1.155023,
+        "max_adv_participation_pct": 0.00028163,
+        "trade_win_rate_pct": 63.64,
+        "observations": 2512,
+        "annualized_vol_pct": 2.398278,
+        "sharpe0": 0.127885,
+        "cagr_pct": 0.278342
+      }
+    },
+    "early_full_stack25_cap100": {
+      "fixed_10bps_rt": {
+        "return_pct": 4.876882,
+        "max_drawdown_pct": -6.223854,
+        "trade_count": 26,
+        "skipped_signal_count": 0,
+        "exposure_day_pct": 5.6529,
+        "average_gross_exposure": 0.02333,
+        "max_gross_exposure": 1.0,
+        "turnover_multiple_start_capital": 13.27154,
+        "total_modeled_cost_usd": 663.58,
+        "average_modeled_rt_cost_bps": 10.0,
+        "max_adv_participation_pct": 0.00010381,
+        "trade_win_rate_pct": 61.54,
+        "observations": 2512,
+        "annualized_vol_pct": 2.87044,
+        "sharpe0": 0.180831,
+        "cagr_pct": 0.47902
+      },
+      "square_root_impact": {
+        "return_pct": 5.484183,
+        "max_drawdown_pct": -6.17127,
+        "trade_count": 26,
+        "skipped_signal_count": 0,
+        "exposure_day_pct": 5.6529,
+        "average_gross_exposure": 0.023328,
+        "max_gross_exposure": 1.0,
+        "turnover_multiple_start_capital": 13.308714,
+        "total_modeled_cost_usd": 74.93,
+        "average_modeled_rt_cost_bps": 1.126096,
+        "max_adv_participation_pct": 0.00010382,
+        "trade_win_rate_pct": 65.38,
+        "observations": 2512,
+        "annualized_vol_pct": 2.868981,
+        "sharpe0": 0.201105,
+        "cagr_pct": 0.53726
+      }
+    }
+  },
+  "capacity_threshold_summary": {
+    "10": {
+      "median_notional_usd": 116849385.67,
+      "min_notional_usd": 83201123.34,
+      "max_notional_usd": 560239749.74,
+      "median_participation_pct_adv": 0.319814
+    },
+    "25": {
+      "median_notional_usd": 830928964.77,
+      "min_notional_usd": 591652432.62,
+      "max_notional_usd": 3983927109.28,
+      "median_participation_pct_adv": 2.274233
+    },
+    "50": {
+      "median_notional_usd": 3463646604.9,
+      "min_notional_usd": 2466245643.62,
+      "max_notional_usd": 16606612828.77,
+      "median_participation_pct_adv": 9.479918
+    }
+  },
+  "capital_scale_sweep": {
+    "100000": {
+      "return_pct": 2.808334,
+      "average_modeled_rt_cost_bps": 1.155023,
+      "max_adv_participation_pct": 0.00028163,
+      "trade_count": 11
+    },
+    "1000000": {
+      "return_pct": 2.791501,
+      "average_modeled_rt_cost_bps": 1.490204,
+      "max_adv_participation_pct": 0.00281629,
+      "trade_count": 11
+    },
+    "10000000": {
+      "return_pct": 2.738299,
+      "average_modeled_rt_cost_bps": 2.549946,
+      "max_adv_participation_pct": 0.02816192,
+      "trade_count": 11
+    },
+    "100000000": {
+      "return_pct": 2.570328,
+      "average_modeled_rt_cost_bps": 5.89921,
+      "max_adv_participation_pct": 0.28158706,
+      "trade_count": 11
+    }
+  },
+  "paper_portfolio": {
+    "upstream_forward_signal_count": 0,
+    "upstream_counts": {
+      "early_sequence": 0,
+      "full_sequence": 0
+    },
+    "immutable_recompute_discrepancy_count": 0,
+    "portfolios": {
+      "full_only_100_dedup": {
+        "fixed_10bps_rt": {
+          "decision_count": 0,
+          "realized_trade_count": 0,
+          "open_position_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        },
+        "square_root_impact": {
+          "decision_count": 0,
+          "realized_trade_count": 0,
+          "open_position_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        }
+      },
+      "early_full_100_dedup": {
+        "fixed_10bps_rt": {
+          "decision_count": 0,
+          "realized_trade_count": 0,
+          "open_position_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        },
+        "square_root_impact": {
+          "decision_count": 0,
+          "realized_trade_count": 0,
+          "open_position_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        }
+      },
+      "early_full_vol10_dedup": {
+        "fixed_10bps_rt": {
+          "decision_count": 0,
+          "realized_trade_count": 0,
+          "open_position_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        },
+        "square_root_impact": {
+          "decision_count": 0,
+          "realized_trade_count": 0,
+          "open_position_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        }
+      },
+      "early_full_stack25_cap100": {
+        "fixed_10bps_rt": {
+          "decision_count": 0,
+          "realized_trade_count": 0,
+          "open_position_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        },
+        "square_root_impact": {
+          "decision_count": 0,
+          "realized_trade_count": 0,
+          "open_position_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        }
+      }
+    }
+  },
+  "interpretation_guardrails": {
+    "historical_policy_results_are_post_discovery": true,
+    "sharpe0_is_diagnostic_not_promotion_metric": true,
+    "square_root_impact_is_stress_model_not_broker_calibration": true,
+    "no_policy_auto_promoted": true
+  }
+}

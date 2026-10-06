@@ -1,0 +1,776 @@
+{
+  "schema": "TASK14-STAGE3-EVIDENCE-AUDIT-V1",
+  "generated_at": "2026-10-06T10:49:04.112145+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "production_effect": "none",
+  "thresholds_changed": false,
+  "coverage": {
+    "market_start": "2016-12-30",
+    "market_end": "2026-10-05",
+    "completion_events": 11
+  },
+  "event_independence": {
+    "cluster_rule_primary": "consecutive completion events <=20 market sessions apart share a cluster",
+    "cluster_sensitivity": {
+      "10": {
+        "n_clusters": 7,
+        "sizes": [
+          1,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "clusters": [
+          [
+            "2019-06-04"
+          ],
+          [
+            "2022-01-28"
+          ],
+          [
+            "2022-05-13",
+            "2022-05-23",
+            "2022-06-07"
+          ],
+          [
+            "2022-07-01",
+            "2022-07-12"
+          ],
+          [
+            "2022-09-28"
+          ],
+          [
+            "2022-10-13",
+            "2022-10-25"
+          ],
+          [
+            "2023-01-04"
+          ]
+        ]
+      },
+      "20": {
+        "n_clusters": 5,
+        "sizes": [
+          1,
+          1,
+          5,
+          3,
+          1
+        ],
+        "clusters": [
+          [
+            "2019-06-04"
+          ],
+          [
+            "2022-01-28"
+          ],
+          [
+            "2022-05-13",
+            "2022-05-23",
+            "2022-06-07",
+            "2022-07-01",
+            "2022-07-12"
+          ],
+          [
+            "2022-09-28",
+            "2022-10-13",
+            "2022-10-25"
+          ],
+          [
+            "2023-01-04"
+          ]
+        ]
+      },
+      "30": {
+        "n_clusters": 5,
+        "sizes": [
+          1,
+          1,
+          5,
+          3,
+          1
+        ],
+        "clusters": [
+          [
+            "2019-06-04"
+          ],
+          [
+            "2022-01-28"
+          ],
+          [
+            "2022-05-13",
+            "2022-05-23",
+            "2022-06-07",
+            "2022-07-01",
+            "2022-07-12"
+          ],
+          [
+            "2022-09-28",
+            "2022-10-13",
+            "2022-10-25"
+          ],
+          [
+            "2023-01-04"
+          ]
+        ]
+      }
+    },
+    "primary_cluster_weighted_forward": {
+      "5d": {
+        "n": 5,
+        "mean": 1.3889,
+        "ci95": [
+          0.039,
+          2.6973
+        ]
+      },
+      "10d": {
+        "n": 5,
+        "mean": 0.986,
+        "ci95": [
+          -0.187,
+          2.6288
+        ]
+      },
+      "20d": {
+        "n": 5,
+        "mean": 3.5047,
+        "ci95": [
+          0.2248,
+          6.7846
+        ]
+      }
+    },
+    "year_counts": {
+      "2019": 1,
+      "2022": 9,
+      "2023": 1
+    },
+    "max_single_year_share_pct": 81.82,
+    "equal_year_weighting": {
+      "5d": {
+        "year_means": {
+          "2019": 2.9412,
+          "2022": -0.2605,
+          "2023": 3.0273
+        },
+        "equal_year_mean_pct": 1.9027
+      },
+      "10d": {
+        "year_means": {
+          "2019": 4.0838,
+          "2022": 0.0062,
+          "2023": 1.1908
+        },
+        "equal_year_mean_pct": 1.7603
+      },
+      "20d": {
+        "year_means": {
+          "2019": 6.0551,
+          "2022": 1.1624,
+          "2023": 8.4815
+        },
+        "equal_year_mean_pct": 5.233
+      }
+    }
+  },
+  "dplus1_paired_test": {
+    "5d": {
+      "n": 11,
+      "day0_mean_pct": 0.3295,
+      "dplus1_mean_pct": 0.9683,
+      "mean_paired_improvement_pp": 0.6388,
+      "median_paired_improvement_pp": 1.072,
+      "improved_event_count": 7,
+      "exact_signflip_two_sided_p": 0.351562,
+      "paired_diff_bootstrap": {
+        "n": 11,
+        "mean": 0.6388,
+        "ci95": [
+          -0.5109,
+          1.8607
+        ]
+      },
+      "records": [
+        {
+          "date": "2019-06-04",
+          "day0_pct": 2.9412,
+          "dplus1_pct": 1.8998,
+          "paired_diff_pp": -1.0414
+        },
+        {
+          "date": "2022-01-28",
+          "day0_pct": 1.5497,
+          "dplus1_pct": -0.7016,
+          "paired_diff_pp": -2.2513
+        },
+        {
+          "date": "2022-05-13",
+          "day0_pct": -3.0451,
+          "dplus1_pct": -0.8548,
+          "paired_diff_pp": 2.1903
+        },
+        {
+          "date": "2022-05-23",
+          "day0_pct": 3.9862,
+          "dplus1_pct": 4.053,
+          "paired_diff_pp": 0.0669
+        },
+        {
+          "date": "2022-06-07",
+          "day0_pct": -10.2195,
+          "dplus1_pct": -7.9154,
+          "paired_diff_pp": 2.3041
+        },
+        {
+          "date": "2022-07-01",
+          "day0_pct": 0.7607,
+          "dplus1_pct": -0.3286,
+          "paired_diff_pp": -1.0893
+        },
+        {
+          "date": "2022-07-12",
+          "day0_pct": 3.0871,
+          "dplus1_pct": 4.1591,
+          "paired_diff_pp": 1.072
+        },
+        {
+          "date": "2022-09-28",
+          "day0_pct": 1.7273,
+          "dplus1_pct": 2.8581,
+          "paired_diff_pp": 1.1308
+        },
+        {
+          "date": "2022-10-13",
+          "day0_pct": -0.1125,
+          "dplus1_pct": 4.7356,
+          "paired_diff_pp": 4.8481
+        },
+        {
+          "date": "2022-10-25",
+          "day0_pct": -0.078,
+          "dplus1_pct": -1.8512,
+          "paired_diff_pp": -1.7732
+        },
+        {
+          "date": "2023-01-04",
+          "day0_pct": 3.0273,
+          "dplus1_pct": 4.5973,
+          "paired_diff_pp": 1.57
+        }
+      ]
+    },
+    "10d": {
+      "n": 11,
+      "day0_mean_pct": 0.4846,
+      "dplus1_mean_pct": 1.9287,
+      "mean_paired_improvement_pp": 1.4441,
+      "median_paired_improvement_pp": 1.8569,
+      "improved_event_count": 6,
+      "exact_signflip_two_sided_p": 0.083008,
+      "paired_diff_bootstrap": {
+        "n": 11,
+        "mean": 1.4441,
+        "ci95": [
+          0.0557,
+          2.8558
+        ]
+      },
+      "records": [
+        {
+          "date": "2019-06-04",
+          "day0_pct": 4.0838,
+          "dplus1_pct": 3.5494,
+          "paired_diff_pp": -0.5344
+        },
+        {
+          "date": "2022-01-28",
+          "day0_pct": -0.2981,
+          "dplus1_pct": -2.5219,
+          "paired_diff_pp": -2.2239
+        },
+        {
+          "date": "2022-05-13",
+          "day0_pct": 3.3388,
+          "dplus1_pct": 3.0973,
+          "paired_diff_pp": -0.2415
+        },
+        {
+          "date": "2022-05-23",
+          "day0_pct": 4.7041,
+          "dplus1_pct": 4.4219,
+          "paired_diff_pp": -0.2822
+        },
+        {
+          "date": "2022-06-07",
+          "day0_pct": -9.6328,
+          "dplus1_pct": -7.7759,
+          "paired_diff_pp": 1.8569
+        },
+        {
+          "date": "2022-07-01",
+          "day0_pct": 0.1443,
+          "dplus1_pct": 2.7483,
+          "paired_diff_pp": 2.604
+        },
+        {
+          "date": "2022-07-12",
+          "day0_pct": 2.6775,
+          "dplus1_pct": 5.8349,
+          "paired_diff_pp": 3.1574
+        },
+        {
+          "date": "2022-09-28",
+          "day0_pct": -3.8185,
+          "dplus1_pct": 0.8087,
+          "paired_diff_pp": 4.6271
+        },
+        {
+          "date": "2022-10-13",
+          "day0_pct": 3.7437,
+          "dplus1_pct": 8.8748,
+          "paired_diff_pp": 5.1311
+        },
+        {
+          "date": "2022-10-25",
+          "day0_pct": -0.8033,
+          "dplus1_pct": -2.1414,
+          "paired_diff_pp": -1.3381
+        },
+        {
+          "date": "2023-01-04",
+          "day0_pct": 1.1908,
+          "dplus1_pct": 4.32,
+          "paired_diff_pp": 3.1292
+        }
+      ]
+    },
+    "20d": {
+      "n": 11,
+      "day0_mean_pct": 2.2726,
+      "dplus1_mean_pct": 2.9925,
+      "mean_paired_improvement_pp": 0.7199,
+      "median_paired_improvement_pp": 0.9448,
+      "improved_event_count": 8,
+      "exact_signflip_two_sided_p": 0.232422,
+      "paired_diff_bootstrap": {
+        "n": 11,
+        "mean": 0.7199,
+        "ci95": [
+          -0.3837,
+          1.736
+        ]
+      },
+      "records": [
+        {
+          "date": "2019-06-04",
+          "day0_pct": 6.0551,
+          "dplus1_pct": 6.0036,
+          "paired_diff_pp": -0.0515
+        },
+        {
+          "date": "2022-01-28",
+          "day0_pct": -1.3067,
+          "dplus1_pct": -4.6349,
+          "paired_diff_pp": -3.3282
+        },
+        {
+          "date": "2022-05-13",
+          "day0_pct": -6.8158,
+          "dplus1_pct": -6.7996,
+          "paired_diff_pp": 0.0162
+        },
+        {
+          "date": "2022-05-23",
+          "day0_pct": -5.3818,
+          "dplus1_pct": -3.6978,
+          "paired_diff_pp": 1.684
+        },
+        {
+          "date": "2022-06-07",
+          "day0_pct": -6.2024,
+          "dplus1_pct": -5.2576,
+          "paired_diff_pp": 0.9448
+        },
+        {
+          "date": "2022-07-01",
+          "day0_pct": 7.6673,
+          "dplus1_pct": 6.7808,
+          "paired_diff_pp": -0.8865
+        },
+        {
+          "date": "2022-07-12",
+          "day0_pct": 7.952,
+          "dplus1_pct": 10.7439,
+          "paired_diff_pp": 2.7919
+        },
+        {
+          "date": "2022-09-28",
+          "day0_pct": 2.9997,
+          "dplus1_pct": 4.5827,
+          "paired_diff_pp": 1.5829
+        },
+        {
+          "date": "2022-10-13",
+          "day0_pct": 7.8056,
+          "dplus1_pct": 11.4388,
+          "paired_diff_pp": 3.6331
+        },
+        {
+          "date": "2022-10-25",
+          "day0_pct": 3.7436,
+          "dplus1_pct": 5.1339,
+          "paired_diff_pp": 1.3903
+        },
+        {
+          "date": "2023-01-04",
+          "day0_pct": 8.4815,
+          "dplus1_pct": 8.6232,
+          "paired_diff_pp": 0.1417
+        }
+      ]
+    }
+  },
+  "rmd3_evidence": {
+    "permutation": {
+      "3d": {
+        "n": 11,
+        "rho": 0.5182,
+        "two_sided_p": 0.107609,
+        "draws": 100000
+      },
+      "5d": {
+        "n": 11,
+        "rho": 0.0727,
+        "two_sided_p": 0.839942,
+        "draws": 100000
+      },
+      "10d": {
+        "n": 11,
+        "rho": 0.3,
+        "two_sided_p": 0.370636,
+        "draws": 100000
+      }
+    },
+    "partial_spearman_10d_controlling_severity_and_phase": 0.332,
+    "cluster_level_20session": {
+      "n_clusters_with_rmd": 5,
+      "rho": -0.3,
+      "records": [
+        {
+          "rmd3_mean": 0.835738,
+          "fwd10_mean_pct": 4.0838,
+          "dates": [
+            "2019-06-04"
+          ]
+        },
+        {
+          "rmd3_mean": 0.903747,
+          "fwd10_mean_pct": -0.2981,
+          "dates": [
+            "2022-01-28"
+          ]
+        },
+        {
+          "rmd3_mean": 0.678388,
+          "fwd10_mean_pct": 0.2464,
+          "dates": [
+            "2022-05-13",
+            "2022-05-23",
+            "2022-06-07",
+            "2022-07-01",
+            "2022-07-12"
+          ]
+        },
+        {
+          "rmd3_mean": 0.650075,
+          "fwd10_mean_pct": -0.2927,
+          "dates": [
+            "2022-09-28",
+            "2022-10-13",
+            "2022-10-25"
+          ]
+        },
+        {
+          "rmd3_mean": 0.536375,
+          "fwd10_mean_pct": 1.1908,
+          "dates": [
+            "2023-01-04"
+          ]
+        }
+      ]
+    }
+  },
+  "hazard_loo_calibration": {
+    "n": 11,
+    "event_rate_pct": 27.27,
+    "brier": {
+      "p_base": 0.234217,
+      "p_severity": 0.234602,
+      "p_rmd": 0.26309,
+      "p_2d": 0.28048
+    },
+    "records": [
+      {
+        "date": "2019-06-04",
+        "y": false,
+        "p_base": 0.3333,
+        "p_severity": 0.25,
+        "p_rmd": 0.4286,
+        "p_2d": 0.4
+      },
+      {
+        "date": "2022-01-28",
+        "y": false,
+        "p_base": 0.3333,
+        "p_severity": 0.6,
+        "p_rmd": 0.4286,
+        "p_2d": 0.6667
+      },
+      {
+        "date": "2022-05-13",
+        "y": true,
+        "p_base": 0.25,
+        "p_severity": 0.4,
+        "p_rmd": 0.2857,
+        "p_2d": 0.3333
+      },
+      {
+        "date": "2022-05-23",
+        "y": false,
+        "p_base": 0.3333,
+        "p_severity": 0.6,
+        "p_rmd": 0.3333,
+        "p_2d": 0.6667
+      },
+      {
+        "date": "2022-06-07",
+        "y": true,
+        "p_base": 0.25,
+        "p_severity": 0.4,
+        "p_rmd": 0.1667,
+        "p_2d": 0.3333
+      },
+      {
+        "date": "2022-07-01",
+        "y": false,
+        "p_base": 0.3333,
+        "p_severity": 0.25,
+        "p_rmd": 0.4286,
+        "p_2d": 0.4
+      },
+      {
+        "date": "2022-07-12",
+        "y": false,
+        "p_base": 0.3333,
+        "p_severity": 0.25,
+        "p_rmd": 0.3333,
+        "p_2d": 0.25
+      },
+      {
+        "date": "2022-09-28",
+        "y": true,
+        "p_base": 0.25,
+        "p_severity": 0.125,
+        "p_rmd": 0.2857,
+        "p_2d": 0.2
+      },
+      {
+        "date": "2022-10-13",
+        "y": false,
+        "p_base": 0.3333,
+        "p_severity": 0.25,
+        "p_rmd": 0.4286,
+        "p_2d": 0.4
+      },
+      {
+        "date": "2022-10-25",
+        "y": false,
+        "p_base": 0.3333,
+        "p_severity": 0.25,
+        "p_rmd": 0.3333,
+        "p_2d": 0.25
+      },
+      {
+        "date": "2023-01-04",
+        "y": false,
+        "p_base": 0.3333,
+        "p_severity": 0.25,
+        "p_rmd": 0.3333,
+        "p_2d": 0.25
+      }
+    ]
+  },
+  "single_event_deletion": {
+    "records": [
+      {
+        "dropped": "2019-06-04",
+        "sequence_10d_mean_pct": 0.1247,
+        "dplus1_10d_mean_improvement_pp": 1.642,
+        "rmd3_10d_rho": 0.2121
+      },
+      {
+        "dropped": "2022-01-28",
+        "sequence_10d_mean_pct": 0.5628,
+        "dplus1_10d_mean_improvement_pp": 1.8109,
+        "rmd3_10d_rho": 0.4667
+      },
+      {
+        "dropped": "2022-05-13",
+        "sequence_10d_mean_pct": 0.1992,
+        "dplus1_10d_mean_improvement_pp": 1.6127,
+        "rmd3_10d_rho": 0.2485
+      },
+      {
+        "dropped": "2022-05-23",
+        "sequence_10d_mean_pct": 0.0626,
+        "dplus1_10d_mean_improvement_pp": 1.6168,
+        "rmd3_10d_rho": 0.4061
+      },
+      {
+        "dropped": "2022-06-07",
+        "sequence_10d_mean_pct": 1.4963,
+        "dplus1_10d_mean_improvement_pp": 1.4029,
+        "rmd3_10d_rho": 0.0667
+      },
+      {
+        "dropped": "2022-07-01",
+        "sequence_10d_mean_pct": 0.5186,
+        "dplus1_10d_mean_improvement_pp": 1.3282,
+        "rmd3_10d_rho": 0.3939
+      },
+      {
+        "dropped": "2022-07-12",
+        "sequence_10d_mean_pct": 0.2653,
+        "dplus1_10d_mean_improvement_pp": 1.2728,
+        "rmd3_10d_rho": 0.2848
+      },
+      {
+        "dropped": "2022-09-28",
+        "sequence_10d_mean_pct": 0.9149,
+        "dplus1_10d_mean_improvement_pp": 1.1258,
+        "rmd3_10d_rho": 0.4182
+      },
+      {
+        "dropped": "2022-10-13",
+        "sequence_10d_mean_pct": 0.1587,
+        "dplus1_10d_mean_improvement_pp": 1.0754,
+        "rmd3_10d_rho": 0.3576
+      },
+      {
+        "dropped": "2022-10-25",
+        "sequence_10d_mean_pct": 0.6134,
+        "dplus1_10d_mean_improvement_pp": 1.7224,
+        "rmd3_10d_rho": 0.1394
+      },
+      {
+        "dropped": "2023-01-04",
+        "sequence_10d_mean_pct": 0.414,
+        "dplus1_10d_mean_improvement_pp": 1.2756,
+        "rmd3_10d_rho": 0.2848
+      }
+    ],
+    "ranges": {
+      "sequence_10d_mean_pct": {
+        "min": 0.0626,
+        "median": 0.414,
+        "max": 1.4963
+      },
+      "dplus1_10d_mean_improvement_pp": {
+        "min": 1.0754,
+        "median": 1.4029,
+        "max": 1.8109
+      },
+      "rmd3_10d_rho": {
+        "min": 0.0667,
+        "median": 0.2848,
+        "max": 0.4667
+      }
+    }
+  },
+  "multiple_testing": {
+    "family_size": 9,
+    "note": "Retrospective diagnostic family, not a preregistered confirmatory family.",
+    "tests": {
+      "sequence_placebo_5d": {
+        "raw_p": 0.48045,
+        "bonferroni_p": 1.0,
+        "bh_fdr_p": 0.612281
+      },
+      "dplus1_paired_5d": {
+        "raw_p": 0.351562,
+        "bonferroni_p": 1.0,
+        "bh_fdr_p": 0.555954
+      },
+      "sequence_placebo_10d": {
+        "raw_p": 0.54425,
+        "bonferroni_p": 1.0,
+        "bh_fdr_p": 0.612281
+      },
+      "dplus1_paired_10d": {
+        "raw_p": 0.083008,
+        "bonferroni_p": 0.74707,
+        "bh_fdr_p": 0.48424
+      },
+      "sequence_placebo_20d": {
+        "raw_p": 0.18798,
+        "bonferroni_p": 1.0,
+        "bh_fdr_p": 0.522949
+      },
+      "dplus1_paired_20d": {
+        "raw_p": 0.232422,
+        "bonferroni_p": 1.0,
+        "bh_fdr_p": 0.522949
+      },
+      "rmd3_perm_3d": {
+        "raw_p": 0.107609,
+        "bonferroni_p": 0.968481,
+        "bh_fdr_p": 0.48424
+      },
+      "rmd3_perm_5d": {
+        "raw_p": 0.839942,
+        "bonferroni_p": 1.0,
+        "bh_fdr_p": 0.839942
+      },
+      "rmd3_perm_10d": {
+        "raw_p": 0.370636,
+        "bonferroni_p": 1.0,
+        "bh_fdr_p": 0.555954
+      }
+    }
+  },
+  "forward_oos_status": {
+    "rmd3_forward_event_count": 0,
+    "challenger_forward_event_counts": {
+      "early_sequence": 0,
+      "rmd2_price_score": 0,
+      "dplus1_entry": 0,
+      "dual_severity_hazard": 0
+    }
+  },
+  "evidence_gates": {
+    "effective_20session_clusters_gte8": false,
+    "max_single_year_share_le50pct": false,
+    "sequence_placebo_10d_p_le_0_10": false,
+    "rmd3_perm_10d_p_le_0_10": false,
+    "dplus1_paired_10d_p_le_0_10": true,
+    "rmd3_forward_events_gte20": false,
+    "all_challengers_forward_events_gte20": false
+  },
+  "decision": {
+    "may_change_production": false,
+    "may_change_existing_forward_oos": false,
+    "status": "evidence_quality_diagnostic_only",
+    "next_requirement": "Accumulate genuinely future OOS events; do not tune historical rules from this audit."
+  },
+  "warnings": [
+    "Only 12 historical completion events exist and 2022 dominates the event count.",
+    "Cluster and equal-year weighting reduce pseudo-replication but cannot manufacture independent regimes.",
+    "Partial correlation and hazard calibration are unstable at n=12 and are descriptive only.",
+    "Multiple-testing adjustments are retrospective diagnostics, not formal preregistered confirmatory inference."
+  ]
+}

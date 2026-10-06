@@ -1,0 +1,610 @@
+{
+  "schema": "TASK14-STAGE4-MULTIASSET-V1-SUMMARY",
+  "generated_at": "2026-10-06T10:49:11.802563+00:00",
+  "research_only": true,
+  "diagnostic_only": true,
+  "production_effect": "none",
+  "frozen_through_market_date": "2026-10-06",
+  "benchmark": "SPY",
+  "asset_universe": [
+    {
+      "symbol": "XLC",
+      "sector": "Communication Services"
+    },
+    {
+      "symbol": "XLY",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "symbol": "XLP",
+      "sector": "Consumer Staples"
+    },
+    {
+      "symbol": "XLE",
+      "sector": "Energy"
+    },
+    {
+      "symbol": "XLF",
+      "sector": "Financials"
+    },
+    {
+      "symbol": "XLV",
+      "sector": "Health Care"
+    },
+    {
+      "symbol": "XLI",
+      "sector": "Industrials"
+    },
+    {
+      "symbol": "XLB",
+      "sector": "Materials"
+    },
+    {
+      "symbol": "XLRE",
+      "sector": "Real Estate"
+    },
+    {
+      "symbol": "XLK",
+      "sector": "Technology"
+    },
+    {
+      "symbol": "XLU",
+      "sector": "Utilities"
+    }
+  ],
+  "historical_signal_counts": {
+    "early_sequence": 15,
+    "full_sequence": 11,
+    "combined_records": 26
+  },
+  "execution_convention": {
+    "entry": "next_regular_session_open",
+    "exit": "close_at_signal_plus_10_SPY_sessions",
+    "signal_decision_time": "signal_close",
+    "same_day_priority": [
+      "full_sequence",
+      "early_sequence"
+    ]
+  },
+  "signal_context_by_asset": {
+    "XLC": {
+      "sector": "Communication Services",
+      "n": 26,
+      "median_adv20_usd": 372423050.65,
+      "min_adv20_usd": 188480521.24,
+      "median_annualized_vol20_pct": 30.7597,
+      "median_beta60": 1.086674,
+      "min_beta60": 0.956344,
+      "max_beta60": 1.214853
+    },
+    "XLY": {
+      "sector": "Consumer Discretionary",
+      "n": 26,
+      "median_adv20_usd": 961853347.21,
+      "min_adv20_usd": 573784783.97,
+      "median_annualized_vol20_pct": 32.8786,
+      "median_beta60": 1.304472,
+      "min_beta60": 1.066567,
+      "max_beta60": 1.427548
+    },
+    "XLP": {
+      "sector": "Consumer Staples",
+      "n": 26,
+      "median_adv20_usd": 1020553615.76,
+      "min_adv20_usd": 657146923.84,
+      "median_annualized_vol20_pct": 17.8373,
+      "median_beta60": 0.554854,
+      "min_beta60": 0.295751,
+      "max_beta60": 0.639426
+    },
+    "XLE": {
+      "sector": "Energy",
+      "n": 26,
+      "median_adv20_usd": 2516948701.29,
+      "min_adv20_usd": 856661301.87,
+      "median_annualized_vol20_pct": 38.7782,
+      "median_beta60": 0.800651,
+      "min_beta60": 0.058781,
+      "max_beta60": 1.053605
+    },
+    "XLF": {
+      "sector": "Financials",
+      "n": 26,
+      "median_adv20_usd": 2033724100.51,
+      "min_adv20_usd": 1248254561.92,
+      "median_annualized_vol20_pct": 25.1306,
+      "median_beta60": 0.896692,
+      "min_beta60": 0.824565,
+      "max_beta60": 1.106508
+    },
+    "XLV": {
+      "sector": "Health Care",
+      "n": 26,
+      "median_adv20_usd": 1343174093.29,
+      "min_adv20_usd": 972328255.29,
+      "median_annualized_vol20_pct": 21.0276,
+      "median_beta60": 0.663874,
+      "min_beta60": 0.492378,
+      "max_beta60": 0.807463
+    },
+    "XLI": {
+      "sector": "Industrials",
+      "n": 26,
+      "median_adv20_usd": 973110326.4,
+      "min_adv20_usd": 803951862.07,
+      "median_annualized_vol20_pct": 23.5306,
+      "median_beta60": 0.799805,
+      "min_beta60": 0.747472,
+      "max_beta60": 1.117695
+    },
+    "XLB": {
+      "sector": "Materials",
+      "n": 26,
+      "median_adv20_usd": 586868479.17,
+      "min_adv20_usd": 326948319.23,
+      "median_annualized_vol20_pct": 26.569,
+      "median_beta60": 0.861603,
+      "min_beta60": 0.709928,
+      "max_beta60": 1.142607
+    },
+    "XLRE": {
+      "sector": "Real Estate",
+      "n": 26,
+      "median_adv20_usd": 298948871.1,
+      "min_adv20_usd": 117963756.34,
+      "median_annualized_vol20_pct": 25.4,
+      "median_beta60": 0.793567,
+      "min_beta60": 0.37666,
+      "max_beta60": 1.035464
+    },
+    "XLK": {
+      "sector": "Technology",
+      "n": 26,
+      "median_adv20_usd": 1203613739.58,
+      "min_adv20_usd": 862927971.98,
+      "median_annualized_vol20_pct": 31.5777,
+      "median_beta60": 1.320647,
+      "min_beta60": 1.16018,
+      "max_beta60": 1.411582
+    },
+    "XLU": {
+      "sector": "Utilities",
+      "n": 26,
+      "median_adv20_usd": 1204153750.72,
+      "min_adv20_usd": 741246086.47,
+      "median_annualized_vol20_pct": 19.635,
+      "median_beta60": 0.444463,
+      "min_beta60": 0.049857,
+      "max_beta60": 0.827031
+    }
+  },
+  "portfolio_results": {
+    "full_eq_sector_100_dedup": {
+      "fixed_10bps_rt": {
+        "return_pct": -1.006524,
+        "max_drawdown_pct": -15.145301,
+        "closed_sleeve_count": 8,
+        "skipped_signal_count": 3,
+        "exposure_day_pct": 2.8662,
+        "average_gross_exposure": 0.028662,
+        "max_gross_exposure": 1.0,
+        "average_beta_exposure": 0.024827,
+        "max_beta_exposure": 0.919476,
+        "average_max_sector_weight": 0.002702,
+        "max_sector_weight": 0.103974,
+        "average_sector_hhi": 0.002607,
+        "max_sector_hhi": 0.091166,
+        "turnover_multiple_start_capital": 15.969894,
+        "total_modeled_cost_usd": 798.49,
+        "average_modeled_rt_cost_bps": 10.0,
+        "max_asset_adv_participation_pct": 0.00736927,
+        "sleeve_win_rate_pct": 75.0,
+        "sector_aggregate_net_pnl_usd": {
+          "Communication Services": -726.01,
+          "Consumer Discretionary": 234.37,
+          "Consumer Staples": -752.83,
+          "Energy": 1825.09,
+          "Financials": 445.13,
+          "Health Care": 182.24,
+          "Industrials": -182.25,
+          "Materials": 241.58,
+          "Real Estate": -599.48,
+          "Technology": 172.66,
+          "Utilities": -1847.04
+        },
+        "observations": 2512,
+        "annualized_vol_pct": 3.977553,
+        "sharpe0": -0.005566,
+        "cagr_pct": -0.101473
+      },
+      "square_root_impact": {
+        "return_pct": -0.332037,
+        "max_drawdown_pct": -14.894644,
+        "closed_sleeve_count": 8,
+        "skipped_signal_count": 3,
+        "exposure_day_pct": 2.8662,
+        "average_gross_exposure": 0.028662,
+        "max_gross_exposure": 1.0,
+        "average_beta_exposure": 0.024827,
+        "max_beta_exposure": 0.919476,
+        "average_max_sector_weight": 0.002702,
+        "max_sector_weight": 0.103974,
+        "average_sector_hhi": 0.002607,
+        "max_sector_hhi": 0.091166,
+        "turnover_multiple_start_capital": 16.023579,
+        "total_modeled_cost_usd": 120.99,
+        "average_modeled_rt_cost_bps": 1.511861,
+        "max_asset_adv_participation_pct": 0.00737241,
+        "sleeve_win_rate_pct": 75.0,
+        "sector_aggregate_net_pnl_usd": {
+          "Communication Services": -669.9,
+          "Consumer Discretionary": 296.38,
+          "Consumer Staples": -693.07,
+          "Energy": 1896.24,
+          "Financials": 509.25,
+          "Health Care": 245.43,
+          "Industrials": -120.17,
+          "Materials": 304.27,
+          "Real Estate": -542.44,
+          "Technology": 235.2,
+          "Utilities": -1793.24
+        },
+        "observations": 2512,
+        "annualized_vol_pct": 3.974397,
+        "sharpe0": 0.011542,
+        "cagr_pct": -0.033373
+      }
+    },
+    "full_invvol_sector_100_dedup": {
+      "fixed_10bps_rt": {
+        "return_pct": -3.018858,
+        "max_drawdown_pct": -15.651359,
+        "closed_sleeve_count": 8,
+        "skipped_signal_count": 3,
+        "exposure_day_pct": 2.8662,
+        "average_gross_exposure": 0.028662,
+        "max_gross_exposure": 1.0,
+        "average_beta_exposure": 0.023234,
+        "max_beta_exposure": 0.888999,
+        "average_max_sector_weight": 0.00394,
+        "max_sector_weight": 0.150268,
+        "average_sector_hhi": 0.002781,
+        "max_sector_hhi": 0.100477,
+        "turnover_multiple_start_capital": 15.863077,
+        "total_modeled_cost_usd": 793.15,
+        "average_modeled_rt_cost_bps": 10.0,
+        "max_asset_adv_participation_pct": 0.00994991,
+        "sleeve_win_rate_pct": 75.0,
+        "sector_aggregate_net_pnl_usd": {
+          "Communication Services": -697.36,
+          "Consumer Discretionary": 477.14,
+          "Consumer Staples": -832.79,
+          "Energy": 385.59,
+          "Financials": 391.8,
+          "Health Care": 148.63,
+          "Industrials": -188.64,
+          "Materials": 157.5,
+          "Real Estate": -556.16,
+          "Technology": 109.73,
+          "Utilities": -2414.32
+        },
+        "observations": 2512,
+        "annualized_vol_pct": 3.856811,
+        "sharpe0": -0.060406,
+        "cagr_pct": -0.307162
+      },
+      "square_root_impact": {
+        "return_pct": -2.355207,
+        "max_drawdown_pct": -15.401175,
+        "closed_sleeve_count": 8,
+        "skipped_signal_count": 3,
+        "exposure_day_pct": 2.8662,
+        "average_gross_exposure": 0.028662,
+        "max_gross_exposure": 1.0,
+        "average_beta_exposure": 0.023234,
+        "max_beta_exposure": 0.888999,
+        "average_max_sector_weight": 0.00394,
+        "max_sector_weight": 0.150268,
+        "average_sector_hhi": 0.002781,
+        "max_sector_hhi": 0.100477,
+        "turnover_multiple_start_capital": 15.916467,
+        "total_modeled_cost_usd": 117.22,
+        "average_modeled_rt_cost_bps": 1.491072,
+        "max_asset_adv_participation_pct": 0.00995416,
+        "sleeve_win_rate_pct": 75.0,
+        "sector_aggregate_net_pnl_usd": {
+          "Communication Services": -653.06,
+          "Consumer Discretionary": 525.76,
+          "Consumer Staples": -749.22,
+          "Energy": 432.62,
+          "Financials": 455.83,
+          "Health Care": 226.83,
+          "Industrials": -121.44,
+          "Materials": 217.81,
+          "Real Estate": -500.2,
+          "Technology": 157.46,
+          "Utilities": -2347.62
+        },
+        "observations": 2512,
+        "annualized_vol_pct": 3.852934,
+        "sharpe0": -0.042744,
+        "cagr_pct": -0.238907
+      }
+    },
+    "early_full_stack25_invvol_cap100": {
+      "fixed_10bps_rt": {
+        "return_pct": 4.108687,
+        "max_drawdown_pct": -6.371639,
+        "closed_sleeve_count": 26,
+        "skipped_signal_count": 0,
+        "exposure_day_pct": 5.3742,
+        "average_gross_exposure": 0.023324,
+        "max_gross_exposure": 1.0,
+        "average_beta_exposure": 0.018874,
+        "max_beta_exposure": 0.833356,
+        "average_max_sector_weight": 0.003241,
+        "max_sector_weight": 0.141909,
+        "average_sector_hhi": 0.005219,
+        "max_sector_hhi": 0.102921,
+        "turnover_multiple_start_capital": 13.265547,
+        "total_modeled_cost_usd": 663.28,
+        "average_modeled_rt_cost_bps": 10.0,
+        "max_asset_adv_participation_pct": 0.0025038,
+        "sleeve_win_rate_pct": 73.08,
+        "sector_aggregate_net_pnl_usd": {
+          "Communication Services": -171.79,
+          "Consumer Discretionary": 292.23,
+          "Consumer Staples": -251.11,
+          "Energy": 1385.88,
+          "Financials": 646.74,
+          "Health Care": 692.73,
+          "Industrials": 770.39,
+          "Materials": 852.37,
+          "Real Estate": 49.44,
+          "Technology": 512.25,
+          "Utilities": -670.45
+        },
+        "observations": 2512,
+        "annualized_vol_pct": 2.504798,
+        "sharpe0": 0.17385,
+        "cagr_pct": 0.404913
+      },
+      "square_root_impact": {
+        "return_pct": 4.703377,
+        "max_drawdown_pct": -6.15489,
+        "closed_sleeve_count": 26,
+        "skipped_signal_count": 0,
+        "exposure_day_pct": 5.3742,
+        "average_gross_exposure": 0.023319,
+        "max_gross_exposure": 0.99992,
+        "average_beta_exposure": 0.01887,
+        "max_beta_exposure": 0.833287,
+        "average_max_sector_weight": 0.003241,
+        "max_sector_weight": 0.141898,
+        "average_sector_hhi": 0.005219,
+        "max_sector_hhi": 0.102921,
+        "turnover_multiple_start_capital": 13.300805,
+        "total_modeled_cost_usd": 82.84,
+        "average_modeled_rt_cost_bps": 1.253565,
+        "max_asset_adv_participation_pct": 0.00250408,
+        "sleeve_win_rate_pct": 73.08,
+        "sector_aggregate_net_pnl_usd": {
+          "Communication Services": -130.5,
+          "Consumer Discretionary": 332.69,
+          "Consumer Staples": -176.49,
+          "Energy": 1427.27,
+          "Financials": 704.14,
+          "Health Care": 761.2,
+          "Industrials": 831.58,
+          "Materials": 906.67,
+          "Real Estate": 101.17,
+          "Technology": 555.02,
+          "Utilities": -609.37
+        },
+        "observations": 2512,
+        "annualized_vol_pct": 2.504083,
+        "sharpe0": 0.19672,
+        "cagr_pct": 0.462325
+      }
+    },
+    "early_full_stack25_beta100_cap100": {
+      "fixed_10bps_rt": {
+        "return_pct": 4.108687,
+        "max_drawdown_pct": -6.371639,
+        "closed_sleeve_count": 26,
+        "skipped_signal_count": 0,
+        "exposure_day_pct": 5.3742,
+        "average_gross_exposure": 0.023324,
+        "max_gross_exposure": 1.0,
+        "average_beta_exposure": 0.018874,
+        "max_beta_exposure": 0.833356,
+        "average_max_sector_weight": 0.003241,
+        "max_sector_weight": 0.141909,
+        "average_sector_hhi": 0.005219,
+        "max_sector_hhi": 0.102921,
+        "turnover_multiple_start_capital": 13.265547,
+        "total_modeled_cost_usd": 663.28,
+        "average_modeled_rt_cost_bps": 10.0,
+        "max_asset_adv_participation_pct": 0.0025038,
+        "sleeve_win_rate_pct": 73.08,
+        "sector_aggregate_net_pnl_usd": {
+          "Communication Services": -171.79,
+          "Consumer Discretionary": 292.23,
+          "Consumer Staples": -251.11,
+          "Energy": 1385.88,
+          "Financials": 646.74,
+          "Health Care": 692.73,
+          "Industrials": 770.39,
+          "Materials": 852.37,
+          "Real Estate": 49.44,
+          "Technology": 512.25,
+          "Utilities": -670.45
+        },
+        "observations": 2512,
+        "annualized_vol_pct": 2.504798,
+        "sharpe0": 0.17385,
+        "cagr_pct": 0.404913
+      },
+      "square_root_impact": {
+        "return_pct": 4.703377,
+        "max_drawdown_pct": -6.15489,
+        "closed_sleeve_count": 26,
+        "skipped_signal_count": 0,
+        "exposure_day_pct": 5.3742,
+        "average_gross_exposure": 0.023319,
+        "max_gross_exposure": 0.99992,
+        "average_beta_exposure": 0.01887,
+        "max_beta_exposure": 0.833287,
+        "average_max_sector_weight": 0.003241,
+        "max_sector_weight": 0.141898,
+        "average_sector_hhi": 0.005219,
+        "max_sector_hhi": 0.102921,
+        "turnover_multiple_start_capital": 13.300805,
+        "total_modeled_cost_usd": 82.84,
+        "average_modeled_rt_cost_bps": 1.253565,
+        "max_asset_adv_participation_pct": 0.00250408,
+        "sleeve_win_rate_pct": 73.08,
+        "sector_aggregate_net_pnl_usd": {
+          "Communication Services": -130.5,
+          "Consumer Discretionary": 332.69,
+          "Consumer Staples": -176.49,
+          "Energy": 1427.27,
+          "Financials": 704.14,
+          "Health Care": 761.2,
+          "Industrials": 831.58,
+          "Materials": 906.67,
+          "Real Estate": 101.17,
+          "Technology": 555.02,
+          "Utilities": -609.37
+        },
+        "observations": 2512,
+        "annualized_vol_pct": 2.504083,
+        "sharpe0": 0.19672,
+        "cagr_pct": 0.462325
+      }
+    }
+  },
+  "capital_scale_sweep": {
+    "100000": {
+      "return_pct": 4.703377,
+      "max_drawdown_pct": -6.15489,
+      "average_modeled_rt_cost_bps": 1.253565,
+      "max_asset_adv_participation_pct": 0.00250408,
+      "max_beta_exposure": 0.833287,
+      "max_sector_weight": 0.141898
+    },
+    "1000000": {
+      "return_pct": 4.667274,
+      "max_drawdown_pct": -6.169427,
+      "average_modeled_rt_cost_bps": 1.801781,
+      "max_asset_adv_participation_pct": 0.02504064,
+      "max_beta_exposure": 0.833303,
+      "max_sector_weight": 0.141901
+    },
+    "10000000": {
+      "return_pct": 4.553221,
+      "max_drawdown_pct": -6.215369,
+      "average_modeled_rt_cost_bps": 3.534827,
+      "max_asset_adv_participation_pct": 0.2504021,
+      "max_beta_exposure": 0.833352,
+      "max_sector_weight": 0.141909
+    },
+    "100000000": {
+      "return_pct": 4.19258,
+      "max_drawdown_pct": -6.361354,
+      "average_modeled_rt_cost_bps": 9.00942,
+      "max_asset_adv_participation_pct": 2.50388496,
+      "max_beta_exposure": 0.833356,
+      "max_sector_weight": 0.141909
+    }
+  },
+  "paper_multiasset": {
+    "latest_complete_market_date": "2026-10-05",
+    "upstream_forward_signal_count": 0,
+    "upstream_counts": {
+      "early_sequence": 0,
+      "full_sequence": 0
+    },
+    "immutable_recompute_discrepancy_count": 0,
+    "portfolios": {
+      "full_eq_sector_100_dedup": {
+        "fixed_10bps_rt": {
+          "decision_count": 0,
+          "realized_sleeve_count": 0,
+          "open_position_count": 0,
+          "pending_entry_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        },
+        "square_root_impact": {
+          "decision_count": 0,
+          "realized_sleeve_count": 0,
+          "open_position_count": 0,
+          "pending_entry_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        }
+      },
+      "full_invvol_sector_100_dedup": {
+        "fixed_10bps_rt": {
+          "decision_count": 0,
+          "realized_sleeve_count": 0,
+          "open_position_count": 0,
+          "pending_entry_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        },
+        "square_root_impact": {
+          "decision_count": 0,
+          "realized_sleeve_count": 0,
+          "open_position_count": 0,
+          "pending_entry_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        }
+      },
+      "early_full_stack25_invvol_cap100": {
+        "fixed_10bps_rt": {
+          "decision_count": 0,
+          "realized_sleeve_count": 0,
+          "open_position_count": 0,
+          "pending_entry_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        },
+        "square_root_impact": {
+          "decision_count": 0,
+          "realized_sleeve_count": 0,
+          "open_position_count": 0,
+          "pending_entry_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        }
+      },
+      "early_full_stack25_beta100_cap100": {
+        "fixed_10bps_rt": {
+          "decision_count": 0,
+          "realized_sleeve_count": 0,
+          "open_position_count": 0,
+          "pending_entry_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        },
+        "square_root_impact": {
+          "decision_count": 0,
+          "realized_sleeve_count": 0,
+          "open_position_count": 0,
+          "pending_entry_count": 0,
+          "latest_equity_usd": 100000.0,
+          "return_to_date_pct": 0.0
+        }
+      }
+    }
+  },
+  "interpretation_guardrails": {
+    "historical_results_are_post_discovery": true,
+    "sector_etfs_are_execution_proxies_not_stock_selection": true,
+    "beta60_is_diagnostic_not_factor_model": true,
+    "no_policy_auto_promoted": true
+  }
+}

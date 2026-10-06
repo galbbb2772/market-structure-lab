@@ -1,0 +1,92 @@
+{
+  "schema": "TASK14-CHALLENGER-FORWARD-OOS-V1",
+  "generated_at": "2026-10-06T10:48:54.291238+00:00",
+  "research_only": true,
+  "observation_only": true,
+  "production_effect": "none",
+  "freeze_reference_commit": "cf5a0d9c92c28176bf33f98e6f68c574675a19f6",
+  "preregistration_path": "research/task14_challengers_v1/PREREGISTRATION.md",
+  "frozen_through_market_date": "2026-10-06",
+  "latest_market_date": "2026-10-05",
+  "challengers": {
+    "early_sequence": {
+      "definition": "D_TO_BREADTH_LOW AND box_bottom_since_dual AND breadth_rebound_since_dual; onset only; 5-session decluster; no score-recovery requirement",
+      "forward_event_count": 0,
+      "mature_10d_event_count": 0,
+      "events": [],
+      "source_recompute_discrepancies": [],
+      "promotion_gate": {
+        "minimum_forward_events": 20,
+        "minimum_calendar_months": 12,
+        "event_count_ready": false,
+        "calendar_gate_ready": false,
+        "ready": false,
+        "automatic_promotion": false,
+        "note": "A separate preregistered review is required after both minimum gates are met."
+      }
+    },
+    "rmd2_price_score": {
+      "eligible_event_definition": "D_TO_BOTH_REBOUND_SCORE",
+      "score_definition": "RMD2_PS = equal-weight mean(price_residual, score_residual)",
+      "primary_rank_horizon": "10d",
+      "forward_event_count": 0,
+      "mature_10d_event_count": 0,
+      "events": [],
+      "source_recompute_discrepancies": [],
+      "promotion_gate": {
+        "minimum_forward_events": 20,
+        "minimum_calendar_months": 12,
+        "event_count_ready": false,
+        "calendar_gate_ready": false,
+        "ready": false,
+        "automatic_promotion": false,
+        "note": "A separate preregistered review is required after both minimum gates are met."
+      }
+    },
+    "dplus1_entry": {
+      "eligible_event_definition": "D_TO_BOTH_REBOUND_SCORE",
+      "entry_definition": "close of next trading session after signal onset",
+      "target_delay_sessions": 1,
+      "forward_event_count": 0,
+      "entry_available_count": 0,
+      "mature_10d_event_count": 0,
+      "events": [],
+      "source_recompute_discrepancies": [],
+      "promotion_gate": {
+        "minimum_forward_events": 20,
+        "minimum_calendar_months": 12,
+        "event_count_ready": false,
+        "calendar_gate_ready": false,
+        "ready": false,
+        "automatic_promotion": false,
+        "note": "A separate preregistered review is required after both minimum gates are met."
+      }
+    },
+    "dual_severity_hazard": {
+      "eligible_event_definition": "D_TO_BOTH_REBOUND_SCORE",
+      "severity_definition": "max(0,-2-net_liq_4w_pct_at_episode_start)+max(0,-2-reserves_4w_pct_at_episode_start)",
+      "candidate_flag_definition": "HIGH_DUAL_SEVERITY = severity_pp > 6.0",
+      "primary_hazard_outcome": "break_prior_trough_10d",
+      "forward_event_count": 0,
+      "mature_10d_event_count": 0,
+      "events": [],
+      "source_recompute_discrepancies": [],
+      "promotion_gate": {
+        "minimum_forward_events": 20,
+        "minimum_calendar_months": 12,
+        "event_count_ready": false,
+        "calendar_gate_ready": false,
+        "ready": false,
+        "automatic_promotion": false,
+        "note": "A separate preregistered review is required after both minimum gates are met."
+      }
+    }
+  },
+  "warnings": [
+    "All four challenger definitions were selected after historical diagnostics and therefore require independent Forward-OOS evidence.",
+    "Historical development events through 2026-10-06 are excluded from Forward-OOS counts.",
+    "First-seen score/state fields are immutable; later refreshes may only mature outcomes or report upstream discrepancies.",
+    "No challenger automatically changes MAIN, production sizing, or existing Task 1/4 Forward-OOS ledgers.",
+    "FRED current-history inputs can contain revisions and are not ALFRED vintage data."
+  ]
+}

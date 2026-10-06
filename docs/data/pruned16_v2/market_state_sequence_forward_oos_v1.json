@@ -1,0 +1,17 @@
+{
+  "schema": "MARKET-STATE-SEQUENCE-FORWARD-OOS-V1",
+  "generated_at": "2026-10-06T10:47:14.433130+00:00",
+  "research_only": true,
+  "observation_only": true,
+  "production_effect": "none",
+  "frozen_through_market_date": "2026-10-06",
+  "freeze_reference_commit": "cf5a0d9c92c28176bf33f98e6f68c574675a19f6",
+  "event_definition": "D_TO_BOTH_REBOUND_SCORE",
+  "future_event_count": 0,
+  "future_events": [],
+  "promotion_gate": {
+    "minimum_forward_events": 20,
+    "minimum_calendar_months": 12,
+    "note": "Any future promotion requires a separate preregistered review. Historical V1 audit does not promote the signal."
+  }
+}
