@@ -16,7 +16,10 @@ It does **not** discover, optimize, re-rank, backfill, or authorize stock trades
 
 Source of truth: `galbbb2772/frozen-v4`.
 
-Pinned public feed:
+Canonical feed:
+`https://raw.githubusercontent.com/galbbb2772/frozen-v4/main/docs/data/stock_candidate_feed_v1.json`
+
+Public dashboard mirror fallback:
 `https://raw.githubusercontent.com/galbbb2772/frozen-v4-dashboard/main/data/stock_candidate_feed_v1.json`
 
 Pinned source identity:
@@ -87,10 +90,15 @@ No nearest-date, next-date, or future-date matching is allowed.
 
 ## Cache / transport
 
-The adapter refreshes the public feed on each run and stores a local audit copy at:
+The adapter first refreshes the canonical `frozen-v4` repository feed on each run. If that transport is unavailable it may use the public dashboard mirror. The validated payload is stored as a local audit copy at:
 `docs/data/stock_candidate_feed_v1.json`.
 
-If the public feed is temporarily unavailable:
+Transport precedence is frozen as:
+1. canonical `frozen-v4` repository feed;
+2. dashboard mirror;
+3. existing validated local cache.
+
+If both remotes are temporarily unavailable:
 - an existing validated local copy may be used as `CACHED_LOCAL_FALLBACK`;
 - if no local copy exists, status is `AWAITING_UPSTREAM_FEED`;
 - the adapter must never invent candidates.
