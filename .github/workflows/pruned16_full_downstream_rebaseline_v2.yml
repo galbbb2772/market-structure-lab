@@ -2,9 +2,10 @@ name: PRUNED16 Full Downstream Rebaseline V2
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["PRUNED16 Snapshot Only", "PRUNED16 Lightweight Publish", "PRUNED16 Snapshot via Validation Engine"]
-    types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pruned16_full_downstream_rebaseline_v2.yml'
 
 permissions:
   contents: write
@@ -15,7 +16,6 @@ concurrency:
 
 jobs:
   rebuild:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     steps:
@@ -26,17 +26,27 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Verify PRUNED16 upstream snapshot
+      - name: Wait for and verify PRUNED16 upstream snapshot
         run: |
           python - <<'PY'
           import json, urllib.request, time
-          url='https://raw.githubusercontent.com/galbbb2772/market-indicators-v1/main/docs/data/current.json?t='+str(time.time())
-          with urllib.request.urlopen(url,timeout=45) as r:
-              d=json.load(r)
-          m=d.get('market_model_v2') or {}
-          assert m.get('version')=='MARKET-MODEL-V2-PRUNED16-2026-10-06',m
-          assert m.get('active_indicator_count')==16,m
-          print('UPSTREAM_OK',m.get('version'),m.get('active_indicator_count'))
+          want='MARKET-MODEL-V2-PRUNED16-2026-10-06'
+          last=None
+          for _ in range(60):
+              try:
+                  url='https://raw.githubusercontent.com/galbbb2772/market-indicators-v1/main/docs/data/current.json?t='+str(time.time())
+                  with urllib.request.urlopen(url,timeout=45) as r:
+                      d=json.load(r)
+                  m=d.get('market_model_v2') or {}
+                  last=(m.get('version'),m.get('active_indicator_count'))
+                  if m.get('version')==want and m.get('active_indicator_count')==16:
+                      print('UPSTREAM_OK',last)
+                      break
+              except Exception as e:
+                  last=repr(e)
+              time.sleep(30)
+          else:
+              raise RuntimeError(f'PRUNED16 upstream not published; last={last}')
           PY
 
       - name: Snapshot pre-PRUNED16 study outputs
