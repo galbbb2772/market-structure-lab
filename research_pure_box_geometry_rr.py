@@ -157,7 +157,7 @@ def bin_feature(df,feature,period,scale):
     for b,g in z.groupby("bin",sort=True):
         rr=g.net_return.astype(float).tolist()
         rows.append({
-            "rank_cap":int(rank_cap),"feature":feature,"period":period,"scale":scale,"quintile":int(b),
+            "feature":feature,"period":period,"scale":scale,"quintile":int(b),
             "n":len(g),"feature_min":float(g[feature].min()),"feature_median":float(g[feature].median()),"feature_max":float(g[feature].max()),
             "mean_return":float(g.net_return.mean()),"median_return":float(g.net_return.median()),
             "win_rate":float((g.net_return>0).mean()),"profit_factor":pf(rr),
