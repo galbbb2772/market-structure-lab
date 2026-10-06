@@ -25,6 +25,26 @@ PERM = 100_000
 PRIMARY_N = 20
 MIN_MONTHS = 12
 MIN_CLUSTERS = 8
+PRIORITY_POLICY = "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md"
+
+
+def priority_meta(key):
+    if FREEZE < "2026-10-06":
+        return {
+            "research_priority_tier": "LEGACY_V1_FROZEN",
+            "promotion_eligible_under_current_priority": True,
+        }
+    mapping = {
+        "rmd3": ("T3_LEGACY_LOW_PRIORITY", False),
+        "dplus1_entry": ("T2_SECONDARY_FORWARD_WATCH", True),
+        "dual_severity_hazard": ("T3_LEGACY_LOW_PRIORITY", False),
+        "early_sequence": ("T2_SECONDARY_FORWARD_WATCH", True),
+    }
+    tier, eligible = mapping[key]
+    return {
+        "research_priority_tier": tier,
+        "promotion_eligible_under_current_priority": eligible,
+    }
 
 
 def num(x):
@@ -252,24 +272,29 @@ def main():
         "observation_only": True,
         "production_effect": "none",
         "protocol_path": "research/task14_prospective_evaluation_v1/PROTOCOL.md",
+        "research_priority_policy": PRIORITY_POLICY,
         "frozen_through_market_date": FREEZE,
         "primary_confirmatory_n": PRIMARY_N,
         "latest_market_date": rows[-1]["date"] if rows else None,
         "tests": {
-            "rmd3": {"status": rmd_status, "readiness": rmd_ready, "primary_sample_n": len(rmd_primary), "rho_10d": rmd_test["rho"], "permutation_two_sided_p": rmd_test["p"], "holm_adjusted_p_two_test_family": holm["rmd3"]},
-            "dplus1_entry": {"status": d1_status, "readiness": d1_ready, "primary_sample_n": len(d1_primary), "mean_paired_improvement_pp": None if d1_mean is None else round(d1_mean, 6), "exact_signflip_two_sided_p": None if d1_p is None else round(d1_p, 6), "holm_adjusted_p_two_test_family": holm["dplus1"]},
-            "dual_severity_hazard": {"status": hz_status, "readiness": hz_ready, "primary_sample_n": len(hz_primary), "brier_base": hz_cal["brier_base"], "brier_severity": hz_cal["brier_severity"], "high_severity_break_rate": None if high_rate is None else round(high_rate, 6), "low_severity_break_rate": None if low_rate is None else round(low_rate, 6)},
-            "early_sequence": {"status": early_status, "readiness": early_ready, "primary_sample_n": len(early_primary), "mean_10d_pct": None if early_mean is None else round(early_mean, 6), "reference_all_days_mean_10d_pct": None if base_mean is None else round(base_mean, 6), "positive_rate": None if pos_rate is None else round(pos_rate, 6)},
+            "rmd3": {**priority_meta("rmd3"), "status": rmd_status, "readiness": rmd_ready, "primary_sample_n": len(rmd_primary), "rho_10d": rmd_test["rho"], "permutation_two_sided_p": rmd_test["p"], "holm_adjusted_p_two_test_family": holm["rmd3"]},
+            "dplus1_entry": {**priority_meta("dplus1_entry"), "status": d1_status, "readiness": d1_ready, "primary_sample_n": len(d1_primary), "mean_paired_improvement_pp": None if d1_mean is None else round(d1_mean, 6), "exact_signflip_two_sided_p": None if d1_p is None else round(d1_p, 6), "holm_adjusted_p_two_test_family": holm["dplus1"]},
+            "dual_severity_hazard": {**priority_meta("dual_severity_hazard"), "status": hz_status, "readiness": hz_ready, "primary_sample_n": len(hz_primary), "brier_base": hz_cal["brier_base"], "brier_severity": hz_cal["brier_severity"], "high_severity_break_rate": None if high_rate is None else round(high_rate, 6), "low_severity_break_rate": None if low_rate is None else round(low_rate, 6)},
+            "early_sequence": {**priority_meta("early_sequence"), "status": early_status, "readiness": early_ready, "primary_sample_n": len(early_primary), "mean_10d_pct": None if early_mean is None else round(early_mean, 6), "reference_all_days_mean_10d_pct": None if base_mean is None else round(base_mean, 6), "positive_rate": None if pos_rate is None else round(pos_rate, 6)},
         },
         "overall": {
             "any_ready": any(x["readiness"]["ready"] for x in [{"readiness": rmd_ready}, {"readiness": d1_ready}, {"readiness": hz_ready}, {"readiness": early_ready}]),
             "automatic_production_change": False,
+            "primary_research_thesis": "matched_control_relative_state_edge" if FREEZE >= "2026-10-06" else None,
+            "legacy_low_priority_tests": ["rmd3", "dual_severity_hazard"] if FREEZE >= "2026-10-06" else [],
+            "secondary_forward_watch_tests": ["dplus1_entry", "early_sequence"] if FREEZE >= "2026-10-06" else [],
             "note": "Primary V1 snapshot locks at the first 20 mature events once all readiness gates for that test are satisfied; later observations are monitoring only.",
         },
         "warnings": [
             "Historical development events through 2026-10-02 are excluded.",
             "No PENDING result should be interpreted as failure or success.",
             "No PASS result changes MAIN automatically; a separate preregistered review is required.",
+            "Under PRUNED16 V2, RMD3 and DUAL Severity are Legacy T3 results: PASS/FAIL is monitoring-only and cannot promote without a new priority review.",
         ],
     }
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
