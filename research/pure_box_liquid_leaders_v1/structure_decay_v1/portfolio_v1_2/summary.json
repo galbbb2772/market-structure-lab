@@ -1,0 +1,167 @@
+{
+  "schema": "STRUCTURE-DECAY-PORTFOLIO-V1.2",
+  "window": [
+    "2023-01-03",
+    "2026-03-31"
+  ],
+  "status": "post_hoc_confirmation_not_untouched_oos",
+  "results": {
+    "top300": {
+      "fresh_all": {
+        "portfolio": {
+          "total_return": 0.23522,
+          "cagr": 0.067396,
+          "max_drawdown": -0.208978,
+          "sharpe": 0.466328,
+          "avg_exposure": 0.888683
+        },
+        "trades": 2649,
+        "win_rate": 0.177803,
+        "mean_trade": 0.003759,
+        "profit_factor": 1.24535,
+        "yearly": {
+          "2023": 0.151613,
+          "2024": 0.014076,
+          "2025": 0.189956,
+          "2026": -0.121838
+        }
+      },
+      "fresh_no3plus": {
+        "portfolio": {
+          "total_return": 0.208505,
+          "cagr": 0.060214,
+          "max_drawdown": -0.209034,
+          "sharpe": 0.424201,
+          "avg_exposure": 0.888838
+        },
+        "trades": 2590,
+        "win_rate": 0.177992,
+        "mean_trade": 0.003647,
+        "profit_factor": 1.236942,
+        "yearly": {
+          "2023": 0.147266,
+          "2024": 0.012759,
+          "2025": 0.158884,
+          "2026": -0.113292
+        }
+      },
+      "wide_fresh_all": {
+        "portfolio": {
+          "total_return": 0.423173,
+          "cagr": 0.115109,
+          "max_drawdown": -0.226619,
+          "sharpe": 0.644272,
+          "avg_exposure": 0.875757
+        },
+        "trades": 1120,
+        "win_rate": 0.174107,
+        "mean_trade": 0.004627,
+        "profit_factor": 1.235546,
+        "yearly": {
+          "2023": 0.249748,
+          "2024": 0.125668,
+          "2025": 0.072277,
+          "2026": -0.075547
+        }
+      },
+      "wide_fresh_no3plus": {
+        "portfolio": {
+          "total_return": 0.39547,
+          "cagr": 0.108361,
+          "max_drawdown": -0.236644,
+          "sharpe": 0.612117,
+          "avg_exposure": 0.878131
+        },
+        "trades": 1102,
+        "win_rate": 0.174229,
+        "mean_trade": 0.00443,
+        "profit_factor": 1.223488,
+        "yearly": {
+          "2023": 0.242262,
+          "2024": 0.115621,
+          "2025": 0.063613,
+          "2026": -0.072554
+        }
+      }
+    },
+    "top500": {
+      "fresh_all": {
+        "portfolio": {
+          "total_return": 0.853185,
+          "cagr": 0.209812,
+          "max_drawdown": -0.131978,
+          "sharpe": 1.269289,
+          "avg_exposure": 0.89256
+        },
+        "trades": 4715,
+        "win_rate": 0.183881,
+        "mean_trade": 0.005922,
+        "profit_factor": 1.400108,
+        "yearly": {
+          "2023": 0.278316,
+          "2024": 0.174293,
+          "2025": 0.217335,
+          "2026": -0.000709
+        }
+      },
+      "fresh_no3plus": {
+        "portfolio": {
+          "total_return": 0.794433,
+          "cagr": 0.197838,
+          "max_drawdown": -0.139813,
+          "sharpe": 1.190781,
+          "avg_exposure": 0.892327
+        },
+        "trades": 4631,
+        "win_rate": 0.184409,
+        "mean_trade": 0.005863,
+        "profit_factor": 1.394319,
+        "yearly": {
+          "2023": 0.271947,
+          "2024": 0.160211,
+          "2025": 0.210004,
+          "2026": -0.009818
+        }
+      },
+      "wide_fresh_all": {
+        "portfolio": {
+          "total_return": 0.958957,
+          "cagr": 0.230724,
+          "max_drawdown": -0.266258,
+          "sharpe": 0.88914,
+          "avg_exposure": 0.888047
+        },
+        "trades": 1983,
+        "win_rate": 0.175996,
+        "mean_trade": 0.008318,
+        "profit_factor": 1.428927,
+        "yearly": {
+          "2023": 0.34478,
+          "2024": 0.576175,
+          "2025": -0.019032,
+          "2026": -0.064813
+        }
+      },
+      "wide_fresh_no3plus": {
+        "portfolio": {
+          "total_return": 0.949084,
+          "cagr": 0.228805,
+          "max_drawdown": -0.254146,
+          "sharpe": 0.889027,
+          "avg_exposure": 0.888554
+        },
+        "trades": 1951,
+        "win_rate": 0.177345,
+        "mean_trade": 0.008322,
+        "profit_factor": 1.426305,
+        "yearly": {
+          "2023": 0.333441,
+          "2024": 0.55722,
+          "2025": -0.010856,
+          "2026": -0.058416
+        }
+      }
+    }
+  },
+  "note": "Reconstructed from validated workflow output after git push non-fast-forward conflict; numerical values match validation receipt."
+}
