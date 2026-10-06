@@ -17,7 +17,7 @@ It does **not** discover, optimize, re-rank, backfill, or authorize stock trades
 Source of truth: `galbbb2772/frozen-v4`.
 
 Canonical feed:
-`https://raw.githubusercontent.com/galbbb2772/frozen-v4/main/docs/data/stock_candidate_feed_v1.json`
+`https://api.github.com/repos/galbbb2772/frozen-v4/contents/docs/data/stock_candidate_feed_v1.json?ref=main`
 
 Public dashboard mirror fallback:
 `https://raw.githubusercontent.com/galbbb2772/frozen-v4-dashboard/main/data/stock_candidate_feed_v1.json`
