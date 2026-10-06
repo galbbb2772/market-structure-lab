@@ -1,0 +1,92 @@
+name: Research Pure Box Liquid Leaders V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research_pure_box_liquid_year.py'
+      - 'research_pure_box_liquid_combine.py'
+      - 'research/pure_box_liquid_leaders_v1/PREREGISTRATION.md'
+      - '.github/workflows/research_pure_box_liquid_leaders_v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  yearly:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install pandas numpy requests polars pyarrow
+      - name: Build yearly full-market liquid-leader signals
+        run: python research_pure_box_liquid_year.py --year ${{ matrix.year }} --outdir /tmp/pure_box_${{ matrix.year }}
+      - name: Validate yearly artifact
+        run: |
+          python - <<'PY'
+          import glob,json
+          p=glob.glob('/tmp/pure_box_*/summary_*.json')[0]
+          d=json.load(open(p))
+          assert d['schema']=='PURE-BOX-LIQUID-LEADERS-YEAR-V1'
+          assert d['max_rank']==500
+          print(d)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pure-box-liquid-${{ matrix.year }}
+          path: /tmp/pure_box_${{ matrix.year }}/*
+          retention-days: 7
+
+  combine:
+    needs: yearly
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pure-box-liquid-*
+          path: /tmp/pure_box_all
+          merge-multiple: false
+      - name: Run Top200 / Top300 / Top500 portfolios
+        run: python research_pure_box_liquid_combine.py --indir /tmp/pure_box_all --outdir /tmp/pure_box_result
+      - name: Validate combined result
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/pure_box_result/summary.json'))
+          assert d['schema']=='PURE-BOX-LIQUID-LEADERS-V1'
+          assert d['primary_lane']=='top300'
+          assert d['lanes']['top300']['trade_stats_all']['trades']>0
+          print(json.dumps(d['lanes'],indent=2))
+          PY
+      - name: Persist aggregate research outputs only
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1
+          cp /tmp/pure_box_result/summary.json research/pure_box_liquid_leaders_v1/
+          cp /tmp/pure_box_result/RESULT.md research/pure_box_liquid_leaders_v1/
+          cp /tmp/pure_box_result/top300_trades.csv research/pure_box_liquid_leaders_v1/
+          cp /tmp/pure_box_result/top300_equity.csv research/pure_box_liquid_leaders_v1/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/summary.json research/pure_box_liquid_leaders_v1/RESULT.md research/pure_box_liquid_leaders_v1/top300_trades.csv research/pure_box_liquid_leaders_v1/top300_equity.csv
+          if git diff --cached --quiet; then
+            echo 'No aggregate change.'
+          else
+            git commit -m 'research: run Pure Box liquid-leaders V1'
+            git push
+          fi
