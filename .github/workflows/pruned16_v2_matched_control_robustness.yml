@@ -1,0 +1,52 @@
+name: PRUNED16 V2 Matched-Control Robustness
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research_pruned16_v2_matched_control_robustness.py'
+      - 'research/pruned16_v2_matched_control_robustness/**'
+      - '.github/workflows/pruned16_v2_matched_control_robustness.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Run robustness study
+        run: python research_pruned16_v2_matched_control_robustness.py
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('docs/data/pruned16_v2/matched_control_robustness_v1.json',encoding='utf-8'))
+          assert d['schema']=='PRUNED16-V2-MATCHED-CONTROL-ROBUSTNESS-V1'
+          assert len(d['event_dates'])==11
+          assert len(d['base_feature_grid']['cells'])==9
+          assert len(d['no_market_score_grid']['cells'])==9
+          assert d['classification'] in {'ROBUST_POSITIVE','BROADLY_POSITIVE_BUT_FRAGILE','METHOD_SENSITIVE','NO_EDGE','MIXED'}
+          print(d['classification'])
+          print(d['base_feature_grid']['summary'])
+          print(d['no_market_score_grid']['summary'])
+          PY
+      - name: Commit outputs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/pruned16_v2/matched_control_robustness_v1.json research/pruned16_v2_matched_control_robustness/REPORT.md
+          if git diff --cached --quiet; then
+            echo 'No changes.'
+          else
+            git commit -m 'research: run PRUNED16 V2 matched-control robustness'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
