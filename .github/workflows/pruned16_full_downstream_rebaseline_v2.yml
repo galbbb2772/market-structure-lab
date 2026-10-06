@@ -1,0 +1,180 @@
+name: PRUNED16 Full Downstream Rebaseline V2
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["PRUNED16 Snapshot Only", "PRUNED16 Lightweight Publish"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pruned16-full-downstream-rebaseline-v2
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Verify PRUNED16 upstream snapshot
+        run: |
+          python - <<'PY'
+          import json, urllib.request, time
+          url='https://raw.githubusercontent.com/galbbb2772/market-indicators-v1/main/docs/data/current.json?t='+str(time.time())
+          with urllib.request.urlopen(url,timeout=45) as r:
+              d=json.load(r)
+          m=d.get('market_model_v2') or {}
+          assert m.get('version')=='MARKET-MODEL-V2-PRUNED16-2026-10-06',m
+          assert m.get('active_indicator_count')==16,m
+          print('UPSTREAM_OK',m.get('version'),m.get('active_indicator_count'))
+          PY
+
+      - name: Snapshot pre-PRUNED16 study outputs
+        run: |
+          mkdir -p /tmp/pruned16-pre
+          cp docs/data/market_state_box_v1.json /tmp/pruned16-pre/market_state_box_v1.json
+          cp docs/data/market_state_sequence_event_audit_v1.json /tmp/pruned16-pre/market_state_sequence_event_audit_v1.json
+
+      - name: Rebuild Market State Box family
+        run: |
+          python build_market_state_box_v1.py
+          python postprocess_market_state_box_v1.py
+          python validate_market_state_box_v1.py
+          python summarize_market_state_box_v1_validation.py
+          python build_market_state_box_v2.py
+          python diagnose_market_state_box_v2.py
+          python diagnose_market_state_box_v21.py
+          python diagnose_market_state_box_v22.py
+          python diagnose_market_state_box_v23_phase.py
+
+      - name: Rebuild Sequence base
+        run: |
+          python build_market_state_sequence_v1.py
+          python validate_market_state_sequence_phase_onsets_v1.py
+
+      - name: Audit PRUNED16 compatibility before strict Task1/4 rebuild
+        run: |
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          import numpy as np
+          import build_market_state_sequence_v1 as seq
+
+          old_box=json.load(open('/tmp/pruned16-pre/market_state_box_v1.json',encoding='utf-8'))
+          new_box=json.load(open('docs/data/market_state_box_v1.json',encoding='utf-8'))
+          old_audit=json.load(open('/tmp/pruned16-pre/market_state_sequence_event_audit_v1.json',encoding='utf-8'))
+
+          om={r['date']:r for r in old_box.get('daily',[]) if r.get('date')}
+          nm={r['date']:r for r in new_box.get('daily',[]) if r.get('date')}
+          common=sorted(set(om)&set(nm))
+          a=[];b=[];chg=0;comp=0
+          for d in common:
+              x=om[d].get('market_score'); y=nm[d].get('market_score')
+              if x is not None and y is not None:
+                  a.append(float(x)); b.append(float(y))
+              ox=om[d].get('score_recovering'); ny=nm[d].get('score_recovering')
+              if ox is not None and ny is not None:
+                  comp+=1; chg+=int(bool(ox)!=bool(ny))
+
+          rows=[dict(r) for r in new_box.get('daily',[])]
+          rows=seq.add_dual(rows)
+          rows,_=seq.enrich_sequence(rows)
+          new_events=[r['date'] for r in seq.event_onsets(rows,'D_TO_BOTH_REBOUND_SCORE') if seq.num(r.get('fwd_10d')) is not None]
+          old_events=[e.get('date') for e in old_audit.get('events',[])]
+          corr=None if len(a)<3 else float(np.corrcoef(a,b)[0,1])
+          mad=None if not a else float(np.mean(np.abs(np.asarray(a)-np.asarray(b))))
+          out={
+            'schema':'PRUNED16-DOWNSTREAM-COMPATIBILITY-AUDIT-V2',
+            'market_model_version':'MARKET-MODEL-V2-PRUNED16-2026-10-06',
+            'overlap_days':len(common),
+            'market_score_corr':corr,
+            'market_score_mean_abs_diff':mad,
+            'score_recovering_compared_days':comp,
+            'score_recovering_changed_days':chg,
+            'old_complete_sequence_events':old_events,
+            'new_complete_sequence_events':new_events,
+            'old_event_count':len(old_events),
+            'new_event_count':len(new_events),
+            'sequence_event_identity_exact':old_events==new_events,
+            'task14_v1_compatible':old_events==new_events and len(new_events)==12,
+            'forward_oos_reset_boundary':'2026-10-06',
+            'note':'No pre-reset Forward-OOS events existed; historical recomputation never counts as Forward-OOS.'
+          }
+          Path('docs/data/pruned16_downstream_compatibility_v2.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          if not out['task14_v1_compatible']:
+              raise SystemExit(42)
+          PY
+
+      - name: Rebuild Sequence audit and Task1/4 historical chain
+        run: |
+          python build_market_state_sequence_event_audit_v1.py
+          python diagnose_market_state_sequence_freshness_v1.py
+          python build_residual_mean_reversion_distance_v1.py
+          python research_task14_extended_v1.py
+          python research_task14_stage2_v1.py
+          python research_task14_stage2_final_v1.py
+
+      - name: Rebuild all Stage2 score-dependent diagnostics
+        run: |
+          python research_concentration_stage2_v1.py
+          python research_modules_stage2_driver_v1.py
+          python summarize_modules_stage2_v1.py
+          python research_factor_map_stage2_v1.py
+          python research_cross_family_transition_stage2_v1.py
+          python research_mechanism_graph_stage2_v1.py
+          python research_sentiment_normalization_stage2_v1.py
+          python research_sentiment_drift_stage2_v1.py
+          python research_dual_revision_sensitivity_stage2_v1.py
+          python research_task14_crossmarket_yahoo_v1.py
+
+      - name: Validate historical rebuild
+        run: |
+          python - <<'PY'
+          import json
+          c=json.load(open('docs/data/pruned16_downstream_compatibility_v2.json',encoding='utf-8'))
+          assert c['task14_v1_compatible'] is True
+          assert c['new_event_count']==12
+          m=json.load(open('docs/data/modules_stage2_v1.json',encoding='utf-8'))
+          f=json.load(open('docs/data/factor_map_stage2_v1.json',encoding='utf-8'))
+          x=json.load(open('docs/data/cross_family_transition_stage2_v1.json',encoding='utf-8'))
+          g=json.load(open('docs/data/mechanism_graph_stage2_v1.json',encoding='utf-8'))
+          assert m['research_only'] is True
+          assert f['research_only'] is True
+          assert x['research_only'] is True
+          assert g['research_only'] is True
+          print('PRUNED16_HISTORICAL_REBASELINE_VALID',c['market_score_corr'],c['market_score_mean_abs_diff'])
+          PY
+
+      - name: Commit complete historical rebaseline
+        run: |
+          set -e
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          mkdir -p /tmp/pruned16-out
+          cp docs/data/*.json /tmp/pruned16-out/
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/pruned16-out/*.json docs/data/
+            git add docs/data
+            if git diff --cached --quiet; then
+              echo 'No downstream rebaseline changes.'
+              exit 0
+            fi
+            git commit -m 'research: fully rebaseline score-dependent systems on PRUNED16'
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+          done
+          exit 1
