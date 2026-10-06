@@ -1,0 +1,102 @@
+name: Research Pure Box Entry Confirmation V1.1 Mechanism
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/entry_confirmation_v1_1/PREREGISTRATION.md'
+      - 'research_pure_box_entry_confirmation_mechanism_year_v1_1.py'
+      - 'research_pure_box_entry_confirmation_mechanism_combine_v1_1.py'
+      - '.github/workflows/research_pure_box_entry_confirmation_mechanism_v1_1.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  shard:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2021,2022,2023,2024,2025,2026]
+        cap: [300,500]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - name: Download adjacent-year source
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - name: Run mechanism shard
+        run: |
+          python research_pure_box_entry_confirmation_mechanism_year_v1_1.py             --year ${{ matrix.year }}             --cap ${{ matrix.cap }}             --indir /tmp/source             --outdir /tmp/result
+      - uses: actions/upload-artifact@v4
+        with:
+          name: entry-confirmation-mechanism-${{ matrix.cap }}-${{ matrix.year }}
+          path: /tmp/result/*
+          retention-days: 7
+
+  combine:
+    needs: shard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: entry-confirmation-mechanism-*
+          path: /tmp/shards
+      - name: Combine
+        run: |
+          python research_pure_box_entry_confirmation_mechanism_combine_v1_1.py             --indir /tmp/shards             --outdir /tmp/result
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/result/summary.json'))
+          assert d['schema']=='PURE-BOX-ENTRY-CONFIRMATION-MECHANISM-V1.1'
+          x=pd.read_csv('/tmp/result/annual_results.csv')
+          assert len(x)==216
+          for cap in ('top300','top500'):
+              for sleeve in ('all','fresh','wide_fresh'):
+                  assert d['lanes'][cap][sleeve]['blind_delay_one_day']['years']==6
+                  assert d['lanes'][cap][sleeve]['no_new_low_green']['years']==6
+                  assert d['lanes'][cap][sleeve]['new_low_or_red']['years']==6
+          print('validated',len(x))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/entry_confirmation_v1_1
+          cp /tmp/result/summary.json research/pure_box_liquid_leaders_v1/entry_confirmation_v1_1/
+          cp /tmp/result/annual_results.csv research/pure_box_liquid_leaders_v1/entry_confirmation_v1_1/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/entry_confirmation_v1_1
+          if git diff --cached --quiet; then
+            echo no-change
+          else
+            git commit -m 'research: run Entry Confirmation V1.1 mechanism'
+            git fetch origin research/pure-box-long-liquid-leaders-v1
+            git rebase origin/research/pure-box-long-liquid-leaders-v1
+            git push
+          fi
