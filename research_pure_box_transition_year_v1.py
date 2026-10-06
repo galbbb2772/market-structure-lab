@@ -142,6 +142,8 @@ def main():
         br0=breadth.get(d0);br1=breadth.get(d1)
         if b0 is None or b1 is None or b2 is None or br0 is None or br1 is None:continue
         lo=float(q["lower"]);hi=float(q["upper"]);width=max(hi-lo,1e-12)
+        op1=float(b1["open"])
+        if not(lo<op1<hi):continue
         op2=float(b2["open"])
         if not(lo<op2<hi):continue
         age=max(0,idx[d0]-idx.get(q["detected_at"],idx[d0]))
