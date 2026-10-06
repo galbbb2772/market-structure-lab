@@ -335,5 +335,6 @@ def main():
     }, ensure_ascii=False, indent=2))
 
 
+# CI trigger: refresh public Frozen V4 candidate mirror bridge
 if __name__ == '__main__':
     main()
