@@ -45,6 +45,8 @@ jobs:
           cp /tmp/breadth/summary.json research/pure_box_liquid_leaders_v1/breadth_permission_v1/
           cp /tmp/breadth/annual_breadth_permission.csv research/pure_box_liquid_leaders_v1/breadth_permission_v1/
           cp /tmp/breadth/breadth_year_receipt.csv research/pure_box_liquid_leaders_v1/breadth_permission_v1/
+          cp /tmp/breadth/breadth_top300.csv.gz research/pure_box_liquid_leaders_v1/breadth_permission_v1/
+          cp /tmp/breadth/breadth_top500.csv.gz research/pure_box_liquid_leaders_v1/breadth_permission_v1/
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+galbbb2772@users.noreply.github.com'
           git add research/pure_box_liquid_leaders_v1/breadth_permission_v1
