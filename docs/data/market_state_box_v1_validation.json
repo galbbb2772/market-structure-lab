@@ -1,9 +1,9 @@
 {
   "schema": "MARKET-STATE-BOX-V1-VALIDATION",
-  "source_generated_at": "2026-10-06T17:21:34.988690+00:00",
+  "source_generated_at": "2026-10-07T10:28:57.216098+00:00",
   "coverage": {
-    "start": "2016-12-30",
-    "end": "2026-10-05",
+    "start": "2017-01-03",
+    "end": "2026-10-06",
     "observations": 2453
   },
   "thresholds_frozen": true,
@@ -22,8 +22,8 @@
       "pct": 10.4
     },
     "score_recovering": {
-      "days": 908,
-      "pct": 37.02
+      "days": 910,
+      "pct": 37.1
     }
   },
   "raw_combo_counts": {
@@ -60,13 +60,13 @@
     },
     "box_bottom|score_recovering": {
       "a_n": 228,
-      "b_n": 908,
+      "b_n": 910,
       "both_n": 51,
-      "union_n": 1085,
-      "jaccard": 0.047,
+      "union_n": 1087,
+      "jaccard": 0.0469,
       "p_b_given_a_pct": 22.37,
-      "p_a_given_b_pct": 5.62,
-      "phi": -0.0971
+      "p_a_given_b_pct": 5.6,
+      "phi": -0.0976
     },
     "sentiment_extreme|breadth_extreme_low": {
       "a_n": 167,
@@ -80,40 +80,31 @@
     },
     "sentiment_extreme|score_recovering": {
       "a_n": 167,
-      "b_n": 908,
+      "b_n": 910,
       "both_n": 46,
-      "union_n": 1029,
-      "jaccard": 0.0447,
+      "union_n": 1031,
+      "jaccard": 0.0446,
       "p_b_given_a_pct": 27.54,
-      "p_a_given_b_pct": 5.07,
-      "phi": -0.053
+      "p_a_given_b_pct": 5.05,
+      "phi": -0.0534
     },
     "breadth_extreme_low|score_recovering": {
       "a_n": 255,
-      "b_n": 908,
-      "both_n": 80,
-      "union_n": 1083,
-      "jaccard": 0.0739,
-      "p_b_given_a_pct": 31.37,
-      "p_a_given_b_pct": 8.81,
-      "phi": -0.0398
+      "b_n": 910,
+      "both_n": 81,
+      "union_n": 1084,
+      "jaccard": 0.0747,
+      "p_b_given_a_pct": 31.76,
+      "p_a_given_b_pct": 8.9,
+      "phi": -0.0376
     }
   },
   "annual_counts": {
-    "2016": {
-      "box_bottom": 0,
-      "sentiment_extreme": 0,
-      "breadth_extreme_low": 0,
-      "score_recovering": 0,
-      "days": 1,
-      "all_four": 0,
-      "box_breadth_score": 0
-    },
     "2017": {
       "box_bottom": 11,
       "sentiment_extreme": 0,
       "breadth_extreme_low": 17,
-      "score_recovering": 85,
+      "score_recovering": 86,
       "days": 251,
       "all_four": 0,
       "box_breadth_score": 3
@@ -194,66 +185,66 @@
       "box_bottom": 29,
       "sentiment_extreme": 0,
       "breadth_extreme_low": 39,
-      "score_recovering": 69,
-      "days": 190,
+      "score_recovering": 70,
+      "days": 191,
       "all_four": 0,
       "box_breadth_score": 1
     }
   },
   "time_split": {
     "pre_2022": {
-      "start": "2016-12-30",
+      "start": "2017-01-03",
       "end": "2021-12-31",
-      "days": 1260,
+      "days": 1259,
       "combos": {
         "baseline": {
           "n": 252,
-          "fwd_1d_avg_pct": 0.102,
-          "fwd_1d_median_pct": 0.037,
-          "fwd_1d_positive_pct": 52.0,
+          "fwd_1d_avg_pct": 0.065,
+          "fwd_1d_median_pct": 0.125,
+          "fwd_1d_positive_pct": 60.3,
           "fwd_1d_positive_wilson95": [
-            45.8,
-            58.1
+            54.2,
+            66.2
           ],
           "fwd_1d_mean_bootstrap95": [
-            -0.041,
-            0.254
+            -0.072,
+            0.196
           ],
-          "fwd_3d_avg_pct": 0.187,
-          "fwd_3d_median_pct": 0.297,
-          "fwd_3d_positive_pct": 63.5,
+          "fwd_3d_avg_pct": 0.271,
+          "fwd_3d_median_pct": 0.419,
+          "fwd_3d_positive_pct": 62.7,
           "fwd_3d_positive_wilson95": [
-            57.4,
-            69.2
+            56.6,
+            68.4
           ],
           "fwd_3d_mean_bootstrap95": [
-            -0.065,
-            0.438
+            0.06,
+            0.472
           ],
-          "fwd_5d_avg_pct": 0.332,
-          "fwd_5d_median_pct": 0.513,
-          "fwd_5d_positive_pct": 65.5,
+          "fwd_5d_avg_pct": 0.321,
+          "fwd_5d_median_pct": 0.499,
+          "fwd_5d_positive_pct": 61.9,
           "fwd_5d_positive_wilson95": [
-            59.4,
-            71.1
+            55.8,
+            67.7
           ],
           "fwd_5d_mean_bootstrap95": [
-            0.033,
-            0.621
+            0.051,
+            0.562
           ],
-          "fwd_10d_avg_pct": 0.655,
-          "fwd_10d_median_pct": 0.959,
-          "fwd_10d_positive_pct": 70.6,
+          "fwd_10d_avg_pct": 0.637,
+          "fwd_10d_median_pct": 0.903,
+          "fwd_10d_positive_pct": 69.8,
           "fwd_10d_positive_wilson95": [
-            64.7,
-            75.9
+            63.9,
+            75.2
           ],
           "fwd_10d_mean_bootstrap95": [
-            0.212,
-            1.076
+            0.251,
+            0.991
           ],
-          "mfe_10d_avg_pct": 1.928,
-          "mae_10d_avg_pct": -1.409
+          "mfe_10d_avg_pct": 1.869,
+          "mae_10d_avg_pct": -1.407
         },
         "box_only": {
           "n": 25,
@@ -579,8 +570,8 @@
     },
     "oos_2022_plus": {
       "start": "2022-01-03",
-      "end": "2026-10-05",
-      "days": 1193,
+      "end": "2026-10-06",
+      "days": 1194,
       "combos": {
         "baseline": {
           "n": 239,
@@ -595,16 +586,16 @@
             -0.09,
             0.221
           ],
-          "fwd_3d_avg_pct": 0.146,
-          "fwd_3d_median_pct": 0.301,
-          "fwd_3d_positive_pct": 55.9,
+          "fwd_3d_avg_pct": 0.154,
+          "fwd_3d_median_pct": 0.309,
+          "fwd_3d_positive_pct": 56.1,
           "fwd_3d_positive_wilson95": [
-            49.5,
-            62.0
+            49.7,
+            62.2
           ],
           "fwd_3d_mean_bootstrap95": [
-            -0.078,
-            0.365
+            -0.073,
+            0.386
           ],
           "fwd_5d_avg_pct": 0.221,
           "fwd_5d_median_pct": 0.345,
@@ -628,7 +619,7 @@
             0.065,
             0.843
           ],
-          "mfe_10d_avg_pct": 1.956,
+          "mfe_10d_avg_pct": 1.961,
           "mae_10d_avg_pct": -1.594
         },
         "box_only": {
@@ -931,8 +922,8 @@
     },
     "recent_2024_plus": {
       "start": "2024-01-02",
-      "end": "2026-10-05",
-      "days": 692,
+      "end": "2026-10-06",
+      "days": 693,
       "combos": {
         "baseline": {
           "n": 139,
@@ -980,7 +971,7 @@
             0.282,
             1.171
           ],
-          "mfe_10d_avg_pct": 1.843,
+          "mfe_10d_avg_pct": 1.851,
           "mae_10d_avg_pct": -1.292
         },
         "box_only": {
