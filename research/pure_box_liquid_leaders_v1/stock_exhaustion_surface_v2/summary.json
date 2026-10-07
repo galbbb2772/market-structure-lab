@@ -1,0 +1,226 @@
+{
+  "schema": "LARGE-STOCK-EXHAUSTION-SURFACE-V2",
+  "cutpoints": {
+    "300": {
+      "rebound_from_low_box": [
+        0.08364372922571084,
+        0.11844051909799756,
+        0.15965078376613945,
+        0.21709207759749272
+      ],
+      "low_progress_box": [
+        0.021269080980415862,
+        0.04204723167148728,
+        0.07028245996254273,
+        0.10913893391875304
+      ]
+    },
+    "500": {
+      "rebound_from_low_box": [
+        0.0851900393184794,
+        0.1220014992503746,
+        0.1639344262295076,
+        0.2204325816843076
+      ],
+      "low_progress_box": [
+        0.0206461895102862,
+        0.0418768920282542,
+        0.0704091341579447,
+        0.1100164203612482
+      ]
+    }
+  },
+  "support": {
+    "passed_checks": 3,
+    "total_checks": 8,
+    "all_checks_passed": false
+  },
+  "checks": [
+    {
+      "rank_cap": 300,
+      "period": "discovery",
+      "target": 60,
+      "enough_n": true,
+      "ordering_pass": true,
+      "passed": true,
+      "both_high_n": 389,
+      "rebound_only_n": 58,
+      "low_progress_only_n": 38,
+      "both_low_n": 382,
+      "both_high_target_rate": 0.38817480719794345,
+      "rebound_only_target_rate": 0.3448275862068966,
+      "low_progress_only_target_rate": 0.21052631578947367,
+      "both_low_target_rate": 0.21204188481675393,
+      "both_high_stop_rate": 0.5269922879177378,
+      "rebound_only_stop_rate": 0.5517241379310345,
+      "low_progress_only_stop_rate": 0.6842105263157895,
+      "both_low_stop_rate": 0.5968586387434555
+    },
+    {
+      "rank_cap": 300,
+      "period": "discovery",
+      "target": 80,
+      "enough_n": true,
+      "ordering_pass": true,
+      "passed": true,
+      "both_high_n": 393,
+      "rebound_only_n": 59,
+      "low_progress_only_n": 38,
+      "both_low_n": 382,
+      "both_high_target_rate": 0.23918575063613232,
+      "rebound_only_target_rate": 0.1864406779661017,
+      "low_progress_only_target_rate": 0.13157894736842105,
+      "both_low_target_rate": 0.09162303664921466,
+      "both_high_stop_rate": 0.5725190839694656,
+      "rebound_only_stop_rate": 0.6610169491525424,
+      "low_progress_only_stop_rate": 0.6842105263157895,
+      "both_low_stop_rate": 0.612565445026178
+    },
+    {
+      "rank_cap": 300,
+      "period": "validation",
+      "target": 60,
+      "enough_n": false,
+      "ordering_pass": false,
+      "passed": false,
+      "both_high_n": 228,
+      "rebound_only_n": 41,
+      "low_progress_only_n": 15,
+      "both_low_n": 371,
+      "both_high_target_rate": 0.4473684210526316,
+      "rebound_only_target_rate": 0.4634146341463415,
+      "low_progress_only_target_rate": 0.3333333333333333,
+      "both_low_target_rate": 0.21293800539083557,
+      "both_high_stop_rate": 0.4605263157894737,
+      "rebound_only_stop_rate": 0.4634146341463415,
+      "low_progress_only_stop_rate": 0.5333333333333333,
+      "both_low_stop_rate": 0.6037735849056604
+    },
+    {
+      "rank_cap": 300,
+      "period": "validation",
+      "target": 80,
+      "enough_n": false,
+      "ordering_pass": true,
+      "passed": false,
+      "both_high_n": 228,
+      "rebound_only_n": 41,
+      "low_progress_only_n": 15,
+      "both_low_n": 373,
+      "both_high_target_rate": 0.2850877192982456,
+      "rebound_only_target_rate": 0.2682926829268293,
+      "low_progress_only_target_rate": 0.13333333333333333,
+      "both_low_target_rate": 0.10455764075067024,
+      "both_high_stop_rate": 0.49122807017543857,
+      "rebound_only_stop_rate": 0.5121951219512195,
+      "low_progress_only_stop_rate": 0.6,
+      "both_low_stop_rate": 0.6085790884718498
+    },
+    {
+      "rank_cap": 500,
+      "period": "discovery",
+      "target": 60,
+      "enough_n": true,
+      "ordering_pass": false,
+      "passed": false,
+      "both_high_n": 652,
+      "rebound_only_n": 106,
+      "low_progress_only_n": 66,
+      "both_low_n": 647,
+      "both_high_target_rate": 0.3726993865030675,
+      "rebound_only_target_rate": 0.4056603773584906,
+      "low_progress_only_target_rate": 0.22727272727272727,
+      "both_low_target_rate": 0.21483771251931993,
+      "both_high_stop_rate": 0.5322085889570553,
+      "rebound_only_stop_rate": 0.5,
+      "low_progress_only_stop_rate": 0.6212121212121212,
+      "both_low_stop_rate": 0.5904173106646059
+    },
+    {
+      "rank_cap": 500,
+      "period": "discovery",
+      "target": 80,
+      "enough_n": true,
+      "ordering_pass": true,
+      "passed": true,
+      "both_high_n": 658,
+      "rebound_only_n": 107,
+      "low_progress_only_n": 66,
+      "both_low_n": 647,
+      "both_high_target_rate": 0.23860182370820668,
+      "rebound_only_target_rate": 0.2336448598130841,
+      "low_progress_only_target_rate": 0.10606060606060606,
+      "both_low_target_rate": 0.08500772797527048,
+      "both_high_stop_rate": 0.5790273556231003,
+      "rebound_only_stop_rate": 0.5887850467289719,
+      "low_progress_only_stop_rate": 0.6515151515151515,
+      "both_low_stop_rate": 0.616692426584235
+    },
+    {
+      "rank_cap": 500,
+      "period": "validation",
+      "target": 60,
+      "enough_n": true,
+      "ordering_pass": false,
+      "passed": false,
+      "both_high_n": 410,
+      "rebound_only_n": 77,
+      "low_progress_only_n": 33,
+      "both_low_n": 686,
+      "both_high_target_rate": 0.4634146341463415,
+      "rebound_only_target_rate": 0.5324675324675324,
+      "low_progress_only_target_rate": 0.24242424242424243,
+      "both_low_target_rate": 0.23760932944606414,
+      "both_high_stop_rate": 0.44634146341463415,
+      "rebound_only_stop_rate": 0.4155844155844156,
+      "low_progress_only_stop_rate": 0.6363636363636364,
+      "both_low_stop_rate": 0.5932944606413995
+    },
+    {
+      "rank_cap": 500,
+      "period": "validation",
+      "target": 80,
+      "enough_n": true,
+      "ordering_pass": false,
+      "passed": false,
+      "both_high_n": 411,
+      "rebound_only_n": 77,
+      "low_progress_only_n": 33,
+      "both_low_n": 688,
+      "both_high_target_rate": 0.2846715328467153,
+      "rebound_only_target_rate": 0.33766233766233766,
+      "low_progress_only_target_rate": 0.09090909090909091,
+      "both_low_target_rate": 0.1119186046511628,
+      "both_high_stop_rate": 0.48661800486618007,
+      "rebound_only_stop_rate": 0.44155844155844154,
+      "low_progress_only_stop_rate": 0.6666666666666666,
+      "both_low_stop_rate": 0.6017441860465116
+    }
+  ],
+  "redundancy": [
+    {
+      "rank_cap": 300,
+      "period": "discovery",
+      "n": 1330,
+      "rho_features": 0.7343504477191269
+    },
+    {
+      "rank_cap": 300,
+      "period": "validation",
+      "n": 1019,
+      "rho_features": 0.7381613389009468
+    },
+    {
+      "rank_cap": 500,
+      "period": "discovery",
+      "n": 2256,
+      "rho_features": 0.7307023752535222
+    },
+    {
+      "rank_cap": 500,
+      "period": "validation",
+      "n": 1896,
+      "rho_features": 0.7135130371887329
+    }
+  ]
+}
