@@ -1,0 +1,51 @@
+name: Research Pure Box Simple Core Robustness V16
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - research/pure_box_liquid_leaders_v1/simple_core_robustness_v16/PREREGISTRATION.md
+      - research_pure_box_simple_core_robustness_v16.py
+      - .github/workflows/research_pure_box_simple_core_robustness_v16.yml
+permissions:
+  contents: write
+  actions: read
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - name: Download source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/source
+          gh run download 37424716935 -R "${{ github.repository }}" -D /tmp/source
+      - name: Run robustness
+        run: python research_pure_box_simple_core_robustness_v16.py --indir /tmp/source --outdir /tmp/result
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/result/summary.json'))
+          assert d['schema']=='PURE-BOX-SIMPLE-CORE-ROBUSTNESS-V16'
+          assert d['results']['top500']['n']>100
+          print(json.dumps(d,indent=2))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/simple_core_robustness_v16
+          cp /tmp/result/* research/pure_box_liquid_leaders_v1/simple_core_robustness_v16/
+          git config user.name github-actions[bot]
+          git config user.email 41898282+galbbb2772@users.noreply.github.com
+          git add research/pure_box_liquid_leaders_v1/simple_core_robustness_v16
+          git commit -m "research: run Pure Box simple core robustness V16" || exit 0
+          git fetch origin research/pure-box-long-liquid-leaders-v1
+          git rebase origin/research/pure-box-long-liquid-leaders-v1
+          git push
