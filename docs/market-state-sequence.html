@@ -18,16 +18,15 @@ function retCell(x){if(!x||!x.n)return '—';let c=x.mean_pct>0?'ok':x.mean_pct<
 function table(obj,el){let keys=Object.keys(obj);$(el).innerHTML=`<tr><th>State</th><th>1D mean/win</th><th>3D</th><th>5D</th><th>10D</th><th>10D MFE</th><th>10D MAE</th></tr>`+keys.map(k=>{let r=obj[k];return `<tr><td>${k}</td><td>${retCell(r['1d'])}</td><td>${retCell(r['3d'])}</td><td>${retCell(r['5d'])}</td><td>${retCell(r['10d'])}</td><td>${fmt(r.mfe_10d_mean_pct)}%</td><td>${fmt(r.mae_10d_mean_pct)}%</td></tr>`}).join('')}
 function renderPriority(){
   if(!P)return;
-  const blocks=[
-    ['T1 · 核心',P.tiers.T1_CORE_THESIS||[],'ok'],
-    ['T2 · 次级观察',P.tiers.T2_SECONDARY_FORWARD_WATCH||[],''],
-    ['T3 · Legacy低优先级',P.tiers.T3_LEGACY_LOW_PRIORITY||[],'bad'],
-    ['Retired · 不再单独作为Alpha',P.tiers.RETIRED_STANDALONE_CLAIMS||[],'bad']
+  const items=P.current_strategies||[];
+  const groups=[
+    ['T1 · 核心',items.filter(x=>x.tier==='T1_CORE_THESIS'),'ok'],
+    ['T2 · 次级观察',items.filter(x=>x.tier==='T2_SECONDARY_FORWARD_WATCH'),'']
   ];
-  $('#priority').innerHTML=blocks.map(([title,items,cls])=>`<div class="card"><div class="muted">${title}</div>${items.map(x=>`<div style="margin-top:9px"><b class="${cls}">${x.label}</b><div class="muted" style="font-size:12px;margin-top:3px">${x.status}</div></div>`).join('')}</div>`).join('');
+  $('#priority').innerHTML=groups.map(([title,arr,cls])=>`<div class="card"><div class="muted">${title}</div>${arr.map(x=>`<div style="margin-top:9px"><b class="${cls}">${x.label}</b><div class="muted" style="font-size:12px;margin-top:3px">${x.status}</div></div>`).join('')}</div>`).join('')+`<div class="card"><div class="muted">Archive</div><b>${P.guardrails?.archived_items_count||0} 个旧候选已退出当前策略名单</b><div class="muted" style="font-size:12px;margin-top:6px">历史证据仍保留，但不再作为现役策略显示。</div></div>`;
 }
 function render(){let l=D.latest;$('#warn').textContent=D.warnings.join(' · ');$('#latest').innerHTML=[card('Date',l.date),card('DUAL',l.dual_drain?'ACTIVE':'OFF'),card('DUAL phase',l.dual_phase),card('Days since DUAL',fmt(l.days_since_dual)),card('Breadth %ile',fmt(l.breadth_20d_pct)),card('Box position',fmt(l.box_position)),card('Score D1 / D3',`${fmt(l.market_score_d1)} / ${fmt(l.market_score_d3)}`),card('Active sequence',Object.entries(l).filter(([k,v])=>k.startsWith('D_TO_')&&v).map(([k])=>`<span class="pill">${k}</span>`).join('')||'None')].join('');let p=D.dual_episode_path_summary;$('#path').innerHTML=[card('Episodes',p.episodes),card('Median episode',fmt(p.episode_length_median_sessions)+' sessions'),card('Reach Breadth≤20',fmt(p.breadth_low.share_of_episodes_pct)+'%'),card('Reach Box bottom',fmt(p.box_bottom.share_of_episodes_pct)+'%'),card('Reach Breadth rebound',fmt(p.breadth_rebound.share_of_episodes_pct)+'%'),card('Score recovery after rebound',fmt(p.score_recovery_after_rebound.share_of_episodes_pct)+'%')].join('');let s=$('#seg').value;table(D.phase_stats[s],'#phase');table(D.sequence_onset_stats[s],'#seq')}
 fetch('data/pruned16_v2/market_state_sequence_v1.json').then(r=>r.json()).then(d=>{D=d;render()}).catch(e=>{$('#warn').textContent='Data unavailable: '+e});
-fetch('data/pruned16_v2/task14_research_priority_v2.json').then(r=>r.json()).then(d=>{P=d;renderPriority()}).catch(()=>{});
+fetch('data/pruned16_v2/task14_current_strategies_v2.json').then(r=>r.json()).then(d=>{P=d;renderPriority()}).catch(()=>{});
 $('#seg').addEventListener('change',()=>D&&render());
 </script></body></html>
