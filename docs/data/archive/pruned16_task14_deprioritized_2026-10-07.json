@@ -1,0 +1,58 @@
+{
+  "schema": "PRUNED16-TASK14-ARCHIVE-V2",
+  "archived_on": "2026-10-07",
+  "reason": "Removed from current strategy/research lineup after PRUNED16 rebaseline weakened or invalidated their historical evidence.",
+  "source_registry": "docs/data/pruned16_v2/task14_research_priority_v2.json",
+  "archived_tiers": {
+    "T3_LEGACY_LOW_PRIORITY": [
+      {
+        "id": "rmd3",
+        "label": "RMD3",
+        "status": "HISTORICAL_REPLICATION_WEAKENED",
+        "reason": "PRUNED16 10D Spearman fell from 0.720 to 0.300; permutation p≈0.371; cluster rho turned negative.",
+        "role": "Keep append-only Forward-OOS ledger for audit only. Not promotion-eligible from current historical evidence."
+      },
+      {
+        "id": "dual_severity_hazard",
+        "label": "DUAL Severity Hazard",
+        "status": "HISTORICAL_CALIBRATION_EDGE_LOST",
+        "reason": "PRUNED16 severity-conditioned Brier no longer beats the base-rate model.",
+        "role": "Keep append-only Forward-OOS ledger for audit only. Not a primary risk factor."
+      }
+    ],
+    "RETIRED_STANDALONE_CLAIMS": [
+      {
+        "id": "raw_sequence_10d_alpha",
+        "label": "Raw complete-Sequence 10D alpha",
+        "status": "RETIRED_AS_STANDALONE_ALPHA",
+        "reason": "PRUNED16 10D lift versus unconditional baseline is approximately -0.07 pp."
+      },
+      {
+        "id": "box_bottom_standalone",
+        "label": "Box Bottom standalone alpha",
+        "status": "RETIRED_AS_STANDALONE_ALPHA",
+        "reason": "Standalone matched-control 10D/20D lifts are negative."
+      },
+      {
+        "id": "breadth_low_standalone",
+        "label": "Breadth Low standalone alpha",
+        "status": "RETIRED_AS_STANDALONE_ALPHA",
+        "reason": "Standalone matched-control 10D/20D lifts are negative."
+      },
+      {
+        "id": "score_recovery_standalone",
+        "label": "Score Recovery standalone alpha",
+        "status": "RETIRED_AS_STANDALONE_ALPHA",
+        "reason": "Standalone matched-control 10D/20D lifts are negative."
+      },
+      {
+        "id": "simple_cross_market_confirmation_count",
+        "label": "Simple cross-market confirmation count",
+        "status": "RETIRED_AS_GATE",
+        "reason": "Historical confirmation-count relationship is non-monotonic."
+      }
+    ]
+  },
+  "historical_data_deleted": false,
+  "ledgers_deleted": false
+}
