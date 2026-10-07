@@ -1,0 +1,106 @@
+name: Research Strategy Reconstruction V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/strategy_reconstruction_v1/PREREGISTRATION.md'
+      - 'research_pure_box_strategy_reconstruction_year_v1.py'
+      - 'research_pure_box_strategy_reconstruction_combine_v1.py'
+      - '.github/workflows/research_strategy_reconstruction_v1.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  year:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2019,2020,2021,2022,2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - name: Download adjacent-year Pure Box artifacts
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - name: Extract reconstruction observations
+        run: |
+          python research_pure_box_strategy_reconstruction_year_v1.py             --year ${{ matrix.year }}             --indir /tmp/source             --outdir /tmp/reconstruction
+      - uses: actions/upload-artifact@v4
+        with:
+          name: strategy-reconstruction-${{ matrix.year }}
+          path: /tmp/reconstruction/*
+          retention-days: 7
+
+  combine:
+    needs: year
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: strategy-reconstruction-*
+          path: /tmp/shards
+      - name: Combine path and exhaustion maps
+        run: |
+          python research_pure_box_strategy_reconstruction_combine_v1.py             --indir /tmp/shards             --outdir /tmp/reconstruction
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/reconstruction/summary.json'))
+          assert d['schema']=='STRATEGY-RECONSTRUCTION-V1'
+          p=pd.read_csv('/tmp/reconstruction/reversion_path_targets.csv')
+          e=pd.read_csv('/tmp/reconstruction/exhaustion_quintiles.csv')
+          c=pd.read_csv('/tmp/reconstruction/exhaustion_correlations.csv')
+          assert len(p)>150
+          assert len(e)>100
+          assert len(c)>=48
+          for cap in ('top300','top500'):
+              for scale in ('small','large'):
+                  assert d['validation_highlights'][cap][scale]['path20']
+          print('validated',len(p),len(e),len(c))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/strategy_reconstruction_v1
+          cp /tmp/reconstruction/summary.json research/pure_box_liquid_leaders_v1/strategy_reconstruction_v1/
+          cp /tmp/reconstruction/reversion_path_targets.csv research/pure_box_liquid_leaders_v1/strategy_reconstruction_v1/
+          cp /tmp/reconstruction/reversion_path_progress.csv research/pure_box_liquid_leaders_v1/strategy_reconstruction_v1/
+          cp /tmp/reconstruction/exhaustion_quintiles.csv research/pure_box_liquid_leaders_v1/strategy_reconstruction_v1/
+          cp /tmp/reconstruction/exhaustion_correlations.csv research/pure_box_liquid_leaders_v1/strategy_reconstruction_v1/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/strategy_reconstruction_v1
+          if git diff --cached --quiet; then
+            echo no-change
+          else
+            git commit -m 'research: run Strategy Reconstruction V1'
+            git fetch origin research/pure-box-long-liquid-leaders-v1
+            git rebase origin/research/pure-box-long-liquid-leaders-v1
+            git push
+          fi
