@@ -1,0 +1,182 @@
+name: Research Large Stock Market Divergence V4
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4/PREREGISTRATION.md'
+      - 'research_pure_box_large_stock_market_divergence_year_v4.py'
+      - 'research_pure_box_large_stock_market_divergence_combine_v4.py'
+      - 'research_pure_box_large_stock_market_divergence_portfolio_v4.py'
+      - 'research_pure_box_large_stock_market_divergence_finalize_v4.py'
+      - '.github/workflows/research_large_stock_market_divergence_v4.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  year:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2019,2020,2021,2022,2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - name: Download adjacent-year Pure Box artifacts
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - name: Build stock-market interaction observations
+        run: |
+          python research_pure_box_large_stock_market_divergence_year_v4.py             --year ${{ matrix.year }}             --indir /tmp/source             --outdir /tmp/result
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stock-market-divergence-observations-${{ matrix.year }}
+          path: /tmp/result/*
+          retention-days: 7
+
+  mechanism:
+    needs: year
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: stock-market-divergence-observations-*
+          path: /tmp/shards
+      - name: Freeze discovery stock medians and build four cells
+        run: |
+          python research_pure_box_large_stock_market_divergence_combine_v4.py             --indir /tmp/shards             --outdir /tmp/mechanism
+      - name: Validate mechanism
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/mechanism/mechanism_summary.json'))
+          assert d['schema']=='LARGE-STOCK-MARKET-DIVERGENCE-MECHANISM-V4'
+          e=pd.read_csv('/tmp/mechanism/event_cells.csv')
+          l=pd.read_csv('/tmp/mechanism/labeled_candidates.csv.gz')
+          assert len(e)>=40
+          assert len(l)>1000
+          print('validated',len(e),len(l))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stock-market-divergence-mechanism
+          path: /tmp/mechanism/*
+          retention-days: 7
+
+  portfolio:
+    needs: mechanism
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2019,2020,2021,2022,2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - uses: actions/download-artifact@v4
+        with:
+          name: stock-market-divergence-mechanism
+          path: /tmp/mechanism
+      - name: Download adjacent-year Pure Box artifacts
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - name: Replay four interaction cells
+        run: |
+          python research_pure_box_large_stock_market_divergence_portfolio_v4.py             --year ${{ matrix.year }}             --indir /tmp/source             --labels /tmp/mechanism/labeled_candidates.csv.gz             --outdir /tmp/portfolio
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stock-market-divergence-portfolio-${{ matrix.year }}
+          path: /tmp/portfolio/*
+          retention-days: 7
+
+  finalize:
+    needs: portfolio
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas
+      - uses: actions/download-artifact@v4
+        with:
+          name: stock-market-divergence-mechanism
+          path: /tmp/mechanism
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: stock-market-divergence-portfolio-*
+          path: /tmp/portfolios
+      - name: Finalize
+        run: |
+          python research_pure_box_large_stock_market_divergence_finalize_v4.py             --mechanism_dir /tmp/mechanism             --portfolio_dir /tmp/portfolios             --outdir /tmp/final
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/final/summary.json'))
+          assert d['schema']=='LARGE-STOCK-MARKET-DIVERGENCE-V4'
+          assert set(d['support'])=={'rebound_from_low_box','low_progress_box'}
+          p=pd.read_csv('/tmp/final/portfolio_summary.csv')
+          assert len(p)>=60
+          print(json.dumps({k:(v['passed_checks'],v['total_checks']) for k,v in d['support'].items()},indent=2))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4
+          cp /tmp/mechanism/thresholds.json research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4/
+          cp /tmp/mechanism/mechanism_summary.json research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4/
+          cp /tmp/mechanism/event_cells.csv research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4/
+          cp /tmp/final/summary.json research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4/
+          cp /tmp/final/annual_portfolio_results.csv research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4/
+          cp /tmp/final/portfolio_summary.csv research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/large_stock_market_divergence_v4
+          if git diff --cached --quiet; then
+            echo no-change
+          else
+            git commit -m 'research: run Large Stock Market Divergence V4'
+            git fetch origin research/pure-box-long-liquid-leaders-v1
+            git rebase origin/research/pure-box-long-liquid-leaders-v1
+            git push
+          fi
