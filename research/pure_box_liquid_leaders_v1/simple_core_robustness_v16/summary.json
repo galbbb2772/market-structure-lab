@@ -1,0 +1,71 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-ROBUSTNESS-V16",
+  "results": {
+    "top300": {
+      "n": 393,
+      "mean_trade": 0.03266254895279851,
+      "profit_factor": 2.7969308452381214,
+      "win_rate": 0.27989821882951654,
+      "winsor_mean": 0.010846161899589193,
+      "symbol_balanced_mean": 0.017613242568712877,
+      "symbols": 125,
+      "leave_one_year_out": {
+        "2023": 0.04135438401608071,
+        "2024": 0.04888351293693373,
+        "2025": 0.006999523397093509,
+        "2026": 0.034968038169461806
+      },
+      "min_leave_one_year_out": 0.006999523397093509,
+      "bootstrap_p_mean_gt_0": 0.9862,
+      "bootstrap_q05": 0.003113118205010278,
+      "bootstrap_q50": 0.030587115606992357,
+      "bootstrap_q95": 0.07643557396471189,
+      "top5_symbol_abs_pnl_share": 0.5129512397443409,
+      "portfolio_reference": {
+        "total_return": 1.1422682065091787,
+        "cagr": 0.26518738089185323,
+        "max_drawdown": -0.07830509829926446,
+        "daily_sharpe": 0.8074619822121252,
+        "avg_exposure": 0.20622599793040525,
+        "completed_trades": 241,
+        "open_positions_at_end": 4,
+        "profit_factor": 2.0940904652901944,
+        "mean_trade": 0.01857836388361527,
+        "win_rate": 0.2572614107883817
+      }
+    },
+    "top500": {
+      "n": 607,
+      "mean_trade": 0.025632023813394165,
+      "profit_factor": 2.5169652466826635,
+      "win_rate": 0.2701812191103789,
+      "winsor_mean": 0.011224491321284497,
+      "symbol_balanced_mean": 0.017573267925176706,
+      "symbols": 193,
+      "leave_one_year_out": {
+        "2023": 0.028393270870848177,
+        "2024": 0.03776122739103256,
+        "2025": 0.009973455545594562,
+        "2026": 0.027904870671528456
+      },
+      "min_leave_one_year_out": 0.009973455545594562,
+      "bootstrap_p_mean_gt_0": 0.9984,
+      "bootstrap_q05": 0.005756302761209854,
+      "bootstrap_q50": 0.024153375441692944,
+      "bootstrap_q95": 0.05520479215937947,
+      "top5_symbol_abs_pnl_share": 0.4016534968435533,
+      "portfolio_reference": {
+        "total_return": 1.766177829687213,
+        "cagr": 0.3690749094345067,
+        "max_drawdown": -0.09712138071164433,
+        "daily_sharpe": 1.0207147670049428,
+        "avg_exposure": 0.3116076702689325,
+        "completed_trades": 367,
+        "open_positions_at_end": 6,
+        "profit_factor": 2.0468175250791254,
+        "mean_trade": 0.01627498293750211,
+        "win_rate": 0.2561307901907357
+      }
+    }
+  }
+}
