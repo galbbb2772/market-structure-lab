@@ -113,12 +113,14 @@ def main():
     a=ap.parse_args()
     out=Path(a.outdir);out.mkdir(parents=True,exist_ok=True)
 
-    vit=json.load(open("research/pure_box_liquid_leaders_v1/vitality_v2/summary.json"))
+    wf=json.load(open("research/pure_box_liquid_leaders_v1/wide_fresh_oos_v1/summary.json"))
     th={}
     for cap in (300,500):
-        ann=vit["rank_caps"][f"top{cap}"]["annual_walk_forward"]
-        row=next(x for x in ann if int(x["year"])==a.year)
-        th[cap]=row["thresholds"]
+        src=wf["rank_caps"][f"top{cap}"]["thresholds_from_discovery"]
+        th[cap]={
+          "small":{"am":float(src["small"]["age_median"])},
+          "large":{"am":float(src["large"]["age_median"])},
+        }
 
     sig,cal,idx,nxt,by=load_year(a.indir,a.year)
     rows=[]
