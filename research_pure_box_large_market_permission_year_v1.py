@@ -165,7 +165,7 @@ def event_outcome(c,bm,calendar_idx,target_frac):
             px=cl;reason="max_hold"
         else:
             continue
-        gross=(px*(1-EXIT_COST))/(op*(1+ENTRY_COST))-1
+        gross=(1-ENTRY_COST)*(px/op)*(1-EXIT_COST)-1
         return {"exit_reason":reason,"holding_sessions":k+1,"net_return":gross,
                 "mfe_return":maxp/op-1,"mae_return":minp/op-1}
     return None
