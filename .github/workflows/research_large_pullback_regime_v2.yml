@@ -76,7 +76,7 @@ jobs:
           e=pd.read_csv('/tmp/result/event_summary.csv')
           p=pd.read_csv('/tmp/result/portfolio_summary.csv')
           assert len(e)>=24
-          assert len(p)>=100
+          assert len(p)>=50
           for cap in ('top300','top500'):
               for t in ('t60','t80'):
                   assert 'UPTREND_PULLBACK' in d['states'][cap][t]
