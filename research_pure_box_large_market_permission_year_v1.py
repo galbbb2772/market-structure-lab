@@ -277,6 +277,8 @@ def main():
                           "mean_trade":float(g.net_return.mean()),
                           "median_trade":float(g.net_return.median()),
                           "profit_factor":pf(rs),
+                          "gross_positive_return_sum":float(g.loc[g.net_return>0,"net_return"].sum()),
+                          "gross_negative_return_abs_sum":float(-g.loc[g.net_return<0,"net_return"].sum()),
                           "win_rate":float((g.net_return>0).mean()),
                           "target_share":float(reasons.isin(["target","target_gap"]).mean()),
                           "stop_share":float(reasons.isin(["stop","stop_gap"]).mean()),
