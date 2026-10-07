@@ -48,9 +48,8 @@ All features are known no later than confirmation-date close.
 
 ### Confirmation-transition path features
 5. low_extension_deceleration
-   = (signal low - prior-day low)/box_width
-     - (confirmation low - signal low)/box_width.
-   Higher means downside low-to-low extension slowed or reversed from signal to confirmation.
+   = [(confirmation low - signal low) - (signal low - prior-day low)] / box_width.
+   Higher means the confirmation low lifted relative to the signal low while the prior downside extension stopped / reversed.
 
 6. close_reclaim_acceleration
    = (confirmation close - signal close)/box_width
