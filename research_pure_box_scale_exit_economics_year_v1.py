@@ -150,9 +150,19 @@ def run(cands,calendar,bm,year,target_frac,max_hold):
         # Intraday barriers / max hold.
         for sym in list(pos):
             b=bm.get(sym,{}).get(d)
-            if b is None:continue
-            p=pos[sym];lo=float(b["low"]);hi=float(b["high"]);cl=float(b["close"])
+            p=pos[sym]
             hold=yidx[d]-p["entry_i"]+1
+            if b is None:
+                if hold>=max_hold:
+                    px=float(p["last"]);reason="max_hold_stale"
+                    proceeds=p["shares"]*px*(1-EXIT_COST);cash+=proceeds
+                    tr.append({**p,"exit_date":d,"exit_price":px,"exit_reason":reason,
+                               "holding_sessions":hold,"net_return":proceeds/p["cost_basis"]-1,
+                               "mfe_return":p["max_price"]/p["entry_price"]-1,
+                               "mae_return":p["min_price"]/p["entry_price"]-1})
+                    del pos[sym]
+                continue
+            lo=float(b["low"]);hi=float(b["high"]);cl=float(b["close"])
             px=None;reason=None
             if lo<=p["lower"]:
                 px=float(p["lower"]);reason="stop"
@@ -208,7 +218,7 @@ def run(cands,calendar,bm,year,target_frac,max_hold):
       "median_holding_sessions":statistics.median(holds) if holds else None,
       "target_exit_share":int(reasons.get("target",0)+reasons.get("target_gap",0))/len(tr) if tr else None,
       "stop_exit_share":int(reasons.get("stop",0)+reasons.get("stop_gap",0))/len(tr) if tr else None,
-      "max_hold_exit_share":int(reasons.get("max_hold",0))/len(tr) if tr else None,
+      "max_hold_exit_share":int(reasons.get("max_hold",0)+reasons.get("max_hold_stale",0))/len(tr) if tr else None,
       "mean_mfe_return":statistics.mean([float(t["mfe_return"]) for t in tr]) if tr else None,
       "mean_mae_return":statistics.mean([float(t["mae_return"]) for t in tr]) if tr else None,
       "turnover_alloc_over_mean_equity":entry_alloc_sum/(statistics.mean(vals) if vals else 1.0),
