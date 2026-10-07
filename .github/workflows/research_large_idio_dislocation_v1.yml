@@ -1,0 +1,106 @@
+name: Research Large Idiosyncratic Dislocation V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/large_idio_dislocation_v1/PREREGISTRATION.md'
+      - 'research_pure_box_large_idio_dislocation_year_v1.py'
+      - 'research_pure_box_large_idio_dislocation_combine_v1.py'
+      - '.github/workflows/research_large_idio_dislocation_v1.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  year:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2019,2020,2021,2022,2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - name: Download adjacent-year Pure Box artifacts
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - name: Run idiosyncratic-dislocation shard
+        run: |
+          python research_pure_box_large_idio_dislocation_year_v1.py             --year ${{ matrix.year }}             --indir /tmp/source             --outdir /tmp/result
+      - uses: actions/upload-artifact@v4
+        with:
+          name: large-idio-dislocation-${{ matrix.year }}
+          path: /tmp/result/*
+          retention-days: 7
+
+  combine:
+    needs: year
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: large-idio-dislocation-*
+          path: /tmp/shards
+      - name: Combine
+        run: |
+          python research_pure_box_large_idio_dislocation_combine_v1.py             --indir /tmp/shards             --outdir /tmp/result
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/result/summary.json'))
+          assert d['schema']=='LARGE-IDIO-DISLOCATION-V1'
+          q=pd.read_csv('/tmp/result/quintile_summary.csv')
+          c=pd.read_csv('/tmp/result/correlations.csv')
+          s=pd.read_csv('/tmp/result/mechanism_screen.csv')
+          assert len(q)>=70
+          assert len(c)==16
+          assert len(s)==16
+          for cap in ('top300','top500'):
+              for t in ('t60','t80'):
+                  for f in ('idio_dislocation_5d','idio_dislocation_20d'):
+                      assert f in d['screens'][cap][t]
+          print('validated',len(q),len(c),len(s))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/large_idio_dislocation_v1
+          cp /tmp/result/summary.json research/pure_box_liquid_leaders_v1/large_idio_dislocation_v1/
+          cp /tmp/result/quintile_summary.csv research/pure_box_liquid_leaders_v1/large_idio_dislocation_v1/
+          cp /tmp/result/correlations.csv research/pure_box_liquid_leaders_v1/large_idio_dislocation_v1/
+          cp /tmp/result/mechanism_screen.csv research/pure_box_liquid_leaders_v1/large_idio_dislocation_v1/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/large_idio_dislocation_v1
+          if git diff --cached --quiet; then
+            echo no-change
+          else
+            git commit -m 'research: run Large Idiosyncratic Dislocation V1'
+            git fetch origin research/pure-box-long-liquid-leaders-v1
+            git rebase origin/research/pure-box-long-liquid-leaders-v1
+            git push
+          fi
