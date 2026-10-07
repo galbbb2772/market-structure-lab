@@ -1,0 +1,271 @@
+{
+  "schema": "LARGE-GAP-RETEST-LIFT-CAPITAL-UTILIZATION-V11",
+  "research_only": true,
+  "signal_contract": "Top500 / EXPANDING / RETEST_LIFT unchanged from V7",
+  "window": [
+    "2021-01-04",
+    "2026-03-31"
+  ],
+  "allocation_grid": [
+    0.1,
+    0.2,
+    0.25,
+    0.33,
+    0.5
+  ],
+  "targets": [
+    0.6,
+    0.8
+  ],
+  "results": {
+    "a10__t60": {
+      "allocation_per_event": 0.1,
+      "target_fraction": 0.6,
+      "candidate_n": 119,
+      "total_return": 0.12805767820470093,
+      "cagr": 0.023285126341547224,
+      "max_drawdown": -0.054070769982201394,
+      "daily_sharpe": 0.7128045032235943,
+      "avg_exposure": 0.06259590298702584,
+      "completed_trades": 117,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4532778664580936,
+      "mean_trade": 0.010611282885744939,
+      "win_rate": 0.48717948717948717,
+      "yearly_returns": {
+        "2021": -0.021316717152416453,
+        "2022": 0.005361878725604008,
+        "2023": 0.047678634507723805,
+        "2024": 0.02976157021160364,
+        "2025": 0.0611514363392891,
+        "2026": -0.0018559384884869745
+      }
+    },
+    "a10__t80": {
+      "allocation_per_event": 0.1,
+      "target_fraction": 0.8,
+      "candidate_n": 119,
+      "total_return": 0.1395901441960934,
+      "cagr": 0.025275306453379498,
+      "max_drawdown": -0.06320826402992796,
+      "daily_sharpe": 0.6359317783735611,
+      "avg_exposure": 0.08643902660528349,
+      "completed_trades": 117,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4435412366249991,
+      "mean_trade": 0.01150168311343906,
+      "win_rate": 0.4444444444444444,
+      "yearly_returns": {
+        "2021": -0.011546178527194195,
+        "2022": -0.011362603731097876,
+        "2023": 0.07626466180617286,
+        "2024": 0.03387150737877409,
+        "2025": 0.05557905403579766,
+        "2026": -0.0104131691684195
+      }
+    },
+    "a20__t60": {
+      "allocation_per_event": 0.2,
+      "target_fraction": 0.6,
+      "candidate_n": 119,
+      "total_return": 0.263115731579892,
+      "cagr": 0.04563068578408647,
+      "max_drawdown": -0.10635246275635535,
+      "daily_sharpe": 0.7104221637368869,
+      "avg_exposure": 0.12470441595151008,
+      "completed_trades": 117,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4532778664580923,
+      "mean_trade": 0.010611282885744911,
+      "win_rate": 0.48717948717948717,
+      "yearly_returns": {
+        "2021": -0.04308589321921452,
+        "2022": 0.009601070357914132,
+        "2023": 0.09649580277546099,
+        "2024": 0.05845169969535724,
+        "2025": 0.12350363091026528,
+        "2026": -0.0038860777893249265
+      }
+    },
+    "a20__t80": {
+      "allocation_per_event": 0.2,
+      "target_fraction": 0.8,
+      "candidate_n": 119,
+      "total_return": 0.23600920303176665,
+      "cagr": 0.04130649208546844,
+      "max_drawdown": -0.12328235722891434,
+      "daily_sharpe": 0.5510282343124443,
+      "avg_exposure": 0.1676103446927914,
+      "completed_trades": 116,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.3959704071526675,
+      "mean_trade": 0.010356618952976479,
+      "win_rate": 0.4396551724137931,
+      "yearly_returns": {
+        "2021": -0.023944909948344972,
+        "2022": -0.02379622272191073,
+        "2023": 0.15637288221083012,
+        "2024": 0.06638891741532116,
+        "2025": 0.06738286528749082,
+        "2026": -0.020870742965963363
+      }
+    },
+    "a25__t60": {
+      "allocation_per_event": 0.25,
+      "target_fraction": 0.6,
+      "candidate_n": 119,
+      "total_return": 0.30345888713671076,
+      "cagr": 0.05192949253623502,
+      "max_drawdown": -0.12857098603459205,
+      "daily_sharpe": 0.6618184854391018,
+      "avg_exposure": 0.15039434412990701,
+      "completed_trades": 115,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4377622119900186,
+      "mean_trade": 0.010306070358602518,
+      "win_rate": 0.48695652173913045,
+      "yearly_returns": {
+        "2021": -0.04686709790753363,
+        "2022": 0.01129839268502364,
+        "2023": 0.1213243558960555,
+        "2024": 0.07237772649703622,
+        "2025": 0.13269287322615564,
+        "2026": -0.015304066272516792
+      }
+    },
+    "a25__t80": {
+      "allocation_per_event": 0.25,
+      "target_fraction": 0.8,
+      "candidate_n": 119,
+      "total_return": 0.29445820570075454,
+      "cagr": 0.050538020475944245,
+      "max_drawdown": -0.15217400827439442,
+      "daily_sharpe": 0.555648871543649,
+      "avg_exposure": 0.2024896416191062,
+      "completed_trades": 115,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4106539556742181,
+      "mean_trade": 0.010721292579336784,
+      "win_rate": 0.4434782608695652,
+      "yearly_returns": {
+        "2021": -0.023114746132517405,
+        "2022": -0.03039454086072957,
+        "2023": 0.19671433728709098,
+        "2024": 0.08127939133474849,
+        "2025": 0.07174587538607402,
+        "2026": -0.022541519992904213
+      }
+    },
+    "a33__t60": {
+      "allocation_per_event": 0.33,
+      "target_fraction": 0.6,
+      "candidate_n": 119,
+      "total_return": 0.34263885936298033,
+      "cagr": 0.05789749626609142,
+      "max_drawdown": -0.171968248627982,
+      "daily_sharpe": 0.5892041745062503,
+      "avg_exposure": 0.19169563691340824,
+      "completed_trades": 115,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4377622119900195,
+      "mean_trade": 0.010306070358602532,
+      "win_rate": 0.48695652173913045,
+      "yearly_returns": {
+        "2021": -0.07239146694422527,
+        "2022": 0.01297905058070703,
+        "2023": 0.16118229891070168,
+        "2024": 0.09382492519106855,
+        "2025": 0.15159815620487094,
+        "2026": -0.033646867306808326
+      }
+    },
+    "a33__t80": {
+      "allocation_per_event": 0.33,
+      "target_fraction": 0.8,
+      "candidate_n": 119,
+      "total_return": 0.32021940024418116,
+      "cagr": 0.054500023095952255,
+      "max_drawdown": -0.1963658221135799,
+      "daily_sharpe": 0.48820513228980084,
+      "avg_exposure": 0.2498606142798975,
+      "completed_trades": 113,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4156139977945905,
+      "mean_trade": 0.010871768929718605,
+      "win_rate": 0.4424778761061947,
+      "yearly_returns": {
+        "2021": -0.045825414071669845,
+        "2022": -0.0420641029289206,
+        "2023": 0.24130442060203627,
+        "2024": 0.08843625895214924,
+        "2025": 0.08492073370702613,
+        "2026": -0.02509104642521609
+      }
+    },
+    "a50__t60": {
+      "allocation_per_event": 0.5,
+      "target_fraction": 0.6,
+      "candidate_n": 119,
+      "total_return": 0.28566279832999353,
+      "cagr": 0.04917070107265098,
+      "max_drawdown": -0.2641931898668304,
+      "daily_sharpe": 0.4035364725914862,
+      "avg_exposure": 0.2531594812079578,
+      "completed_trades": 110,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4252806728969754,
+      "mean_trade": 0.01001097473397859,
+      "win_rate": 0.4818181818181818,
+      "yearly_returns": {
+        "2021": -0.12483224853926966,
+        "2022": 0.04375678853954934,
+        "2023": 0.1541325735118717,
+        "2024": 0.023327726199777077,
+        "2025": 0.20180559534661646,
+        "2026": -0.024532074499825418
+      }
+    },
+    "a50__t80": {
+      "allocation_per_event": 0.5,
+      "target_fraction": 0.8,
+      "candidate_n": 119,
+      "total_return": 0.31481478734233503,
+      "cagr": 0.053674025453212426,
+      "max_drawdown": -0.23149058002708756,
+      "daily_sharpe": 0.3943067280559915,
+      "avg_exposure": 0.32237990244838577,
+      "completed_trades": 107,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.3939877639571048,
+      "mean_trade": 0.010449349891679243,
+      "win_rate": 0.42990654205607476,
+      "yearly_returns": {
+        "2021": -0.09317922994165084,
+        "2022": -0.026911153713102265,
+        "2023": 0.24407857408741762,
+        "2024": 0.032463851875106586,
+        "2025": 0.15284174564339614,
+        "2026": -0.009755191815311592
+      }
+    }
+  },
+  "diagnostics": {
+    "t60": {
+      "return_non_decreasing": false,
+      "exposure_non_decreasing": true,
+      "best_return_allocation": 0.33,
+      "best_return": 0.34263885936298033,
+      "best_sharpe_allocation": 0.1,
+      "best_sharpe": 0.7128045032235943
+    },
+    "t80": {
+      "return_non_decreasing": false,
+      "exposure_non_decreasing": true,
+      "best_return_allocation": 0.33,
+      "best_return": 0.32021940024418116,
+      "best_sharpe_allocation": 0.1,
+      "best_sharpe": 0.6359317783735611
+    }
+  },
+  "automatic_production_change": false
+}
