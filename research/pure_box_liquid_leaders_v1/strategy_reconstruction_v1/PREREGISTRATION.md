@@ -21,7 +21,11 @@ Development / validation:
 - validation: 2023-2026Q1
 
 ## Observation set
-Use Fresh candidates under the already-frozen annual walk-forward age thresholds from Vitality V2.
+Use the already-frozen discovery-median Fresh thresholds from Wide+Fresh OOS V1, fixed for the entire study:
+- Top300: small age <= 12, large age <= 23
+- Top500: small age <= 12, large age <= 24
+
+These thresholds were defined from the 2019-2022 discovery sample before this reconstruction study and are applied unchanged to validation.
 
 Two observation stages are retained:
 1. raw_bottom_signal
