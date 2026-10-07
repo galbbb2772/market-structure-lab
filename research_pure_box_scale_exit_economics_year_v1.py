@@ -188,7 +188,7 @@ def run(cands,calendar,bm,year,target_frac,max_hold):
     holds=[int(t["holding_sessions"]) for t in tr]
     capdays=sum((float(t["cost_basis"])/float(t["entry_equity"]))*int(t["holding_sessions"]) for t in tr)
     reasons=pd.Series([t["exit_reason"] for t in tr],dtype=str).value_counts()
-    total_ret=vals[-1]/vals[0]-1 if len(vals)>1 else vals[-1]-1
+    total_ret=vals[-1]-1 if vals else 0.0
     avgexp=statistics.mean(exposures) if exposures else 0.0
     return {
       "total_return":total_ret,
