@@ -1,0 +1,61 @@
+name: Finalize Large Temporal Stability V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/pure-box-long-liquid-leaders-v1]
+    paths:
+      - '.github/workflows/finalize_large_temporal_stability_v1.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  finalize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37567905696
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas numpy
+      - name: Download successful yearly artifacts
+        run: |
+          mkdir -p /tmp/shards
+          for y in 2019 2020 2021 2022 2023 2024 2025 2026; do
+            mkdir -p "/tmp/shards/$y"
+            gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "temporal-stability-$y" -D "/tmp/shards/$y"
+          done
+      - run: python research_pure_box_large_temporal_stability_combine_v1.py --indir /tmp/shards --outdir /tmp/final
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/final/summary.json'))
+          a=pd.read_csv('/tmp/final/annual_stability.csv')
+          q=pd.read_csv('/tmp/final/quarterly_stability.csv')
+          g=pd.read_csv('/tmp/final/geometry_control.csv')
+          assert d['schema']=='LARGE-TEMPORAL-STABILITY-V1'
+          assert len(a)==32 and len(q)==115 and len(g)==88
+          print(len(a),len(q),len(g))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/large_temporal_stability_v1
+          cp /tmp/final/summary.json research/pure_box_liquid_leaders_v1/large_temporal_stability_v1/
+          cp /tmp/final/annual_stability.csv research/pure_box_liquid_leaders_v1/large_temporal_stability_v1/
+          cp /tmp/final/quarterly_stability.csv research/pure_box_liquid_leaders_v1/large_temporal_stability_v1/
+          cp /tmp/final/rolling_4q_stability.csv research/pure_box_liquid_leaders_v1/large_temporal_stability_v1/
+          cp /tmp/final/geometry_control.csv research/pure_box_liquid_leaders_v1/large_temporal_stability_v1/
+          cp /tmp/final/geometry_thresholds.json research/pure_box_liquid_leaders_v1/large_temporal_stability_v1/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/large_temporal_stability_v1
+          git commit -m 'research: persist Large Temporal Stability V1' || exit 0
+          git fetch origin research/pure-box-long-liquid-leaders-v1
+          git rebase origin/research/pure-box-long-liquid-leaders-v1
+          git push
