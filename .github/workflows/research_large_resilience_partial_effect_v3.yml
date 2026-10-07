@@ -1,0 +1,73 @@
+name: Research Large Resilience Partial Effect V3
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/large_resilience_partial_effect_v3/PREREGISTRATION.md'
+      - 'research_pure_box_large_resilience_partial_effect_v3.py'
+      - '.github/workflows/research_large_resilience_partial_effect_v3.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37556929769
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - name: Download frozen V2 event ledgers
+        run: |
+          mkdir -p /tmp/source
+          for y in 2019 2020 2021 2022 2023 2024 2025 2026; do
+            mkdir -p "/tmp/source/$y"
+            gh run download "$SOURCE_RUN" -R "${{ github.repository }}"               -n "large-resilience-exhaustion-$y" -D "/tmp/source/$y"
+          done
+      - name: Run partial-effect analysis
+        run: |
+          python research_pure_box_large_resilience_partial_effect_v3.py             --indir /tmp/source             --outdir /tmp/result
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/result/summary.json'))
+          assert d['schema']=='LARGE-RESILIENCE-PARTIAL-EFFECT-V3'
+          c=pd.read_csv('/tmp/result/coefficient_summary.csv')
+          a=pd.read_csv('/tmp/result/sign_audit.csv')
+          assert len(c)==64
+          assert len(a)==32
+          for cap in (300,500):
+              for target in (0.6,0.8):
+                  z=a[(a.rank_cap==cap)&(a.target_fraction==target)]
+                  assert len(z)==8
+          print('validated',len(c),len(a))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/large_resilience_partial_effect_v3
+          cp /tmp/result/summary.json research/pure_box_liquid_leaders_v1/large_resilience_partial_effect_v3/
+          cp /tmp/result/scales.json research/pure_box_liquid_leaders_v1/large_resilience_partial_effect_v3/
+          cp /tmp/result/coefficient_summary.csv research/pure_box_liquid_leaders_v1/large_resilience_partial_effect_v3/
+          cp /tmp/result/sign_audit.csv research/pure_box_liquid_leaders_v1/large_resilience_partial_effect_v3/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/large_resilience_partial_effect_v3
+          if git diff --cached --quiet; then
+            echo no-change
+          else
+            git commit -m 'research: run Large Resilience Partial-Effect V3'
+            git fetch origin research/pure-box-long-liquid-leaders-v1
+            git rebase origin/research/pure-box-long-liquid-leaders-v1
+            git push
+          fi
