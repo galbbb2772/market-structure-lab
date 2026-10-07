@@ -1,0 +1,68 @@
+name: Finalize Large Selloff Anatomy V2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/pure-box-long-liquid-leaders-v1]
+    paths:
+      - '.github/workflows/finalize_large_selloff_anatomy_v2.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  finalize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37573754734
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas
+      - name: Download successful V2 artifacts
+        run: |
+          mkdir -p /tmp/mechanism /tmp/portfolios
+          gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n selloff-anatomy-mechanism -D /tmp/mechanism
+          for y in 2019 2020 2021 2022 2023 2024 2025 2026; do
+            mkdir -p "/tmp/portfolios/$y"
+            gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "selloff-anatomy-portfolio-$y" -D "/tmp/portfolios/$y"
+          done
+      - run: python research_pure_box_large_selloff_anatomy_finalize_v2.py --mechanism-dir /tmp/mechanism --portfolio-dir /tmp/portfolios --outdir /tmp/final
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/final/summary.json'))
+          c=pd.read_csv('/tmp/final/support_checks.csv')
+          p=pd.read_csv('/tmp/final/portfolio_summary.csv')
+          assert d['schema']=='LARGE-SELLOFF-ANATOMY-V2'
+          assert len(d['support'])==4
+          assert len(c)==24
+          assert len(p)==104
+          assert d['support']['gap_component']['all_checks_passed'] is True
+          assert d['support']['gap_share_of_negative_move']['total_checks']==0
+          print(json.dumps(d['support'],indent=2))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2
+          cp /tmp/mechanism/thresholds.json research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/mechanism/mechanism_summary.json research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/mechanism/event_quintiles.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/mechanism/continuous_summary.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/final/summary.json research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/final/support_checks.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/final/annual_portfolio_results.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/final/portfolio_summary.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          printf '%s\n' 'gap_share_of_negative_move was not support-gradable under the preregistered quintile design because the discovery 20th percentile equals zero, leaving Q1 empty after deterministic right-sided binning. No post-hoc rebucketing was performed.' > research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/GAP_SHARE_GRADING_NOTE.txt
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2
+          git commit -m 'research: persist Large Selloff Anatomy V2' || exit 0
+          git fetch origin research/pure-box-long-liquid-leaders-v1
+          git rebase origin/research/pure-box-long-liquid-leaders-v1
+          git push
