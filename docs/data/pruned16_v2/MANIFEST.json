@@ -89,5 +89,9 @@
       "score_recovery_standalone",
       "simple_cross_market_confirmation_count"
     ]
-  }
+  },
+  "current_task14_strategy_registry": "docs/data/pruned16_v2/task14_current_strategies_v2.json",
+  "current_task14_strategy_count": 4,
+  "archived_task14_registry": "docs/data/archive/pruned16_task14_deprioritized_2026-10-07.json",
+  "archived_task14_items_count": 7
 }
