@@ -1,0 +1,10 @@
+{
+  "top300": {
+    "rebound_from_low_box": 0.1381474563875457,
+    "low_progress_box": 0.05515132225343535
+  },
+  "top500": {
+    "rebound_from_low_box": 0.14135294166558077,
+    "low_progress_box": 0.0548065254090868
+  }
+}
