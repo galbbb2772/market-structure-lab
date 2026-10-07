@@ -104,6 +104,13 @@ def main():
           "feature_nonnull":{f:int(z[f].notna().sum()) for f in FEATURES}
         }
 
+        candidate_keep=["symbol","signal_date","confirmation_date","entry_date","entry_price",
+                        "lower","upper","liquidity_rank","box_age_sessions"]+FEATURES
+        zz=z[candidate_keep].copy()
+        zz["year"]=a.year
+        zz["rank_cap"]=cap
+        zz.to_csv(out/f"candidates_{cap}_{a.year}.csv.gz",index=False,compression="gzip")
+
         # Persist row-level observations once per cap; outcome columns added per target below.
         for label,frac in TARGETS.items():
             e=make_events(z,bm,cal,frac)
