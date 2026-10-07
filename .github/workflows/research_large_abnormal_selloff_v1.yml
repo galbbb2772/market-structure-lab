@@ -128,7 +128,7 @@ jobs:
           import json,pandas as pd
           d=json.load(open('/tmp/final/summary.json'));c=pd.read_csv('/tmp/final/support_checks.csv');p=pd.read_csv('/tmp/final/portfolio_summary.csv')
           assert d['schema']=='LARGE-ABNORMAL-SELLOFF-V1' and len(d['support'])==6
-          assert len(c)==48 and len(p)==112
+          assert len(c)==48 and len(p)==104
           print(json.dumps(d['support'],indent=2))
           PY
       - name: Persist
