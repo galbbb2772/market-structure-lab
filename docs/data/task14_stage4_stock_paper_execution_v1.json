@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-PAPER-STOCK-EXECUTION-V1",
-  "generated_at": "2026-10-07T15:44:35.317477+00:00",
+  "generated_at": "2026-10-07T19:05:24.302424+00:00",
   "research_only": true,
   "paper_only": true,
   "diagnostic_only": true,
@@ -10,7 +10,7 @@
   "study_spec": "research/task14_stage4_stock_paper_execution_v1/STUDY_SPEC.md",
   "upstream_adapter_status": "READY",
   "upstream_feed_fetch_status": "REMOTE_MIRROR_REFRESHED",
-  "upstream_feed_latest_as_of_market_date": "2026-10-06",
+  "upstream_feed_latest_as_of_market_date": "2026-10-05",
   "upstream_trade_pool_eligible_count": 0,
   "reconstructed_trade_pool_count": 0,
   "latest_complete_market_date": "2026-10-01",
