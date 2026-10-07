@@ -45,3 +45,5 @@ Negative control:
 - Repeat raw/winsor/symbol-balanced summaries for Top300. No requirement that Top300 pass.
 
 No thresholds will be changed after observing V8 results.
+
+Trigger note: workflow file is now present; this line only triggers the preregistered run and changes no test definition.
