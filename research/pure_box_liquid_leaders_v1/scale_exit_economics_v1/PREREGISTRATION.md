@@ -50,6 +50,12 @@ Stop is always the frozen box lower edge.
 
 If the entry open is already at or above a target, that observation is ineligible for that target lane.
 
+Comparability panels:
+- PRIMARY = common_eligible: entry is below the 50% box position, so the exact same entry set is eligible for all four target layers.
+- SECONDARY = target_specific: each target uses all observations that are below that target at entry.
+
+The common_eligible panel controls for sample-selection differences between exit layers.
+
 Daily-bar ambiguity:
 - opening gap stop/target uses actual open;
 - same-day intraday stop + target ambiguity = stop first.
