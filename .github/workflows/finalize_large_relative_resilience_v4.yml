@@ -1,0 +1,72 @@
+name: Finalize Large Relative Resilience V4
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - '.github/workflows/finalize_large_relative_resilience_v4.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  finalize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37558533895
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas
+      - name: Download successful V4 artifacts
+        run: |
+          mkdir -p /tmp/mechanism /tmp/portfolios
+          gh run download "$SOURCE_RUN" -R "${{ github.repository }}"             -n relative-resilience-mechanism -D /tmp/mechanism
+          for y in 2019 2020 2021 2022 2023 2024 2025 2026; do
+            mkdir -p "/tmp/portfolios/$y"
+            gh run download "$SOURCE_RUN" -R "${{ github.repository }}"               -n "relative-resilience-portfolio-$y" -D "/tmp/portfolios/$y"
+          done
+      - name: Finalize
+        run: |
+          python research_pure_box_large_relative_resilience_finalize_v4.py             --mechanism-dir /tmp/mechanism             --portfolio-dir /tmp/portfolios             --outdir /tmp/final
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/final/summary.json'))
+          assert d['schema']=='LARGE-RELATIVE-RESILIENCE-V4'
+          assert set(d['support'])=={'A','B'}
+          c=pd.read_csv('/tmp/final/support_checks.csv')
+          p=pd.read_csv('/tmp/final/portfolio_summary.csv')
+          assert len(c)==16
+          assert len(p)==72
+          print(json.dumps(d['support'],indent=2))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/large_relative_resilience_v4
+          cp /tmp/mechanism/thresholds.json research/pure_box_liquid_leaders_v1/large_relative_resilience_v4/
+          cp /tmp/mechanism/mechanism_summary.json research/pure_box_liquid_leaders_v1/large_relative_resilience_v4/
+          cp /tmp/mechanism/event_corner_summary.csv research/pure_box_liquid_leaders_v1/large_relative_resilience_v4/
+          cp /tmp/final/summary.json research/pure_box_liquid_leaders_v1/large_relative_resilience_v4/
+          cp /tmp/final/support_checks.csv research/pure_box_liquid_leaders_v1/large_relative_resilience_v4/
+          cp /tmp/final/annual_portfolio_results.csv research/pure_box_liquid_leaders_v1/large_relative_resilience_v4/
+          cp /tmp/final/portfolio_summary.csv research/pure_box_liquid_leaders_v1/large_relative_resilience_v4/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/large_relative_resilience_v4
+          if git diff --cached --quiet; then
+            echo no-change
+          else
+            git commit -m 'research: persist Large Relative Resilience V4'
+            git fetch origin research/pure-box-long-liquid-leaders-v1
+            git rebase origin/research/pure-box-long-liquid-leaders-v1
+            git push
+          fi
