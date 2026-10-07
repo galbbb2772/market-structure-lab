@@ -1,0 +1,226 @@
+{
+  "schema": "LARGE-GAP-RETEST-LIFT-CAPITAL-FILLER-V12",
+  "research_only": true,
+  "window": [
+    "2021-01-04",
+    "2026-03-31"
+  ],
+  "allocation_per_event": 0.2,
+  "results": {
+    "RL_ONLY__t60": {
+      "window": [
+        "2021-01-04",
+        "2026-03-31"
+      ],
+      "start_equity": 1.0,
+      "end_equity": 1.263115731579892,
+      "total_return": 0.263115731579892,
+      "max_drawdown": -0.10635246275635535,
+      "daily_sharpe": 0.7104221637368869,
+      "avg_exposure": 0.12470441595151008,
+      "completed_trades": 117,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.4532778664580923,
+      "mean_trade": 0.010611282885744911,
+      "win_rate": 0.48717948717948717,
+      "lane": "RL_ONLY",
+      "target_fraction": 0.6,
+      "candidate_n": 119
+    },
+    "RETEST_POOL__t60": {
+      "window": [
+        "2021-01-04",
+        "2026-03-31"
+      ],
+      "start_equity": 1.0,
+      "end_equity": 1.2726811717157909,
+      "total_return": 0.27268117171579087,
+      "max_drawdown": -0.15941192396895143,
+      "daily_sharpe": 0.492095021679217,
+      "avg_exposure": 0.28827697656774176,
+      "completed_trades": 266,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.2187297987611976,
+      "mean_trade": 0.005191769077397807,
+      "win_rate": 0.38345864661654133,
+      "lane": "RETEST_POOL",
+      "target_fraction": 0.6,
+      "candidate_n": 291
+    },
+    "LIFT_POOL_CONTROL__t60": {
+      "window": [
+        "2021-01-04",
+        "2026-03-31"
+      ],
+      "start_equity": 1.0,
+      "end_equity": 0.9778580385176142,
+      "total_return": -0.022141961482385786,
+      "max_drawdown": -0.22955688151243536,
+      "daily_sharpe": 0.006937548698150256,
+      "avg_exposure": 0.24519301031074112,
+      "completed_trades": 244,
+      "open_positions_at_end": 0,
+      "profit_factor": 0.9763762358575601,
+      "mean_trade": -0.0006403529001599336,
+      "win_rate": 0.4385245901639344,
+      "lane": "LIFT_POOL_CONTROL",
+      "target_fraction": 0.6,
+      "candidate_n": 258
+    },
+    "EXTREME_ALL_CONTROL__t60": {
+      "window": [
+        "2021-01-04",
+        "2026-03-31"
+      ],
+      "start_equity": 1.0,
+      "end_equity": 0.8870779576372025,
+      "total_return": -0.11292204236279746,
+      "max_drawdown": -0.29147086598946803,
+      "daily_sharpe": -0.10306365669999773,
+      "avg_exposure": 0.44104293814442125,
+      "completed_trades": 456,
+      "open_positions_at_end": 0,
+      "profit_factor": 0.918226272614112,
+      "mean_trade": -0.0022164045687453086,
+      "win_rate": 0.37280701754385964,
+      "lane": "EXTREME_ALL_CONTROL",
+      "target_fraction": 0.6,
+      "candidate_n": 531
+    },
+    "RL_PRIORITY_RWL_FILLER__t60": {
+      "start_equity": 1.0,
+      "end_equity": 1.2801595331185252,
+      "total_return": 0.28015953311852515,
+      "max_drawdown": -0.15935652118772659,
+      "daily_sharpe": 0.4991914842101439,
+      "avg_exposure": 0.2888552386014258,
+      "completed_trades": 266,
+      "profit_factor": 1.2126904771761984,
+      "mean_trade": 0.005048419779629317,
+      "win_rate": 0.38345864661654133,
+      "rl_entries": 112,
+      "rwl_entries": 154,
+      "rl_realized_trades": 112,
+      "rwl_realized_trades": 154,
+      "lane": "RL_PRIORITY_RWL_FILLER",
+      "target_fraction": 0.6,
+      "candidate_n": 291
+    },
+    "RL_ONLY__t80": {
+      "window": [
+        "2021-01-04",
+        "2026-03-31"
+      ],
+      "start_equity": 1.0,
+      "end_equity": 1.2360092030317666,
+      "total_return": 0.23600920303176665,
+      "max_drawdown": -0.12328235722891434,
+      "daily_sharpe": 0.5510282343124443,
+      "avg_exposure": 0.1676103446927914,
+      "completed_trades": 116,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.3959704071526675,
+      "mean_trade": 0.010356618952976479,
+      "win_rate": 0.4396551724137931,
+      "lane": "RL_ONLY",
+      "target_fraction": 0.8,
+      "candidate_n": 119
+    },
+    "RETEST_POOL__t80": {
+      "window": [
+        "2021-01-04",
+        "2026-03-31"
+      ],
+      "start_equity": 1.0,
+      "end_equity": 1.2120244658017998,
+      "total_return": 0.2120244658017998,
+      "max_drawdown": -0.18158211601584873,
+      "daily_sharpe": 0.37071963157798254,
+      "avg_exposure": 0.3484831539880344,
+      "completed_trades": 261,
+      "open_positions_at_end": 0,
+      "profit_factor": 1.1720646463167785,
+      "mean_trade": 0.0043089367243345856,
+      "win_rate": 0.3563218390804598,
+      "lane": "RETEST_POOL",
+      "target_fraction": 0.8,
+      "candidate_n": 291
+    },
+    "LIFT_POOL_CONTROL__t80": {
+      "window": [
+        "2021-01-04",
+        "2026-03-31"
+      ],
+      "start_equity": 1.0,
+      "end_equity": 0.9046167005571205,
+      "total_return": -0.09538329944287949,
+      "max_drawdown": -0.2556131521692149,
+      "daily_sharpe": -0.1096452159245791,
+      "avg_exposure": 0.32493646592773673,
+      "completed_trades": 239,
+      "open_positions_at_end": 0,
+      "profit_factor": 0.9166646374075728,
+      "mean_trade": -0.002591154020178963,
+      "win_rate": 0.36401673640167365,
+      "lane": "LIFT_POOL_CONTROL",
+      "target_fraction": 0.8,
+      "candidate_n": 258
+    },
+    "EXTREME_ALL_CONTROL__t80": {
+      "window": [
+        "2021-01-04",
+        "2026-03-31"
+      ],
+      "start_equity": 1.0,
+      "end_equity": 0.9491227377231044,
+      "total_return": -0.050877262276895596,
+      "max_drawdown": -0.2505623508331606,
+      "daily_sharpe": 0.0022429425507694543,
+      "avg_exposure": 0.5074273661983337,
+      "completed_trades": 439,
+      "open_positions_at_end": 0,
+      "profit_factor": 0.8583428076418697,
+      "mean_trade": -0.004113073648988653,
+      "win_rate": 0.32574031890660593,
+      "lane": "EXTREME_ALL_CONTROL",
+      "target_fraction": 0.8,
+      "candidate_n": 531
+    },
+    "RL_PRIORITY_RWL_FILLER__t80": {
+      "start_equity": 1.0,
+      "end_equity": 1.1913708825007818,
+      "total_return": 0.19137088250078182,
+      "max_drawdown": -0.18199932389697793,
+      "daily_sharpe": 0.34120980543312335,
+      "avg_exposure": 0.3514838401093909,
+      "completed_trades": 257,
+      "profit_factor": 1.1430845579901108,
+      "mean_trade": 0.003591838444493028,
+      "win_rate": 0.35019455252918286,
+      "rl_entries": 109,
+      "rwl_entries": 148,
+      "rl_realized_trades": 109,
+      "rwl_realized_trades": 148,
+      "lane": "RL_PRIORITY_RWL_FILLER",
+      "target_fraction": 0.8,
+      "candidate_n": 291
+    }
+  },
+  "diagnostics": {
+    "t60": {
+      "return_improved": true,
+      "exposure_improved": true,
+      "mdd_better_than_minus20pct": true,
+      "sharpe_retention": 0.7026687928545896,
+      "rl_realized_not_reduced": false
+    },
+    "t80": {
+      "return_improved": false,
+      "exposure_improved": true,
+      "mdd_better_than_minus20pct": true,
+      "sharpe_retention": 0.6192238150171637,
+      "rl_realized_not_reduced": false
+    }
+  },
+  "automatic_production_change": false
+}
