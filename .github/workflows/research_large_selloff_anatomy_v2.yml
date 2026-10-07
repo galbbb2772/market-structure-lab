@@ -1,0 +1,155 @@
+name: Research Large Selloff Anatomy V2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/pure-box-long-liquid-leaders-v1]
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/PREREGISTRATION.md'
+      - 'research_pure_box_large_selloff_anatomy_year_v2.py'
+      - 'research_pure_box_large_selloff_anatomy_combine_v2.py'
+      - 'research_pure_box_large_selloff_anatomy_portfolio_v2.py'
+      - 'research_pure_box_large_selloff_anatomy_finalize_v2.py'
+      - '.github/workflows/research_large_selloff_anatomy_v2.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  year:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2019,2020,2021,2022,2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas numpy
+      - name: Download source artifacts
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - run: python research_pure_box_large_selloff_anatomy_year_v2.py --year ${{ matrix.year }} --indir /tmp/source --outdir /tmp/result
+      - uses: actions/upload-artifact@v4
+        with:
+          name: selloff-anatomy-observations-${{ matrix.year }}
+          path: /tmp/result/*
+          retention-days: 7
+
+  mechanism:
+    needs: year
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas numpy
+      - uses: actions/download-artifact@v4
+        with: {pattern: selloff-anatomy-observations-*, path: /tmp/shards}
+      - run: python research_pure_box_large_selloff_anatomy_combine_v2.py --indir /tmp/shards --outdir /tmp/mechanism
+      - run: |
+          python - <<'PY'
+          import pandas as pd,json
+          q=pd.read_csv('/tmp/mechanism/event_quintiles.csv')
+          c=pd.read_csv('/tmp/mechanism/continuous_summary.csv')
+          l=pd.read_csv('/tmp/mechanism/labeled_candidates.csv.gz')
+          assert len(q)>=200 and len(c)==48 and len(l)>1000
+          print(len(q),len(c),len(l))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: selloff-anatomy-mechanism
+          path: /tmp/mechanism/*
+          retention-days: 7
+
+  portfolio:
+    needs: mechanism
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2019,2020,2021,2022,2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas numpy
+      - uses: actions/download-artifact@v4
+        with: {name: selloff-anatomy-mechanism, path: /tmp/mechanism}
+      - name: Download source artifacts
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - run: python research_pure_box_large_selloff_anatomy_portfolio_v2.py --year ${{ matrix.year }} --indir /tmp/source --labels /tmp/mechanism/labeled_candidates.csv.gz --outdir /tmp/portfolio
+      - uses: actions/upload-artifact@v4
+        with:
+          name: selloff-anatomy-portfolio-${{ matrix.year }}
+          path: /tmp/portfolio/*
+          retention-days: 7
+
+  finalize:
+    needs: portfolio
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas
+      - uses: actions/download-artifact@v4
+        with: {name: selloff-anatomy-mechanism, path: /tmp/mechanism}
+      - uses: actions/download-artifact@v4
+        with: {pattern: selloff-anatomy-portfolio-*, path: /tmp/portfolios}
+      - run: python research_pure_box_large_selloff_anatomy_finalize_v2.py --mechanism-dir /tmp/mechanism --portfolio-dir /tmp/portfolios --outdir /tmp/final
+      - run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/final/summary.json'))
+          c=pd.read_csv('/tmp/final/support_checks.csv')
+          p=pd.read_csv('/tmp/final/portfolio_summary.csv')
+          assert d['schema']=='LARGE-SELLOFF-ANATOMY-V2'
+          assert len(d['support'])==4 and len(c)==32 and len(p)==104
+          print(json.dumps(d['support'],indent=2))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2
+          cp /tmp/mechanism/thresholds.json research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/mechanism/mechanism_summary.json research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/mechanism/event_quintiles.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/mechanism/continuous_summary.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/final/summary.json research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/final/support_checks.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/final/annual_portfolio_results.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          cp /tmp/final/portfolio_summary.csv research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/large_selloff_anatomy_v2
+          git commit -m 'research: run Large Selloff Anatomy V2' || exit 0
+          git fetch origin research/pure-box-long-liquid-leaders-v1
+          git rebase origin/research/pure-box-long-liquid-leaders-v1
+          git push
