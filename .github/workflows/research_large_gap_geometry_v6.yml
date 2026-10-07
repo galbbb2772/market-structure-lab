@@ -1,0 +1,124 @@
+name: Research Large Gap Geometry Control V6
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/pure-box-long-liquid-leaders-v1]
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/PREREGISTRATION.md'
+      - 'research_pure_box_large_gap_geometry_prepare_v6.py'
+      - 'research_pure_box_large_gap_geometry_year_v6.py'
+      - 'research_pure_box_large_gap_geometry_combine_v6.py'
+      - '.github/workflows/research_large_gap_geometry_v6.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ANATOMY_RUN: 37573754734
+      RESILIENCE_RUN: 37558533895
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas numpy
+      - name: Download frozen labels
+        run: |
+          mkdir -p /tmp/anatomy /tmp/resilience
+          gh run download "$ANATOMY_RUN" -R "${{ github.repository }}" -n selloff-anatomy-mechanism -D /tmp/anatomy
+          gh run download "$RESILIENCE_RUN" -R "${{ github.repository }}" -n relative-resilience-mechanism -D /tmp/resilience
+      - run: |
+          python research_pure_box_large_gap_geometry_prepare_v6.py             --anatomy-labels /tmp/anatomy/labeled_candidates.csv.gz             --resilience-labels /tmp/resilience/labeled_candidates.csv.gz             --outdir /tmp/prep
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gap-geometry-prepared
+          path: /tmp/prep/*
+          retention-days: 7
+
+  year:
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2021,2022,2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas numpy
+      - uses: actions/download-artifact@v4
+        with: {name: gap-geometry-prepared, path: /tmp/prep}
+      - name: Download adjacent-year source
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - run: |
+          python research_pure_box_large_gap_geometry_year_v6.py             --year ${{ matrix.year }}             --indir /tmp/source             --labels /tmp/prep/geometry_labeled_candidates.csv.gz             --outdir /tmp/result
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gap-geometry-${{ matrix.year }}
+          path: /tmp/result/*
+          retention-days: 7
+
+  combine:
+    needs: year
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas numpy
+      - uses: actions/download-artifact@v4
+        with: {pattern: gap-geometry-20*, path: /tmp/shards}
+      - uses: actions/download-artifact@v4
+        with: {name: gap-geometry-prepared, path: /tmp/prep}
+      - run: python research_pure_box_large_gap_geometry_combine_v6.py --indir /tmp/shards --outdir /tmp/final
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/final/summary.json'))
+          c=pd.read_csv('/tmp/final/support_checks.csv')
+          s=pd.read_csv('/tmp/final/stratified_yearly.csv')
+          r=pd.read_csv('/tmp/final/residual_control.csv')
+          assert d['schema']=='LARGE-GAP-GEOMETRY-CONTROL-V6'
+          assert len(c)==16 and len(r)==16
+          assert len(s)>=80
+          print(json.dumps({k:d[k] for k in ('survived_checks','total_checks','by_feature')},indent=2))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6
+          cp /tmp/prep/thresholds_by_year.csv research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/
+          cp /tmp/final/summary.json research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/
+          cp /tmp/final/support_checks.csv research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/
+          cp /tmp/final/geometry_group_summary.csv research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/
+          cp /tmp/final/stratified_yearly.csv research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/
+          cp /tmp/final/stratified_summary.csv research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/
+          cp /tmp/final/residual_control.csv research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/
+          cp /tmp/final/annual_group_stats.csv research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/large_gap_geometry_control_v6
+          git commit -m 'research: run Large Gap Geometry Control V6' || exit 0
+          git fetch origin research/pure-box-long-liquid-leaders-v1
+          git rebase origin/research/pure-box-long-liquid-leaders-v1
+          git push
