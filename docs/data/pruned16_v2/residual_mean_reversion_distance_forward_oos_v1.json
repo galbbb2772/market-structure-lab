@@ -1,6 +1,6 @@
 {
   "schema": "RMD3-SEQUENCE-FORWARD-OOS-V1",
-  "generated_at": "2026-10-06T10:48:52.662765+00:00",
+  "generated_at": "2026-10-07T10:35:13.660446+00:00",
   "research_only": true,
   "observation_only": true,
   "production_effect": "none",
@@ -8,6 +8,10 @@
   "frozen_through_market_date": "2026-10-06",
   "event_definition": "D_TO_BOTH_REBOUND_SCORE",
   "score_definition": "RMD3 = equal-weight mean(price_residual, breadth_residual, score_residual)",
+  "research_priority_policy": "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md",
+  "research_priority_tier": "T3_LEGACY_LOW_PRIORITY",
+  "priority_status": "HISTORICAL_REPLICATION_WEAKENED",
+  "promotion_eligible_under_current_priority": false,
   "append_only_score_fields": [
     "event_date",
     "first_seen_at",
@@ -20,7 +24,7 @@
     "score_residual",
     "rmd3"
   ],
-  "latest_market_date": "2026-10-05",
+  "latest_market_date": "2026-10-06",
   "forward_event_count": 0,
   "mature_10d_event_count": 0,
   "first_forward_event_date": null,
@@ -32,18 +36,13 @@
     "event_count_ready": false,
     "calendar_gate_ready": false,
     "ready": false,
-    "note": "RMD3 is a T3 Legacy audit ledger under PRUNED16 V2. A future statistical PASS cannot promote it without a new explicit priority review.",
-    "promotion_eligible_under_current_priority": false
+    "note": "Calendar gate is intentionally not inferred here; any promotion requires a separate preregistered review after both gates are met."
   },
   "warnings": [
     "Historical development events through 2026-10-06 are excluded from Forward OOS counts.",
     "Frozen event-date RMD3 values are never overwritten by later upstream revisions.",
+    "Under PRUNED16 V2, RMD3 is T3 Legacy / low priority because its historical replication weakened materially.",
     "FRED current-history inputs can contain revisions and are not ALFRED vintage data.",
-    "Market Score history inherits reconstruction caveats from Market State Box V1.",
-    "PRUNED16 V2 priority policy: RMD3 is T3 Legacy / low priority because its historical replication weakened materially."
-  ],
-  "research_priority_policy": "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md",
-  "research_priority_tier": "T3_LEGACY_LOW_PRIORITY",
-  "priority_status": "HISTORICAL_REPLICATION_WEAKENED",
-  "promotion_eligible_under_current_priority": false
+    "Market Score history inherits reconstruction caveats from Market State Box V1."
+  ]
 }
