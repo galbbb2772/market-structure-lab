@@ -1,0 +1,48 @@
+{
+  "schema": "PRUNED16-TASK14-CURRENT-STRATEGIES-V2",
+  "effective_date": "2026-10-07",
+  "market_model_version": "MARKET-MODEL-V2-PRUNED16-2026-10-06",
+  "current_strategy_count": 4,
+  "current_strategies": [
+    {
+      "id": "matched_control_relative_state_edge",
+      "label": "Matched-control relative-state edge",
+      "status": "HISTORICAL_ROBUST_POSITIVE_FORWARD_OOS_REQUIRED",
+      "evidence": [
+        "10D matched lift positive in 9/9 preregistered K×exclusion cells",
+        "20D matched lift positive in 9/9 preregistered K×exclusion cells",
+        "Removing Market Score from matching keeps 10D and 20D positive in 9/9 cells",
+        "Leave-one-event mean lift remains positive at 10D and 20D"
+      ],
+      "role": "Primary Task1/4 thesis. Preserve and test prospectively; do not tune historical parameters.",
+      "tier": "T1_CORE_THESIS"
+    },
+    {
+      "id": "dplus1_entry",
+      "label": "D+1 entry timing",
+      "status": "WEAK_MODERATE_HISTORICAL_EVIDENCE",
+      "role": "Secondary prospective timing challenger; not validated.",
+      "tier": "T2_SECONDARY_FORWARD_WATCH"
+    },
+    {
+      "id": "early_sequence",
+      "label": "Early Sequence",
+      "status": "FORWARD_ONLY_CHALLENGER",
+      "role": "Secondary prospective challenger; no historical promotion.",
+      "tier": "T2_SECONDARY_FORWARD_WATCH"
+    },
+    {
+      "id": "rmd2_price_score",
+      "label": "RMD2 Price+Score",
+      "status": "FORWARD_ONLY_CHALLENGER",
+      "role": "Secondary prospective challenger; no historical promotion.",
+      "tier": "T2_SECONDARY_FORWARD_WATCH"
+    }
+  ],
+  "archived_registry": "docs/data/archive/pruned16_task14_deprioritized_2026-10-07.json",
+  "guardrails": {
+    "historical_data_deleted": false,
+    "archived_items_count": 7,
+    "forward_oos_freeze": "2026-10-06"
+  }
+}
