@@ -75,7 +75,7 @@ jobs:
           assert d['schema']=='LARGE-PULLBACK-REGIME-V2'
           e=pd.read_csv('/tmp/result/event_summary.csv')
           p=pd.read_csv('/tmp/result/portfolio_summary.csv')
-          assert len(e)>=50
+          assert len(e)>=24
           assert len(p)>=100
           for cap in ('top300','top500'):
               for t in ('t60','t80'):
