@@ -1,0 +1,102 @@
+name: Research Scale-Aware Exit Economics V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pure-box-long-liquid-leaders-v1
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/scale_exit_economics_v1/PREREGISTRATION.md'
+      - 'research_pure_box_scale_exit_economics_year_v1.py'
+      - 'research_pure_box_scale_exit_economics_combine_v1.py'
+      - '.github/workflows/research_scale_exit_economics_v1.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  year:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [2019,2020,2021,2022,2023,2024,2025,2026]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas numpy
+      - name: Download adjacent-year Pure Box artifacts
+        run: |
+          mkdir -p /tmp/source
+          y=${{ matrix.year }}
+          for yy in $((y-1)) $y $((y+1)); do
+            if [ "$yy" -ge 2019 ] && [ "$yy" -le 2026 ]; then
+              mkdir -p "/tmp/source/$yy"
+              gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -n "pure-box-liquid-$yy" -D "/tmp/source/$yy"
+            fi
+          done
+      - name: Run exit economics shard
+        run: |
+          python research_pure_box_scale_exit_economics_year_v1.py             --year ${{ matrix.year }}             --indir /tmp/source             --outdir /tmp/result
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scale-exit-economics-${{ matrix.year }}
+          path: /tmp/result/*
+          retention-days: 7
+
+  combine:
+    needs: year
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pandas
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: scale-exit-economics-*
+          path: /tmp/shards
+      - name: Combine
+        run: |
+          python research_pure_box_scale_exit_economics_combine_v1.py             --indir /tmp/shards             --outdir /tmp/result
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/result/summary.json'))
+          assert d['schema']=='SCALE-AWARE-EXIT-ECONOMICS-V1'
+          x=pd.read_csv('/tmp/result/annual_results.csv')
+          p=pd.read_csv('/tmp/result/primary_validation_comparison.csv')
+          assert len(x)==768
+          assert len(p)==16
+          for cap in ('top300','top500'):
+              for scale in ('small','large'):
+                  assert d['lanes'][cap][scale]['common_eligible']['h20']
+          print('validated',len(x),len(p))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/scale_exit_economics_v1
+          cp /tmp/result/summary.json research/pure_box_liquid_leaders_v1/scale_exit_economics_v1/
+          cp /tmp/result/annual_results.csv research/pure_box_liquid_leaders_v1/scale_exit_economics_v1/
+          cp /tmp/result/primary_validation_comparison.csv research/pure_box_liquid_leaders_v1/scale_exit_economics_v1/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/scale_exit_economics_v1
+          if git diff --cached --quiet; then
+            echo no-change
+          else
+            git commit -m 'research: run Scale-Aware Exit Economics V1'
+            git fetch origin research/pure-box-long-liquid-leaders-v1
+            git rebase origin/research/pure-box-long-liquid-leaders-v1
+            git push
+          fi
