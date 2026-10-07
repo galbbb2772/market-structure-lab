@@ -87,7 +87,7 @@ Complementarity is supported only if:
 - BOTH_HIGH beats each single-high corner in discovery and validation;
 - Top300 and Top500 broadly agree;
 - 60% and 80% target results broadly agree;
-- sample counts are not pathologically small;
+- each of the four primary corners has at least 30 usable observations in the period being judged;
 - conditional diagnostics show incremental information from both axes.
 
 No new score, cutoff, or trading rule is promoted from V2 alone.
