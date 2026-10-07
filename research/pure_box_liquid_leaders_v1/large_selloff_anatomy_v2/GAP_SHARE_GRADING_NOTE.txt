@@ -1,0 +1,1 @@
+gap_share_of_negative_move was not support-gradable under the preregistered quintile design because the discovery 20th percentile equals zero, leaving Q1 empty after deterministic right-sided binning. No post-hoc rebucketing was performed.
