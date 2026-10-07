@@ -78,16 +78,30 @@ def symbol_balanced_diff(z):
 
 def cluster_bootstrap(z, seed_offset=0):
     q=z[z.state_v8.isin(["RETEST_LIFT","NO_RETEST_LIFT"])].copy()
-    syms=np.array(sorted(q.symbol.dropna().astype(str).unique()))
+    q["symbol"]=q.symbol.astype(str)
+    syms=np.array(sorted(q.symbol.dropna().unique()))
+    # Equivalent symbol-cluster bootstrap, implemented from per-symbol sums/counts.
+    # Sampling a symbol repeats all of that symbol's observations exactly as in
+    # the DataFrame-concatenation implementation, but without rebuilding frames.
+    stats=(q.groupby(["symbol","state_v8"]).net_return
+             .agg(["sum","count"]).reset_index())
+    idx={s:i for i,s in enumerate(syms)}
+    a_sum=np.zeros(len(syms)); a_n=np.zeros(len(syms))
+    b_sum=np.zeros(len(syms)); b_n=np.zeros(len(syms))
+    for r in stats.itertuples():
+        i=idx[r.symbol]
+        if r.state_v8=="RETEST_LIFT":
+            a_sum[i]=float(r.sum); a_n[i]=float(r.count)
+        elif r.state_v8=="NO_RETEST_LIFT":
+            b_sum[i]=float(r.sum); b_n[i]=float(r.count)
     rng=np.random.default_rng(SEED+seed_offset)
-    by={s:q[q.symbol.astype(str)==s] for s in syms}
     diffs=[]
     for _ in range(BOOT):
-        draw=rng.choice(syms,size=len(syms),replace=True)
-        parts=[by[s] for s in draw]
-        b=pd.concat(parts,ignore_index=True)
-        d=mean_diff(b)
-        if np.isfinite(d): diffs.append(d)
+        draw=rng.integers(0,len(syms),size=len(syms))
+        an=a_n[draw].sum(); bn=b_n[draw].sum()
+        if an<=0 or bn<=0: continue
+        d=(a_sum[draw].sum()/an)-(b_sum[draw].sum()/bn)
+        if np.isfinite(d): diffs.append(float(d))
     arr=np.asarray(diffs,float)
     return {
         "bootstrap_draws":int(len(arr)),
