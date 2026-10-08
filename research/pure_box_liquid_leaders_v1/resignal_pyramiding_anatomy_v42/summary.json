@@ -1,0 +1,365 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-RESIGNAL-PYRAMIDING-ANATOMY-V42",
+  "results": {
+    "top300": {
+      "overall": {
+        "n": 51,
+        "funded_capital": 12.207526742209543,
+        "mean_return": 0.08247067257825676,
+        "median_return": -0.012939195341879817,
+        "profit_factor": 5.892736218795872,
+        "win_rate": 0.35294117647058826,
+        "sum_slice_pnl": 1.569495060163458,
+        "mean_risk_before": 0.00898983088027749,
+        "mean_risk_after": 0.013325572091096551,
+        "cap_constrained_share": 0.9019607843137255,
+        "cash_constrained_share": 0.1568627450980392
+      },
+      "ex_2025": {
+        "n": 37,
+        "funded_capital": 7.691703149126193,
+        "mean_return": 0.018938400983821036,
+        "median_return": -0.014810796837556484,
+        "profit_factor": 2.0363581850475008,
+        "win_rate": 0.32432432432432434,
+        "sum_slice_pnl": 0.2138841075426693,
+        "mean_risk_before": 0.009130074056553673,
+        "mean_risk_after": 0.013252429367535656,
+        "cap_constrained_share": 0.8918918918918919,
+        "cash_constrained_share": 0.1891891891891892
+      },
+      "by_year": {
+        "2023": {
+          "n": 11,
+          "funded_capital": 1.7006322633744757,
+          "mean_return": 0.042980847932147334,
+          "median_return": -0.014759154732101543,
+          "profit_factor": 3.7156786155933252,
+          "win_rate": 0.45454545454545453,
+          "sum_slice_pnl": 0.06947084274885283,
+          "mean_risk_before": 0.009584034884090709,
+          "mean_risk_after": 0.014032536083594933,
+          "cap_constrained_share": 0.9090909090909091,
+          "cash_constrained_share": 0.18181818181818182
+        },
+        "2024": {
+          "n": 22,
+          "funded_capital": 3.3363718141075656,
+          "mean_return": 0.005671987080443328,
+          "median_return": -0.01387499608971815,
+          "profit_factor": 1.3041258228676738,
+          "win_rate": 0.2727272727272727,
+          "sum_slice_pnl": -0.019888701338908476,
+          "mean_risk_before": 0.008594470027989248,
+          "mean_risk_after": 0.012327022578628766,
+          "cap_constrained_share": 0.8636363636363636,
+          "cash_constrained_share": 0.18181818181818182
+        },
+        "2025": {
+          "n": 14,
+          "funded_capital": 4.51582359308335,
+          "mean_return": 0.25037739036355117,
+          "median_return": -0.006807258713722231,
+          "profit_factor": 20.10185569620285,
+          "win_rate": 0.42857142857142855,
+          "sum_slice_pnl": 1.3556109526207887,
+          "mean_risk_before": 0.008619188200119008,
+          "mean_risk_after": 0.013518877860507487,
+          "cap_constrained_share": 0.9285714285714286,
+          "cash_constrained_share": 0.07142857142857142
+        },
+        "2026": {
+          "n": 4,
+          "funded_capital": 2.6546990716441505,
+          "mean_return": 0.0257869483445011,
+          "median_return": -0.023421214104380417,
+          "profit_factor": 2.124366721351567,
+          "win_rate": 0.25,
+          "sum_slice_pnl": 0.16430196613272494,
+          "mean_risk_before": 0.010827503937931169,
+          "mean_risk_after": 0.016196873237360514,
+          "cap_constrained_share": 1.0,
+          "cash_constrained_share": 0.25
+        }
+      },
+      "by_age_bucket": {
+        "age01_03": {
+          "n": 44,
+          "funded_capital": 10.819814268710486,
+          "mean_return": 0.10059008996110881,
+          "median_return": -0.010067619221862334,
+          "profit_factor": 7.918996768248537,
+          "win_rate": 0.4090909090909091,
+          "sum_slice_pnl": 1.6158967650022418,
+          "mean_risk_before": 0.008884026455110938,
+          "mean_risk_after": 0.01308562559440083,
+          "cap_constrained_share": 0.9318181818181818,
+          "cash_constrained_share": 0.18181818181818182
+        },
+        "age04_05": {
+          "n": 4,
+          "funded_capital": 0.4140608589855062,
+          "mean_return": -0.03559258934418508,
+          "median_return": -0.03678750529065733,
+          "profit_factor": 0.0,
+          "win_rate": 0.0,
+          "sum_slice_pnl": -0.02124046961429297,
+          "mean_risk_before": 0.009796138294231857,
+          "mean_risk_after": 0.01300975773336504,
+          "cap_constrained_share": 0.75,
+          "cash_constrained_share": 0.0
+        },
+        "age06_10": {
+          "n": 3,
+          "funded_capital": 0.9736516145135505,
+          "mean_return": -0.025863099806984313,
+          "median_return": -0.025749315659949756,
+          "profit_factor": 0.0,
+          "win_rate": 0.0,
+          "sum_slice_pnl": -0.02516123522449069,
+          "mean_risk_before": 0.009466552564114425,
+          "mean_risk_after": 0.017265873186275742,
+          "cap_constrained_share": 0.6666666666666666,
+          "cash_constrained_share": 0.0
+        }
+      },
+      "by_entry_fraction_quartile": {
+        "Q1": {
+          "n": 13,
+          "funded_capital": 1.2901431017425642,
+          "mean_return": 0.015867967341440983,
+          "median_return": -0.009472786931385646,
+          "profit_factor": 2.8450005791369937,
+          "win_rate": 0.23076923076923078,
+          "sum_slice_pnl": -0.010898782215189133,
+          "mean_risk_before": 0.004916483717705703,
+          "mean_risk_after": 0.005369167313087135,
+          "cap_constrained_share": 1.0,
+          "cash_constrained_share": 0.07692307692307693
+        },
+        "Q2": {
+          "n": 13,
+          "funded_capital": 2.904740874729729,
+          "mean_return": -0.017480882651113635,
+          "median_return": -0.025749315659949756,
+          "profit_factor": 0.23476636167522127,
+          "win_rate": 0.07692307692307693,
+          "sum_slice_pnl": -0.07150103624913964,
+          "mean_risk_before": 0.0070205267282698785,
+          "mean_risk_after": 0.010224086027402926,
+          "cap_constrained_share": 1.0,
+          "cash_constrained_share": 0.07692307692307693
+        },
+        "Q3": {
+          "n": 12,
+          "funded_capital": 2.77589925203529,
+          "mean_return": 0.05612851073422836,
+          "median_return": 0.06450446050539638,
+          "profit_factor": 5.861580083429531,
+          "win_rate": 0.6666666666666666,
+          "sum_slice_pnl": 0.13578092218352691,
+          "mean_risk_before": 0.009894448605711715,
+          "mean_risk_after": 0.01539107649999105,
+          "cap_constrained_share": 1.0,
+          "cash_constrained_share": 0.3333333333333333
+        },
+        "Q4": {
+          "n": 13,
+          "funded_capital": 5.236743513701958,
+          "mean_return": 0.273340774746623,
+          "median_return": -0.022820435149505047,
+          "profit_factor": 12.377462061859495,
+          "win_rate": 0.46153846153846156,
+          "sum_slice_pnl": 1.5161139564442598,
+          "mean_risk_before": 0.014197450448302222,
+          "mean_risk_after": 0.022476843478435433,
+          "cap_constrained_share": 0.6153846153846154,
+          "cash_constrained_share": 0.15384615384615385
+        }
+      },
+      "top5_abs_addon_pnl_share": 0.8291460630396763,
+      "top10_abs_addon_pnl_share": 0.9212079210832598,
+      "unique_symbols": 37
+    },
+    "top500": {
+      "overall": {
+        "n": 64,
+        "funded_capital": 17.112695664918295,
+        "mean_return": 0.06659723954573676,
+        "median_return": -0.01447385326181072,
+        "profit_factor": 4.824197882070256,
+        "win_rate": 0.296875,
+        "sum_slice_pnl": 2.2779165503905228,
+        "mean_risk_before": 0.009266995177431712,
+        "mean_risk_after": 0.0131969758490945,
+        "cap_constrained_share": 0.890625,
+        "cash_constrained_share": 0.234375
+      },
+      "ex_2025": {
+        "n": 48,
+        "funded_capital": 12.348427174457338,
+        "mean_return": 0.019834970047098933,
+        "median_return": -0.015306352695351355,
+        "profit_factor": 2.101053621546858,
+        "win_rate": 0.3125,
+        "sum_slice_pnl": 0.4525786260383206,
+        "mean_risk_before": 0.009492177607139761,
+        "mean_risk_after": 0.013413059906370027,
+        "cap_constrained_share": 0.8958333333333334,
+        "cash_constrained_share": 0.2708333333333333
+      },
+      "by_year": {
+        "2023": {
+          "n": 13,
+          "funded_capital": 2.4992819646553546,
+          "mean_return": 0.04931046128244665,
+          "median_return": -0.003173421658772102,
+          "profit_factor": 5.539588666549846,
+          "win_rate": 0.46153846153846156,
+          "sum_slice_pnl": 0.11298135629986887,
+          "mean_risk_before": 0.007405023615476535,
+          "mean_risk_after": 0.011848512437988672,
+          "cap_constrained_share": 0.9230769230769231,
+          "cash_constrained_share": 0.15384615384615385
+        },
+        "2024": {
+          "n": 29,
+          "funded_capital": 4.767763560249567,
+          "mean_return": 0.0024464474009092533,
+          "median_return": -0.019386012515214657,
+          "profit_factor": 1.1190991251722877,
+          "win_rate": 0.2413793103448276,
+          "sum_slice_pnl": -0.04816458285917016,
+          "mean_risk_before": 0.010284463001682802,
+          "mean_risk_after": 0.013952700347539424,
+          "cap_constrained_share": 0.8620689655172413,
+          "cash_constrained_share": 0.2413793103448276
+        },
+        "2025": {
+          "n": 16,
+          "funded_capital": 4.764268490460954,
+          "mean_return": 0.20688404804165025,
+          "median_return": -0.011069402019747987,
+          "profit_factor": 14.248912573529456,
+          "win_rate": 0.25,
+          "sum_slice_pnl": 1.825337924352202,
+          "mean_risk_before": 0.008591447888307562,
+          "mean_risk_after": 0.012548723677267917,
+          "cap_constrained_share": 0.875,
+          "cash_constrained_share": 0.125
+        },
+        "2026": {
+          "n": 6,
+          "funded_capital": 5.0813816495524184,
+          "mean_return": 0.040015931827095653,
+          "median_return": -0.023421214104380417,
+          "profit_factor": 2.8788187057406844,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": 0.3877618525976219,
+          "mean_risk_before": 0.010184965182118736,
+          "mean_risk_after": 0.014194650622210897,
+          "cap_constrained_share": 1.0,
+          "cash_constrained_share": 0.6666666666666666
+        }
+      },
+      "by_age_bucket": {
+        "age01_03": {
+          "n": 54,
+          "funded_capital": 15.358018262890987,
+          "mean_return": 0.07901845116235333,
+          "median_return": -0.01276821878557477,
+          "profit_factor": 5.982392233850984,
+          "win_rate": 0.3148148148148148,
+          "sum_slice_pnl": 2.310556025284969,
+          "mean_risk_before": 0.008703357512179214,
+          "mean_risk_after": 0.012496974460573733,
+          "cap_constrained_share": 0.9444444444444444,
+          "cash_constrained_share": 0.2777777777777778
+        },
+        "age04_05": {
+          "n": 8,
+          "funded_capital": 1.1824943669003443,
+          "mean_return": 0.005883368990134488,
+          "median_return": -0.024443672835602004,
+          "profit_factor": 1.2281643427958313,
+          "win_rate": 0.25,
+          "sum_slice_pnl": -0.01790128821138776,
+          "mean_risk_before": 0.012540251648662964,
+          "mean_risk_after": 0.016324967567323594,
+          "cap_constrained_share": 0.625,
+          "cash_constrained_share": 0.0
+        },
+        "age06_10": {
+          "n": 2,
+          "funded_capital": 0.5721830351269639,
+          "mean_return": -0.02591999188050159,
+          "median_return": -0.02591999188050159,
+          "profit_factor": 0.0,
+          "win_rate": 0.0,
+          "sum_slice_pnl": -0.014738186683058287,
+          "mean_risk_before": 0.011392186254324126,
+          "mean_risk_after": 0.019585046466238695,
+          "cap_constrained_share": 0.5,
+          "cash_constrained_share": 0.0
+        }
+      },
+      "by_entry_fraction_quartile": {
+        "Q1": {
+          "n": 16,
+          "funded_capital": 1.6044174992206044,
+          "mean_return": 0.012735894888960222,
+          "median_return": -0.006627345875150792,
+          "profit_factor": 2.5558728561067205,
+          "win_rate": 0.1875,
+          "sum_slice_pnl": 0.16108906493002298,
+          "mean_risk_before": 0.004228777175177617,
+          "mean_risk_after": 0.004632917664039702,
+          "cap_constrained_share": 1.0,
+          "cash_constrained_share": 0.125
+        },
+        "Q2": {
+          "n": 16,
+          "funded_capital": 3.7445871285931633,
+          "mean_return": 3.0261549339508087e-05,
+          "median_return": -0.022813432471953943,
+          "profit_factor": 1.0014368001207004,
+          "win_rate": 0.125,
+          "sum_slice_pnl": -0.03145325849654218,
+          "mean_risk_before": 0.007710373740452945,
+          "mean_risk_after": 0.010497196860865556,
+          "cap_constrained_share": 1.0,
+          "cash_constrained_share": 0.1875
+        },
+        "Q3": {
+          "n": 16,
+          "funded_capital": 4.32106924731954,
+          "mean_return": 0.026123699413224087,
+          "median_return": -0.023692146156786553,
+          "profit_factor": 2.39505907624651,
+          "win_rate": 0.4375,
+          "sum_slice_pnl": 0.08876293614309091,
+          "mean_risk_before": 0.010366965972938944,
+          "mean_risk_after": 0.015258385538611783,
+          "cap_constrained_share": 1.0,
+          "cash_constrained_share": 0.375
+        },
+        "Q4": {
+          "n": 16,
+          "funded_capital": 7.442621789784987,
+          "mean_return": 0.22749910233142323,
+          "median_return": -0.008806895911126544,
+          "profit_factor": 11.490864621073811,
+          "win_rate": 0.4375,
+          "sum_slice_pnl": 2.059517807813951,
+          "mean_risk_before": 0.014761863821157342,
+          "mean_risk_after": 0.02239940333286096,
+          "cap_constrained_share": 0.5625,
+          "cash_constrained_share": 0.25
+        }
+      },
+      "top5_abs_addon_pnl_share": 0.8161810829865176,
+      "top10_abs_addon_pnl_share": 0.910503160343013,
+      "unique_symbols": 47
+    }
+  }
+}
