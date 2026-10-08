@@ -1,0 +1,115 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-EARLY-R250-FRAGILITY-V45",
+  "events": {
+    "n": 53,
+    "unique_symbols": 41,
+    "sum_slice_pnl": 2.3938384973483697,
+    "top1_event_abs_share": 0.5977712786186884,
+    "top3_event_abs_share": 0.7700679771854512,
+    "top5_event_abs_share": 0.8328283263465572,
+    "top1_symbol_abs_share": 0.6029930454309603,
+    "top3_symbol_abs_share": 0.7767650424849697,
+    "top5_symbol_abs_share": 0.8416477146663612,
+    "positive_pnl_share_from_2025": 0.7344306535943319,
+    "ex2025_n": 37,
+    "ex2025_mean_return": 0.02397094337901519,
+    "ex2025_sum_pnl": 0.4980973646325914,
+    "ex2025_profit_factor": 2.4621912517821305,
+    "by_year": {
+      "2023": {
+        "n": 10,
+        "sum_pnl": 0.09836581919824756,
+        "mean_return": 0.05641140232379843
+      },
+      "2024": {
+        "n": 21,
+        "sum_pnl": -0.0029862658050544104,
+        "mean_return": 0.003938823372523989
+      },
+      "2025": {
+        "n": 16,
+        "sum_pnl": 1.895741132715778,
+        "mean_return": 0.20688404804165023
+      },
+      "2026": {
+        "n": 6,
+        "sum_pnl": 0.40271781123939826,
+        "mean_return": 0.040015931827095653
+      }
+    }
+  },
+  "portfolio": {
+    "baseline_skip": {
+      "total_return": 3.733645180772836,
+      "cagr": 0.616075620722754,
+      "max_drawdown": -0.1683141183251119,
+      "daily_sharpe": 1.1412758282549085,
+      "avg_exposure": 0.44717409082995024,
+      "completed_trades": 291,
+      "profit_factor": 2.1971805921547607,
+      "mean_trade": 0.018472188892589128,
+      "blocked_new_entries": 128,
+      "partial_new_entries": 101,
+      "add_on_events": 0,
+      "add_on_capital": 0.0,
+      "mean_position_risk_after_add": null,
+      "max_position_risk_after_add": null,
+      "single_name_cap_hit_count": 0,
+      "turnover_proxy": 514.4916231519552,
+      "top5_abs_funded_pnl_share": 0.35128255502664335,
+      "top10_abs_funded_pnl_share": 0.4450895241309184,
+      "yearly_return": {
+        "2023": 0.5522335814655426,
+        "2024": 0.2866083980008416,
+        "2025": 1.4260348192021493,
+        "2026": -0.07654023901287921
+      },
+      "rolling_12m_min_return": 0.15111899082287583,
+      "rolling_12m_positive_share": 1.0,
+      "rolling_12m_median_return": 0.33466284522070433
+    },
+    "early_r250": {
+      "total_return": 6.0701486806055875,
+      "cagr": 0.829172995115621,
+      "max_drawdown": -0.17207486942597794,
+      "daily_sharpe": 0.9570845524754544,
+      "avg_exposure": 0.46719474488529766,
+      "completed_trades": 274,
+      "profit_factor": 2.294517279387716,
+      "mean_trade": 0.020031911209834077,
+      "blocked_new_entries": 157,
+      "partial_new_entries": 97,
+      "add_on_events": 53,
+      "add_on_capital": 15.767350276713316,
+      "mean_position_risk_after_add": 0.012645498272833417,
+      "max_position_risk_after_add": 0.024985540121071414,
+      "single_name_cap_hit_count": 6,
+      "turnover_proxy": 617.610905252994,
+      "top5_abs_funded_pnl_share": 0.4499845284566638,
+      "top10_abs_funded_pnl_share": 0.5477058384479913,
+      "yearly_return": {
+        "2023": 0.6208960419132319,
+        "2024": 0.2775828893027634,
+        "2025": 2.3410525687376573,
+        "2026": -0.03617290313863941
+      },
+      "rolling_12m_min_return": 0.13325909292613947,
+      "rolling_12m_positive_share": 1.0,
+      "rolling_12m_median_return": 0.3217624391178182
+    },
+    "early_r250_no_2025_addons": {
+      "total_return": 4.1274442114922385,
+      "cagr": 0.6564436473081401,
+      "max_drawdown": -0.17207486942597783,
+      "daily_sharpe": 1.1866318572210086,
+      "rolling_12m_min_return": 0.13325909292613947,
+      "rolling_12m_positive_share": 1.0,
+      "yearly_return": {
+        "2023": 0.6208960419132319,
+        "2024": 0.2775828893027634,
+        "2025": 1.423012786259798,
+        "2026": -0.036172903138639634
+      }
+    }
+  }
+}
