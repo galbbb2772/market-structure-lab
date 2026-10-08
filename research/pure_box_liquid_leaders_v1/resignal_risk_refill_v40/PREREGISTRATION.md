@@ -52,6 +52,9 @@ On valid repeated same-box signals, allow total same-symbol stop risk to increas
 - available cash and 50% capital cap still apply
 This tests whether repeated persistence contains useful sizing information.
 
+## Same-day capital competition
+New-symbol entries and overlap add-on requests enter the SAME liquidity-first queue. Add-ons receive no special priority.
+
 ## Important
 No box thresholds, entry thresholds, exits, liquidity ordering, or hold rules may change.
 Repeated signals do NOT reset H15 holding age and do NOT create a fresh target/stop.
