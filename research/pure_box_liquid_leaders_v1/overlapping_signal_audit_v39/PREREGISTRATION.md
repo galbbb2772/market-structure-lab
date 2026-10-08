@@ -27,7 +27,7 @@ For every otherwise-valid candidate whose symbol is already in the portfolio:
 - new signal entry fraction
 - new box width
 - new stop risk
-- whether the new box differs materially from the held position box
+- whether the new box differs materially from the held position box (material = either lower or upper boundary differs by >1% relative to the held box boundary)
 - independent H15 return of the ignored signal using its own frozen stop/target
 - existing position eventual return from that date onward
 
