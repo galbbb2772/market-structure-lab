@@ -1,0 +1,227 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-STOCK-ONLY-AGE3-FRAGILITY-V51",
+  "results": {
+    "top300": {
+      "candidate_events": 338,
+      "block_compounding": {
+        "SKIP_OVERLAP": {
+          "portfolio": {
+            "total_return": 0.5504549583218863,
+            "cagr": 0.14499306210246754,
+            "max_drawdown": -0.1954879962069619,
+            "daily_sharpe": 0.9051549641921841,
+            "avg_exposure": 0.2920918942926006,
+            "completed_trades": 192,
+            "profit_factor": 1.297605381733718,
+            "mean_trade": 0.005207208986247105,
+            "blocked_new_entries": 28,
+            "partial_new_entries": 36,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.17829963357894327,
+            "top10_abs_funded_pnl_share": 0.29747642982804967,
+            "yearly_return": {
+              "2023": 0.19122659786160834,
+              "2024": 0.21581301129982755,
+              "2025": 0.10284859872704688,
+              "2026": -0.08441463170434005
+            },
+            "rolling_12m_min_return": 0.012680798914015856,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.16165438167944624
+          },
+          "all_block_compound": 0.4624327630451577,
+          "ex_2025_block_compound": 0.32605034338635197,
+          "leave_one_year_out": {
+            "2023": 0.2276696689533264,
+            "2024": 0.20284348781698647,
+            "2025": 0.32605034338635197,
+            "2026": 0.5972653273909794
+          }
+        },
+        "AGE3_ONLY_R250": {
+          "portfolio": {
+            "total_return": 0.6651179787184991,
+            "cagr": 0.17049485466998582,
+            "max_drawdown": -0.1905962782692434,
+            "daily_sharpe": 1.010416394770926,
+            "avg_exposure": 0.3020970909196957,
+            "completed_trades": 190,
+            "profit_factor": 1.325813233334292,
+            "mean_trade": 0.005632189752824502,
+            "blocked_new_entries": 31,
+            "partial_new_entries": 35,
+            "add_on_events": 19,
+            "add_on_capital": 4.644178963555202,
+            "top5_abs_funded_pnl_share": 0.19022887867138072,
+            "top10_abs_funded_pnl_share": 0.30752785334579025,
+            "yearly_return": {
+              "2023": 0.20125456468499126,
+              "2024": 0.2210633193732474,
+              "2025": 0.1276304387474565,
+              "2026": -0.052340812492535194
+            },
+            "rolling_12m_min_return": 0.04137249618638017,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.16784043574638852
+          },
+          "all_block_compound": 0.5674446150523769,
+          "ex_2025_block_compound": 0.3900339696341071,
+          "leave_one_year_out": {
+            "2023": 0.3048396743977515,
+            "2024": 0.28367185401730133,
+            "2025": 0.3900339696341071,
+            "2026": 0.6540172202361831
+          }
+        }
+      },
+      "addon_overall": {
+        "n": 19,
+        "funded_capital": 4.644178963555202,
+        "mean_return": 0.03382009351945816,
+        "median_return": -0.017552706205036905,
+        "profit_factor": 3.192968586514968,
+        "win_rate": 0.3684210526315789,
+        "sum_slice_pnl": 0.13337207748157354,
+        "unique_symbols": 17,
+        "top1_abs_share": 0.2862997576521573,
+        "top3_abs_share": 0.6183282978200694,
+        "top5_abs_share": 0.7292028239971164,
+        "top10_abs_share": 0.9283531245702968,
+        "top_symbol": "DELL",
+        "top_symbol_signed_pnl": 0.0818434310102335,
+        "leave_top1_symbol_out_sum_pnl": 0.05152864647134003,
+        "leave_top3_symbols_out_sum_pnl": -0.04338709898198586
+      },
+      "addon_ex_2025": {
+        "n": 14,
+        "funded_capital": 2.7091394265553688,
+        "mean_return": 0.03381162736081399,
+        "median_return": -0.014916239874821935,
+        "profit_factor": 3.4106731380901825,
+        "win_rate": 0.35714285714285715,
+        "sum_slice_pnl": 0.11439802548468145,
+        "unique_symbols": 12,
+        "top1_abs_share": 0.45182270843543915,
+        "top3_abs_share": 0.7764320629611555,
+        "top5_abs_share": 0.8869307973815498,
+        "top10_abs_share": 0.9972288124145994,
+        "top_symbol": "DELL",
+        "top_symbol_signed_pnl": 0.0818434310102335,
+        "leave_top1_symbol_out_sum_pnl": 0.03255459447444795,
+        "leave_top3_symbols_out_sum_pnl": -0.026245334826135377
+      }
+    },
+    "top500": {
+      "candidate_events": 522,
+      "block_compounding": {
+        "SKIP_OVERLAP": {
+          "portfolio": {
+            "total_return": 1.1262500505708948,
+            "cagr": 0.26225907969507656,
+            "max_drawdown": -0.24519664931484741,
+            "daily_sharpe": 1.344905406173402,
+            "avg_exposure": 0.39478302404489446,
+            "completed_trades": 269,
+            "profit_factor": 1.4948253836485277,
+            "mean_trade": 0.007715650853410138,
+            "blocked_new_entries": 85,
+            "partial_new_entries": 92,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.15261244866472176,
+            "top10_abs_funded_pnl_share": 0.24865103428941052,
+            "yearly_return": {
+              "2023": 0.4091646969982188,
+              "2024": 0.33165684383457794,
+              "2025": 0.27144492034849566,
+              "2026": -0.15757064626826756
+            },
+            "rolling_12m_min_return": 0.0709927492581921,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.30882597706262316
+          },
+          "all_block_compound": 1.0099493895751541,
+          "ex_2025_block_compound": 0.5808387429195425,
+          "leave_one_year_out": {
+            "2023": 0.4263410046084162,
+            "2024": 0.5093598616497896,
+            "2025": 0.5808387429195425,
+            "2026": 1.3858966697582722
+          }
+        },
+        "AGE3_ONLY_R250": {
+          "portfolio": {
+            "total_return": 1.278860929309832,
+            "cagr": 0.28956349873664977,
+            "max_drawdown": -0.2262146871146019,
+            "daily_sharpe": 1.4246251486853398,
+            "avg_exposure": 0.40244459348708966,
+            "completed_trades": 263,
+            "profit_factor": 1.5363285234855255,
+            "mean_trade": 0.008316585424404586,
+            "blocked_new_entries": 92,
+            "partial_new_entries": 85,
+            "add_on_events": 20,
+            "add_on_capital": 6.414510814224082,
+            "top5_abs_funded_pnl_share": 0.16659813985077643,
+            "top10_abs_funded_pnl_share": 0.26330833307169027,
+            "yearly_return": {
+              "2023": 0.4298617019831108,
+              "2024": 0.3924593106206582,
+              "2025": 0.23465739670668828,
+              "2026": -0.12543479402641644
+            },
+            "rolling_12m_min_return": 0.1163402651350931,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.3158456315557884
+          },
+          "all_block_compound": 1.1498848791943184,
+          "ex_2025_block_compound": 0.7412805244020713,
+          "leave_one_year_out": {
+            "2023": 0.5035614117173635,
+            "2024": 0.5439480800599152,
+            "2025": 0.7412805244020713,
+            "2026": 1.4582328047238322
+          }
+        }
+      },
+      "addon_overall": {
+        "n": 20,
+        "funded_capital": 6.414510814224082,
+        "mean_return": 0.03340557497873638,
+        "median_return": -0.008666726295097238,
+        "profit_factor": 3.49771186341728,
+        "win_rate": 0.35,
+        "sum_slice_pnl": 0.18279983727508153,
+        "unique_symbols": 18,
+        "top1_abs_share": 0.3042698046335402,
+        "top3_abs_share": 0.6324367484080573,
+        "top5_abs_share": 0.7499559729429008,
+        "top10_abs_share": 0.9395117343662134,
+        "top_symbol": "DELL",
+        "top_symbol_signed_pnl": 0.11745833364421776,
+        "leave_top1_symbol_out_sum_pnl": 0.06534150363086379,
+        "leave_top3_symbols_out_sum_pnl": -0.06134192596312718
+      },
+      "addon_ex_2025": {
+        "n": 13,
+        "funded_capital": 3.43562151290163,
+        "mean_return": 0.040902823529494,
+        "median_return": -0.003173421658772102,
+        "profit_factor": 4.8535185011696855,
+        "win_rate": 0.38461538461538464,
+        "sum_slice_pnl": 0.15466135609858864,
+        "unique_symbols": 12,
+        "top1_abs_share": 0.5092700714153482,
+        "top3_abs_share": 0.8086755576302324,
+        "top5_abs_share": 0.911790975915017,
+        "top10_abs_share": 0.9989660289067004,
+        "top_symbol": "DELL",
+        "top_symbol_signed_pnl": 0.11745833364421776,
+        "leave_top1_symbol_out_sum_pnl": 0.037203022454370877,
+        "leave_top3_symbols_out_sum_pnl": 0.008684738564897281
+      }
+    }
+  }
+}
