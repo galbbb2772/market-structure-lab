@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-FORWARD-OOS-EVALUATION-V1",
-  "generated_at": "2026-10-08T01:55:30.003309+00:00",
+  "generated_at": "2026-10-08T10:56:23.827664+00:00",
   "research_only": true,
   "observation_only": true,
   "production_effect": "none",
@@ -8,7 +8,7 @@
   "research_priority_policy": "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md",
   "frozen_through_market_date": "2026-10-06",
   "primary_confirmatory_n": 20,
-  "latest_market_date": "2026-10-06",
+  "latest_market_date": "2026-10-07",
   "tests": {
     "rmd3": {
       "research_priority_tier": "T3_LEGACY_LOW_PRIORITY",
