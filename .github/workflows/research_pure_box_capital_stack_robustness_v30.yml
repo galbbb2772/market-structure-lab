@@ -1,0 +1,46 @@
+name: Research Pure Box Capital Stack Robustness V30
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/pure-box-long-liquid-leaders-v1]
+    paths:
+      - 'research/pure_box_liquid_leaders_v1/capital_stack_robustness_v30/PREREGISTRATION.md'
+      - 'research_pure_box_capital_stack_robustness_v30.py'
+      - '.github/workflows/research_pure_box_capital_stack_robustness_v30.yml'
+permissions: {contents: write, actions: read}
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pandas
+      - run: |
+          mkdir -p /tmp/source
+          gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -D /tmp/source
+      - run: python research_pure_box_capital_stack_robustness_v30.py --indir /tmp/source --outdir /tmp/result
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          d=json.load(open('/tmp/result/summary.json'));r=pd.read_csv('/tmp/result/baseline_results.csv')
+          assert d['schema']=='PURE-BOX-SIMPLE-CORE-CAPITAL-STACK-ROBUSTNESS-V30'
+          assert len(r)==8
+          print(r[['rank_cap','lane','total_return','max_drawdown','daily_sharpe','rolling_12m_min_return']].to_string(index=False))
+          PY
+      - name: Persist
+        run: |
+          mkdir -p research/pure_box_liquid_leaders_v1/capital_stack_robustness_v30
+          cp /tmp/result/* research/pure_box_liquid_leaders_v1/capital_stack_robustness_v30/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+galbbb2772@users.noreply.github.com'
+          git add research/pure_box_liquid_leaders_v1/capital_stack_robustness_v30
+          git commit -m 'research: run Pure Box Capital Stack Robustness V30' || exit 0
+          git fetch origin research/pure-box-long-liquid-leaders-v1
+          git rebase origin/research/pure-box-long-liquid-leaders-v1
+          git push
