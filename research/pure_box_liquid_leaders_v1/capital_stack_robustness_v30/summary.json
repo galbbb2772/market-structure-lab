@@ -1,0 +1,1265 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-CAPITAL-STACK-ROBUSTNESS-V30",
+  "results": {
+    "top300": {
+      "BASE_R125_PRO_RATA": {
+        "baseline": {
+          "total_return": 2.15516577473846,
+          "cagr": 0.4258354486678544,
+          "max_drawdown": -0.15440196200755985,
+          "daily_sharpe": 0.8925336999984098,
+          "avg_exposure": 0.33183811510435945,
+          "idle_day_share": 0.44157441574415746,
+          "completed_trades": 224,
+          "profit_factor": 2.1673132175664174,
+          "mean_trade": 0.019722488256793996,
+          "win_rate": 0.26785714285714285,
+          "entries": 228,
+          "blocked_entries": 0,
+          "partial_entries": 105,
+          "risk_realization_ratio": 0.5580511983724286,
+          "yearly_return": {
+            "2023": 0.2797427470634404,
+            "2024": 0.13768068082857754,
+            "2025": 1.088760426324177,
+            "2026": -0.021503148318721133
+          },
+          "rolling_12m_min_return": 0.03676891741507604,
+          "rolling_12m_positive_share": 1.0,
+          "rolling_12m_median_return": 0.18381538396883623
+        },
+        "trade_concentration": {
+          "top5_abs_pnl_share": 0.5131351762501629,
+          "top10_abs_pnl_share": 0.5965293486022946
+        },
+        "leave_one_year_out_trade": {
+          "2023": {
+            "n": 285,
+            "mean_trade": 0.03972430997782566,
+            "median_trade": -0.012939195341879817,
+            "profit_factor": 3.345358523296505,
+            "win_rate": 0.2771929824561403,
+            "sum_trade_return": 11.321428343680314
+          },
+          "2024": {
+            "n": 258,
+            "mean_trade": 0.046571325166840434,
+            "median_trade": -0.011160818521897264,
+            "profit_factor": 3.613274216096928,
+            "win_rate": 0.2868217054263566,
+            "sum_trade_return": 12.015401893044832
+          },
+          "2025": {
+            "n": 292,
+            "mean_trade": 0.007534150939701716,
+            "median_trade": -0.012438507886938344,
+            "profit_factor": 1.4113253800534282,
+            "win_rate": 0.2705479452054795,
+            "sum_trade_return": 2.199972074392901
+          },
+          "2026": {
+            "n": 359,
+            "mean_trade": 0.03426627536457685,
+            "median_trade": -0.01237473207633688,
+            "profit_factor": 3.024118772867587,
+            "win_rate": 0.28133704735376047,
+            "sum_trade_return": 12.301592855883088
+          }
+        },
+        "cost_delay_stress": {
+          "5bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.03169044821356879,
+              "median_trade": -0.012332649887326408,
+              "profit_factor": 2.814704205232705,
+              "win_rate": 0.27889447236180903,
+              "sum_trade_return": 12.612798389000378
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5131351762501629,
+              "top10_abs_pnl_share": 0.5965293486022946
+            },
+            "diagnostic_compounded_trade_return": 817.0935901714829
+          },
+          "5bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.03002903272829985,
+              "median_trade": -0.013284482335556347,
+              "profit_factor": 2.4771267681821825,
+              "win_rate": 0.2749003984063745,
+              "sum_trade_return": 7.537287214803262
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5577855865807128,
+              "top10_abs_pnl_share": 0.6603036576869508
+            },
+            "diagnostic_compounded_trade_return": 8.452633302583134
+          },
+          "10bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.030659272837455592,
+              "median_trade": -0.013319824143897818,
+              "profit_factor": 2.6876672398373618,
+              "win_rate": 0.27638190954773867,
+              "sum_trade_return": 12.202390589307326
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5097996396200504,
+              "top10_abs_pnl_share": 0.5923263536262415
+            },
+            "diagnostic_compounded_trade_return": 548.4822720203058
+          },
+          "10bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.0289995179382092,
+              "median_trade": -0.014270705234882608,
+              "profit_factor": 2.378689476917306,
+              "win_rate": 0.27091633466135456,
+              "sum_trade_return": 7.278879002490509
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5544360147412337,
+              "top10_abs_pnl_share": 0.6565398374328066
+            },
+            "diagnostic_compounded_trade_return": 6.354359102751373
+          },
+          "20bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.02860000943665456,
+              "median_trade": -0.01529121704549441,
+              "profit_factor": 2.4609616265813994,
+              "win_rate": 0.27638190954773867,
+              "sum_trade_return": 11.382803755788515
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5031976529416274,
+              "top10_abs_pnl_share": 0.5849008560562801
+            },
+            "diagnostic_compounded_trade_return": 246.8874106994174
+          },
+          "20bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.026943570737638835,
+              "median_trade": -0.016240198270363604,
+              "profit_factor": 2.200222896603064,
+              "win_rate": 0.27091633466135456,
+              "sum_trade_return": 6.762836255147348
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5477954784357734,
+              "top10_abs_pnl_share": 0.6491414834196219
+            },
+            "diagnostic_compounded_trade_return": 3.451726690669809
+          }
+        }
+      },
+      "EA_PRO_RATA": {
+        "baseline": {
+          "total_return": 2.5476256417587217,
+          "cagr": 0.4783907058215766,
+          "max_drawdown": -0.15878125660386022,
+          "daily_sharpe": 0.870469472487041,
+          "avg_exposure": 0.33691877850584734,
+          "idle_day_share": 0.44280442804428044,
+          "completed_trades": 224,
+          "profit_factor": 2.1770477678281077,
+          "mean_trade": 0.019798036128932547,
+          "win_rate": 0.26785714285714285,
+          "entries": 228,
+          "blocked_entries": 0,
+          "partial_entries": 108,
+          "risk_realization_ratio": 0.5368926544440424,
+          "yearly_return": {
+            "2023": 0.29674333374633477,
+            "2024": 0.13934858448225063,
+            "2025": 1.2937316777385166,
+            "2026": -0.014783416676612093
+          },
+          "rolling_12m_min_return": 0.029259852622210536,
+          "rolling_12m_positive_share": 1.0,
+          "rolling_12m_median_return": 0.18734261193698698
+        },
+        "trade_concentration": {
+          "top5_abs_pnl_share": 0.5131351762501629,
+          "top10_abs_pnl_share": 0.5965293486022946
+        },
+        "leave_one_year_out_trade": {
+          "2023": {
+            "n": 285,
+            "mean_trade": 0.03972430997782566,
+            "median_trade": -0.012939195341879817,
+            "profit_factor": 3.345358523296505,
+            "win_rate": 0.2771929824561403,
+            "sum_trade_return": 11.321428343680314
+          },
+          "2024": {
+            "n": 258,
+            "mean_trade": 0.046571325166840434,
+            "median_trade": -0.011160818521897264,
+            "profit_factor": 3.613274216096928,
+            "win_rate": 0.2868217054263566,
+            "sum_trade_return": 12.015401893044832
+          },
+          "2025": {
+            "n": 292,
+            "mean_trade": 0.007534150939701716,
+            "median_trade": -0.012438507886938344,
+            "profit_factor": 1.4113253800534282,
+            "win_rate": 0.2705479452054795,
+            "sum_trade_return": 2.199972074392901
+          },
+          "2026": {
+            "n": 359,
+            "mean_trade": 0.03426627536457685,
+            "median_trade": -0.01237473207633688,
+            "profit_factor": 3.024118772867587,
+            "win_rate": 0.28133704735376047,
+            "sum_trade_return": 12.301592855883088
+          }
+        },
+        "cost_delay_stress": {
+          "5bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.03169044821356879,
+              "median_trade": -0.012332649887326408,
+              "profit_factor": 2.814704205232705,
+              "win_rate": 0.27889447236180903,
+              "sum_trade_return": 12.612798389000378
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5131351762501629,
+              "top10_abs_pnl_share": 0.5965293486022946
+            },
+            "diagnostic_compounded_trade_return": 817.0935901714829
+          },
+          "5bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.03002903272829985,
+              "median_trade": -0.013284482335556347,
+              "profit_factor": 2.4771267681821825,
+              "win_rate": 0.2749003984063745,
+              "sum_trade_return": 7.537287214803262
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5577855865807128,
+              "top10_abs_pnl_share": 0.6603036576869508
+            },
+            "diagnostic_compounded_trade_return": 8.452633302583134
+          },
+          "10bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.030659272837455592,
+              "median_trade": -0.013319824143897818,
+              "profit_factor": 2.6876672398373618,
+              "win_rate": 0.27638190954773867,
+              "sum_trade_return": 12.202390589307326
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5097996396200504,
+              "top10_abs_pnl_share": 0.5923263536262415
+            },
+            "diagnostic_compounded_trade_return": 548.4822720203058
+          },
+          "10bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.0289995179382092,
+              "median_trade": -0.014270705234882608,
+              "profit_factor": 2.378689476917306,
+              "win_rate": 0.27091633466135456,
+              "sum_trade_return": 7.278879002490509
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5544360147412337,
+              "top10_abs_pnl_share": 0.6565398374328066
+            },
+            "diagnostic_compounded_trade_return": 6.354359102751373
+          },
+          "20bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.02860000943665456,
+              "median_trade": -0.01529121704549441,
+              "profit_factor": 2.4609616265813994,
+              "win_rate": 0.27638190954773867,
+              "sum_trade_return": 11.382803755788515
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5031976529416274,
+              "top10_abs_pnl_share": 0.5849008560562801
+            },
+            "diagnostic_compounded_trade_return": 246.8874106994174
+          },
+          "20bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.026943570737638835,
+              "median_trade": -0.016240198270363604,
+              "profit_factor": 2.200222896603064,
+              "win_rate": 0.27091633466135456,
+              "sum_trade_return": 6.762836255147348
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5477954784357734,
+              "top10_abs_pnl_share": 0.6491414834196219
+            },
+            "diagnostic_compounded_trade_return": 3.451726690669809
+          }
+        }
+      },
+      "R125_LOW_ENTRY": {
+        "baseline": {
+          "total_return": 2.4581572461264605,
+          "cagr": 0.46677779622631155,
+          "max_drawdown": -0.15440196200755996,
+          "daily_sharpe": 0.9501073454248617,
+          "avg_exposure": 0.3326240313694218,
+          "idle_day_share": 0.44772447724477243,
+          "completed_trades": 212,
+          "profit_factor": 2.243178509406362,
+          "mean_trade": 0.020807632942562448,
+          "win_rate": 0.2641509433962264,
+          "entries": 214,
+          "blocked_entries": 46,
+          "partial_entries": 46,
+          "risk_realization_ratio": 0.5332506293553656,
+          "yearly_return": {
+            "2023": 0.36983862627761255,
+            "2024": 0.13546498312032962,
+            "2025": 1.025661727370784,
+            "2026": 0.035150752594323986
+          },
+          "rolling_12m_min_return": 0.036289654784908754,
+          "rolling_12m_positive_share": 1.0,
+          "rolling_12m_median_return": 0.19342859202901197
+        },
+        "trade_concentration": {
+          "top5_abs_pnl_share": 0.5131351762501629,
+          "top10_abs_pnl_share": 0.5965293486022946
+        },
+        "leave_one_year_out_trade": {
+          "2023": {
+            "n": 285,
+            "mean_trade": 0.03972430997782566,
+            "median_trade": -0.012939195341879817,
+            "profit_factor": 3.345358523296505,
+            "win_rate": 0.2771929824561403,
+            "sum_trade_return": 11.321428343680314
+          },
+          "2024": {
+            "n": 258,
+            "mean_trade": 0.046571325166840434,
+            "median_trade": -0.011160818521897264,
+            "profit_factor": 3.613274216096928,
+            "win_rate": 0.2868217054263566,
+            "sum_trade_return": 12.015401893044832
+          },
+          "2025": {
+            "n": 292,
+            "mean_trade": 0.007534150939701716,
+            "median_trade": -0.012438507886938344,
+            "profit_factor": 1.4113253800534282,
+            "win_rate": 0.2705479452054795,
+            "sum_trade_return": 2.199972074392901
+          },
+          "2026": {
+            "n": 359,
+            "mean_trade": 0.03426627536457685,
+            "median_trade": -0.01237473207633688,
+            "profit_factor": 3.024118772867587,
+            "win_rate": 0.28133704735376047,
+            "sum_trade_return": 12.301592855883088
+          }
+        },
+        "cost_delay_stress": {
+          "5bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.03169044821356879,
+              "median_trade": -0.012332649887326408,
+              "profit_factor": 2.814704205232705,
+              "win_rate": 0.27889447236180903,
+              "sum_trade_return": 12.612798389000378
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5131351762501629,
+              "top10_abs_pnl_share": 0.5965293486022946
+            },
+            "diagnostic_compounded_trade_return": 817.0935901714829
+          },
+          "5bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.03002903272829985,
+              "median_trade": -0.013284482335556347,
+              "profit_factor": 2.4771267681821825,
+              "win_rate": 0.2749003984063745,
+              "sum_trade_return": 7.537287214803262
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5577855865807128,
+              "top10_abs_pnl_share": 0.6603036576869508
+            },
+            "diagnostic_compounded_trade_return": 8.452633302583134
+          },
+          "10bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.030659272837455592,
+              "median_trade": -0.013319824143897818,
+              "profit_factor": 2.6876672398373618,
+              "win_rate": 0.27638190954773867,
+              "sum_trade_return": 12.202390589307326
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5097996396200504,
+              "top10_abs_pnl_share": 0.5923263536262415
+            },
+            "diagnostic_compounded_trade_return": 548.4822720203058
+          },
+          "10bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.0289995179382092,
+              "median_trade": -0.014270705234882608,
+              "profit_factor": 2.378689476917306,
+              "win_rate": 0.27091633466135456,
+              "sum_trade_return": 7.278879002490509
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5544360147412337,
+              "top10_abs_pnl_share": 0.6565398374328066
+            },
+            "diagnostic_compounded_trade_return": 6.354359102751373
+          },
+          "20bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.02860000943665456,
+              "median_trade": -0.01529121704549441,
+              "profit_factor": 2.4609616265813994,
+              "win_rate": 0.27638190954773867,
+              "sum_trade_return": 11.382803755788515
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5031976529416274,
+              "top10_abs_pnl_share": 0.5849008560562801
+            },
+            "diagnostic_compounded_trade_return": 246.8874106994174
+          },
+          "20bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.026943570737638835,
+              "median_trade": -0.016240198270363604,
+              "profit_factor": 2.200222896603064,
+              "win_rate": 0.27091633466135456,
+              "sum_trade_return": 6.762836255147348
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5477954784357734,
+              "top10_abs_pnl_share": 0.6491414834196219
+            },
+            "diagnostic_compounded_trade_return": 3.451726690669809
+          }
+        }
+      },
+      "EA_LOW_ENTRY": {
+        "baseline": {
+          "total_return": 2.9086169975592098,
+          "cagr": 0.5232905865685558,
+          "max_drawdown": -0.1587812566038601,
+          "daily_sharpe": 0.9168138027905445,
+          "avg_exposure": 0.33839201868253854,
+          "idle_day_share": 0.44772447724477243,
+          "completed_trades": 211,
+          "profit_factor": 2.20312583977371,
+          "mean_trade": 0.020208317840832362,
+          "win_rate": 0.26066350710900477,
+          "entries": 213,
+          "blocked_entries": 49,
+          "partial_entries": 48,
+          "risk_realization_ratio": 0.5156875732664753,
+          "yearly_return": {
+            "2023": 0.3782458263395132,
+            "2024": 0.13854614142740918,
+            "2025": 1.2452804777229631,
+            "2026": 0.04405259219644342
+          },
+          "rolling_12m_min_return": 0.03214934676581627,
+          "rolling_12m_positive_share": 1.0,
+          "rolling_12m_median_return": 0.20005730527371146
+        },
+        "trade_concentration": {
+          "top5_abs_pnl_share": 0.5131351762501629,
+          "top10_abs_pnl_share": 0.5965293486022946
+        },
+        "leave_one_year_out_trade": {
+          "2023": {
+            "n": 285,
+            "mean_trade": 0.03972430997782566,
+            "median_trade": -0.012939195341879817,
+            "profit_factor": 3.345358523296505,
+            "win_rate": 0.2771929824561403,
+            "sum_trade_return": 11.321428343680314
+          },
+          "2024": {
+            "n": 258,
+            "mean_trade": 0.046571325166840434,
+            "median_trade": -0.011160818521897264,
+            "profit_factor": 3.613274216096928,
+            "win_rate": 0.2868217054263566,
+            "sum_trade_return": 12.015401893044832
+          },
+          "2025": {
+            "n": 292,
+            "mean_trade": 0.007534150939701716,
+            "median_trade": -0.012438507886938344,
+            "profit_factor": 1.4113253800534282,
+            "win_rate": 0.2705479452054795,
+            "sum_trade_return": 2.199972074392901
+          },
+          "2026": {
+            "n": 359,
+            "mean_trade": 0.03426627536457685,
+            "median_trade": -0.01237473207633688,
+            "profit_factor": 3.024118772867587,
+            "win_rate": 0.28133704735376047,
+            "sum_trade_return": 12.301592855883088
+          }
+        },
+        "cost_delay_stress": {
+          "5bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.03169044821356879,
+              "median_trade": -0.012332649887326408,
+              "profit_factor": 2.814704205232705,
+              "win_rate": 0.27889447236180903,
+              "sum_trade_return": 12.612798389000378
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5131351762501629,
+              "top10_abs_pnl_share": 0.5965293486022946
+            },
+            "diagnostic_compounded_trade_return": 817.0935901714829
+          },
+          "5bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.03002903272829985,
+              "median_trade": -0.013284482335556347,
+              "profit_factor": 2.4771267681821825,
+              "win_rate": 0.2749003984063745,
+              "sum_trade_return": 7.537287214803262
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5577855865807128,
+              "top10_abs_pnl_share": 0.6603036576869508
+            },
+            "diagnostic_compounded_trade_return": 8.452633302583134
+          },
+          "10bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.030659272837455592,
+              "median_trade": -0.013319824143897818,
+              "profit_factor": 2.6876672398373618,
+              "win_rate": 0.27638190954773867,
+              "sum_trade_return": 12.202390589307326
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5097996396200504,
+              "top10_abs_pnl_share": 0.5923263536262415
+            },
+            "diagnostic_compounded_trade_return": 548.4822720203058
+          },
+          "10bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.0289995179382092,
+              "median_trade": -0.014270705234882608,
+              "profit_factor": 2.378689476917306,
+              "win_rate": 0.27091633466135456,
+              "sum_trade_return": 7.278879002490509
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5544360147412337,
+              "top10_abs_pnl_share": 0.6565398374328066
+            },
+            "diagnostic_compounded_trade_return": 6.354359102751373
+          },
+          "20bps_direct": {
+            "trade_stats": {
+              "n": 398,
+              "mean_trade": 0.02860000943665456,
+              "median_trade": -0.01529121704549441,
+              "profit_factor": 2.4609616265813994,
+              "win_rate": 0.27638190954773867,
+              "sum_trade_return": 11.382803755788515
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5031976529416274,
+              "top10_abs_pnl_share": 0.5849008560562801
+            },
+            "diagnostic_compounded_trade_return": 246.8874106994174
+          },
+          "20bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 251,
+              "mean_trade": 0.026943570737638835,
+              "median_trade": -0.016240198270363604,
+              "profit_factor": 2.200222896603064,
+              "win_rate": 0.27091633466135456,
+              "sum_trade_return": 6.762836255147348
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.5477954784357734,
+              "top10_abs_pnl_share": 0.6491414834196219
+            },
+            "diagnostic_compounded_trade_return": 3.451726690669809
+          }
+        }
+      }
+    },
+    "top500": {
+      "BASE_R125_PRO_RATA": {
+        "baseline": {
+          "total_return": 2.543234027758796,
+          "cagr": 0.4778254330504492,
+          "max_drawdown": -0.16737339708303822,
+          "daily_sharpe": 1.1181945477441486,
+          "avg_exposure": 0.43221733190229084,
+          "idle_day_share": 0.3111931119311193,
+          "completed_trades": 341,
+          "profit_factor": 2.04089114395991,
+          "mean_trade": 0.01594237424197132,
+          "win_rate": 0.26099706744868034,
+          "entries": 347,
+          "blocked_entries": 0,
+          "partial_entries": 232,
+          "risk_realization_ratio": 0.46167648883080864,
+          "yearly_return": {
+            "2023": 0.395892472079705,
+            "2024": 0.3308720428693148,
+            "2025": 0.9529913334731173,
+            "2026": -0.07693131924452379
+          },
+          "rolling_12m_min_return": 0.0977895298672129,
+          "rolling_12m_positive_share": 1.0,
+          "rolling_12m_median_return": 0.2792147161364019
+        },
+        "trade_concentration": {
+          "top5_abs_pnl_share": 0.39991238852937055,
+          "top10_abs_pnl_share": 0.4739926818038667
+        },
+        "leave_one_year_out_trade": {
+          "2023": {
+            "n": 457,
+            "mean_trade": 0.02735014438200089,
+            "median_trade": -0.012597242229269723,
+            "profit_factor": 2.6716767238008954,
+            "win_rate": 0.26914660831509846,
+            "sum_trade_return": 12.499015982574406
+          },
+          "2024": {
+            "n": 378,
+            "mean_trade": 0.03543739156009751,
+            "median_trade": -0.010040378379934378,
+            "profit_factor": 3.178917077733495,
+            "win_rate": 0.2751322751322751,
+            "sum_trade_return": 13.395334009716857
+          },
+          "2025": {
+            "n": 454,
+            "mean_trade": 0.0097564626562232,
+            "median_trade": -0.012076166387004927,
+            "profit_factor": 1.5913398182197125,
+            "win_rate": 0.27312775330396477,
+            "sum_trade_return": 4.4294340459253325
+          },
+          "2026": {
+            "n": 553,
+            "mean_trade": 0.02700088855676545,
+            "median_trade": -0.011988505747126177,
+            "profit_factor": 2.705983950584428,
+            "win_rate": 0.2875226039783002,
+            "sum_trade_return": 14.931491371891294
+          }
+        },
+        "cost_delay_stress": {
+          "5bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.024568553425682895,
+              "median_trade": -0.011963660523116149,
+              "profit_factor": 2.5151981009216082,
+              "win_rate": 0.2768729641693811,
+              "sum_trade_return": 15.085091803369297
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39991238852937055,
+              "top10_abs_pnl_share": 0.4739926818038667
+            },
+            "diagnostic_compounded_trade_return": 6946.155358809151
+          },
+          "5bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.02231230982496796,
+              "median_trade": -0.013284482335556347,
+              "profit_factor": 2.1852169225091767,
+              "win_rate": 0.2641509433962264,
+              "sum_trade_return": 8.277866945063113
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.43826956641726267,
+              "top10_abs_pnl_share": 0.5279312561980979
+            },
+            "diagnostic_compounded_trade_return": 15.731065858745154
+          },
+          "10bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.02354449638874716,
+              "median_trade": -0.012951203584833704,
+              "profit_factor": 2.391399652023333,
+              "win_rate": 0.2752442996742671,
+              "sum_trade_return": 14.456320782690756
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39683271102785456,
+              "top10_abs_pnl_share": 0.47000328640921246
+            },
+            "diagnostic_compounded_trade_return": 3758.6727413262383
+          },
+          "10bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.02129050790520191,
+              "median_trade": -0.014270705234882608,
+              "profit_factor": 2.0893349395875194,
+              "win_rate": 0.2587601078167116,
+              "sum_trade_return": 7.898778432829909
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.4349368499303827,
+              "top10_abs_pnl_share": 0.523422313308382
+            },
+            "diagnostic_compounded_trade_return": 10.545168133079446
+          },
+          "20bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.02149944835390832,
+              "median_trade": -0.014923332992515304,
+              "profit_factor": 2.1725455148916493,
+              "win_rate": 0.2752442996742671,
+              "sum_trade_return": 13.20066128929971
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39058571203931114,
+              "top10_abs_pnl_share": 0.4622855555401273
+            },
+            "diagnostic_compounded_trade_return": 1100.1213298945154
+          },
+          "20bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.01924996335285464,
+              "median_trade": -0.016240198270363604,
+              "profit_factor": 1.9172566483629356,
+              "win_rate": 0.2587601078167116,
+              "sum_trade_return": 7.141736403909071
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.4282520031217269,
+              "top10_abs_pnl_share": 0.5143944150578617
+            },
+            "diagnostic_compounded_trade_return": 4.4973451441848535
+          }
+        }
+      },
+      "EA_PRO_RATA": {
+        "baseline": {
+          "total_return": 2.5033300936241107,
+          "cagr": 0.47266681294541857,
+          "max_drawdown": -0.16356043477094895,
+          "daily_sharpe": 1.1813610634526261,
+          "avg_exposure": 0.43999406004666064,
+          "idle_day_share": 0.30996309963099633,
+          "completed_trades": 339,
+          "profit_factor": 1.9952523450842146,
+          "mean_trade": 0.015375671070206416,
+          "win_rate": 0.25663716814159293,
+          "entries": 345,
+          "blocked_entries": 0,
+          "partial_entries": 245,
+          "risk_realization_ratio": 0.4605895064571834,
+          "yearly_return": {
+            "2023": 0.40772010117596036,
+            "2024": 0.32986424692440486,
+            "2025": 0.9003928048828167,
+            "2026": -0.07122947916250166
+          },
+          "rolling_12m_min_return": 0.1078953080199192,
+          "rolling_12m_positive_share": 1.0,
+          "rolling_12m_median_return": 0.29102830546594616
+        },
+        "trade_concentration": {
+          "top5_abs_pnl_share": 0.39991238852937055,
+          "top10_abs_pnl_share": 0.4739926818038667
+        },
+        "leave_one_year_out_trade": {
+          "2023": {
+            "n": 457,
+            "mean_trade": 0.02735014438200089,
+            "median_trade": -0.012597242229269723,
+            "profit_factor": 2.6716767238008954,
+            "win_rate": 0.26914660831509846,
+            "sum_trade_return": 12.499015982574406
+          },
+          "2024": {
+            "n": 378,
+            "mean_trade": 0.03543739156009751,
+            "median_trade": -0.010040378379934378,
+            "profit_factor": 3.178917077733495,
+            "win_rate": 0.2751322751322751,
+            "sum_trade_return": 13.395334009716857
+          },
+          "2025": {
+            "n": 454,
+            "mean_trade": 0.0097564626562232,
+            "median_trade": -0.012076166387004927,
+            "profit_factor": 1.5913398182197125,
+            "win_rate": 0.27312775330396477,
+            "sum_trade_return": 4.4294340459253325
+          },
+          "2026": {
+            "n": 553,
+            "mean_trade": 0.02700088855676545,
+            "median_trade": -0.011988505747126177,
+            "profit_factor": 2.705983950584428,
+            "win_rate": 0.2875226039783002,
+            "sum_trade_return": 14.931491371891294
+          }
+        },
+        "cost_delay_stress": {
+          "5bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.024568553425682895,
+              "median_trade": -0.011963660523116149,
+              "profit_factor": 2.5151981009216082,
+              "win_rate": 0.2768729641693811,
+              "sum_trade_return": 15.085091803369297
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39991238852937055,
+              "top10_abs_pnl_share": 0.4739926818038667
+            },
+            "diagnostic_compounded_trade_return": 6946.155358809151
+          },
+          "5bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.02231230982496796,
+              "median_trade": -0.013284482335556347,
+              "profit_factor": 2.1852169225091767,
+              "win_rate": 0.2641509433962264,
+              "sum_trade_return": 8.277866945063113
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.43826956641726267,
+              "top10_abs_pnl_share": 0.5279312561980979
+            },
+            "diagnostic_compounded_trade_return": 15.731065858745154
+          },
+          "10bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.02354449638874716,
+              "median_trade": -0.012951203584833704,
+              "profit_factor": 2.391399652023333,
+              "win_rate": 0.2752442996742671,
+              "sum_trade_return": 14.456320782690756
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39683271102785456,
+              "top10_abs_pnl_share": 0.47000328640921246
+            },
+            "diagnostic_compounded_trade_return": 3758.6727413262383
+          },
+          "10bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.02129050790520191,
+              "median_trade": -0.014270705234882608,
+              "profit_factor": 2.0893349395875194,
+              "win_rate": 0.2587601078167116,
+              "sum_trade_return": 7.898778432829909
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.4349368499303827,
+              "top10_abs_pnl_share": 0.523422313308382
+            },
+            "diagnostic_compounded_trade_return": 10.545168133079446
+          },
+          "20bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.02149944835390832,
+              "median_trade": -0.014923332992515304,
+              "profit_factor": 2.1725455148916493,
+              "win_rate": 0.2752442996742671,
+              "sum_trade_return": 13.20066128929971
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39058571203931114,
+              "top10_abs_pnl_share": 0.4622855555401273
+            },
+            "diagnostic_compounded_trade_return": 1100.1213298945154
+          },
+          "20bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.01924996335285464,
+              "median_trade": -0.016240198270363604,
+              "profit_factor": 1.9172566483629356,
+              "win_rate": 0.2587601078167116,
+              "sum_trade_return": 7.141736403909071
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.4282520031217269,
+              "top10_abs_pnl_share": 0.5143944150578617
+            },
+            "diagnostic_compounded_trade_return": 4.4973451441848535
+          }
+        }
+      },
+      "R125_LIQUIDITY": {
+        "baseline": {
+          "total_return": 3.733645180772836,
+          "cagr": 0.616075620722754,
+          "max_drawdown": -0.1683141183251119,
+          "daily_sharpe": 1.1412758282549085,
+          "avg_exposure": 0.44717409082995024,
+          "idle_day_share": 0.31857318573185733,
+          "completed_trades": 291,
+          "profit_factor": 2.1971805921547607,
+          "mean_trade": 0.018472188892589128,
+          "win_rate": 0.26804123711340205,
+          "entries": 294,
+          "blocked_entries": 128,
+          "partial_entries": 101,
+          "risk_realization_ratio": 0.4319028761448988,
+          "yearly_return": {
+            "2023": 0.5522335814655426,
+            "2024": 0.2866083980008416,
+            "2025": 1.4260348192021493,
+            "2026": -0.07654023901287921
+          },
+          "rolling_12m_min_return": 0.15111899082287583,
+          "rolling_12m_positive_share": 1.0,
+          "rolling_12m_median_return": 0.33466284522070433
+        },
+        "trade_concentration": {
+          "top5_abs_pnl_share": 0.39991238852937055,
+          "top10_abs_pnl_share": 0.4739926818038667
+        },
+        "leave_one_year_out_trade": {
+          "2023": {
+            "n": 457,
+            "mean_trade": 0.02735014438200089,
+            "median_trade": -0.012597242229269723,
+            "profit_factor": 2.6716767238008954,
+            "win_rate": 0.26914660831509846,
+            "sum_trade_return": 12.499015982574406
+          },
+          "2024": {
+            "n": 378,
+            "mean_trade": 0.03543739156009751,
+            "median_trade": -0.010040378379934378,
+            "profit_factor": 3.178917077733495,
+            "win_rate": 0.2751322751322751,
+            "sum_trade_return": 13.395334009716857
+          },
+          "2025": {
+            "n": 454,
+            "mean_trade": 0.0097564626562232,
+            "median_trade": -0.012076166387004927,
+            "profit_factor": 1.5913398182197125,
+            "win_rate": 0.27312775330396477,
+            "sum_trade_return": 4.4294340459253325
+          },
+          "2026": {
+            "n": 553,
+            "mean_trade": 0.02700088855676545,
+            "median_trade": -0.011988505747126177,
+            "profit_factor": 2.705983950584428,
+            "win_rate": 0.2875226039783002,
+            "sum_trade_return": 14.931491371891294
+          }
+        },
+        "cost_delay_stress": {
+          "5bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.024568553425682895,
+              "median_trade": -0.011963660523116149,
+              "profit_factor": 2.5151981009216082,
+              "win_rate": 0.2768729641693811,
+              "sum_trade_return": 15.085091803369297
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39991238852937055,
+              "top10_abs_pnl_share": 0.4739926818038667
+            },
+            "diagnostic_compounded_trade_return": 6946.155358809151
+          },
+          "5bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.02231230982496796,
+              "median_trade": -0.013284482335556347,
+              "profit_factor": 2.1852169225091767,
+              "win_rate": 0.2641509433962264,
+              "sum_trade_return": 8.277866945063113
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.43826956641726267,
+              "top10_abs_pnl_share": 0.5279312561980979
+            },
+            "diagnostic_compounded_trade_return": 15.731065858745154
+          },
+          "10bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.02354449638874716,
+              "median_trade": -0.012951203584833704,
+              "profit_factor": 2.391399652023333,
+              "win_rate": 0.2752442996742671,
+              "sum_trade_return": 14.456320782690756
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39683271102785456,
+              "top10_abs_pnl_share": 0.47000328640921246
+            },
+            "diagnostic_compounded_trade_return": 3758.6727413262383
+          },
+          "10bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.02129050790520191,
+              "median_trade": -0.014270705234882608,
+              "profit_factor": 2.0893349395875194,
+              "win_rate": 0.2587601078167116,
+              "sum_trade_return": 7.898778432829909
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.4349368499303827,
+              "top10_abs_pnl_share": 0.523422313308382
+            },
+            "diagnostic_compounded_trade_return": 10.545168133079446
+          },
+          "20bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.02149944835390832,
+              "median_trade": -0.014923332992515304,
+              "profit_factor": 2.1725455148916493,
+              "win_rate": 0.2752442996742671,
+              "sum_trade_return": 13.20066128929971
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39058571203931114,
+              "top10_abs_pnl_share": 0.4622855555401273
+            },
+            "diagnostic_compounded_trade_return": 1100.1213298945154
+          },
+          "20bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.01924996335285464,
+              "median_trade": -0.016240198270363604,
+              "profit_factor": 1.9172566483629356,
+              "win_rate": 0.2587601078167116,
+              "sum_trade_return": 7.141736403909071
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.4282520031217269,
+              "top10_abs_pnl_share": 0.5143944150578617
+            },
+            "diagnostic_compounded_trade_return": 4.4973451441848535
+          }
+        }
+      },
+      "EA_LIQUIDITY": {
+        "baseline": {
+          "total_return": 3.682863040500271,
+          "cagr": 0.61070294479486,
+          "max_drawdown": -0.16820434299755993,
+          "daily_sharpe": 1.1312092977291897,
+          "avg_exposure": 0.45311383879318257,
+          "idle_day_share": 0.3173431734317343,
+          "completed_trades": 287,
+          "profit_factor": 2.1985530884846534,
+          "mean_trade": 0.018601258834209995,
+          "win_rate": 0.2682926829268293,
+          "entries": 290,
+          "blocked_entries": 137,
+          "partial_entries": 102,
+          "risk_realization_ratio": 0.43915907444435076,
+          "yearly_return": {
+            "2023": 0.5562667876873624,
+            "2024": 0.29038915619091554,
+            "2025": 1.3494737014002722,
+            "2026": -0.06388225776929335
+          },
+          "rolling_12m_min_return": 0.1468300205343136,
+          "rolling_12m_positive_share": 1.0,
+          "rolling_12m_median_return": 0.3279524226932513
+        },
+        "trade_concentration": {
+          "top5_abs_pnl_share": 0.39991238852937055,
+          "top10_abs_pnl_share": 0.4739926818038667
+        },
+        "leave_one_year_out_trade": {
+          "2023": {
+            "n": 457,
+            "mean_trade": 0.02735014438200089,
+            "median_trade": -0.012597242229269723,
+            "profit_factor": 2.6716767238008954,
+            "win_rate": 0.26914660831509846,
+            "sum_trade_return": 12.499015982574406
+          },
+          "2024": {
+            "n": 378,
+            "mean_trade": 0.03543739156009751,
+            "median_trade": -0.010040378379934378,
+            "profit_factor": 3.178917077733495,
+            "win_rate": 0.2751322751322751,
+            "sum_trade_return": 13.395334009716857
+          },
+          "2025": {
+            "n": 454,
+            "mean_trade": 0.0097564626562232,
+            "median_trade": -0.012076166387004927,
+            "profit_factor": 1.5913398182197125,
+            "win_rate": 0.27312775330396477,
+            "sum_trade_return": 4.4294340459253325
+          },
+          "2026": {
+            "n": 553,
+            "mean_trade": 0.02700088855676545,
+            "median_trade": -0.011988505747126177,
+            "profit_factor": 2.705983950584428,
+            "win_rate": 0.2875226039783002,
+            "sum_trade_return": 14.931491371891294
+          }
+        },
+        "cost_delay_stress": {
+          "5bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.024568553425682895,
+              "median_trade": -0.011963660523116149,
+              "profit_factor": 2.5151981009216082,
+              "win_rate": 0.2768729641693811,
+              "sum_trade_return": 15.085091803369297
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39991238852937055,
+              "top10_abs_pnl_share": 0.4739926818038667
+            },
+            "diagnostic_compounded_trade_return": 6946.155358809151
+          },
+          "5bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.02231230982496796,
+              "median_trade": -0.013284482335556347,
+              "profit_factor": 2.1852169225091767,
+              "win_rate": 0.2641509433962264,
+              "sum_trade_return": 8.277866945063113
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.43826956641726267,
+              "top10_abs_pnl_share": 0.5279312561980979
+            },
+            "diagnostic_compounded_trade_return": 15.731065858745154
+          },
+          "10bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.02354449638874716,
+              "median_trade": -0.012951203584833704,
+              "profit_factor": 2.391399652023333,
+              "win_rate": 0.2752442996742671,
+              "sum_trade_return": 14.456320782690756
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39683271102785456,
+              "top10_abs_pnl_share": 0.47000328640921246
+            },
+            "diagnostic_compounded_trade_return": 3758.6727413262383
+          },
+          "10bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.02129050790520191,
+              "median_trade": -0.014270705234882608,
+              "profit_factor": 2.0893349395875194,
+              "win_rate": 0.2587601078167116,
+              "sum_trade_return": 7.898778432829909
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.4349368499303827,
+              "top10_abs_pnl_share": 0.523422313308382
+            },
+            "diagnostic_compounded_trade_return": 10.545168133079446
+          },
+          "20bps_direct": {
+            "trade_stats": {
+              "n": 614,
+              "mean_trade": 0.02149944835390832,
+              "median_trade": -0.014923332992515304,
+              "profit_factor": 2.1725455148916493,
+              "win_rate": 0.2752442996742671,
+              "sum_trade_return": 13.20066128929971
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.39058571203931114,
+              "top10_abs_pnl_share": 0.4622855555401273
+            },
+            "diagnostic_compounded_trade_return": 1100.1213298945154
+          },
+          "20bps_delay_revalidated": {
+            "trade_stats": {
+              "n": 371,
+              "mean_trade": 0.01924996335285464,
+              "median_trade": -0.016240198270363604,
+              "profit_factor": 1.9172566483629356,
+              "win_rate": 0.2587601078167116,
+              "sum_trade_return": 7.141736403909071
+            },
+            "concentration": {
+              "top5_abs_pnl_share": 0.4282520031217269,
+              "top10_abs_pnl_share": 0.5143944150578617
+            },
+            "diagnostic_compounded_trade_return": 4.4973451441848535
+          }
+        }
+      }
+    }
+  }
+}
