@@ -1,78 +1,76 @@
 # Pure Box Simple Core Path-State Robustness V47
 
-Status: preregistered portfolio-level robustness test. Signal core frozen.
+Status: robustness validation only. Signal core frozen.
 
 ## Context
-V46 anatomy found two cross-universe consistent descriptive patterns for EARLY_R250 add-ons:
-1. repeated signal occurs while current open is at or below original entry
-2. repeated signal occurs on holding day 3
+V46 anatomy found two cross-universe descriptive patterns inside EARLY_R250:
+1. Repeat signal while current open is still at/below original entry had much stronger add-on outcomes.
+2. Age-3 repeat signals had much stronger add-on outcomes than age-2.
 
-These findings are descriptive only. V47 tests them prospectively within the same historical validation sample using frozen rules and no further threshold search.
+These are post-hoc findings and are NOT candidate rules yet.
 
 ## Frozen base
-Simple Core Capital Candidate V2 / EARLY_R250:
-- Top500 primary, Top300 robustness
-- Strict Wide + Fresh
-- Bottom<=20%
-- first eligible next-session open
-- initial risk 1.25%
-- repeated same-box signal only
-- holding age <=3
-- total same-symbol stop-risk ceiling 2.50%
-- no age reset
-- no stop/target reset
-- H15 / target60
-- liquidity-first same-day capital queue
-- 50% single-name cap
-- no leverage
-- 5 bps/side baseline
+Top500 primary, Top300 robustness
+Strict Wide + Fresh
+Bottom<=20%
+first eligible next-session open
+initial risk 1.25%
+same-box repeat signal only
+same lower stop / same target / same H15 clock
+50% single-name cap
+liquidity-first queue
+no leverage
 
-## Policies
+## Preregistered lanes
 
 A. EARLY_R250_BASE
-Current V2 rule:
-- allow repeat-signal add-on at age <=3
+Current Candidate V2:
+- repeat signal allowed at holding age <=3
+- total same-symbol stop-risk ceiling 2.50%
 
 B. NEGATIVE_ONLY_R250
-Allow repeat-signal add-on only when:
-- age <=3
-- current add-on open <= original entry price
+- repeat signal allowed at age <=3
+- current add-on open must be <= original entry price
+- otherwise skip add-on
+- total same-symbol stop-risk ceiling 2.50%
 
 C. AGE3_ONLY_R250
-Allow repeat-signal add-on only when:
-- holding age ==3
+- repeat signal allowed only when holding age ==3
+- no PnL-state condition
+- total same-symbol stop-risk ceiling 2.50%
 
 D. AGE3_NEGATIVE_R250
-Allow repeat-signal add-on only when:
-- holding age ==3
+- repeat signal allowed only when holding age ==3
 - current add-on open <= original entry price
+- total same-symbol stop-risk ceiling 2.50%
 
-No other condition changes.
+E. AGE2_NEGATIVE_R250
+- repeat signal allowed only when holding age ==2
+- current add-on open <= original entry price
+- total same-symbol stop-risk ceiling 2.50%
 
-## Required outputs
-For Top500 and Top300:
+## Required tests
+For Top300 and Top500:
+- 5 bps/side
+- 10 bps/side
+- 20 bps/side
+
+Report:
 - total return / CAGR / MDD / Sharpe
 - rolling 12m min / median / positive share
 - yearly returns
 - add-on count / capital
-- blocked new-symbol entries
+- blocked new entries
 - average exposure
-- PF / mean trade
-- top5 / top10 funded PnL concentration
-- add-on top1 / top5 symbol concentration
-- ex-2025 add-on PF and slice PnL
-
-## Stress
-For Top500 only, rerun all four policies at:
-- 10 bps/side
-- 20 bps/side
+- top5/top10 funded PnL concentration
+- ex-2025 annual-block compounding
 
 ## Decision rule
-A path-state restriction is supported only if it:
-- preserves most of EARLY_R250 return,
-- improves at least one of MDD / Sharpe / rolling minimum / concentration,
-- remains directionally sensible on Top300,
-- remains viable at 10/20 bps,
-- and does not rely entirely on 2025.
+A path-state lane is supported only if:
+- it preserves or improves return versus EARLY_R250_BASE,
+- or materially improves MDD / rolling stability / concentration with modest return sacrifice,
+- direction is coherent across Top500 and Top300,
+- 10/20 bps results remain sensible,
+- ex-2025 result does not collapse.
 
-No new path condition or threshold may be added after results.
+No new path threshold may be added after results.
