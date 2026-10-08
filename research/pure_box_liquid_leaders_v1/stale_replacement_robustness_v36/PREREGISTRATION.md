@@ -40,10 +40,10 @@ Run the exact same rules on:
 - Top300
 No threshold changes.
 
-### C. Temporal attribution
+### C. Temporal attribution (stage 2 only if A/B pass)
 Report yearly returns and replacement counts by year.
 
-### D. Replacement anatomy
+### D. Replacement anatomy (stage 2 only if A/B pass)
 For every replacement:
 - date
 - displaced symbol
