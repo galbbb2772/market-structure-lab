@@ -1,0 +1,147 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-AGE3-ADDON-FRAGILITY-V49",
+  "block_compounding": {
+    "top300": {
+      "SKIP_OVERLAP": {
+        "all_block_compound": 2.1999522387280117,
+        "ex_2025_block_compound": 0.5435107399192398,
+        "leave_one_year_out": {
+          "2023": 1.3360067217724279,
+          "2024": 1.7837329209102273,
+          "2025": 0.5435107399192398,
+          "2026": 2.264518840882299
+        }
+      },
+      "EARLY_R250": {
+        "all_block_compound": 3.681623662103303,
+        "ex_2025_block_compound": 0.5350789299061307,
+        "leave_one_year_out": {
+          "2023": 2.4978144856602436,
+          "2024": 3.115938260899301,
+          "2025": 0.5350789299061307,
+          "2026": 3.6429409904873307
+        }
+      },
+      "AGE3_ONLY_R250": {
+        "all_block_compound": 3.744030123338705,
+        "ex_2025_block_compound": 0.612187882732792,
+        "leave_one_year_out": {
+          "2023": 2.442075717767931,
+          "2024": 3.1093583940551968,
+          "2025": 0.612187882732792,
+          "2026": 3.68200876411806
+        }
+      }
+    },
+    "top500": {
+      "SKIP_OVERLAP": {
+        "all_block_compound": 3.4742316182383446,
+        "ex_2025_block_compound": 0.8442569673051048,
+        "leave_one_year_out": {
+          "2023": 1.882447378837143,
+          "2024": 2.4775395724064113,
+          "2025": 0.8442569673051048,
+          "2026": 3.8450748015870992
+        }
+      },
+      "EARLY_R250": {
+        "all_block_compound": 5.668477484868948,
+        "ex_2025_block_compound": 0.9959211498993219,
+        "leave_one_year_out": {
+          "2023": 3.114068584557576,
+          "2024": 4.219604567894805,
+          "2025": 0.9959211498993219,
+          "2026": 5.918748711863783
+        }
+      },
+      "AGE3_ONLY_R250": {
+        "all_block_compound": 5.441287670140187,
+        "ex_2025_block_compound": 0.9886430580177821,
+        "leave_one_year_out": {
+          "2023": 3.127307202707752,
+          "2024": 3.7772999032732795,
+          "2025": 0.9886430580177821,
+          "2026": 5.815723228573707
+        }
+      }
+    }
+  },
+  "addon_events": {
+    "top300": {
+      "overall": {
+        "n": 21,
+        "funded_capital": 7.933304858941117,
+        "mean_return": 0.18331335045867286,
+        "median_return": -0.012279773544606964,
+        "profit_factor": 14.993976214572209,
+        "win_rate": 0.42857142857142855,
+        "sum_slice_pnl": 1.5218544491500265,
+        "unique_symbols": 19,
+        "top1_abs_share": 0.7135908551895807,
+        "top3_abs_share": 0.8778233437315116,
+        "top5_abs_share": 0.9273072993050623,
+        "top10_abs_share": 0.9764987326181199,
+        "top_symbol": "SPXU",
+        "top_symbol_signed_pnl": 1.2513513817729363,
+        "leave_top1_symbol_out_sum_pnl": 0.2705030673770904,
+        "leave_top3_symbols_out_sum_pnl": -0.01749466966559416
+      },
+      "ex_2025": {
+        "n": 13,
+        "funded_capital": 4.380800334242364,
+        "mean_return": 0.03965285231892375,
+        "median_return": -0.012279773544606964,
+        "profit_factor": 4.342176314370929,
+        "win_rate": 0.38461538461538464,
+        "sum_slice_pnl": 0.23991880640720167,
+        "unique_symbols": 11,
+        "top1_abs_share": 0.6646757429961634,
+        "top3_abs_share": 0.9142478533645854,
+        "top5_abs_share": 0.9540230666113018,
+        "top10_abs_share": 0.9999247432081564,
+        "top_symbol": "DELL",
+        "top_symbol_signed_pnl": 0.23110438627223107,
+        "leave_top1_symbol_out_sum_pnl": 0.0088144201349706,
+        "leave_top3_symbols_out_sum_pnl": 0.0006528699923128807
+      }
+    },
+    "top500": {
+      "overall": {
+        "n": 22,
+        "funded_capital": 9.96473970569486,
+        "mean_return": 0.17154107060494816,
+        "median_return": -0.008666726295097238,
+        "profit_factor": 13.938375013116683,
+        "win_rate": 0.36363636363636365,
+        "sum_slice_pnl": 2.0802642447496433,
+        "unique_symbols": 20,
+        "top1_abs_share": 0.7295029223094784,
+        "top3_abs_share": 0.8997651243730661,
+        "top5_abs_share": 0.9449358857435813,
+        "top10_abs_share": 0.986875752914449,
+        "top_symbol": "SPXU",
+        "top_symbol_signed_pnl": 1.7456114518200403,
+        "leave_top1_symbol_out_sum_pnl": 0.3346527929296032,
+        "leave_top3_symbols_out_sum_pnl": -0.07276387483832901
+      },
+      "ex_2025": {
+        "n": 13,
+        "funded_capital": 6.025037037817041,
+        "mean_return": 0.040902823529494,
+        "median_return": -0.003173421658772102,
+        "profit_factor": 4.8535185011696855,
+        "win_rate": 0.38461538461538464,
+        "sum_slice_pnl": 0.3162949795660594,
+        "unique_symbols": 12,
+        "top1_abs_share": 0.689535555652083,
+        "top3_abs_share": 0.9189476536532766,
+        "top5_abs_share": 0.9488449957004873,
+        "top10_abs_share": 0.999457797691175,
+        "top_symbol": "DELL",
+        "top_symbol_signed_pnl": 0.32487650616729685,
+        "leave_top1_symbol_out_sum_pnl": -0.008581526601237472,
+        "leave_top3_symbols_out_sum_pnl": -0.004549525103562192
+      }
+    }
+  }
+}
