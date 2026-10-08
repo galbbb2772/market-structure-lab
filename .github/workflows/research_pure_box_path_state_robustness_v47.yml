@@ -30,8 +30,8 @@ jobs:
           import json,pandas as pd
           d=json.load(open('/tmp/result/summary.json'));r=pd.read_csv('/tmp/result/results.csv')
           assert d['schema']=='PURE-BOX-SIMPLE-CORE-PATH-STATE-ROBUSTNESS-V47'
-          assert len(r)==16
-          print(r[['rank_cap','bps','policy','total_return','max_drawdown','daily_sharpe','rolling_12m_min_return','add_on_events']].to_string(index=False))
+          assert len(r)==30
+          print(r[['rank_cap','bps','policy','total_return','max_drawdown','daily_sharpe','rolling_12m_min_return','ex_2025_block_compound']].to_string(index=False))
           PY
       - name: Persist
         run: |
