@@ -42,6 +42,7 @@ jobs:
           base=Path('docs/data/pruned16_v2')
           names=[
             'residual_mean_reversion_distance_forward_oos_v1.json',
+            'matched_control_relative_state_forward_oos_v1.json',
             'task14_challenger_forward_oos_v1.json',
             'task14_forward_oos_evaluation_v1.json',
             'task14_paper_execution_ledger_v1.json',
@@ -80,6 +81,7 @@ jobs:
         run: |
           python build_residual_mean_reversion_distance_forward_oos_v1.py
           python build_task14_challenger_forward_oos_v1.py
+          python build_matched_control_relative_state_forward_oos_v1.py
           python evaluate_task14_forward_oos_v1.py
 
       - name: Refresh V2 paper layers
@@ -94,7 +96,7 @@ jobs:
         run: |
           python - <<'PY'
           import json
-          for n in ('residual_mean_reversion_distance_forward_oos_v1.json','task14_challenger_forward_oos_v1.json','task14_forward_oos_evaluation_v1.json'):
+          for n in ('residual_mean_reversion_distance_forward_oos_v1.json','matched_control_relative_state_forward_oos_v1.json','task14_challenger_forward_oos_v1.json','task14_forward_oos_evaluation_v1.json'):
               d=json.load(open('docs/data/'+n,encoding='utf-8'))
               assert d.get('frozen_through_market_date')=='2026-10-06',(n,d.get('frozen_through_market_date'))
           print('V2_FORWARD_FREEZE_VALID')
@@ -104,7 +106,7 @@ jobs:
         run: |
           set -e
           mkdir -p /tmp/v2-forward
-          for n in             residual_mean_reversion_distance_forward_oos_v1.json             task14_challenger_forward_oos_v1.json             task14_forward_oos_evaluation_v1.json             task14_paper_execution_ledger_v1.json             task14_paper_multiasset_v1.json             task14_paper_portfolio_v1.json             task14_stage4_stock_candidate_adapter_v1.json             task14_stage4_stock_paper_execution_v1.json; do
+          for n in             residual_mean_reversion_distance_forward_oos_v1.json             matched_control_relative_state_forward_oos_v1.json             task14_challenger_forward_oos_v1.json             task14_forward_oos_evaluation_v1.json             task14_paper_execution_ledger_v1.json             task14_paper_multiasset_v1.json             task14_paper_portfolio_v1.json             task14_stage4_stock_candidate_adapter_v1.json             task14_stage4_stock_paper_execution_v1.json; do
               cp docs/data/$n /tmp/v2-forward/$n
           done
           git fetch origin main
