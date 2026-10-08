@@ -1,80 +1,124 @@
-# Simple Core Capital Candidate V2
+# Simple Core Capital Candidate V2 — Early Re-Signal Pyramiding
 
-Status: FROZEN_RESEARCH_CANDIDATE / FORWARD_OOS_REQUIRED
+Status: FROZEN_RESEARCH_CANDIDATE / AGGRESSIVE_SHADOW / FORWARD_OOS_REQUIRED
 
-## Purpose
-This candidate freezes the capital-layer upgrade discovered after Simple Core Candidate V1.
-It does NOT replace or modify Candidate V1.
+Freeze date: 2026-10-08
 
-## Universe
-Primary: Top500 liquid-leader proxy.
+## Relationship to existing candidates
+This does NOT replace:
+- Simple Core Candidate V1
+- Simple Core Capital Candidate V1
+
+It is a separate aggressive capital-layer candidate.
+
+## Frozen universe
+Top500 liquid-leader proxy.
 
 ## Frozen signal core
 - Strict Wide + Fresh
-- actual next-open entry fraction <=20% of box
-- direct next-session open only
-- if the intended next-open entry is missed, do not chase later
-- lower box bound stop
-- target = lower + 60% of box width
-- max hold = 15 sessions
+- actual entry Bottom <=20%
+- first eligible next-session open only
+- no confirmation
+- missed direct next-open entry = skip, no chase
+- lower-bound stop
+- target = lower + 0.60 * box range
+- H15
 - stop-first same-day ambiguity
-- 5 bps/side baseline costs
+- baseline cost assumption 5 bps/side
 
-## Capital rule
+## Initial position
 - fixed 1.25% account risk to lower-bound invalidation
-- single-name capital cap 50%
+- 50% single-name capital cap
 - no leverage
-- when same-day requests exceed available cash:
-  - order eligible candidates by liquidity rank ascending
-  - tie-break by lower entry fraction, then symbol
-  - fund sequentially to requested size
-  - last funded candidate may receive partial remaining cash
-  - later candidates are skipped when cash is exhausted
+- same-day new-symbol cash competition resolved by liquidity-first sequential queue
 
-## Historical evidence
-2023-2026Q1 historical reconstruction:
-- total return: +373.36%
-- CAGR: 61.61%
-- max drawdown: -16.83%
-- daily Sharpe: 1.141
-- profit factor: 2.197
-- completed trades: 291
-- rolling 12m minimum: +15.11%
+## Frozen repeat-signal overlay
+A repeated signal is NOT a new independent box.
+
+An add-on is allowed only when:
+- same symbol is already held
+- the repeated signal is still valid at the current open
+- actual entry remains Bottom <=20%
+- same box / same lower stop / same target
+- existing holding age <=3 sessions
+
+When allowed:
+- total same-symbol stop risk may be increased up to 2.50% of account equity
+- add-on executes at the current valid open
+- add-on and new-symbol requests share the SAME liquidity-first queue
+- add-on has no special priority
+- 50% single-name capital cap remains hard
+- no leverage
+- holding age is NOT reset
+- H15 clock is NOT reset
+- stop is NOT changed
+- target is NOT changed
+
+## Historical evidence — Top500
+5 bps/side:
+- total return: +607.01%
+- CAGR: 82.92%
+- MDD: -17.21%
+- Sharpe: 0.957
+- rolling 12m minimum: +13.33%
 - rolling 12m positive share: 100%
-- top5 funded absolute PnL share: 35.13%
-- top10 funded absolute PnL share: 44.51%
 
-## Cost stress, portfolio-level
-Direct execution:
-- 10 bps/side: +313.02%, MDD -17.96%, rolling12m min +11.00%
-- 20 bps/side: +212.62%, MDD -20.04%, rolling12m min +3.36%
+10 bps/side:
+- total return: +524.74%
+- MDD: -17.67%
+- rolling 12m minimum: +9.11%
 
-## Execution finding
-+1-session delay with Bottom<=20 revalidation remains profitable but materially weakens rolling stability.
-V32 shows this is primarily opportunity-set turnover and concentration shift, not geometric deterioration:
-- direct funded entries: 294
-- delayed funded entries: 202
-- same signal retained: 148
-- retention: 50.34%
-- direct top5 funded PnL share: 35.13%
-- delayed top5: 49.28%
+20 bps/side:
+- total return: +387.22%
+- MDD: -18.45%
+- rolling 12m minimum: +1.28%
 
-Therefore execution invariant is frozen:
-Take the intended next-session-open entry if eligible. If missed, skip rather than chase.
+## Fragility findings
+The 2025 period materially amplifies the result, but the overlay is not entirely dependent on 2025.
 
-## Non-promotion
-This is historical research, not production and not live-proven alpha.
-Forward OOS is required before promotion.
+Annual-block compounding excluding 2025:
+- SKIP_OVERLAP: +84.43%
+- FULL_R250: +92.18%
+- EARLY_R250: +99.59%
+
+EARLY_R250 add-on slices excluding 2025:
+- n = 37
+- mean slice return ≈ +2.40%
+- PF ≈ 2.46
+- total slice PnL positive
+
+Concentration remains material:
+- overall top1 absolute add-on PnL share ≈ 60.3%
+- top5 ≈ 84.2%
+But after excluding 2025:
+- removing top1 contributing symbol still leaves positive add-on PnL
+- removing top3 contributing symbols still leaves positive add-on PnL
+
+## Single-name cap finding
+50% remains frozen.
+Raising the cap to 60% did not improve the risk/return profile:
+- 5bps EARLY_R250 CAP50: +607.01%, MDD -17.21%
+- 5bps EARLY_R250 CAP60: +588.79%, MDD -19.99%
+Wider caps degraded further.
+
+## Interpretation
+Repeated same-box observations contain useful historical sizing information primarily in the first 3 holding sessions.
+This is a capital-sizing overlay, not a new signal factor.
 
 ## Freeze discipline
-Do not retune:
-- Wide/Fresh thresholds
-- Bottom<=20
+Do not retune after 2026-10-08:
+- age <=3
+- initial risk 1.25%
+- repeated-signal risk ceiling 2.50%
+- 50% single-name cap
+- Bottom<=20%
 - target60
 - H15
-- fixed R1.25
-- 50% single-name cap
 - liquidity-first queue
-from post-freeze observations.
+- direct-next-open execution
 
-Any modification is Candidate V3 with a new preregistration.
+Any changed logic must become a separate candidate version.
+
+## Promotion discipline
+Historical results are exploratory validation, not forward proof.
+No production promotion without forward OOS.
