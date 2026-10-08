@@ -2,6 +2,12 @@ name: PRUNED16 Task14 V2 Forward Daily
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "build_matched_control_relative_state_forward_oos_v1.py"
+      - "research/matched_control_relative_state_forward_oos_v1/**"
+      - ".github/workflows/pruned16_task14_v2_forward_daily.yml"
   schedule:
     - cron: '45 23 * * 1-5'
       timezone: 'America/New_York'
