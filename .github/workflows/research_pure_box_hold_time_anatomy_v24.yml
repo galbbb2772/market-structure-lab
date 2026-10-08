@@ -12,7 +12,9 @@ jobs:
   analyze:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
-    env: {GH_TOKEN: ${{ github.token }}, SOURCE_RUN: 37424716935}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: 37424716935
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -22,14 +24,16 @@ jobs:
           mkdir -p /tmp/source
           gh run download "$SOURCE_RUN" -R "${{ github.repository }}" -D /tmp/source
       - run: python research_pure_box_hold_time_anatomy_v24.py --indir /tmp/source --outdir /tmp/result
-      - run: |
+      - name: Validate
+        run: |
           python - <<'PY'
           import json
           d=json.load(open('/tmp/result/summary.json'))
           assert d['schema']=='PURE-BOX-SIMPLE-CORE-HOLD-TIME-ANATOMY-V24'
           print(json.dumps(d,indent=2))
           PY
-      - run: |
+      - name: Persist
+        run: |
           mkdir -p research/pure_box_liquid_leaders_v1/hold_time_anatomy_v24
           cp /tmp/result/* research/pure_box_liquid_leaders_v1/hold_time_anatomy_v24/
           git config user.name 'github-actions[bot]'
