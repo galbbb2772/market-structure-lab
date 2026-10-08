@@ -21,11 +21,16 @@ But ~89% of Top500 add-on events are constrained by the frozen 50% single-name c
 No signal or exit rules change.
 
 ## Exploratory cap frontier
-Run exact same R250 policy with single-name capital cap:
+At each cap run both SKIP_OVERLAP control and PYRAMID_TO_R250, so cap effects can be separated from pyramiding effects.
+
+Run with single-name capital cap:
 - 50% (current reference)
 - 60%
 - 75%
 - 100% (research upper bound, never a recommendation)
+
+## Paired attribution
+For each cap report PYRAMID_TO_R250 minus SKIP_OVERLAP return/MDD/Sharpe delta.
 
 ## Metrics
 - total return / CAGR
