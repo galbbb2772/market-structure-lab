@@ -1,0 +1,100 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-REPLACEMENT-FRAGILITY-V38",
+  "paired_count": 8,
+  "signed_sum_pair_delta": 0.4748165594689998,
+  "mean_pair_delta": 0.059352069933624976,
+  "median_pair_delta": 0.0452185311973652,
+  "positive_pair_share": 0.75,
+  "top1_signed_share": 0.5306238561282737,
+  "top2_signed_share": 0.7136190704334642,
+  "top3_signed_share": 0.8778063766413108,
+  "leave_top1_mean": 0.03183822367571419,
+  "leave_top2_mean": 0.022663067945719418,
+  "leave_top3_mean": 0.011603911166444722,
+  "leave_one_out": [
+    {
+      "event_id": 1,
+      "date": "2023-04-26",
+      "displaced_symbol": "SPXU",
+      "incoming_symbol": "UBER",
+      "pair_delta": 0.2519489937390005,
+      "leave_one_out_mean": 0.03183822367571419
+    },
+    {
+      "event_id": 2,
+      "date": "2023-04-28",
+      "displaced_symbol": "SPXU",
+      "incoming_symbol": "SLB",
+      "pair_delta": 0.0287745685116829,
+      "leave_one_out_mean": 0.06372028442247384
+    },
+    {
+      "event_id": 3,
+      "date": "2024-03-20",
+      "displaced_symbol": "WBA",
+      "incoming_symbol": "NXPI",
+      "pair_delta": 0.0779588518420929,
+      "leave_one_out_mean": 0.05669395823241528
+    },
+    {
+      "event_id": 4,
+      "date": "2024-03-20",
+      "displaced_symbol": "WBA",
+      "incoming_symbol": "X",
+      "pair_delta": 0.0868891580556828,
+      "leave_one_out_mean": 0.055418200201902426
+    },
+    {
+      "event_id": 5,
+      "date": "2024-08-08",
+      "displaced_symbol": "CSGP",
+      "incoming_symbol": "TSCO",
+      "pair_delta": 0.0616624938830475,
+      "leave_one_out_mean": 0.05902200936942176
+    },
+    {
+      "event_id": 6,
+      "date": "2024-11-01",
+      "displaced_symbol": "KLAC",
+      "incoming_symbol": "MU",
+      "pair_delta": -0.0374276828773137,
+      "leave_one_out_mean": 0.07317774890661621
+    },
+    {
+      "event_id": 7,
+      "date": "2024-11-04",
+      "displaced_symbol": "MCHP",
+      "incoming_symbol": "FANG",
+      "pair_delta": 0.012550986168345,
+      "leave_one_out_mean": 0.06603793904295067
+    },
+    {
+      "event_id": 8,
+      "date": "2025-07-31",
+      "displaced_symbol": "HUBS",
+      "incoming_symbol": "LUV",
+      "pair_delta": -0.0075408098535381,
+      "leave_one_out_mean": 0.06890819561750541
+    }
+  ],
+  "year": {
+    "2023": {
+      "n": 2,
+      "sum_pair_delta": 0.2807235622506834,
+      "mean_pair_delta": 0.1403617811253417,
+      "positive_share": 1.0
+    },
+    "2024": {
+      "n": 5,
+      "sum_pair_delta": 0.20163380707185452,
+      "mean_pair_delta": 0.0403267614143709,
+      "positive_share": 0.8
+    },
+    "2025": {
+      "n": 1,
+      "sum_pair_delta": -0.0075408098535381,
+      "mean_pair_delta": -0.0075408098535381,
+      "positive_share": 0.0
+    }
+  }
+}
