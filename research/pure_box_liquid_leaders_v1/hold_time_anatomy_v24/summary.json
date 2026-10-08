@@ -1,0 +1,344 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-HOLD-TIME-ANATOMY-V24",
+  "results": {
+    "top300": {
+      "rank_cap": 300,
+      "buckets": {
+        "d1_5": {
+          "trade_paths_entering_bucket": 398,
+          "alive_fraction_vs_entries": 1.0,
+          "incremental_return_sum": 1.7037322749510517,
+          "incremental_return_mean": 0.0013976474774003707,
+          "positive_increment_share": 0.5004101722723544,
+          "capital_days": 1219,
+          "return_per_capital_day": 0.0013976474774003707,
+          "boundary_cum_mean": 0.027407302683915932,
+          "boundary_cum_median": 0.021585538365827328,
+          "exits": {
+            "stop": 197,
+            "stop_gap": 27,
+            "target60": 24,
+            "target_gap": 10
+          }
+        },
+        "d6_10": {
+          "trade_paths_entering_bucket": 135,
+          "alive_fraction_vs_entries": 0.3391959798994975,
+          "incremental_return_sum": 10.50873265114642,
+          "incremental_return_mean": 0.02122976293160893,
+          "positive_increment_share": 0.5070707070707071,
+          "capital_days": 495,
+          "return_per_capital_day": 0.02122976293160893,
+          "boundary_cum_mean": 0.028237770424263516,
+          "boundary_cum_median": 0.019614243323442082,
+          "exits": {
+            "target60": 41,
+            "stop": 24,
+            "target_gap": 7,
+            "stop_gap": 4
+          }
+        },
+        "d11_15": {
+          "trade_paths_entering_bucket": 59,
+          "alive_fraction_vs_entries": 0.14824120603015076,
+          "incremental_return_sum": 0.07526481086865433,
+          "incremental_return_mean": 0.0003468424463993287,
+          "positive_increment_share": 0.4147465437788018,
+          "capital_days": 217,
+          "return_per_capital_day": 0.0003468424463993287,
+          "boundary_cum_mean": 0.031673646430247275,
+          "boundary_cum_median": 0.018665720369056116,
+          "exits": {
+            "stop": 20,
+            "target60": 10,
+            "stop_gap": 3,
+            "target_gap": 1
+          }
+        },
+        "d16_20": {
+          "trade_paths_entering_bucket": 24,
+          "alive_fraction_vs_entries": 0.06030150753768844,
+          "incremental_return_sum": 0.22254924571082657,
+          "incremental_return_mean": 0.0026182264201273712,
+          "positive_increment_share": 0.5647058823529412,
+          "capital_days": 85,
+          "return_per_capital_day": 0.0026182264201273712,
+          "boundary_cum_mean": 0.06227307283276528,
+          "boundary_cum_median": 0.049484657020338774,
+          "exits": {
+            "time_h20": 10,
+            "target60": 7,
+            "stop": 7
+          }
+        }
+      },
+      "h15_survivor_tail": {
+        "cohort_n": 31,
+        "d16_20_incremental_sum": 0.1971318897174441,
+        "d16_20_incremental_mean_per_capital_day": 0.002292231275784234,
+        "positive_increment_share": 0.5581395348837209,
+        "capital_days": 86
+      },
+      "yearly": {
+        "2023": {
+          "d1_5": {
+            "sum": 0.2652469734399122,
+            "capital_days": 362,
+            "per_capital_day": 0.0007327264459666083
+          },
+          "d6_10": {
+            "sum": 0.7712699507406238,
+            "capital_days": 196,
+            "per_capital_day": 0.003935050769084815
+          },
+          "d11_15": {
+            "sum": 0.3381808498405805,
+            "capital_days": 101,
+            "per_capital_day": 0.0033483252459463415
+          },
+          "d16_20": {
+            "sum": -0.031765020708524605,
+            "capital_days": 24,
+            "per_capital_day": -0.0013235425295218585
+          }
+        },
+        "2024": {
+          "d1_5": {
+            "sum": 0.6341577582923305,
+            "capital_days": 441,
+            "per_capital_day": 0.0014379994519100464
+          },
+          "d6_10": {
+            "sum": 0.5371556073275043,
+            "capital_days": 179,
+            "per_capital_day": 0.0030008693146787954
+          },
+          "d11_15": {
+            "sum": -0.47086900554490996,
+            "capital_days": 74,
+            "per_capital_day": -0.00636309466952581
+          },
+          "d16_20": {
+            "sum": -0.13009177346428957,
+            "capital_days": 29,
+            "per_capital_day": -0.004485923222906537
+          }
+        },
+        "2025": {
+          "d1_5": {
+            "sum": 0.6607023917761534,
+            "capital_days": 314,
+            "per_capital_day": 0.002104147744510043
+          },
+          "d6_10": {
+            "sum": 8.938448184248752,
+            "capital_days": 95,
+            "per_capital_day": 0.09408892825525003
+          },
+          "d11_15": {
+            "sum": 0.128276505993283,
+            "capital_days": 36,
+            "per_capital_day": 0.0035632362775911944
+          },
+          "d16_20": {
+            "sum": 0.39209969853172,
+            "capital_days": 32,
+            "per_capital_day": 0.01225311557911625
+          }
+        },
+        "2026": {
+          "d1_5": {
+            "sum": 0.14362515144265564,
+            "capital_days": 102,
+            "per_capital_day": 0.0014080897200260357
+          },
+          "d6_10": {
+            "sum": 0.26185890882954144,
+            "capital_days": 25,
+            "per_capital_day": 0.010474356353181658
+          },
+          "d11_15": {
+            "sum": 0.07967646057970079,
+            "capital_days": 6,
+            "per_capital_day": 0.013279410096616798
+          },
+          "d16_20": {
+            "sum": -0.03311101464146171,
+            "capital_days": 1,
+            "per_capital_day": -0.03311101464146171
+          }
+        }
+      }
+    },
+    "top500": {
+      "rank_cap": 500,
+      "buckets": {
+        "d1_5": {
+          "trade_paths_entering_bucket": 614,
+          "alive_fraction_vs_entries": 1.0,
+          "incremental_return_sum": 2.968684648433526,
+          "incremental_return_mean": 0.001595209375837467,
+          "positive_increment_share": 0.491671144545943,
+          "capital_days": 1861,
+          "return_per_capital_day": 0.001595209375837467,
+          "boundary_cum_mean": 0.027522028655170176,
+          "boundary_cum_median": 0.02149380980928317,
+          "exits": {
+            "stop": 324,
+            "target60": 35,
+            "stop_gap": 31,
+            "target_gap": 14
+          }
+        },
+        "d6_10": {
+          "trade_paths_entering_bucket": 203,
+          "alive_fraction_vs_entries": 0.3306188925081433,
+          "incremental_return_sum": 11.243912596500465,
+          "incremental_return_mean": 0.01491235092374067,
+          "positive_increment_share": 0.4973474801061008,
+          "capital_days": 754,
+          "return_per_capital_day": 0.01491235092374067,
+          "boundary_cum_mean": 0.02857954085106936,
+          "boundary_cum_median": 0.024489674018546514,
+          "exits": {
+            "target60": 56,
+            "stop": 36,
+            "target_gap": 11,
+            "stop_gap": 7
+          }
+        },
+        "d11_15": {
+          "trade_paths_entering_bucket": 92,
+          "alive_fraction_vs_entries": 0.1498371335504886,
+          "incremental_return_sum": 0.6985595060143652,
+          "incremental_return_mean": 0.0019901980228329494,
+          "positive_increment_share": 0.47863247863247865,
+          "capital_days": 351,
+          "return_per_capital_day": 0.0019901980228329494,
+          "boundary_cum_mean": 0.03850636398533574,
+          "boundary_cum_median": 0.03355847849271232,
+          "exits": {
+            "stop": 20,
+            "target60": 16,
+            "stop_gap": 8,
+            "target_gap": 3
+          }
+        },
+        "d16_20": {
+          "trade_paths_entering_bucket": 45,
+          "alive_fraction_vs_entries": 0.0732899022801303,
+          "incremental_return_sum": 0.4437582264739378,
+          "incremental_return_mean": 0.0026103425086702226,
+          "positive_increment_share": 0.5235294117647059,
+          "capital_days": 170,
+          "return_per_capital_day": 0.0026103425086702226,
+          "boundary_cum_mean": 0.040316108188561496,
+          "boundary_cum_median": 0.038834743068193345,
+          "exits": {
+            "time_h20": 20,
+            "target60": 12,
+            "stop": 11,
+            "target_gap": 2
+          }
+        }
+      },
+      "h15_survivor_tail": {
+        "cohort_n": 55,
+        "d16_20_incremental_sum": 0.41834087048055535,
+        "d16_20_incremental_mean_per_capital_day": 0.002446437839067575,
+        "positive_increment_share": 0.52046783625731,
+        "capital_days": 171
+      },
+      "yearly": {
+        "2023": {
+          "d1_5": {
+            "sum": 0.9107730121430091,
+            "capital_days": 489,
+            "per_capital_day": 0.0018625214972249674
+          },
+          "d6_10": {
+            "sum": 0.776384588063998,
+            "capital_days": 254,
+            "per_capital_day": 0.0030566322364724333
+          },
+          "d11_15": {
+            "sum": 0.9961295622371398,
+            "capital_days": 136,
+            "per_capital_day": 0.007324482075273087
+          },
+          "d16_20": {
+            "sum": 0.18146698581945386,
+            "capital_days": 39,
+            "per_capital_day": 0.004652999636396253
+          }
+        },
+        "2024": {
+          "d1_5": {
+            "sum": 1.2414127742007979,
+            "capital_days": 754,
+            "per_capital_day": 0.0016464360400541085
+          },
+          "d6_10": {
+            "sum": 1.0839252998418372,
+            "capital_days": 312,
+            "per_capital_day": 0.003474119550775119
+          },
+          "d11_15": {
+            "sum": -0.4652462274917314,
+            "capital_days": 145,
+            "per_capital_day": -0.0032085946723567683
+          },
+          "d16_20": {
+            "sum": -0.1506833240734129,
+            "capital_days": 70,
+            "per_capital_day": -0.00215261891533447
+          }
+        },
+        "2025": {
+          "d1_5": {
+            "sum": 0.7493728595301082,
+            "capital_days": 477,
+            "per_capital_day": 0.001571012284130206
+          },
+          "d6_10": {
+            "sum": 9.152663657109818,
+            "capital_days": 162,
+            "per_capital_day": 0.05649792380931986
+          },
+          "d11_15": {
+            "sum": 0.10506096410899757,
+            "capital_days": 68,
+            "per_capital_day": 0.0015450141780734936
+          },
+          "d16_20": {
+            "sum": 0.4206682233759761,
+            "capital_days": 61,
+            "per_capital_day": 0.006896200383212723
+          }
+        },
+        "2026": {
+          "d1_5": {
+            "sum": 0.0671260025596111,
+            "capital_days": 141,
+            "per_capital_day": 0.0004760709401390858
+          },
+          "d6_10": {
+            "sum": 0.23093905148481342,
+            "capital_days": 26,
+            "per_capital_day": 0.008882271210954362
+          },
+          "d11_15": {
+            "sum": 0.07967646057970079,
+            "capital_days": 6,
+            "per_capital_day": 0.013279410096616798
+          },
+          "d16_20": {
+            "sum": -0.03311101464146171,
+            "capital_days": 1,
+            "per_capital_day": -0.03311101464146171
+          }
+        }
+      }
+    }
+  }
+}
