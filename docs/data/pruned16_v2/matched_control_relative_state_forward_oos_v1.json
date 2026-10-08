@@ -1,0 +1,62 @@
+{
+  "schema": "MATCHED-CONTROL-RELATIVE-STATE-FORWARD-OOS-V1",
+  "freeze_reference_commit": "cf5a0d9c92c28176bf33f98e6f68c574675a19f6",
+  "frozen_through_market_date": "2026-10-06",
+  "research_only": true,
+  "observation_only": true,
+  "production_effect": "none",
+  "priority_tier": "T1_CORE_THESIS",
+  "matching_spec": {
+    "k": 5,
+    "exclusion_sessions": 20,
+    "features": [
+      "ret20_pct",
+      "rv20_pct",
+      "net_liq_4w_pct",
+      "reserves_4w_pct",
+      "breadth_20d_pct",
+      "box_position",
+      "market_score"
+    ],
+    "phase_rule": "exact MA200 phase when >=K controls; otherwise relax"
+  },
+  "events": [],
+  "source_recompute_discrepancies": [],
+  "generated_at": "2026-10-08T01:55:29.787186+00:00",
+  "latest_market_date": "2026-10-06",
+  "summary": {
+    "forward_event_count": 0,
+    "mature_10d_event_count": 0,
+    "mature_20d_event_count": 0,
+    "independent_cluster_count_20sessions": 0,
+    "calendar_12m_ready": false,
+    "event_count_ready": false,
+    "cluster_gate_ready": false,
+    "discrepancy_gate_ready": true,
+    "ready_for_preregistered_review": false,
+    "ten_day": {
+      "n": 0,
+      "mean_lift_pp": null,
+      "median_lift_pp": null,
+      "positive_lift_pct": null
+    },
+    "twenty_day": {
+      "n": 0,
+      "mean_lift_pp": null,
+      "median_lift_pp": null,
+      "positive_lift_pct": null
+    }
+  },
+  "promotion_gate": {
+    "minimum_mature_20d_events": 20,
+    "minimum_calendar_months": 12,
+    "minimum_independent_clusters": 8,
+    "automatic_promotion": false,
+    "note": "Passing permits only a separate preregistered review."
+  },
+  "warnings": [
+    "Historical development events through 2026-10-06 are excluded.",
+    "Control sets are locked at first observation and never reselected.",
+    "No result changes production automatically."
+  ]
+}
