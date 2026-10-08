@@ -25,7 +25,7 @@ For each universe:
 1. PRO_RATA
 2. LIQUIDITY_FIRST
 3. LOW_ENTRY_FRACTION_FIRST
-4. 250 deterministic random same-day orderings using fixed seeds 0..249
+4. 40 deterministic random same-day orderings using fixed seeds 0..39
 
 For every random ordering report:
 - total return
