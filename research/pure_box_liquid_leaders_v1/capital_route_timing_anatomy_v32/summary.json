@@ -1,0 +1,107 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-CAPITAL-ROUTE-TIMING-ANATOMY-V32",
+  "entry_counts": {
+    "direct": 294,
+    "delay": 202,
+    "same": 148,
+    "direct_only": 146,
+    "delay_only": 54,
+    "delay_retention_vs_direct": 0.5034013605442177
+  },
+  "geometry": {
+    "direct_entry_fraction": {
+      "n": 294,
+      "mean": 0.10338681672639215,
+      "median": 0.10741766634287586
+    },
+    "delay_entry_fraction": {
+      "n": 202,
+      "mean": 0.09895782847381969,
+      "median": 0.10291212126624719
+    },
+    "direct_stop_risk": {
+      "n": 294,
+      "mean": 0.02153410746159789,
+      "median": 0.01965194974339135
+    },
+    "delay_stop_risk": {
+      "n": 202,
+      "mean": 0.02104722521265668,
+      "median": 0.019132258148096548
+    },
+    "direct_rr": {
+      "n": 294,
+      "mean": 11.01699664575203,
+      "median": 4.585690719879306
+    },
+    "delay_rr": {
+      "n": 202,
+      "mean": 15.89910040223056,
+      "median": 4.831592490163674
+    },
+    "direct_liquidity_rank": {
+      "n": 294,
+      "mean": 238.20068027210885,
+      "median": 216.0
+    },
+    "delay_liquidity_rank": {
+      "n": 202,
+      "mean": 236.80693069306932,
+      "median": 214.0
+    }
+  },
+  "pnl_cohorts": {
+    "same_direct": {
+      "n": 147,
+      "mean": 0.022844370348543662,
+      "median": -0.011939062314402338
+    },
+    "same_delay": {
+      "n": 147,
+      "mean": 0.02563608139427233,
+      "median": -0.013284729014435781
+    },
+    "direct_only": {
+      "n": 144,
+      "mean": 0.014008920322968875,
+      "median": -0.009946920058128084
+    },
+    "delay_only": {
+      "n": 54,
+      "mean": 0.008360457649243784,
+      "median": -0.008139922516822995
+    }
+  },
+  "concentration": {
+    "direct": {
+      "top5": 0.3512825550266434,
+      "top10": 0.44508952413091846
+    },
+    "delay": {
+      "top5": 0.49282020494035583,
+      "top10": 0.5771367898778818
+    }
+  },
+  "yearly": {
+    "2023": {
+      "direct_entries": 78,
+      "delay_entries": 57,
+      "same_symbol_signal": 44
+    },
+    "2024": {
+      "direct_entries": 96,
+      "delay_entries": 73,
+      "same_symbol_signal": 49
+    },
+    "2025": {
+      "direct_entries": 85,
+      "delay_entries": 51,
+      "same_symbol_signal": 38
+    },
+    "2026": {
+      "direct_entries": 35,
+      "delay_entries": 21,
+      "same_symbol_signal": 16
+    }
+  }
+}
