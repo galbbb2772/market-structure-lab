@@ -1,0 +1,35 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-OVERLAPPING-SIGNAL-AUDIT-V39",
+  "overlap_count": 192,
+  "unique_symbols": 90,
+  "age_buckets": {
+    "age01_05": 173,
+    "age06_10": 19
+  },
+  "mean_ignored_return": 0.04286194402677886,
+  "median_ignored_return": -0.017560060755639373,
+  "profit_factor": 3.1555479964356024,
+  "win_rate": 0.2916666666666667,
+  "positive_cap_headroom_share": 0.8958333333333334,
+  "mean_cap_headroom": 0.1691004076821527,
+  "material_box_difference_share": 0.0,
+  "beats_continuation_share": 0.046875,
+  "year": {
+    "2023": 42,
+    "2024": 84,
+    "2025": 53,
+    "2026": 13
+  },
+  "top_symbol_counts": {
+    "SPXU": 8,
+    "MPC": 8,
+    "WBA": 7,
+    "SPXS": 6,
+    "CEG": 6,
+    "SQ": 5,
+    "LUV": 5,
+    "GOLD": 4,
+    "ESTC": 4,
+    "DASH": 4
+  }
+}
