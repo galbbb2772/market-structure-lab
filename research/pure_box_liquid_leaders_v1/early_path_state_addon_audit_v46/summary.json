@@ -1,0 +1,591 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-EARLY-PATH-STATE-ADDON-AUDIT-V46",
+  "results": {
+    "top300": {
+      "overall": {
+        "n": 45,
+        "funded_capital": 11.140792340478896,
+        "mean_return": 0.09495570178345619,
+        "median_return": -0.010662451512339022,
+        "profit_factor": 6.390852152144713,
+        "win_rate": 0.4,
+        "sum_slice_pnl": 1.5683808959415235,
+        "unique_symbols": 36
+      },
+      "stop_headroom_median": 0.02580519984478072,
+      "pnl_state": {
+        "NEGATIVE_OR_FLAT": {
+          "n": 33,
+          "funded_capital": 9.284179346245427,
+          "mean_return": 0.12132854437917674,
+          "median_return": -0.010662451512339022,
+          "profit_factor": 10.673892701977893,
+          "win_rate": 0.36363636363636365,
+          "sum_slice_pnl": 1.5760799855638086,
+          "unique_symbols": 28
+        },
+        "POSITIVE": {
+          "n": 12,
+          "funded_capital": 1.8566129942334682,
+          "mean_return": 0.022430384645224604,
+          "median_return": -0.0018293634093554112,
+          "profit_factor": 1.7106485390547628,
+          "win_rate": 0.5,
+          "sum_slice_pnl": -0.007699089622285065,
+          "unique_symbols": 12
+        }
+      },
+      "progress_bucket": {
+        "P0_NEG": {
+          "n": 33,
+          "funded_capital": 9.284179346245427,
+          "mean_return": 0.12132854437917674,
+          "median_return": -0.010662451512339022,
+          "profit_factor": 10.673892701977893,
+          "win_rate": 0.36363636363636365,
+          "sum_slice_pnl": 1.5760799855638086,
+          "unique_symbols": 28
+        },
+        "P1_0_25": {
+          "n": 12,
+          "funded_capital": 1.8566129942334682,
+          "mean_return": 0.022430384645224604,
+          "median_return": -0.0018293634093554112,
+          "profit_factor": 1.7106485390547628,
+          "win_rate": 0.5,
+          "sum_slice_pnl": -0.007699089622285065,
+          "unique_symbols": 12
+        }
+      },
+      "prior_close_state": {
+        "ABOVE_ENTRY": {
+          "n": 16,
+          "funded_capital": 4.072940384305746,
+          "mean_return": 0.04903076568273521,
+          "median_return": 0.051620637524119606,
+          "profit_factor": 2.966368630886248,
+          "win_rate": 0.5625,
+          "sum_slice_pnl": 0.2930889585027995,
+          "unique_symbols": 16
+        },
+        "AT_OR_BELOW_ENTRY": {
+          "n": 29,
+          "funded_capital": 7.0678519561731505,
+          "mean_return": 0.12029359756316431,
+          "median_return": -0.012279773544606964,
+          "profit_factor": 9.861171377186496,
+          "win_rate": 0.3103448275862069,
+          "sum_slice_pnl": 1.275291937438724,
+          "unique_symbols": 26
+        }
+      },
+      "prior_day_direction": {
+        "GREEN": {
+          "n": 12,
+          "funded_capital": 2.4450708493342233,
+          "mean_return": 0.2837157297111338,
+          "median_return": 0.030431025234151032,
+          "profit_factor": 10.124829815915763,
+          "win_rate": 0.5,
+          "sum_slice_pnl": 1.1940708518152596,
+          "unique_symbols": 11
+        },
+        "RED_OR_FLAT": {
+          "n": 33,
+          "funded_capital": 8.695721491144672,
+          "mean_return": 0.02631569162793705,
+          "median_return": -0.010662451512339022,
+          "profit_factor": 3.0699891974427556,
+          "win_rate": 0.36363636363636365,
+          "sum_slice_pnl": 0.3743100441262637,
+          "unique_symbols": 30
+        }
+      },
+      "stop_headroom_state": {
+        "ABOVE_MEDIAN": {
+          "n": 23,
+          "funded_capital": 8.638610845010243,
+          "mean_return": 0.1724265654448193,
+          "median_return": 0.022183521295086273,
+          "profit_factor": 8.120365849751028,
+          "win_rate": 0.5217391304347826,
+          "sum_slice_pnl": 1.6018869469521657,
+          "unique_symbols": 22
+        },
+        "BELOW_MEDIAN": {
+          "n": 22,
+          "funded_capital": 2.502181495468653,
+          "mean_return": 0.013963435228394721,
+          "median_return": -0.011471112528472993,
+          "profit_factor": 2.3034823995217457,
+          "win_rate": 0.2727272727272727,
+          "sum_slice_pnl": -0.03350605101064239,
+          "unique_symbols": 20
+        }
+      },
+      "existing_age": {
+        "2": {
+          "n": 31,
+          "funded_capital": 6.801349611407552,
+          "mean_return": 0.023085029978620532,
+          "median_return": -0.010662451512339022,
+          "profit_factor": 2.1446296507197142,
+          "win_rate": 0.3870967741935484,
+          "sum_slice_pnl": -0.0024711316529537966,
+          "unique_symbols": 28
+        },
+        "3": {
+          "n": 14,
+          "funded_capital": 4.3394427290713455,
+          "mean_return": 0.25409790363702084,
+          "median_return": -0.007540408277927235,
+          "profit_factor": 22.247101569189255,
+          "win_rate": 0.42857142857142855,
+          "sum_slice_pnl": 1.570852027594477,
+          "unique_symbols": 14
+        }
+      },
+      "age_x_pnl": {
+        "age2__NEGATIVE_OR_FLAT": {
+          "n": 23,
+          "funded_capital": 5.606025976508491,
+          "mean_return": 0.020337241780950865,
+          "median_return": -0.010662451512339022,
+          "profit_factor": 2.5264554562173145,
+          "win_rate": 0.34782608695652173,
+          "sum_slice_pnl": 0.027445841136685543,
+          "unique_symbols": 22
+        },
+        "age2__POSITIVE": {
+          "n": 8,
+          "funded_capital": 1.1953236348990601,
+          "mean_return": 0.030984921046920827,
+          "median_return": 0.04269806521825836,
+          "profit_factor": 1.77759095772706,
+          "win_rate": 0.5,
+          "sum_slice_pnl": -0.029916972789639333,
+          "unique_symbols": 8
+        },
+        "age3__NEGATIVE_OR_FLAT": {
+          "n": 10,
+          "funded_capital": 3.678153369736938,
+          "mean_return": 0.3536085403550963,
+          "median_return": -0.007540408277927235,
+          "profit_factor": 33.909734222417235,
+          "win_rate": 0.4,
+          "sum_slice_pnl": 1.5486341444271228,
+          "unique_symbols": 10
+        },
+        "age3__POSITIVE": {
+          "n": 4,
+          "funded_capital": 0.661289359334408,
+          "mean_return": 0.005321311841832155,
+          "median_return": -0.0018293634093554112,
+          "profit_factor": 1.354869420683123,
+          "win_rate": 0.5,
+          "sum_slice_pnl": 0.022217883167354274,
+          "unique_symbols": 4
+        }
+      },
+      "age_x_progress": {
+        "age2__P0_NEG": {
+          "n": 23,
+          "funded_capital": 5.606025976508491,
+          "mean_return": 0.020337241780950865,
+          "median_return": -0.010662451512339022,
+          "profit_factor": 2.5264554562173145,
+          "win_rate": 0.34782608695652173,
+          "sum_slice_pnl": 0.027445841136685543,
+          "unique_symbols": 22
+        },
+        "age2__P1_0_25": {
+          "n": 8,
+          "funded_capital": 1.1953236348990601,
+          "mean_return": 0.030984921046920827,
+          "median_return": 0.04269806521825836,
+          "profit_factor": 1.77759095772706,
+          "win_rate": 0.5,
+          "sum_slice_pnl": -0.029916972789639333,
+          "unique_symbols": 8
+        },
+        "age3__P0_NEG": {
+          "n": 10,
+          "funded_capital": 3.678153369736938,
+          "mean_return": 0.3536085403550963,
+          "median_return": -0.007540408277927235,
+          "profit_factor": 33.909734222417235,
+          "win_rate": 0.4,
+          "sum_slice_pnl": 1.5486341444271228,
+          "unique_symbols": 10
+        },
+        "age3__P1_0_25": {
+          "n": 4,
+          "funded_capital": 0.661289359334408,
+          "mean_return": 0.005321311841832155,
+          "median_return": -0.0018293634093554112,
+          "profit_factor": 1.354869420683123,
+          "win_rate": 0.5,
+          "sum_slice_pnl": 0.022217883167354274,
+          "unique_symbols": 4
+        }
+      },
+      "direction_x_pnl": {
+        "GREEN__NEGATIVE_OR_FLAT": {
+          "n": 3,
+          "funded_capital": 1.1311179851676636,
+          "mean_return": 1.063615881968626,
+          "median_return": 0.08105775375315294,
+          "profit_factor": 158.996361943948,
+          "win_rate": 0.6666666666666666,
+          "sum_slice_pnl": 1.2280376198100367,
+          "unique_symbols": 2
+        },
+        "GREEN__POSITIVE": {
+          "n": 9,
+          "funded_capital": 1.3139528641665597,
+          "mean_return": 0.0237490122919697,
+          "median_return": -0.034138257747639345,
+          "profit_factor": 1.6056415186172859,
+          "win_rate": 0.4444444444444444,
+          "sum_slice_pnl": -0.03396676799477703,
+          "unique_symbols": 9
+        },
+        "RED_OR_FLAT__NEGATIVE_OR_FLAT": {
+          "n": 30,
+          "funded_capital": 8.153061361077764,
+          "mean_return": 0.02709981062023182,
+          "median_return": -0.011471112528472993,
+          "profit_factor": 3.0650859666198214,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": 0.3480423657537717,
+          "unique_symbols": 27
+        },
+        "RED_OR_FLAT__POSITIVE": {
+          "n": 3,
+          "funded_capital": 0.5426601300669085,
+          "mean_return": 0.01847450170498932,
+          "median_return": 0.022183521295086273,
+          "profit_factor": 3.1446858984910655,
+          "win_rate": 0.6666666666666666,
+          "sum_slice_pnl": 0.026267678372491974,
+          "unique_symbols": 3
+        }
+      },
+      "year_split": {
+        "2025": {
+          "n": 14,
+          "funded_capital": 4.504172198180605,
+          "mean_return": 0.25037739036355117,
+          "median_return": -0.006807258713722231,
+          "profit_factor": 20.10185569620285,
+          "win_rate": 0.42857142857142855,
+          "sum_slice_pnl": 1.3521133052442038,
+          "unique_symbols": 12
+        },
+        "ex_2025": {
+          "n": 31,
+          "funded_capital": 6.636620142298292,
+          "mean_return": 0.02476526177954231,
+          "median_return": -0.012597242229269723,
+          "profit_factor": 2.2603488359218598,
+          "win_rate": 0.3870967741935484,
+          "sum_slice_pnl": 0.21626759069731968,
+          "unique_symbols": 26
+        }
+      }
+    },
+    "top500": {
+      "overall": {
+        "n": 53,
+        "funded_capital": 15.76735027671332,
+        "mean_return": 0.07918999384320687,
+        "median_return": -0.012939195341879817,
+        "profit_factor": 5.900741779297798,
+        "win_rate": 0.3018867924528302,
+        "sum_slice_pnl": 2.3938384973483697,
+        "unique_symbols": 41
+      },
+      "stop_headroom_median": 0.025654416084600867,
+      "pnl_state": {
+        "NEGATIVE_OR_FLAT": {
+          "n": 39,
+          "funded_capital": 13.59433201032617,
+          "mean_return": 0.10511504348642113,
+          "median_return": -0.012279773544606964,
+          "profit_factor": 9.243355017882694,
+          "win_rate": 0.3076923076923077,
+          "sum_slice_pnl": 2.4240208487924275,
+          "unique_symbols": 35
+        },
+        "POSITIVE": {
+          "n": 14,
+          "funded_capital": 2.17301826638715,
+          "mean_return": 0.006970212694252972,
+          "median_return": -0.026762135131427,
+          "profit_factor": 1.2717377759554949,
+          "win_rate": 0.2857142857142857,
+          "sum_slice_pnl": -0.03018235144405826,
+          "unique_symbols": 13
+        }
+      },
+      "progress_bucket": {
+        "P0_NEG": {
+          "n": 38,
+          "funded_capital": 13.594070344496156,
+          "mean_return": 0.10809923896734393,
+          "median_return": -0.012438507886938344,
+          "profit_factor": 9.399943578536094,
+          "win_rate": 0.3157894736842105,
+          "sum_slice_pnl": 2.4240230165328494,
+          "unique_symbols": 34
+        },
+        "P1_0_25": {
+          "n": 15,
+          "funded_capital": 2.1732799322171634,
+          "mean_return": 0.005953239528726387,
+          "median_return": -0.019386012515214657,
+          "profit_factor": 1.2430611077505547,
+          "win_rate": 0.26666666666666666,
+          "sum_slice_pnl": -0.030184519184480132,
+          "unique_symbols": 14
+        }
+      },
+      "prior_close_state": {
+        "ABOVE_ENTRY": {
+          "n": 19,
+          "funded_capital": 5.106652386848568,
+          "mean_return": 0.036068626815304004,
+          "median_return": -0.007950252247976075,
+          "profit_factor": 2.8724570730318106,
+          "win_rate": 0.42105263157894735,
+          "sum_slice_pnl": 0.42740226008802146,
+          "unique_symbols": 17
+        },
+        "AT_OR_BELOW_ENTRY": {
+          "n": 34,
+          "funded_capital": 10.660697889864752,
+          "mean_return": 0.10328722835879971,
+          "median_return": -0.013111838838718082,
+          "profit_factor": 8.160681528049455,
+          "win_rate": 0.23529411764705882,
+          "sum_slice_pnl": 1.9664362372603479,
+          "unique_symbols": 32
+        }
+      },
+      "prior_day_direction": {
+        "GREEN": {
+          "n": 15,
+          "funded_capital": 2.894352165833837,
+          "mean_return": 0.2199296119668024,
+          "median_return": -0.020195703284850874,
+          "profit_factor": 10.517856960729025,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": 1.7300392071369497,
+          "unique_symbols": 13
+        },
+        "RED_OR_FLAT": {
+          "n": 38,
+          "funded_capital": 12.872998110879482,
+          "mean_return": 0.023634881425998167,
+          "median_return": -0.01276821878557477,
+          "profit_factor": 2.7616887337659746,
+          "win_rate": 0.2894736842105263,
+          "sum_slice_pnl": 0.6637992902114201,
+          "unique_symbols": 35
+        }
+      },
+      "stop_headroom_state": {
+        "ABOVE_MEDIAN": {
+          "n": 27,
+          "funded_capital": 11.39024648220437,
+          "mean_return": 0.1449099802634215,
+          "median_return": -0.02662827473918883,
+          "profit_factor": 7.928676775963768,
+          "win_rate": 0.4074074074074074,
+          "sum_slice_pnl": 2.2789892954508155,
+          "unique_symbols": 24
+        },
+        "BELOW_MEDIAN": {
+          "n": 26,
+          "funded_capital": 4.377103794508949,
+          "mean_return": 0.010942315637599441,
+          "median_return": -0.012438507886938344,
+          "profit_factor": 1.9752408439934388,
+          "win_rate": 0.19230769230769232,
+          "sum_slice_pnl": 0.11484920189755397,
+          "unique_symbols": 23
+        }
+      },
+      "existing_age": {
+        "2": {
+          "n": 38,
+          "funded_capital": 10.994240271541843,
+          "mean_return": 0.01807237273301377,
+          "median_return": -0.014021818533828945,
+          "profit_factor": 1.979647310505158,
+          "win_rate": 0.2894736842105263,
+          "sum_slice_pnl": 0.18442324992242615,
+          "unique_symbols": 34
+        },
+        "3": {
+          "n": 15,
+          "funded_capital": 4.773110005171475,
+          "mean_return": 0.23402130065569615,
+          "median_return": -0.005053679045587511,
+          "profit_factor": 23.589303154367226,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": 2.2094152474259436,
+          "unique_symbols": 15
+        }
+      },
+      "age_x_pnl": {
+        "age2__NEGATIVE_OR_FLAT": {
+          "n": 27,
+          "funded_capital": 9.20434668881918,
+          "mean_return": 0.020660238413600516,
+          "median_return": -0.012939195341879817,
+          "profit_factor": 2.4106657283068293,
+          "win_rate": 0.2962962962962963,
+          "sum_slice_pnl": 0.21227316241905977,
+          "unique_symbols": 27
+        },
+        "age2__POSITIVE": {
+          "n": 11,
+          "funded_capital": 1.7898935827226632,
+          "mean_return": 0.011720338789755395,
+          "median_return": -0.03452072294631081,
+          "profit_factor": 1.4218944714898574,
+          "win_rate": 0.2727272727272727,
+          "sum_slice_pnl": -0.027849912496633697,
+          "unique_symbols": 11
+        },
+        "age3__NEGATIVE_OR_FLAT": {
+          "n": 12,
+          "funded_capital": 4.389985321506988,
+          "mean_return": 0.2951383549002675,
+          "median_return": -0.004113550352179807,
+          "profit_factor": 35.76539347948443,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": 2.211747686373368,
+          "unique_symbols": 12
+        },
+        "age3__POSITIVE": {
+          "n": 3,
+          "funded_capital": 0.38312468366448665,
+          "mean_return": -0.010446916322589242,
+          "median_return": -0.019386012515214657,
+          "profit_factor": 0.4144572394195106,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": -0.002332438947424565,
+          "unique_symbols": 3
+        }
+      },
+      "age_x_progress": {
+        "age2__P0_NEG": {
+          "n": 26,
+          "funded_capital": 9.204085022989167,
+          "mean_return": 0.02177349315214845,
+          "median_return": -0.013111838838718082,
+          "profit_factor": 2.462250015514203,
+          "win_rate": 0.3076923076923077,
+          "sum_slice_pnl": 0.21227533015948172,
+          "unique_symbols": 26
+        },
+        "age2__P1_0_25": {
+          "n": 12,
+          "funded_capital": 1.790155248552677,
+          "mean_return": 0.010053278491555295,
+          "median_return": -0.02644273332419289,
+          "profit_factor": 1.3843642084196033,
+          "win_rate": 0.25,
+          "sum_slice_pnl": -0.027852080237055564,
+          "unique_symbols": 12
+        },
+        "age3__P0_NEG": {
+          "n": 12,
+          "funded_capital": 4.389985321506988,
+          "mean_return": 0.2951383549002675,
+          "median_return": -0.004113550352179807,
+          "profit_factor": 35.76539347948443,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": 2.211747686373368,
+          "unique_symbols": 12
+        },
+        "age3__P1_0_25": {
+          "n": 3,
+          "funded_capital": 0.38312468366448665,
+          "mean_return": -0.010446916322589242,
+          "median_return": -0.019386012515214657,
+          "profit_factor": 0.4144572394195106,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": -0.002332438947424565,
+          "unique_symbols": 3
+        }
+      },
+      "direction_x_pnl": {
+        "GREEN__NEGATIVE_OR_FLAT": {
+          "n": 4,
+          "funded_capital": 1.5268514818908767,
+          "mean_return": 0.7964484917150727,
+          "median_return": 0.038002037353782714,
+          "profit_factor": 127.17314456123482,
+          "win_rate": 0.5,
+          "sum_slice_pnl": 1.7530528825872034,
+          "unique_symbols": 3
+        },
+        "GREEN__POSITIVE": {
+          "n": 11,
+          "funded_capital": 1.3675006839429602,
+          "mean_return": 0.010286382967431361,
+          "median_return": -0.03452072294631081,
+          "profit_factor": 1.3521019514316341,
+          "win_rate": 0.2727272727272727,
+          "sum_slice_pnl": -0.023013675450254012,
+          "unique_symbols": 11
+        },
+        "RED_OR_FLAT__NEGATIVE_OR_FLAT": {
+          "n": 35,
+          "funded_capital": 12.067480528435294,
+          "mean_return": 0.02610550654600382,
+          "median_return": -0.012597242229269723,
+          "profit_factor": 2.935549155901384,
+          "win_rate": 0.2857142857142857,
+          "sum_slice_pnl": 0.6709679662052244,
+          "unique_symbols": 33
+        },
+        "RED_OR_FLAT__POSITIVE": {
+          "n": 3,
+          "funded_capital": 0.8055175824441899,
+          "mean_return": -0.005189078307401118,
+          "median_return": -0.01836474370207497,
+          "profit_factor": 0.5876311766418695,
+          "win_rate": 0.3333333333333333,
+          "sum_slice_pnl": -0.0071686759938042474,
+          "unique_symbols": 3
+        }
+      },
+      "year_split": {
+        "2025": {
+          "n": 16,
+          "funded_capital": 4.948026129394028,
+          "mean_return": 0.20688404804165023,
+          "median_return": -0.011069402019747987,
+          "profit_factor": 14.248912573529456,
+          "win_rate": 0.25,
+          "sum_slice_pnl": 1.895741132715778,
+          "unique_symbols": 14
+        },
+        "ex_2025": {
+          "n": 37,
+          "funded_capital": 10.81932414731929,
+          "mean_return": 0.02397094337901519,
+          "median_return": -0.012939195341879817,
+          "profit_factor": 2.4621912517821305,
+          "win_rate": 0.32432432432432434,
+          "sum_slice_pnl": 0.4980973646325914,
+          "unique_symbols": 30
+        }
+      }
+    }
+  }
+}
