@@ -1,0 +1,902 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-INSTRUMENT-CLASS-ATTRIBUTION-V52",
+  "results": {
+    "top300": {
+      "candidate_class_stats": {
+        "COMMODITY_VOL_ETP": {
+          "candidate_events": 6,
+          "unique_symbols": 2,
+          "median_liquidity_rank": 158.0
+        },
+        "CRYPTO_ETP": {
+          "candidate_events": 10,
+          "unique_symbols": 3,
+          "median_liquidity_rank": 65.5
+        },
+        "LEVERAGED_INVERSE_ETP": {
+          "candidate_events": 36,
+          "unique_symbols": 8,
+          "median_liquidity_rank": 157.5
+        },
+        "SINGLE_STOCK": {
+          "candidate_events": 338,
+          "unique_symbols": 110,
+          "median_liquidity_rank": 187.5
+        },
+        "THEMATIC_SECTOR_ETF": {
+          "candidate_events": 8,
+          "unique_symbols": 3,
+          "median_liquidity_rank": 199.0
+        }
+      },
+      "independent_trade_stats": {
+        "COMMODITY_VOL_ETP": {
+          "n": 6,
+          "mean": 0.05245789378209988,
+          "median": 0.06703477007950442,
+          "profit_factor": 48.4079191959267,
+          "win_rate": 0.6666666666666666
+        },
+        "CRYPTO_ETP": {
+          "n": 10,
+          "mean": -0.017300904511377446,
+          "median": -0.01778284550288728,
+          "profit_factor": 0.0,
+          "win_rate": 0.0
+        },
+        "LEVERAGED_INVERSE_ETP": {
+          "n": 36,
+          "mean": 0.25662326158724647,
+          "median": -0.018068005948882304,
+          "profit_factor": 15.220731743312749,
+          "win_rate": 0.2222222222222222
+        },
+        "SINGLE_STOCK": {
+          "n": 338,
+          "mean": 0.009358882086126017,
+          "median": -0.012390708237754788,
+          "profit_factor": 1.5223851799898087,
+          "win_rate": 0.2869822485207101
+        },
+        "THEMATIC_SECTOR_ETF": {
+          "n": 8,
+          "mean": 0.008665063646260879,
+          "median": -0.004875359283708525,
+          "profit_factor": 2.0576574666647622,
+          "win_rate": 0.25
+        }
+      },
+      "age3_addon_class_stats": {
+        "COMMODITY_VOL_ETP": {
+          "n": 1,
+          "funded_capital": 0.4109248647409648,
+          "mean_return": 0.059082231933678786,
+          "median_return": 0.059082231933678786,
+          "profit_factor": null,
+          "win_rate": 1.0,
+          "sum_slice_pnl": 0.024278358165941264,
+          "unique_symbols": 1,
+          "top1_abs_share": 1.0,
+          "top3_abs_share": 1.0,
+          "top5_abs_share": 1.0,
+          "top10_abs_share": 1.0,
+          "top_symbol": "GDX",
+          "top_symbol_signed_pnl": 0.024278358165941264,
+          "leave_top1_symbol_out_sum_pnl": 0.0,
+          "leave_top3_symbols_out_sum_pnl": 0.0,
+          "abs_pnl_share": 0.013824967657337274
+        },
+        "CRYPTO_ETP": {
+          "n": 1,
+          "funded_capital": 0.605272781972998,
+          "mean_return": -0.024193541703443566,
+          "median_return": -0.024193541703443566,
+          "profit_factor": 0.0,
+          "win_rate": 0.0,
+          "sum_slice_pnl": -0.014643692292623033,
+          "unique_symbols": 1,
+          "top1_abs_share": 1.0,
+          "top3_abs_share": 1.0,
+          "top5_abs_share": 1.0,
+          "top10_abs_share": 1.0,
+          "top_symbol": "FBTC",
+          "top_symbol_signed_pnl": -0.014643692292623033,
+          "leave_top1_symbol_out_sum_pnl": 0.0,
+          "leave_top3_symbols_out_sum_pnl": 0.0,
+          "abs_pnl_share": 0.008338643451331737
+        },
+        "LEVERAGED_INVERSE_ETP": {
+          "n": 1,
+          "funded_capital": 0.3997946136228131,
+          "mean_return": 3.129985595437576,
+          "median_return": 3.129985595437576,
+          "profit_factor": null,
+          "win_rate": 1.0,
+          "sum_slice_pnl": 1.2513513817729363,
+          "unique_symbols": 1,
+          "top1_abs_share": 1.0,
+          "top3_abs_share": 1.0,
+          "top5_abs_share": 1.0,
+          "top10_abs_share": 1.0,
+          "top_symbol": "SPXU",
+          "top_symbol_signed_pnl": 1.2513513817729363,
+          "leave_top1_symbol_out_sum_pnl": 0.0,
+          "leave_top3_symbols_out_sum_pnl": 0.0,
+          "abs_pnl_share": 0.712564344867611
+        },
+        "SINGLE_STOCK": {
+          "n": 18,
+          "funded_capital": 6.51731259860434,
+          "mean_return": 0.038039226331351005,
+          "median_return": -0.014916239874821935,
+          "profit_factor": 3.7290559525851457,
+          "win_rate": 0.3888888888888889,
+          "sum_slice_pnl": 0.26086840150377216,
+          "unique_symbols": 16,
+          "top1_abs_share": 0.4987960547052687,
+          "top3_abs_share": 0.7240412674448872,
+          "top5_abs_share": 0.8476799454231909,
+          "top10_abs_share": 0.9654972921407456,
+          "top_symbol": "DELL",
+          "top_symbol_signed_pnl": 0.23110438627223107,
+          "leave_top1_symbol_out_sum_pnl": 0.029764015231541076,
+          "leave_top3_symbols_out_sum_pnl": -0.07459758939603818,
+          "abs_pnl_share": 0.26527204402371996
+        }
+      },
+      "portfolio_ablations": {
+        "ALL": {
+          "SKIP_OVERLAP": {
+            "total_return": 2.392927306724298,
+            "cagr": 0.45817943665159766,
+            "max_drawdown": -0.15440196200755996,
+            "daily_sharpe": 0.9424966885024383,
+            "avg_exposure": 0.3372497828340313,
+            "completed_trades": 211,
+            "profit_factor": 2.1794443656189855,
+            "mean_trade": 0.020062411114053817,
+            "blocked_new_entries": 42,
+            "partial_new_entries": 47,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.40250277491081654,
+            "top10_abs_funded_pnl_share": 0.5074823125601589,
+            "yearly_return": {
+              "2023": 0.36983862627761255,
+              "2024": 0.1495184091445414,
+              "2025": 1.0731648675767822,
+              "2026": -0.01977829055409497
+            },
+            "rolling_12m_min_return": 0.08015050411670521,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.2056044538105598
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 4.04077674329862,
+            "cagr": 0.6477483889239393,
+            "max_drawdown": -0.15368653891571615,
+            "daily_sharpe": 0.829785142690512,
+            "avg_exposure": 0.3515184865588145,
+            "completed_trades": 208,
+            "profit_factor": 2.2249521927063474,
+            "mean_trade": 0.020702229745702405,
+            "blocked_new_entries": 46,
+            "partial_new_entries": 46,
+            "add_on_events": 21,
+            "add_on_capital": 7.933304858941115,
+            "top5_abs_funded_pnl_share": 0.503565458882164,
+            "top10_abs_funded_pnl_share": 0.6087827165534685,
+            "yearly_return": {
+              "2023": 0.37824688133677853,
+              "2024": 0.15444545557322398,
+              "2025": 1.942603758624696,
+              "2026": 0.013246741376471416
+            },
+            "rolling_12m_min_return": 0.08369192983888474,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.21659009837609144
+          }
+        },
+        "EXCLUDE_LEVERAGED_INVERSE": {
+          "SKIP_OVERLAP": {
+            "total_return": 0.5385816237933343,
+            "cagr": 0.14227871164311012,
+            "max_drawdown": -0.1954879962069619,
+            "daily_sharpe": 0.8817004774008476,
+            "avg_exposure": 0.30714204779936394,
+            "completed_trades": 199,
+            "profit_factor": 1.288073679527956,
+            "mean_trade": 0.004963795564886177,
+            "blocked_new_entries": 36,
+            "partial_new_entries": 39,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.16980307917013296,
+            "top10_abs_funded_pnl_share": 0.2827187534517275,
+            "yearly_return": {
+              "2023": 0.2349957966353582,
+              "2024": 0.154378681697819,
+              "2025": 0.11446625796277043,
+              "2026": -0.08670983503401175
+            },
+            "rolling_12m_min_return": 0.004814925682890214,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.1549848505284238
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 0.6842322334110429,
+            "cagr": 0.17462688049945174,
+            "max_drawdown": -0.19059627826924375,
+            "daily_sharpe": 1.0201491312672313,
+            "avg_exposure": 0.31999869325536556,
+            "completed_trades": 197,
+            "profit_factor": 1.3153933090059475,
+            "mean_trade": 0.005369667061522431,
+            "blocked_new_entries": 39,
+            "partial_new_entries": 39,
+            "add_on_events": 20,
+            "add_on_capital": 5.062171009540284,
+            "top5_abs_funded_pnl_share": 0.18140768040585858,
+            "top10_abs_funded_pnl_share": 0.2929265527047278,
+            "yearly_return": {
+              "2023": 0.24539222070606703,
+              "2024": 0.15932656014479396,
+              "2025": 0.16138951549900793,
+              "2026": -0.05471641896013335
+            },
+            "rolling_12m_min_return": 0.02949582114091509,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.1738543189162315
+          }
+        },
+        "EXCLUDE_CRYPTO": {
+          "SKIP_OVERLAP": {
+            "total_return": 2.429900487863435,
+            "cagr": 0.46306698436289095,
+            "max_drawdown": -0.15440196200756018,
+            "daily_sharpe": 0.9494383886427925,
+            "avg_exposure": 0.33511788768874906,
+            "completed_trades": 208,
+            "profit_factor": 2.211300909879888,
+            "mean_trade": 0.020600358204762224,
+            "blocked_new_entries": 39,
+            "partial_new_entries": 46,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.40488184906817287,
+            "top10_abs_funded_pnl_share": 0.5102826759177451,
+            "yearly_return": {
+              "2023": 0.36983862627761255,
+              "2024": 0.14733824002267482,
+              "2025": 1.0944751152638643,
+              "2026": -0.01731488054746133
+            },
+            "rolling_12m_min_return": 0.08068508366200389,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.2050546172008455
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 4.138805470313127,
+            "cagr": 0.6575759601358719,
+            "max_drawdown": -0.15368653891571604,
+            "daily_sharpe": 0.8369863786092631,
+            "avg_exposure": 0.34896900677375137,
+            "completed_trades": 205,
+            "profit_factor": 2.2676181270560685,
+            "mean_trade": 0.021327829278251893,
+            "blocked_new_entries": 43,
+            "partial_new_entries": 45,
+            "add_on_events": 20,
+            "add_on_capital": 7.396662914165601,
+            "top5_abs_funded_pnl_share": 0.5076489808789725,
+            "top10_abs_funded_pnl_share": 0.6135768956587427,
+            "yearly_return": {
+              "2023": 0.37824688133677853,
+              "2024": 0.15225594184721603,
+              "2025": 1.9979949676102677,
+              "2026": 0.0157931470904471
+            },
+            "rolling_12m_min_return": 0.09344153421096535,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.21907108789052332
+          }
+        },
+        "EXCLUDE_COMMODITY_VOL": {
+          "SKIP_OVERLAP": {
+            "total_return": 2.330449379811946,
+            "cagr": 0.4498360234979881,
+            "max_drawdown": -0.15440196200755996,
+            "daily_sharpe": 0.9308091475822556,
+            "avg_exposure": 0.33288224996667,
+            "completed_trades": 209,
+            "profit_factor": 2.1569261756291374,
+            "mean_trade": 0.019921941643195336,
+            "blocked_new_entries": 41,
+            "partial_new_entries": 45,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.40185894901988395,
+            "top10_abs_funded_pnl_share": 0.5071791009538738,
+            "yearly_return": {
+              "2023": 0.36983862627761255,
+              "2024": 0.1533451378579498,
+              "2025": 1.0282372953288461,
+              "2026": -0.019778290554094746
+            },
+            "rolling_12m_min_return": 0.06026043334601794,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.20048138474553523
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 3.855354255322063,
+            "cagr": 0.6287920247064636,
+            "max_drawdown": -0.15368653891571593,
+            "daily_sharpe": 0.8158201172329156,
+            "avg_exposure": 0.34430592138238086,
+            "completed_trades": 206,
+            "profit_factor": 2.201916752654074,
+            "mean_trade": 0.020567310542123768,
+            "blocked_new_entries": 45,
+            "partial_new_entries": 43,
+            "add_on_events": 20,
+            "add_on_capital": 7.31106208559992,
+            "top5_abs_funded_pnl_share": 0.5021673266030314,
+            "top10_abs_funded_pnl_share": 0.6074084517114395,
+            "yearly_return": {
+              "2023": 0.37824688133677853,
+              "2024": 0.15828998583769094,
+              "2025": 1.8249538780932757,
+              "2026": 0.013246741376471194
+            },
+            "rolling_12m_min_return": 0.04382885633578226,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.20743180701923536
+          }
+        },
+        "EXCLUDE_THEMATIC_SECTOR": {
+          "SKIP_OVERLAP": {
+            "total_return": 2.4415312381278964,
+            "cagr": 0.46459693934929636,
+            "max_drawdown": -0.15440196200756007,
+            "daily_sharpe": 0.9517316694365627,
+            "avg_exposure": 0.32999553581859725,
+            "completed_trades": 209,
+            "profit_factor": 2.1969531082264346,
+            "mean_trade": 0.020396816904903314,
+            "blocked_new_entries": 38,
+            "partial_new_entries": 46,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.413591735304531,
+            "top10_abs_funded_pnl_share": 0.5202405929734474,
+            "yearly_return": {
+              "2023": 0.321290494142384,
+              "2024": 0.20896999782482473,
+              "2025": 1.0731480569391625,
+              "2026": -0.0197782905540953
+            },
+            "rolling_12m_min_return": 0.08312833777350082,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.22868590425397162
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 4.111568429649509,
+            "cagr": 0.6548584886779931,
+            "max_drawdown": -0.15368653891571638,
+            "daily_sharpe": 0.8349742799959513,
+            "avg_exposure": 0.34423768689859574,
+            "completed_trades": 206,
+            "profit_factor": 2.24319814351521,
+            "mean_trade": 0.021047819100472064,
+            "blocked_new_entries": 42,
+            "partial_new_entries": 45,
+            "add_on_events": 21,
+            "add_on_capital": 8.033033372837231,
+            "top5_abs_funded_pnl_share": 0.5135299736702802,
+            "top10_abs_funded_pnl_share": 0.6205760398665208,
+            "yearly_return": {
+              "2023": 0.32940075418972237,
+              "2024": 0.214189288327564,
+              "2025": 1.9420079339981222,
+              "2026": 0.013246741376470306
+            },
+            "rolling_12m_min_return": 0.0863781952997229,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.24113689529414895
+          }
+        },
+        "STOCK_ONLY": {
+          "SKIP_OVERLAP": {
+            "total_return": 0.5504549583218863,
+            "cagr": 0.14499306210246754,
+            "max_drawdown": -0.1954879962069619,
+            "daily_sharpe": 0.9051549641921841,
+            "avg_exposure": 0.2920918942926006,
+            "completed_trades": 192,
+            "profit_factor": 1.297605381733718,
+            "mean_trade": 0.005207208986247105,
+            "blocked_new_entries": 28,
+            "partial_new_entries": 36,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.17829963357894327,
+            "top10_abs_funded_pnl_share": 0.29747642982804967,
+            "yearly_return": {
+              "2023": 0.19122659786160834,
+              "2024": 0.21581301129982755,
+              "2025": 0.10284859872704688,
+              "2026": -0.08441463170434005
+            },
+            "rolling_12m_min_return": 0.012680798914015856,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.16165438167944624
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 0.6651179787184991,
+            "cagr": 0.17049485466998582,
+            "max_drawdown": -0.1905962782692434,
+            "daily_sharpe": 1.010416394770926,
+            "avg_exposure": 0.3020970909196957,
+            "completed_trades": 190,
+            "profit_factor": 1.325813233334292,
+            "mean_trade": 0.005632189752824502,
+            "blocked_new_entries": 31,
+            "partial_new_entries": 35,
+            "add_on_events": 19,
+            "add_on_capital": 4.644178963555202,
+            "top5_abs_funded_pnl_share": 0.19022887867138072,
+            "top10_abs_funded_pnl_share": 0.30752785334579025,
+            "yearly_return": {
+              "2023": 0.20125456468499126,
+              "2024": 0.2210633193732474,
+              "2025": 0.1276304387474565,
+              "2026": -0.052340812492535194
+            },
+            "rolling_12m_min_return": 0.04137249618638017,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.16784043574638852
+          }
+        }
+      }
+    },
+    "top500": {
+      "candidate_class_stats": {
+        "COMMODITY_VOL_ETP": {
+          "candidate_events": 15,
+          "unique_symbols": 5,
+          "median_liquidity_rank": 358.0
+        },
+        "CRYPTO_ETP": {
+          "candidate_events": 15,
+          "unique_symbols": 4,
+          "median_liquidity_rank": 266.0
+        },
+        "LEVERAGED_INVERSE_ETP": {
+          "candidate_events": 53,
+          "unique_symbols": 13,
+          "median_liquidity_rank": 224.0
+        },
+        "SINGLE_STOCK": {
+          "candidate_events": 522,
+          "unique_symbols": 169,
+          "median_liquidity_rank": 249.0
+        },
+        "THEMATIC_SECTOR_ETF": {
+          "candidate_events": 9,
+          "unique_symbols": 4,
+          "median_liquidity_rank": 200.0
+        }
+      },
+      "independent_trade_stats": {
+        "COMMODITY_VOL_ETP": {
+          "n": 15,
+          "mean": 0.013513985122253073,
+          "median": -0.0038537873920181376,
+          "profit_factor": 1.8413750488210991,
+          "win_rate": 0.4
+        },
+        "CRYPTO_ETP": {
+          "n": 15,
+          "mean": -0.015573583165952904,
+          "median": -0.016621926591914638,
+          "profit_factor": 0.0,
+          "win_rate": 0.0
+        },
+        "LEVERAGED_INVERSE_ETP": {
+          "n": 53,
+          "mean": 0.18154623488762484,
+          "median": -0.008878806294749464,
+          "profit_factor": 13.290460504072733,
+          "win_rate": 0.24528301886792453
+        },
+        "SINGLE_STOCK": {
+          "n": 522,
+          "mean": 0.01024984825226332,
+          "median": -0.01228517062146145,
+          "profit_factor": 1.6197707639829106,
+          "win_rate": 0.2835249042145594
+        },
+        "THEMATIC_SECTOR_ETF": {
+          "n": 9,
+          "mean": 0.015957170811025226,
+          "median": -0.004059501780641184,
+          "profit_factor": 3.191198384354593,
+          "win_rate": 0.3333333333333333
+        }
+      },
+      "age3_addon_class_stats": {
+        "CRYPTO_ETP": {
+          "n": 1,
+          "funded_capital": 0.7895722793816059,
+          "mean_return": -0.024193541703443566,
+          "median_return": -0.024193541703443566,
+          "profit_factor": 0.0,
+          "win_rate": 0.0,
+          "sum_slice_pnl": -0.019102549869101877,
+          "unique_symbols": 1,
+          "top1_abs_share": 1.0,
+          "top3_abs_share": 1.0,
+          "top5_abs_share": 1.0,
+          "top10_abs_share": 1.0,
+          "top_symbol": "FBTC",
+          "top_symbol_signed_pnl": -0.019102549869101877,
+          "leave_top1_symbol_out_sum_pnl": 0.0,
+          "leave_top3_symbols_out_sum_pnl": 0.0,
+          "abs_pnl_share": 0.007971946171799365
+        },
+        "LEVERAGED_INVERSE_ETP": {
+          "n": 1,
+          "funded_capital": 0.5577059058560944,
+          "mean_return": 3.129985595437576,
+          "median_return": 3.129985595437576,
+          "profit_factor": null,
+          "win_rate": 1.0,
+          "sum_slice_pnl": 1.7456114518200403,
+          "unique_symbols": 1,
+          "top1_abs_share": 1.0,
+          "top3_abs_share": 1.0,
+          "top5_abs_share": 1.0,
+          "top10_abs_share": 1.0,
+          "top_symbol": "SPXU",
+          "top_symbol_signed_pnl": 1.7456114518200403,
+          "leave_top1_symbol_out_sum_pnl": 0.0,
+          "leave_top3_symbols_out_sum_pnl": 0.0,
+          "abs_pnl_share": 0.7284849732702292
+        },
+        "SINGLE_STOCK": {
+          "n": 20,
+          "funded_capital": 8.617461520457159,
+          "mean_return": 0.03340557497873638,
+          "median_return": -0.008666726295097238,
+          "profit_factor": 3.49771186341728,
+          "win_rate": 0.35,
+          "sum_slice_pnl": 0.3537553427987051,
+          "unique_symbols": 18,
+          "top1_abs_share": 0.5171842651810437,
+          "top3_abs_share": 0.7378276555440734,
+          "top5_abs_share": 0.8679601939649152,
+          "top10_abs_share": 0.9714372210152785,
+          "top_symbol": "DELL",
+          "top_symbol_signed_pnl": 0.32487650616729685,
+          "leave_top1_symbol_out_sum_pnl": 0.028878836631408247,
+          "leave_top3_symbols_out_sum_pnl": 0.00239873504545566,
+          "abs_pnl_share": 0.2635430805579713
+        }
+      },
+      "portfolio_ablations": {
+        "ALL": {
+          "SKIP_OVERLAP": {
+            "total_return": 3.733645180772836,
+            "cagr": 0.616075620722754,
+            "max_drawdown": -0.1683141183251119,
+            "daily_sharpe": 1.1412758282549085,
+            "avg_exposure": 0.44717409082995024,
+            "completed_trades": 291,
+            "profit_factor": 2.1971805921547607,
+            "mean_trade": 0.018472188892589128,
+            "blocked_new_entries": 128,
+            "partial_new_entries": 101,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.35128255502664335,
+            "top10_abs_funded_pnl_share": 0.4450895241309184,
+            "yearly_return": {
+              "2023": 0.5522335814655426,
+              "2024": 0.2866083980008416,
+              "2025": 1.4260348192021493,
+              "2026": -0.07654023901287921
+            },
+            "rolling_12m_min_return": 0.15111899082287583,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.33466284522070433
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 5.829287187994942,
+            "cagr": 0.8097026652244068,
+            "max_drawdown": -0.1719762431921541,
+            "daily_sharpe": 0.9444349653999523,
+            "avg_exposure": 0.4529856520644077,
+            "completed_trades": 283,
+            "profit_factor": 2.248931070618622,
+            "mean_trade": 0.019215789586750572,
+            "blocked_new_entries": 138,
+            "partial_new_entries": 95,
+            "add_on_events": 22,
+            "add_on_capital": 9.964739705694859,
+            "top5_abs_funded_pnl_share": 0.4498933129330605,
+            "top10_abs_funded_pnl_share": 0.5438661507889393,
+            "yearly_return": {
+              "2023": 0.5606513772258896,
+              "2024": 0.3483113475305972,
+              "2025": 2.239036610501969,
+              "2026": -0.05493702515145649
+            },
+            "rolling_12m_min_return": 0.17576035642890897,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.37286882146778144
+          }
+        },
+        "EXCLUDE_LEVERAGED_INVERSE": {
+          "SKIP_OVERLAP": {
+            "total_return": 1.2022353772980652,
+            "cagr": 0.27601753415112973,
+            "max_drawdown": -0.24519664931484753,
+            "daily_sharpe": 1.3889381608981568,
+            "avg_exposure": 0.4200485076590384,
+            "completed_trades": 280,
+            "profit_factor": 1.4998390584453314,
+            "mean_trade": 0.007700579948219447,
+            "blocked_new_entries": 106,
+            "partial_new_entries": 98,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.14493009625289646,
+            "top10_abs_funded_pnl_share": 0.23490481799451043,
+            "yearly_return": {
+              "2023": 0.46094461060301883,
+              "2024": 0.2955668424667124,
+              "2025": 0.30872829681253267,
+              "2026": -0.1596824609877382
+            },
+            "rolling_12m_min_return": 0.04474640239906602,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.3171127109943268
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 1.3735520595615647,
+            "cagr": 0.30587494984136354,
+            "max_drawdown": -0.22621468711460146,
+            "daily_sharpe": 1.4787946799759764,
+            "avg_exposure": 0.42383583565216065,
+            "completed_trades": 273,
+            "profit_factor": 1.5217007164229246,
+            "mean_trade": 0.008028094389837781,
+            "blocked_new_entries": 114,
+            "partial_new_entries": 91,
+            "add_on_events": 20,
+            "add_on_capital": 6.049391467667425,
+            "top5_abs_funded_pnl_share": 0.15940279955451833,
+            "top10_abs_funded_pnl_share": 0.2502504643776153,
+            "yearly_return": {
+              "2023": 0.48240212933107784,
+              "2024": 0.35769941957203755,
+              "2025": 0.2750413987318061,
+              "2026": -0.12762716738915592
+            },
+            "rolling_12m_min_return": 0.091401947059365,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.3268965891221989
+          }
+        },
+        "EXCLUDE_CRYPTO": {
+          "SKIP_OVERLAP": {
+            "total_return": 3.8229953394479894,
+            "cagr": 0.6254328063229206,
+            "max_drawdown": -0.16831411832511156,
+            "daily_sharpe": 1.1532720651001982,
+            "avg_exposure": 0.4446248195705121,
+            "completed_trades": 287,
+            "profit_factor": 2.234130885655185,
+            "mean_trade": 0.018988390232154605,
+            "blocked_new_entries": 121,
+            "partial_new_entries": 99,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.35621727316193524,
+            "top10_abs_funded_pnl_share": 0.45120425569635847,
+            "yearly_return": {
+              "2023": 0.5522335814655426,
+              "2024": 0.28416822489970417,
+              "2025": 1.4703163328745847,
+              "2026": -0.07421947831760223
+            },
+            "rolling_12m_min_return": 0.15111899082287583,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.33890747122578146
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 5.962104308525045,
+            "cagr": 0.8204967335579543,
+            "max_drawdown": -0.17197624319215377,
+            "daily_sharpe": 0.951650021580722,
+            "avg_exposure": 0.4504364195582819,
+            "completed_trades": 280,
+            "profit_factor": 2.2836199523056435,
+            "mean_trade": 0.01965789168060677,
+            "blocked_new_entries": 130,
+            "partial_new_entries": 94,
+            "add_on_events": 21,
+            "add_on_capital": 9.275019752092598,
+            "top5_abs_funded_pnl_share": 0.45479311356117597,
+            "top10_abs_funded_pnl_share": 0.5496877075778729,
+            "yearly_return": {
+              "2023": 0.5606513772258896,
+              "2024": 0.34575414901757995,
+              "2025": 2.3000111374884282,
+              "2026": -0.052561973092614456
+            },
+            "rolling_12m_min_return": 0.17576035642890897,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.37562898613922613
+          }
+        },
+        "EXCLUDE_COMMODITY_VOL": {
+          "SKIP_OVERLAP": {
+            "total_return": 3.6242289771643357,
+            "cagr": 0.6044492126635796,
+            "max_drawdown": -0.16831411832511178,
+            "daily_sharpe": 1.1269069362553508,
+            "avg_exposure": 0.4353987738240101,
+            "completed_trades": 286,
+            "profit_factor": 2.188190198224256,
+            "mean_trade": 0.018488030320910235,
+            "blocked_new_entries": 119,
+            "partial_new_entries": 98,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.35261057626874515,
+            "top10_abs_funded_pnl_share": 0.44682844139623357,
+            "yearly_return": {
+              "2023": 0.5522335814655426,
+              "2024": 0.3088224895853968,
+              "2025": 1.3297337542915755,
+              "2026": -0.07654023901287921
+            },
+            "rolling_12m_min_return": 0.16710848482322116,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.32045233006631413
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 5.649683399251165,
+            "cagr": 0.7948729529278089,
+            "max_drawdown": -0.171976243192154,
+            "daily_sharpe": 0.9345208508270727,
+            "avg_exposure": 0.4447767441464741,
+            "completed_trades": 278,
+            "profit_factor": 2.2419622055052253,
+            "mean_trade": 0.019258097234990185,
+            "blocked_new_entries": 129,
+            "partial_new_entries": 92,
+            "add_on_events": 22,
+            "add_on_capital": 10.399952307715399,
+            "top5_abs_funded_pnl_share": 0.4503396899023677,
+            "top10_abs_funded_pnl_share": 0.5445757781510636,
+            "yearly_return": {
+              "2023": 0.5606513772258896,
+              "2024": 0.3715896625382631,
+              "2025": 2.100326520962732,
+              "2026": -0.05493702515145649
+            },
+            "rolling_12m_min_return": 0.1415091496980887,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.363916646308617
+          }
+        },
+        "EXCLUDE_THEMATIC_SECTOR": {
+          "SKIP_OVERLAP": {
+            "total_return": 3.620939481059689,
+            "cagr": 0.6040967449100698,
+            "max_drawdown": -0.168314118325112,
+            "daily_sharpe": 1.1269978514121382,
+            "avg_exposure": 0.43824615719130267,
+            "completed_trades": 288,
+            "profit_factor": 2.194500634339783,
+            "mean_trade": 0.01850821724590906,
+            "blocked_new_entries": 124,
+            "partial_new_entries": 98,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.35643227398780564,
+            "top10_abs_funded_pnl_share": 0.45163553802051115,
+            "yearly_return": {
+              "2023": 0.49687570371072765,
+              "2024": 0.3024737453582065,
+              "2025": 1.426209911997692,
+              "2026": -0.0765402390128791
+            },
+            "rolling_12m_min_return": 0.16360482258977393,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.3211497427796447
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 5.651309956397188,
+            "cagr": 0.7950084911921234,
+            "max_drawdown": -0.1719762431921541,
+            "daily_sharpe": 0.9346557243712815,
+            "avg_exposure": 0.44435047536649847,
+            "completed_trades": 281,
+            "profit_factor": 2.263266068340655,
+            "mean_trade": 0.019450817056062174,
+            "blocked_new_entries": 133,
+            "partial_new_entries": 92,
+            "add_on_events": 22,
+            "add_on_capital": 9.710494135320372,
+            "top5_abs_funded_pnl_share": 0.4546763969389189,
+            "top10_abs_funded_pnl_share": 0.549683580037172,
+            "yearly_return": {
+              "2023": 0.5049932925212097,
+              "2024": 0.3619448418486446,
+              "2025": 2.2392893032090617,
+              "2026": -0.05493702515145671
+            },
+            "rolling_12m_min_return": 0.18904992551867061,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.3589505671664789
+          }
+        },
+        "STOCK_ONLY": {
+          "SKIP_OVERLAP": {
+            "total_return": 1.1262500505708948,
+            "cagr": 0.26225907969507656,
+            "max_drawdown": -0.24519664931484741,
+            "daily_sharpe": 1.344905406173402,
+            "avg_exposure": 0.39478302404489446,
+            "completed_trades": 269,
+            "profit_factor": 1.4948253836485277,
+            "mean_trade": 0.007715650853410138,
+            "blocked_new_entries": 85,
+            "partial_new_entries": 92,
+            "add_on_events": 0,
+            "add_on_capital": 0.0,
+            "top5_abs_funded_pnl_share": 0.15261244866472176,
+            "top10_abs_funded_pnl_share": 0.24865103428941052,
+            "yearly_return": {
+              "2023": 0.4091646969982188,
+              "2024": 0.33165684383457794,
+              "2025": 0.27144492034849566,
+              "2026": -0.15757064626826756
+            },
+            "rolling_12m_min_return": 0.0709927492581921,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.30882597706262316
+          },
+          "AGE3_ONLY_R250": {
+            "total_return": 1.278860929309832,
+            "cagr": 0.28956349873664977,
+            "max_drawdown": -0.2262146871146019,
+            "daily_sharpe": 1.4246251486853398,
+            "avg_exposure": 0.40244459348708966,
+            "completed_trades": 263,
+            "profit_factor": 1.5363285234855255,
+            "mean_trade": 0.008316585424404586,
+            "blocked_new_entries": 92,
+            "partial_new_entries": 85,
+            "add_on_events": 20,
+            "add_on_capital": 6.414510814224082,
+            "top5_abs_funded_pnl_share": 0.16659813985077643,
+            "top10_abs_funded_pnl_share": 0.26330833307169027,
+            "yearly_return": {
+              "2023": 0.4298617019831108,
+              "2024": 0.3924593106206582,
+              "2025": 0.23465739670668828,
+              "2026": -0.12543479402641644
+            },
+            "rolling_12m_min_return": 0.1163402651350931,
+            "rolling_12m_positive_share": 1.0,
+            "rolling_12m_median_return": 0.3158456315557884
+          }
+        }
+      }
+    }
+  }
+}
