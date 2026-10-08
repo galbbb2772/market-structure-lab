@@ -1,0 +1,38 @@
+{
+  "schema": "PURE-BOX-SIMPLE-CORE-REPLACEMENT-ANATOMY-V37",
+  "event_count": 9,
+  "paired_count": 8,
+  "mean_pair_delta": 0.05935206993362499,
+  "median_pair_delta": 0.04521853119736524,
+  "positive_pair_share": 0.75,
+  "mean_displaced_realized_return": -0.0036709139645767865,
+  "mean_displaced_counterfactual_return": -0.023672442816972214,
+  "mean_incoming_realized_return": 0.03583496633542137,
+  "mean_age": 11.555555555555555,
+  "mean_progress": -0.01673137387190038,
+  "events_by_year": {
+    "2023": 3,
+    "2024": 5,
+    "2025": 1
+  },
+  "pair_delta_by_year": {
+    "2023": {
+      "n": 2,
+      "mean": 0.1403617811253417,
+      "median": 0.1403617811253417,
+      "positive_share": 1.0
+    },
+    "2024": {
+      "n": 5,
+      "mean": 0.04032676141437093,
+      "median": 0.061662493883047564,
+      "positive_share": 0.8
+    },
+    "2025": {
+      "n": 1,
+      "mean": -0.007540809853538111,
+      "median": -0.007540809853538111,
+      "positive_share": 0.0
+    }
+  }
+}
