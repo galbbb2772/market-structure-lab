@@ -1,10 +1,10 @@
 {
   "schema": "MARKET-STATE-BOX-V1-VALIDATION",
-  "source_generated_at": "2026-10-08T17:57:32.188050+00:00",
+  "source_generated_at": "2026-10-09T10:48:24.987683+00:00",
   "coverage": {
     "start": "2017-01-04",
-    "end": "2026-10-07",
-    "observations": 2453
+    "end": "2026-10-08",
+    "observations": 2454
   },
   "thresholds_frozen": true,
   "threshold_note": "This file does not optimize the V1 thresholds after seeing results.",
@@ -19,15 +19,15 @@
     },
     "breadth_extreme_low": {
       "days": 255,
-      "pct": 10.4
+      "pct": 10.39
     },
     "score_recovering": {
-      "days": 910,
-      "pct": 37.1
+      "days": 911,
+      "pct": 37.12
     }
   },
   "raw_combo_counts": {
-    "baseline": 2453,
+    "baseline": 2454,
     "box_only": 228,
     "box_sentiment": 20,
     "box_breadth": 72,
@@ -60,13 +60,13 @@
     },
     "box_bottom|score_recovering": {
       "a_n": 228,
-      "b_n": 910,
+      "b_n": 911,
       "both_n": 50,
-      "union_n": 1088,
-      "jaccard": 0.046,
+      "union_n": 1089,
+      "jaccard": 0.0459,
       "p_b_given_a_pct": 21.93,
       "p_a_given_b_pct": 5.49,
-      "phi": -0.1005
+      "phi": -0.1006
     },
     "sentiment_extreme|breadth_extreme_low": {
       "a_n": 167,
@@ -76,27 +76,27 @@
       "jaccard": 0.0657,
       "p_b_given_a_pct": 15.57,
       "p_a_given_b_pct": 10.2,
-      "phi": 0.0458
+      "phi": 0.0459
     },
     "sentiment_extreme|score_recovering": {
       "a_n": 167,
-      "b_n": 910,
+      "b_n": 911,
       "both_n": 46,
-      "union_n": 1031,
+      "union_n": 1032,
       "jaccard": 0.0446,
       "p_b_given_a_pct": 27.54,
       "p_a_given_b_pct": 5.05,
-      "phi": -0.0534
+      "phi": -0.0536
     },
     "breadth_extreme_low|score_recovering": {
       "a_n": 255,
-      "b_n": 910,
+      "b_n": 911,
       "both_n": 81,
-      "union_n": 1084,
+      "union_n": 1085,
       "jaccard": 0.0747,
       "p_b_given_a_pct": 31.76,
-      "p_a_given_b_pct": 8.9,
-      "phi": -0.0376
+      "p_a_given_b_pct": 8.89,
+      "phi": -0.0378
     }
   },
   "annual_counts": {
@@ -185,8 +185,8 @@
       "box_bottom": 29,
       "sentiment_extreme": 0,
       "breadth_extreme_low": 39,
-      "score_recovering": 71,
-      "days": 192,
+      "score_recovering": 72,
+      "days": 193,
       "all_four": 0,
       "box_breadth_score": 1
     }
@@ -570,11 +570,11 @@
     },
     "oos_2022_plus": {
       "start": "2022-01-03",
-      "end": "2026-10-07",
-      "days": 1195,
+      "end": "2026-10-08",
+      "days": 1196,
       "combos": {
         "baseline": {
-          "n": 239,
+          "n": 240,
           "fwd_1d_avg_pct": 0.065,
           "fwd_1d_median_pct": 0.09,
           "fwd_1d_positive_pct": 54.4,
@@ -597,27 +597,27 @@
             -0.073,
             0.386
           ],
-          "fwd_5d_avg_pct": 0.221,
-          "fwd_5d_median_pct": 0.345,
-          "fwd_5d_positive_pct": 59.2,
+          "fwd_5d_avg_pct": 0.226,
+          "fwd_5d_median_pct": 0.367,
+          "fwd_5d_positive_pct": 59.4,
           "fwd_5d_positive_wilson95": [
-            52.9,
-            65.3
+            53.1,
+            65.4
           ],
           "fwd_5d_mean_bootstrap95": [
-            -0.058,
-            0.51
+            -0.064,
+            0.514
           ],
-          "fwd_10d_avg_pct": 0.458,
-          "fwd_10d_median_pct": 0.799,
-          "fwd_10d_positive_pct": 58.6,
+          "fwd_10d_avg_pct": 0.459,
+          "fwd_10d_median_pct": 0.797,
+          "fwd_10d_positive_pct": 58.8,
           "fwd_10d_positive_wilson95": [
-            52.3,
-            64.7
+            52.5,
+            64.9
           ],
           "fwd_10d_mean_bootstrap95": [
-            0.065,
-            0.843
+            0.069,
+            0.85
           ],
           "mfe_10d_avg_pct": 1.961,
           "mae_10d_avg_pct": -1.594
@@ -922,8 +922,8 @@
     },
     "recent_2024_plus": {
       "start": "2024-01-02",
-      "end": "2026-10-07",
-      "days": 694,
+      "end": "2026-10-08",
+      "days": 695,
       "combos": {
         "baseline": {
           "n": 139,
@@ -972,7 +972,7 @@
             1.171
           ],
           "mfe_10d_avg_pct": 1.851,
-          "mae_10d_avg_pct": -1.292
+          "mae_10d_avg_pct": -1.293
         },
         "box_only": {
           "n": 18,
