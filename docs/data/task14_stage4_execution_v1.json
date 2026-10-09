@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-STAGE4-EXECUTION-V1",
-  "generated_at": "2026-10-08T02:42:37.188498+00:00",
+  "generated_at": "2026-10-09T02:57:08.755364+00:00",
   "research_only": true,
   "diagnostic_only": true,
   "production_effect": "none",
@@ -11,7 +11,7 @@
   "instrument_role": "tradable execution proxy for the market-level Sequence signal; not a final production instrument decision",
   "source": {
     "host": "query1.finance.yahoo.com",
-    "rows": 2512,
+    "rows": 2513,
     "transport": "yahoo_chart_range_10y"
   },
   "historical_event_count": 12,
