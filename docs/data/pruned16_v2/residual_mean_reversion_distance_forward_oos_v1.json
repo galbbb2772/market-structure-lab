@@ -1,6 +1,6 @@
 {
   "schema": "RMD3-SEQUENCE-FORWARD-OOS-V1",
-  "generated_at": "2026-10-09T10:55:15.501980+00:00",
+  "generated_at": "2026-10-10T10:08:09.072981+00:00",
   "research_only": true,
   "observation_only": true,
   "production_effect": "none",
@@ -24,7 +24,7 @@
     "score_residual",
     "rmd3"
   ],
-  "latest_market_date": "2026-10-08",
+  "latest_market_date": "2026-10-09",
   "forward_event_count": 0,
   "mature_10d_event_count": 0,
   "first_forward_event_date": null,

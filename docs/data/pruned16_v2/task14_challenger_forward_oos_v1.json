@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-CHALLENGER-FORWARD-OOS-V1",
-  "generated_at": "2026-10-09T10:55:17.146685+00:00",
+  "generated_at": "2026-10-10T10:08:10.735868+00:00",
   "research_only": true,
   "observation_only": true,
   "production_effect": "none",
@@ -8,7 +8,7 @@
   "preregistration_path": "research/task14_challengers_v1/PREREGISTRATION.md",
   "research_priority_policy": "research/pruned16_task14_priority_v2/PRIORITY_POLICY.md",
   "frozen_through_market_date": "2026-10-06",
-  "latest_market_date": "2026-10-08",
+  "latest_market_date": "2026-10-09",
   "challengers": {
     "early_sequence": {
       "research_priority_tier": "T2_SECONDARY_FORWARD_WATCH",

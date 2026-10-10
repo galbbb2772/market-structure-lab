@@ -1,6 +1,6 @@
 {
   "schema": "TASK14-PAPER-PORTFOLIO-V1",
-  "generated_at": "2026-10-09T10:55:20.600762+00:00",
+  "generated_at": "2026-10-10T10:08:14.164578+00:00",
   "research_only": true,
   "diagnostic_only": true,
   "paper_only": true,
@@ -10,10 +10,10 @@
   "study_spec": "research/task14_stage4_portfolio_v1/STUDY_SPEC.md",
   "source": {
     "host": "query1.finance.yahoo.com",
-    "rows": 2513,
+    "rows": 2514,
     "transport": "yahoo_chart_range_10y",
     "incomplete_current_session_excluded": false,
-    "latest_completed_spy_date": "2026-10-08"
+    "latest_completed_spy_date": "2026-10-09"
   },
   "upstream_forward_signal_count": 0,
   "upstream_counts": {
@@ -27,7 +27,7 @@
         "policy": "full_only_100_dedup",
         "cost_model": "fixed_10bps_rt",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-08",
+        "latest_market_date": "2026-10-09",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
@@ -12599,6 +12599,11 @@
           },
           {
             "date": "2026-10-08",
+            "equity": 100000.0,
+            "gross_exposure": 0.0
+          },
+          {
+            "date": "2026-10-09",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -12608,7 +12613,7 @@
         "policy": "full_only_100_dedup",
         "cost_model": "square_root_impact",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-08",
+        "latest_market_date": "2026-10-09",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
@@ -25180,6 +25185,11 @@
           },
           {
             "date": "2026-10-08",
+            "equity": 100000.0,
+            "gross_exposure": 0.0
+          },
+          {
+            "date": "2026-10-09",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -25191,7 +25201,7 @@
         "policy": "early_full_100_dedup",
         "cost_model": "fixed_10bps_rt",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-08",
+        "latest_market_date": "2026-10-09",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
@@ -37763,6 +37773,11 @@
           },
           {
             "date": "2026-10-08",
+            "equity": 100000.0,
+            "gross_exposure": 0.0
+          },
+          {
+            "date": "2026-10-09",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -37772,7 +37787,7 @@
         "policy": "early_full_100_dedup",
         "cost_model": "square_root_impact",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-08",
+        "latest_market_date": "2026-10-09",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
@@ -50344,6 +50359,11 @@
           },
           {
             "date": "2026-10-08",
+            "equity": 100000.0,
+            "gross_exposure": 0.0
+          },
+          {
+            "date": "2026-10-09",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -50355,7 +50375,7 @@
         "policy": "early_full_vol10_dedup",
         "cost_model": "fixed_10bps_rt",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-08",
+        "latest_market_date": "2026-10-09",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
@@ -62927,6 +62947,11 @@
           },
           {
             "date": "2026-10-08",
+            "equity": 100000.0,
+            "gross_exposure": 0.0
+          },
+          {
+            "date": "2026-10-09",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -62936,7 +62961,7 @@
         "policy": "early_full_vol10_dedup",
         "cost_model": "square_root_impact",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-08",
+        "latest_market_date": "2026-10-09",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
@@ -75508,6 +75533,11 @@
           },
           {
             "date": "2026-10-08",
+            "equity": 100000.0,
+            "gross_exposure": 0.0
+          },
+          {
+            "date": "2026-10-09",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -75519,7 +75549,7 @@
         "policy": "early_full_stack25_cap100",
         "cost_model": "fixed_10bps_rt",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-08",
+        "latest_market_date": "2026-10-09",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
@@ -88091,6 +88121,11 @@
           },
           {
             "date": "2026-10-08",
+            "equity": 100000.0,
+            "gross_exposure": 0.0
+          },
+          {
+            "date": "2026-10-09",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
@@ -88100,7 +88135,7 @@
         "policy": "early_full_stack25_cap100",
         "cost_model": "square_root_impact",
         "start_capital_usd": 100000.0,
-        "latest_market_date": "2026-10-08",
+        "latest_market_date": "2026-10-09",
         "latest_equity_usd": 100000.0,
         "return_to_date_pct": 0.0,
         "signal_decisions": [],
@@ -100672,6 +100707,11 @@
           },
           {
             "date": "2026-10-08",
+            "equity": 100000.0,
+            "gross_exposure": 0.0
+          },
+          {
+            "date": "2026-10-09",
             "equity": 100000.0,
             "gross_exposure": 0.0
           }
