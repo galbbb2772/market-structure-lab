@@ -2,8 +2,8 @@
   "schema": "MARKET-STATE-BOX-V1-VALIDATION-SUMMARY",
   "coverage": {
     "start": "2017-01-11",
-    "end": "2026-10-14",
-    "observations": 2453
+    "end": "2026-10-15",
+    "observations": 2454
   },
   "thresholds_frozen": true,
   "prevalence": {
@@ -17,15 +17,15 @@
     },
     "breadth_extreme_low": {
       "days": 255,
-      "pct": 10.4
+      "pct": 10.39
     },
     "score_recovering": {
       "days": 906,
-      "pct": 36.93
+      "pct": 36.92
     }
   },
   "raw_combo_counts": {
-    "baseline": 2453,
+    "baseline": 2454,
     "box_only": 228,
     "box_sentiment": 20,
     "box_breadth": 72,
@@ -64,7 +64,7 @@
       "jaccard": 0.0461,
       "p_b_given_a_pct": 21.93,
       "p_a_given_b_pct": 5.52,
-      "phi": -0.0995
+      "phi": -0.0994
     },
     "sentiment_extreme|breadth_extreme_low": {
       "a_n": 167,
@@ -74,7 +74,7 @@
       "jaccard": 0.0657,
       "p_b_given_a_pct": 15.57,
       "p_a_given_b_pct": 10.2,
-      "phi": 0.0458
+      "phi": 0.0459
     },
     "sentiment_extreme|score_recovering": {
       "a_n": 167,
@@ -84,7 +84,7 @@
       "jaccard": 0.0448,
       "p_b_given_a_pct": 27.54,
       "p_a_given_b_pct": 5.08,
-      "phi": -0.0526
+      "phi": -0.0525
     },
     "breadth_extreme_low|score_recovering": {
       "a_n": 255,
@@ -94,7 +94,7 @@
       "jaccard": 0.075,
       "p_b_given_a_pct": 31.76,
       "p_a_given_b_pct": 8.94,
-      "phi": -0.0365
+      "phi": -0.0364
     }
   },
   "annual_counts": {
@@ -184,7 +184,7 @@
       "sentiment_extreme": 0,
       "breadth_extreme_low": 39,
       "score_recovering": 72,
-      "days": 197,
+      "days": 198,
       "all_four": 0,
       "box_breadth_score": 1
     }
@@ -430,36 +430,36 @@
     },
     "oos_2022_plus": {
       "start": "2022-01-03",
-      "end": "2026-10-14",
-      "days": 1200,
+      "end": "2026-10-15",
+      "days": 1201,
       "combos": {
         "baseline": {
-          "n": 240,
+          "n": 241,
           "fwd_3d_avg_pct": 0.155,
           "fwd_3d_positive_pct": 56.2,
           "fwd_3d_mean_bootstrap95": [
             -0.065,
             0.383
           ],
-          "fwd_5d_avg_pct": 0.226,
-          "fwd_5d_positive_pct": 59.4,
+          "fwd_5d_avg_pct": 0.224,
+          "fwd_5d_positive_pct": 59.2,
           "fwd_5d_positive_wilson95": [
-            53.1,
-            65.4
+            52.9,
+            65.2
           ],
           "fwd_5d_mean_bootstrap95": [
-            -0.064,
-            0.514
+            -0.053,
+            0.517
           ],
-          "fwd_10d_avg_pct": 0.459,
-          "fwd_10d_positive_pct": 58.8,
+          "fwd_10d_avg_pct": 0.461,
+          "fwd_10d_positive_pct": 59.0,
           "fwd_10d_positive_wilson95": [
-            52.5,
-            64.9
+            52.7,
+            65.0
           ],
           "fwd_10d_mean_bootstrap95": [
-            0.069,
-            0.85
+            0.078,
+            0.849
           ],
           "mfe_10d_avg_pct": 1.956,
           "mae_10d_avg_pct": -1.59
@@ -656,8 +656,8 @@
     },
     "recent_2024_plus": {
       "start": "2024-01-02",
-      "end": "2026-10-14",
-      "days": 699,
+      "end": "2026-10-15",
+      "days": 700,
       "combos": {
         "baseline": {
           "n": 140,
