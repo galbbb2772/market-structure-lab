@@ -30,17 +30,17 @@
     "^GSPC": {
       "name": "S&P 500",
       "start": "1992-01-02",
-      "end": "2026-10-01",
+      "end": "2026-10-23",
       "months": 418,
       "baseline_mechanical": {
-        "ending_value": 3984769.85,
+        "ending_value": 3962539.41,
         "total_contributed": 627000.0,
         "cash_ending": 0.0,
         "reserve_ending": 0.0,
         "index_allocated_total": 627000.0,
         "allocation_rate_pct": 100.0,
-        "xirr_pct": 9.006,
-        "twr_total_return_pct": 1738.15,
+        "xirr_pct": 8.959,
+        "twr_total_return_pct": 1727.895,
         "twr_max_drawdown_pct": -56.771,
         "heat_months": 0,
         "bull_releases": 0,
@@ -59,14 +59,14 @@
       },
       "tests": {
         "HEAT_BLOCK_DIV_1.0": {
-          "ending_value": 3984793.25,
+          "ending_value": 3962562.67,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 9.006,
-          "twr_total_return_pct": 1738.572,
+          "xirr_pct": 8.959,
+          "twr_total_return_pct": 1728.314,
           "twr_max_drawdown_pct": -56.771,
           "heat_months": 36,
           "bull_releases": 0,
@@ -85,17 +85,17 @@
           "ending_value_vs_mechanical_pct": 0.001
         },
         "BULL_RESERVE_DIV_1.0": {
-          "ending_value": 3969846.1,
+          "ending_value": 3947706.54,
           "total_contributed": 627000.0,
-          "cash_ending": 2000.0,
-          "reserve_ending": 2000.0,
-          "index_allocated_total": 625000.0,
-          "allocation_rate_pct": 99.68,
-          "xirr_pct": 8.99,
-          "twr_total_return_pct": 1745.177,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 8.943,
+          "twr_total_return_pct": 1734.886,
           "twr_max_drawdown_pct": -56.725,
           "heat_months": 0,
-          "bull_releases": 143,
+          "bull_releases": 144,
           "heat_releases": 0,
           "reserve_peak": 5500.0,
           "forward_extra_entry_quality": {
@@ -108,17 +108,17 @@
               "weighted_avg_forward_return_pct": 2.317
             }
           },
-          "ending_value_vs_mechanical_pct": -0.375
+          "ending_value_vs_mechanical_pct": -0.374
         },
         "HEAT_BLOCK_BOTH_1.0": {
-          "ending_value": 3984871.4,
+          "ending_value": 3962640.39,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 9.006,
-          "twr_total_return_pct": 1738.967,
+          "xirr_pct": 8.959,
+          "twr_total_return_pct": 1728.708,
           "twr_max_drawdown_pct": -56.771,
           "heat_months": 31,
           "bull_releases": 0,
@@ -137,17 +137,17 @@
           "ending_value_vs_mechanical_pct": 0.003
         },
         "BULL_RESERVE_BOTH_1.0": {
-          "ending_value": 3974506.91,
+          "ending_value": 3952341.34,
           "total_contributed": 627000.0,
-          "cash_ending": 2000.0,
-          "reserve_ending": 2000.0,
-          "index_allocated_total": 625000.0,
-          "allocation_rate_pct": 99.68,
-          "xirr_pct": 8.995,
-          "twr_total_return_pct": 1750.433,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 8.948,
+          "twr_total_return_pct": 1740.113,
           "twr_max_drawdown_pct": -56.629,
           "heat_months": 0,
-          "bull_releases": 131,
+          "bull_releases": 132,
           "heat_releases": 0,
           "reserve_peak": 7500.0,
           "forward_extra_entry_quality": {
@@ -160,17 +160,17 @@
               "weighted_avg_forward_return_pct": 2.5
             }
           },
-          "ending_value_vs_mechanical_pct": -0.258
+          "ending_value_vs_mechanical_pct": -0.257
         },
         "HEAT_BLOCK_DIV_1.5": {
-          "ending_value": 3984920.88,
+          "ending_value": 3962689.59,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 9.006,
-          "twr_total_return_pct": 1738.474,
+          "xirr_pct": 8.959,
+          "twr_total_return_pct": 1728.217,
           "twr_max_drawdown_pct": -56.771,
           "heat_months": 13,
           "bull_releases": 0,
@@ -189,17 +189,17 @@
           "ending_value_vs_mechanical_pct": 0.004
         },
         "BULL_RESERVE_DIV_1.5": {
-          "ending_value": 3944653.46,
+          "ending_value": 3922667.77,
           "total_contributed": 627000.0,
-          "cash_ending": 5500.0,
-          "reserve_ending": 5500.0,
-          "index_allocated_total": 621500.0,
-          "allocation_rate_pct": 99.12,
-          "xirr_pct": 8.962,
-          "twr_total_return_pct": 1725.0,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 8.915,
+          "twr_total_return_pct": 1714.828,
           "twr_max_drawdown_pct": -56.665,
           "heat_months": 0,
-          "bull_releases": 77,
+          "bull_releases": 78,
           "heat_releases": 0,
           "reserve_peak": 11500.0,
           "forward_extra_entry_quality": {
@@ -212,17 +212,17 @@
               "weighted_avg_forward_return_pct": 1.664
             }
           },
-          "ending_value_vs_mechanical_pct": -1.007
+          "ending_value_vs_mechanical_pct": -1.006
         },
         "HEAT_BLOCK_BOTH_1.5": {
-          "ending_value": 3984940.91,
+          "ending_value": 3962709.51,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 9.006,
-          "twr_total_return_pct": 1738.484,
+          "xirr_pct": 8.959,
+          "twr_total_return_pct": 1728.227,
           "twr_max_drawdown_pct": -56.771,
           "heat_months": 11,
           "bull_releases": 0,
@@ -241,17 +241,17 @@
           "ending_value_vs_mechanical_pct": 0.004
         },
         "BULL_RESERVE_BOTH_1.5": {
-          "ending_value": 3947486.92,
+          "ending_value": 3925485.43,
           "total_contributed": 627000.0,
-          "cash_ending": 5500.0,
-          "reserve_ending": 5500.0,
-          "index_allocated_total": 621500.0,
-          "allocation_rate_pct": 99.12,
-          "xirr_pct": 8.965,
-          "twr_total_return_pct": 1728.911,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 8.918,
+          "twr_total_return_pct": 1718.717,
           "twr_max_drawdown_pct": -56.512,
           "heat_months": 0,
-          "bull_releases": 70,
+          "bull_releases": 71,
           "heat_releases": 0,
           "reserve_peak": 11500.0,
           "forward_extra_entry_quality": {
@@ -264,17 +264,17 @@
               "weighted_avg_forward_return_pct": 2.241
             }
           },
-          "ending_value_vs_mechanical_pct": -0.936
+          "ending_value_vs_mechanical_pct": -0.935
         },
         "HEAT_BLOCK_DIV_2.0": {
-          "ending_value": 3984725.63,
+          "ending_value": 3962495.43,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 9.006,
-          "twr_total_return_pct": 1738.177,
+          "xirr_pct": 8.959,
+          "twr_total_return_pct": 1727.922,
           "twr_max_drawdown_pct": -56.771,
           "heat_months": 6,
           "bull_releases": 0,
@@ -293,14 +293,14 @@
           "ending_value_vs_mechanical_pct": -0.001
         },
         "BULL_RESERVE_DIV_2.0": {
-          "ending_value": 3823578.84,
+          "ending_value": 3802278.34,
           "total_contributed": 627000.0,
           "cash_ending": 5500.0,
           "reserve_ending": 5500.0,
           "index_allocated_total": 621500.0,
           "allocation_rate_pct": 99.12,
-          "xirr_pct": 8.826,
-          "twr_total_return_pct": 1543.416,
+          "xirr_pct": 8.779,
+          "twr_total_return_pct": 1534.26,
           "twr_max_drawdown_pct": -56.618,
           "heat_months": 0,
           "bull_releases": 38,
@@ -316,17 +316,17 @@
               "weighted_avg_forward_return_pct": 3.753
             }
           },
-          "ending_value_vs_mechanical_pct": -4.045
+          "ending_value_vs_mechanical_pct": -4.044
         },
         "HEAT_BLOCK_BOTH_2.0": {
-          "ending_value": 3984739.29,
+          "ending_value": 3962509.02,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 9.006,
-          "twr_total_return_pct": 1738.184,
+          "xirr_pct": 8.959,
+          "twr_total_return_pct": 1727.929,
           "twr_max_drawdown_pct": -56.771,
           "heat_months": 6,
           "bull_releases": 0,
@@ -345,14 +345,14 @@
           "ending_value_vs_mechanical_pct": -0.001
         },
         "BULL_RESERVE_BOTH_2.0": {
-          "ending_value": 3819200.63,
+          "ending_value": 3797924.55,
           "total_contributed": 627000.0,
           "cash_ending": 5500.0,
           "reserve_ending": 5500.0,
           "index_allocated_total": 621500.0,
           "allocation_rate_pct": 99.12,
-          "xirr_pct": 8.821,
-          "twr_total_return_pct": 1542.974,
+          "xirr_pct": 8.774,
+          "twr_total_return_pct": 1533.821,
           "twr_max_drawdown_pct": -56.499,
           "heat_months": 0,
           "bull_releases": 32,
@@ -368,24 +368,24 @@
               "weighted_avg_forward_return_pct": 3.944
             }
           },
-          "ending_value_vs_mechanical_pct": -4.155
+          "ending_value_vs_mechanical_pct": -4.154
         }
       }
     },
     "^IXIC": {
       "name": "Nasdaq Composite",
       "start": "1992-01-02",
-      "end": "2026-10-01",
+      "end": "2026-10-23",
       "months": 418,
       "baseline_mechanical": {
-        "ending_value": 7698846.17,
+        "ending_value": 7436334.85,
         "total_contributed": 627000.0,
         "cash_ending": 0.0,
         "reserve_ending": 0.0,
         "index_allocated_total": 627000.0,
         "allocation_rate_pct": 100.0,
-        "xirr_pct": 11.822,
-        "twr_total_return_pct": 4543.982,
+        "xirr_pct": 11.648,
+        "twr_total_return_pct": 4385.634,
         "twr_max_drawdown_pct": -77.934,
         "heat_months": 0,
         "bull_releases": 0,
@@ -404,14 +404,14 @@
       },
       "tests": {
         "HEAT_BLOCK_DIV_1.0": {
-          "ending_value": 7698440.34,
+          "ending_value": 7435942.87,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 11.822,
-          "twr_total_return_pct": 4519.194,
+          "xirr_pct": 11.648,
+          "twr_total_return_pct": 4361.691,
           "twr_max_drawdown_pct": -77.933,
           "heat_months": 31,
           "bull_releases": 0,
@@ -430,17 +430,17 @@
           "ending_value_vs_mechanical_pct": -0.005
         },
         "BULL_RESERVE_DIV_1.0": {
-          "ending_value": 7600611.73,
+          "ending_value": 7341484.83,
           "total_contributed": 627000.0,
-          "cash_ending": 2000.0,
-          "reserve_ending": 2000.0,
-          "index_allocated_total": 625000.0,
-          "allocation_rate_pct": 99.68,
-          "xirr_pct": 11.768,
-          "twr_total_return_pct": 4297.897,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.594,
+          "twr_total_return_pct": 4147.96,
           "twr_max_drawdown_pct": -77.81,
           "heat_months": 0,
-          "bull_releases": 101,
+          "bull_releases": 102,
           "heat_releases": 0,
           "reserve_peak": 10500.0,
           "forward_extra_entry_quality": {
@@ -453,17 +453,17 @@
               "weighted_avg_forward_return_pct": 1.469
             }
           },
-          "ending_value_vs_mechanical_pct": -1.276
+          "ending_value_vs_mechanical_pct": -1.275
         },
         "HEAT_BLOCK_BOTH_1.0": {
-          "ending_value": 7698534.86,
+          "ending_value": 7436034.17,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 11.822,
-          "twr_total_return_pct": 4519.256,
+          "xirr_pct": 11.648,
+          "twr_total_return_pct": 4361.751,
           "twr_max_drawdown_pct": -77.933,
           "heat_months": 30,
           "bull_releases": 0,
@@ -482,17 +482,17 @@
           "ending_value_vs_mechanical_pct": -0.004
         },
         "BULL_RESERVE_BOTH_1.0": {
-          "ending_value": 7596222.65,
+          "ending_value": 7337245.4,
           "total_contributed": 627000.0,
-          "cash_ending": 2000.0,
-          "reserve_ending": 2000.0,
-          "index_allocated_total": 625000.0,
-          "allocation_rate_pct": 99.68,
-          "xirr_pct": 11.766,
-          "twr_total_return_pct": 4293.075,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.592,
+          "twr_total_return_pct": 4143.302,
           "twr_max_drawdown_pct": -77.801,
           "heat_months": 0,
-          "bull_releases": 98,
+          "bull_releases": 99,
           "heat_releases": 0,
           "reserve_peak": 10500.0,
           "forward_extra_entry_quality": {
@@ -508,14 +508,14 @@
           "ending_value_vs_mechanical_pct": -1.333
         },
         "HEAT_BLOCK_DIV_1.5": {
-          "ending_value": 7698754.96,
+          "ending_value": 7436246.76,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 11.822,
-          "twr_total_return_pct": 4543.896,
+          "xirr_pct": 11.648,
+          "twr_total_return_pct": 4385.551,
           "twr_max_drawdown_pct": -77.934,
           "heat_months": 6,
           "bull_releases": 0,
@@ -534,17 +534,17 @@
           "ending_value_vs_mechanical_pct": -0.001
         },
         "BULL_RESERVE_DIV_1.5": {
-          "ending_value": 7556552.73,
+          "ending_value": 7298954.27,
           "total_contributed": 627000.0,
-          "cash_ending": 3500.0,
-          "reserve_ending": 3500.0,
-          "index_allocated_total": 623500.0,
-          "allocation_rate_pct": 99.44,
-          "xirr_pct": 11.744,
-          "twr_total_return_pct": 4160.311,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.57,
+          "twr_total_return_pct": 4015.079,
           "twr_max_drawdown_pct": -77.74,
           "heat_months": 0,
-          "bull_releases": 53,
+          "bull_releases": 54,
           "heat_releases": 0,
           "reserve_peak": 17500.0,
           "forward_extra_entry_quality": {
@@ -557,17 +557,17 @@
               "weighted_avg_forward_return_pct": 3.794
             }
           },
-          "ending_value_vs_mechanical_pct": -1.848
+          "ending_value_vs_mechanical_pct": -1.847
         },
         "HEAT_BLOCK_BOTH_1.5": {
-          "ending_value": 7698768.27,
+          "ending_value": 7436259.61,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 11.822,
-          "twr_total_return_pct": 4543.905,
+          "xirr_pct": 11.648,
+          "twr_total_return_pct": 4385.559,
           "twr_max_drawdown_pct": -77.934,
           "heat_months": 6,
           "bull_releases": 0,
@@ -586,17 +586,17 @@
           "ending_value_vs_mechanical_pct": -0.001
         },
         "BULL_RESERVE_BOTH_1.5": {
-          "ending_value": 7497046.65,
+          "ending_value": 7241477.2,
           "total_contributed": 627000.0,
-          "cash_ending": 3500.0,
-          "reserve_ending": 3500.0,
-          "index_allocated_total": 623500.0,
-          "allocation_rate_pct": 99.44,
-          "xirr_pct": 11.71,
-          "twr_total_return_pct": 4093.722,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.536,
+          "twr_total_return_pct": 3950.761,
           "twr_max_drawdown_pct": -77.669,
           "heat_months": 0,
-          "bull_releases": 50,
+          "bull_releases": 51,
           "heat_releases": 0,
           "reserve_peak": 17500.0,
           "forward_extra_entry_quality": {
@@ -609,17 +609,17 @@
               "weighted_avg_forward_return_pct": 1.409
             }
           },
-          "ending_value_vs_mechanical_pct": -2.621
+          "ending_value_vs_mechanical_pct": -2.62
         },
         "HEAT_BLOCK_DIV_2.0": {
-          "ending_value": 7698848.14,
+          "ending_value": 7436336.76,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 11.822,
-          "twr_total_return_pct": 4543.984,
+          "xirr_pct": 11.648,
+          "twr_total_return_pct": 4385.635,
           "twr_max_drawdown_pct": -77.934,
           "heat_months": 3,
           "bull_releases": 0,
@@ -638,17 +638,17 @@
           "ending_value_vs_mechanical_pct": 0.0
         },
         "BULL_RESERVE_DIV_2.0": {
-          "ending_value": 7404683.58,
+          "ending_value": 7152368.06,
           "total_contributed": 627000.0,
-          "cash_ending": 9500.0,
-          "reserve_ending": 9500.0,
-          "index_allocated_total": 617500.0,
-          "allocation_rate_pct": 98.48,
-          "xirr_pct": 11.658,
-          "twr_total_return_pct": 4018.703,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.484,
+          "twr_total_return_pct": 3878.357,
           "twr_max_drawdown_pct": -76.925,
           "heat_months": 0,
-          "bull_releases": 26,
+          "bull_releases": 27,
           "heat_releases": 0,
           "reserve_peak": 30000.0,
           "forward_extra_entry_quality": {
@@ -661,17 +661,17 @@
               "weighted_avg_forward_return_pct": -0.213
             }
           },
-          "ending_value_vs_mechanical_pct": -3.821
+          "ending_value_vs_mechanical_pct": -3.819
         },
         "HEAT_BLOCK_BOTH_2.0": {
-          "ending_value": 7698848.14,
+          "ending_value": 7436336.76,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 11.822,
-          "twr_total_return_pct": 4543.984,
+          "xirr_pct": 11.648,
+          "twr_total_return_pct": 4385.635,
           "twr_max_drawdown_pct": -77.934,
           "heat_months": 3,
           "bull_releases": 0,
@@ -690,17 +690,17 @@
           "ending_value_vs_mechanical_pct": 0.0
         },
         "BULL_RESERVE_BOTH_2.0": {
-          "ending_value": 7399323.35,
+          "ending_value": 7147190.59,
           "total_contributed": 627000.0,
-          "cash_ending": 9500.0,
-          "reserve_ending": 9500.0,
-          "index_allocated_total": 617500.0,
-          "allocation_rate_pct": 98.48,
-          "xirr_pct": 11.655,
-          "twr_total_return_pct": 4004.237,
+          "cash_ending": 0.0,
+          "reserve_ending": 0.0,
+          "index_allocated_total": 627000.0,
+          "allocation_rate_pct": 100.0,
+          "xirr_pct": 11.481,
+          "twr_total_return_pct": 3864.384,
           "twr_max_drawdown_pct": -75.635,
           "heat_months": 0,
-          "bull_releases": 23,
+          "bull_releases": 24,
           "heat_releases": 0,
           "reserve_peak": 44000.0,
           "forward_extra_entry_quality": {
@@ -713,24 +713,24 @@
               "weighted_avg_forward_return_pct": -2.084
             }
           },
-          "ending_value_vs_mechanical_pct": -3.89
+          "ending_value_vs_mechanical_pct": -3.888
         }
       }
     },
     "^DJI": {
       "name": "Dow Jones",
       "start": "1992-01-02",
-      "end": "2026-10-01",
+      "end": "2026-10-23",
       "months": 418,
       "baseline_mechanical": {
-        "ending_value": 3116314.41,
+        "ending_value": 3195166.94,
         "total_contributed": 627000.0,
         "cash_ending": 0.0,
         "reserve_ending": 0.0,
         "index_allocated_total": 627000.0,
         "allocation_rate_pct": 100.0,
-        "xirr_pct": 7.925,
-        "twr_total_return_pct": 1504.871,
+        "xirr_pct": 8.015,
+        "twr_total_return_pct": 1545.48,
         "twr_max_drawdown_pct": -53.778,
         "heat_months": 0,
         "bull_releases": 0,
@@ -749,14 +749,14 @@
       },
       "tests": {
         "HEAT_BLOCK_DIV_1.0": {
-          "ending_value": 3116242.67,
+          "ending_value": 3195093.38,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 7.925,
-          "twr_total_return_pct": 1505.011,
+          "xirr_pct": 8.015,
+          "twr_total_return_pct": 1545.622,
           "twr_max_drawdown_pct": -53.778,
           "heat_months": 35,
           "bull_releases": 0,
@@ -775,14 +775,14 @@
           "ending_value_vs_mechanical_pct": -0.002
         },
         "BULL_RESERVE_DIV_1.0": {
-          "ending_value": 3102578.24,
+          "ending_value": 3181045.25,
           "total_contributed": 627000.0,
           "cash_ending": 1500.0,
           "reserve_ending": 1500.0,
           "index_allocated_total": 625500.0,
           "allocation_rate_pct": 99.76,
-          "xirr_pct": 7.905,
-          "twr_total_return_pct": 1470.947,
+          "xirr_pct": 7.995,
+          "twr_total_return_pct": 1510.677,
           "twr_max_drawdown_pct": -53.655,
           "heat_months": 0,
           "bull_releases": 121,
@@ -798,17 +798,17 @@
               "weighted_avg_forward_return_pct": 2.199
             }
           },
-          "ending_value_vs_mechanical_pct": -0.441
+          "ending_value_vs_mechanical_pct": -0.442
         },
         "HEAT_BLOCK_BOTH_1.0": {
-          "ending_value": 3116213.0,
+          "ending_value": 3195062.96,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 7.925,
-          "twr_total_return_pct": 1504.995,
+          "xirr_pct": 8.015,
+          "twr_total_return_pct": 1545.606,
           "twr_max_drawdown_pct": -53.778,
           "heat_months": 31,
           "bull_releases": 0,
@@ -827,14 +827,14 @@
           "ending_value_vs_mechanical_pct": -0.003
         },
         "BULL_RESERVE_BOTH_1.0": {
-          "ending_value": 3110961.11,
+          "ending_value": 3189640.22,
           "total_contributed": 627000.0,
           "cash_ending": 1500.0,
           "reserve_ending": 1500.0,
           "index_allocated_total": 625500.0,
           "allocation_rate_pct": 99.76,
-          "xirr_pct": 7.917,
-          "twr_total_return_pct": 1477.017,
+          "xirr_pct": 8.007,
+          "twr_total_return_pct": 1516.901,
           "twr_max_drawdown_pct": -53.363,
           "heat_months": 0,
           "bull_releases": 111,
@@ -850,17 +850,17 @@
               "weighted_avg_forward_return_pct": 2.667
             }
           },
-          "ending_value_vs_mechanical_pct": -0.172
+          "ending_value_vs_mechanical_pct": -0.173
         },
         "HEAT_BLOCK_DIV_1.5": {
-          "ending_value": 3116035.6,
+          "ending_value": 3194881.07,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 7.924,
-          "twr_total_return_pct": 1504.58,
+          "xirr_pct": 8.015,
+          "twr_total_return_pct": 1545.181,
           "twr_max_drawdown_pct": -53.778,
           "heat_months": 16,
           "bull_releases": 0,
@@ -879,14 +879,14 @@
           "ending_value_vs_mechanical_pct": -0.009
         },
         "BULL_RESERVE_DIV_1.5": {
-          "ending_value": 3081034.99,
+          "ending_value": 3158956.88,
           "total_contributed": 627000.0,
           "cash_ending": 1500.0,
           "reserve_ending": 1500.0,
           "index_allocated_total": 625500.0,
           "allocation_rate_pct": 99.76,
-          "xirr_pct": 7.874,
-          "twr_total_return_pct": 1433.256,
+          "xirr_pct": 7.965,
+          "twr_total_return_pct": 1472.033,
           "twr_max_drawdown_pct": -53.651,
           "heat_months": 0,
           "bull_releases": 63,
@@ -902,17 +902,17 @@
               "weighted_avg_forward_return_pct": 1.42
             }
           },
-          "ending_value_vs_mechanical_pct": -1.132
+          "ending_value_vs_mechanical_pct": -1.133
         },
         "HEAT_BLOCK_BOTH_1.5": {
-          "ending_value": 3116024.88,
+          "ending_value": 3194870.08,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 7.924,
-          "twr_total_return_pct": 1504.574,
+          "xirr_pct": 8.015,
+          "twr_total_return_pct": 1545.175,
           "twr_max_drawdown_pct": -53.778,
           "heat_months": 14,
           "bull_releases": 0,
@@ -931,14 +931,14 @@
           "ending_value_vs_mechanical_pct": -0.009
         },
         "BULL_RESERVE_BOTH_1.5": {
-          "ending_value": 3084085.04,
+          "ending_value": 3162084.11,
           "total_contributed": 627000.0,
           "cash_ending": 1500.0,
           "reserve_ending": 1500.0,
           "index_allocated_total": 625500.0,
           "allocation_rate_pct": 99.76,
-          "xirr_pct": 7.879,
-          "twr_total_return_pct": 1435.62,
+          "xirr_pct": 7.969,
+          "twr_total_return_pct": 1474.458,
           "twr_max_drawdown_pct": -53.358,
           "heat_months": 0,
           "bull_releases": 56,
@@ -954,17 +954,17 @@
               "weighted_avg_forward_return_pct": 1.681
             }
           },
-          "ending_value_vs_mechanical_pct": -1.034
+          "ending_value_vs_mechanical_pct": -1.035
         },
         "HEAT_BLOCK_DIV_2.0": {
-          "ending_value": 3116178.69,
+          "ending_value": 3195027.78,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 7.925,
-          "twr_total_return_pct": 1504.751,
+          "xirr_pct": 8.015,
+          "twr_total_return_pct": 1545.357,
           "twr_max_drawdown_pct": -53.778,
           "heat_months": 5,
           "bull_releases": 0,
@@ -983,14 +983,14 @@
           "ending_value_vs_mechanical_pct": -0.004
         },
         "BULL_RESERVE_DIV_2.0": {
-          "ending_value": 2937755.82,
+          "ending_value": 3012001.69,
           "total_contributed": 627000.0,
           "cash_ending": 3500.0,
           "reserve_ending": 3500.0,
           "index_allocated_total": 623500.0,
           "allocation_rate_pct": 99.44,
-          "xirr_pct": 7.662,
-          "twr_total_return_pct": 1255.049,
+          "xirr_pct": 7.753,
+          "twr_total_return_pct": 1289.295,
           "twr_max_drawdown_pct": -53.629,
           "heat_months": 0,
           "bull_releases": 29,
@@ -1006,17 +1006,17 @@
               "weighted_avg_forward_return_pct": 0.923
             }
           },
-          "ending_value_vs_mechanical_pct": -5.73
+          "ending_value_vs_mechanical_pct": -5.733
         },
         "HEAT_BLOCK_BOTH_2.0": {
-          "ending_value": 3116174.39,
+          "ending_value": 3195023.38,
           "total_contributed": 627000.0,
           "cash_ending": 0.0,
           "reserve_ending": 0.0,
           "index_allocated_total": 627000.0,
           "allocation_rate_pct": 100.0,
-          "xirr_pct": 7.925,
-          "twr_total_return_pct": 1504.749,
+          "xirr_pct": 8.015,
+          "twr_total_return_pct": 1545.354,
           "twr_max_drawdown_pct": -53.778,
           "heat_months": 4,
           "bull_releases": 0,
@@ -1035,14 +1035,14 @@
           "ending_value_vs_mechanical_pct": -0.004
         },
         "BULL_RESERVE_BOTH_2.0": {
-          "ending_value": 2943476.14,
+          "ending_value": 3016943.19,
           "total_contributed": 627000.0,
           "cash_ending": 40000.0,
           "reserve_ending": 40000.0,
           "index_allocated_total": 587000.0,
           "allocation_rate_pct": 93.62,
-          "xirr_pct": 7.671,
-          "twr_total_return_pct": 1260.832,
+          "xirr_pct": 7.761,
+          "twr_total_return_pct": 1294.797,
           "twr_max_drawdown_pct": -53.33,
           "heat_months": 0,
           "bull_releases": 22,
@@ -1058,7 +1058,7 @@
               "weighted_avg_forward_return_pct": 1.706
             }
           },
-          "ending_value_vs_mechanical_pct": -5.546
+          "ending_value_vs_mechanical_pct": -5.578
         }
       }
     }
