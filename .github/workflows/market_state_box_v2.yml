@@ -2,12 +2,17 @@ name: Refresh Market State Box V2
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Refresh Market State Box V1"]
+    types: [completed]
+    branches: [main]
   schedule:
     - cron: '10 4 * * 2-6'
   push:
     branches: [main]
     paths:
       - 'build_market_state_box_v2.py'
+      - 'docs/data/market_state_box_v1.json'
       - '.github/workflows/market_state_box_v2.yml'
 
 permissions:
@@ -19,6 +24,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
