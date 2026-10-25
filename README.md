@@ -40,5 +40,6 @@ python -m unittest discover -s tests -v
 
 ## Archived rejected experiments
 
+- **Entry Heat DCA** standalone strategy is archived; only shared feature calculations remain in `research_entry_heat_common.py` for the separate Extra Gate research line. The old DCA strategy runner is not active.
 - **UpDown Index V2 control ablation** was rejected and its workflow, script, and result were moved out of this active repository after SHA verification. The preserved package is in the [central archive](https://github.com/galbbb2772/box-strategy-archive/tree/main/01_REJECTED/sources/market-structure-lab/).
 - Market State × Box V1 artifacts remain where they are only where V2 still depends on the underlying input data or the current dashboard links to the historical UI; they are not promoted as an active strategy.
