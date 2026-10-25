@@ -7,7 +7,7 @@ on:
     paths:
       - 'research_entry_heat_extra_gate.py'
       - '.github/workflows/research_entry_heat_extra_gate.yml'
-      - 'research_entry_heat_dca.py'
+      - 'research_entry_heat_common.py'
       - 'docs/data/structure_lab.json'
 
 concurrency:

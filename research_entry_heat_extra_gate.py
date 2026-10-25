@@ -16,7 +16,7 @@ import json, math
 from pathlib import Path
 from statistics import mean
 
-import research_entry_heat_dca as base
+import research_entry_heat_common as base
 
 ROOT=Path(__file__).resolve().parent
 DATA_PATH=ROOT/'docs/data/structure_lab.json'
