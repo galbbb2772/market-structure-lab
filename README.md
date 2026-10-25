@@ -37,3 +37,8 @@ python -m unittest discover -s tests -v
 历史涨跌集中度 / 相似区间页面：`docs/concentration-lab.html`。
 
 如果开启 GitHub Pages，建议将发布源设为 `main / docs`。
+
+## Archived rejected experiments
+
+- **UpDown Index V2 control ablation** was rejected and its workflow, script, and result were moved out of this active repository after SHA verification. The preserved package is in the [central archive](https://github.com/galbbb2772/box-strategy-archive/tree/main/01_REJECTED/sources/market-structure-lab/).
+- Market State × Box V1 artifacts remain where they are only where V2 still depends on the underlying input data or the current dashboard links to the historical UI; they are not promoted as an active strategy.
