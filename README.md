@@ -40,6 +40,8 @@ python -m unittest discover -s tests -v
 
 ## Archived rejected experiments
 
+- **Pre-PRUNED16 Forward/OOS snapshots (2026-10-02)** have been removed from the active repository after exact SHA verification against the central archive. Current root/PRUNED16 Forward and paper ledgers remain live; only the frozen historical snapshot directory was retired.
+
 - **Entry Heat DCA** standalone strategy is archived; only shared feature calculations remain in `research_entry_heat_common.py` for the separate Extra Gate research line. The old DCA strategy runner is not active.
 - **PRUNED16 Market State × Box V1/V2 and V2 diagnostic snapshots** are preserved in the central archive; the V1, validation, and V2 pages now read the current root datasets rather than stale `pruned16_v2` snapshots.
 - **UpDown Index V2 control ablation** was rejected and its workflow, script, and result were moved out of this active repository after SHA verification. The preserved package is in the [central archive](https://github.com/galbbb2772/box-strategy-archive/tree/main/01_REJECTED/sources/market-structure-lab/).
