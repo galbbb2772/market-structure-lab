@@ -1,6 +1,6 @@
 {
   "schema": "MARKET-STATE-BOX-V1",
-  "generated_at": "2026-10-24T14:44:28.079606+00:00",
+  "generated_at": "2026-10-27T09:14:35.823779+00:00",
   "coverage": {
     "start": "2017-01-19",
     "end": "2026-10-23",
@@ -45,12 +45,12 @@
     "market_score_d3": -4.38,
     "market_score_d5": 0.95,
     "score_recovering": false,
-    "fwd_1d": null,
+    "fwd_1d": 0.6964,
     "fwd_3d": null,
     "fwd_5d": null,
     "fwd_10d": null,
-    "mfe_10d": null,
-    "mae_10d": null,
+    "mfe_10d": 0.6964,
+    "mae_10d": 0.6964,
     "joint_4way": false
   },
   "ablation": {
@@ -62,12 +62,12 @@
       "fwd_3d_avg_pct": 0.151,
       "fwd_3d_median_pct": 0.21,
       "fwd_3d_positive_pct": 57.6,
-      "fwd_5d_avg_pct": 0.277,
+      "fwd_5d_avg_pct": 0.276,
       "fwd_5d_median_pct": 0.465,
-      "fwd_5d_positive_pct": 62.9,
-      "fwd_10d_avg_pct": 0.555,
-      "fwd_10d_median_pct": 0.862,
-      "fwd_10d_positive_pct": 65.8,
+      "fwd_5d_positive_pct": 62.7,
+      "fwd_10d_avg_pct": 0.55,
+      "fwd_10d_median_pct": 0.86,
+      "fwd_10d_positive_pct": 65.7,
       "mfe_10d_avg_pct": 1.951,
       "mae_10d_avg_pct": -1.542
     },
