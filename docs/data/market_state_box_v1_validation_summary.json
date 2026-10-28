@@ -435,11 +435,11 @@
       "combos": {
         "baseline": {
           "n": 242,
-          "fwd_3d_avg_pct": 0.153,
-          "fwd_3d_positive_pct": 56.0,
+          "fwd_3d_avg_pct": 0.155,
+          "fwd_3d_positive_pct": 56.2,
           "fwd_3d_mean_bootstrap95": [
-            -0.067,
-            0.376
+            -0.077,
+            0.379
           ],
           "fwd_5d_avg_pct": 0.219,
           "fwd_5d_positive_pct": 58.9,
@@ -461,7 +461,7 @@
             0.059,
             0.851
           ],
-          "mfe_10d_avg_pct": 1.941,
+          "mfe_10d_avg_pct": 1.943,
           "mae_10d_avg_pct": -1.589
         },
         "box_only": {
@@ -687,7 +687,7 @@
             0.268,
             1.14
           ],
-          "mfe_10d_avg_pct": 1.825,
+          "mfe_10d_avg_pct": 1.83,
           "mae_10d_avg_pct": -1.291
         },
         "box_only": {

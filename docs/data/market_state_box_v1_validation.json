@@ -1,6 +1,6 @@
 {
   "schema": "MARKET-STATE-BOX-V1-VALIDATION",
-  "source_generated_at": "2026-10-27T16:47:38.219574+00:00",
+  "source_generated_at": "2026-10-28T09:55:15.032485+00:00",
   "coverage": {
     "start": "2017-01-19",
     "end": "2026-10-23",
@@ -586,16 +586,16 @@
             -0.094,
             0.215
           ],
-          "fwd_3d_avg_pct": 0.153,
-          "fwd_3d_median_pct": 0.309,
-          "fwd_3d_positive_pct": 56.0,
+          "fwd_3d_avg_pct": 0.155,
+          "fwd_3d_median_pct": 0.316,
+          "fwd_3d_positive_pct": 56.2,
           "fwd_3d_positive_wilson95": [
-            49.7,
-            62.1
+            49.9,
+            62.3
           ],
           "fwd_3d_mean_bootstrap95": [
-            -0.067,
-            0.376
+            -0.077,
+            0.379
           ],
           "fwd_5d_avg_pct": 0.219,
           "fwd_5d_median_pct": 0.323,
@@ -619,7 +619,7 @@
             0.059,
             0.851
           ],
-          "mfe_10d_avg_pct": 1.941,
+          "mfe_10d_avg_pct": 1.943,
           "mae_10d_avg_pct": -1.589
         },
         "box_only": {
@@ -971,7 +971,7 @@
             0.268,
             1.14
           ],
-          "mfe_10d_avg_pct": 1.825,
+          "mfe_10d_avg_pct": 1.83,
           "mae_10d_avg_pct": -1.291
         },
         "box_only": {
