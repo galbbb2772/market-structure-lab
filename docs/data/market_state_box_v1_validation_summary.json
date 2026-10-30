@@ -441,25 +441,25 @@
             -0.077,
             0.379
           ],
-          "fwd_5d_avg_pct": 0.219,
-          "fwd_5d_positive_pct": 58.9,
+          "fwd_5d_avg_pct": 0.221,
+          "fwd_5d_positive_pct": 59.1,
           "fwd_5d_positive_wilson95": [
-            52.6,
-            64.9
+            52.8,
+            65.1
           ],
           "fwd_5d_mean_bootstrap95": [
-            -0.065,
-            0.499
+            -0.052,
+            0.515
           ],
-          "fwd_10d_avg_pct": 0.454,
-          "fwd_10d_positive_pct": 58.8,
+          "fwd_10d_avg_pct": 0.451,
+          "fwd_10d_positive_pct": 58.5,
           "fwd_10d_positive_wilson95": [
-            52.4,
-            64.8
+            52.2,
+            64.5
           ],
           "fwd_10d_mean_bootstrap95": [
-            0.059,
-            0.851
+            0.06,
+            0.845
           ],
           "mfe_10d_avg_pct": 1.944,
           "mae_10d_avg_pct": -1.589
