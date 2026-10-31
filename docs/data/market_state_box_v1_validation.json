@@ -1,6 +1,6 @@
 {
   "schema": "MARKET-STATE-BOX-V1-VALIDATION",
-  "source_generated_at": "2026-10-30T17:05:41.023515+00:00",
+  "source_generated_at": "2026-10-31T09:52:16.825257+00:00",
   "coverage": {
     "start": "2017-01-19",
     "end": "2026-10-23",
@@ -620,7 +620,7 @@
             0.845
           ],
           "mfe_10d_avg_pct": 1.944,
-          "mae_10d_avg_pct": -1.589
+          "mae_10d_avg_pct": -1.591
         },
         "box_only": {
           "n": 47,
@@ -949,30 +949,30 @@
             0.097,
             0.609
           ],
-          "fwd_5d_avg_pct": 0.358,
-          "fwd_5d_median_pct": 0.358,
-          "fwd_5d_positive_pct": 59.6,
+          "fwd_5d_avg_pct": 0.352,
+          "fwd_5d_median_pct": 0.323,
+          "fwd_5d_positive_pct": 59.2,
           "fwd_5d_positive_wilson95": [
-            51.3,
-            67.3
+            50.9,
+            66.9
           ],
           "fwd_5d_mean_bootstrap95": [
-            0.01,
-            0.696
+            0.002,
+            0.685
           ],
-          "fwd_10d_avg_pct": 0.718,
-          "fwd_10d_median_pct": 0.75,
-          "fwd_10d_positive_pct": 63.6,
+          "fwd_10d_avg_pct": 0.706,
+          "fwd_10d_median_pct": 0.728,
+          "fwd_10d_positive_pct": 63.1,
           "fwd_10d_positive_wilson95": [
-            55.3,
-            71.1
+            54.9,
+            70.6
           ],
           "fwd_10d_mean_bootstrap95": [
-            0.268,
-            1.14
+            0.272,
+            1.128
           ],
           "mfe_10d_avg_pct": 1.832,
-          "mae_10d_avg_pct": -1.291
+          "mae_10d_avg_pct": -1.304
         },
         "box_only": {
           "n": 18,

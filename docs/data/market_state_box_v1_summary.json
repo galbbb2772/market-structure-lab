@@ -1,6 +1,6 @@
 {
   "schema": "MARKET-STATE-BOX-V1",
-  "generated_at": "2026-10-30T17:05:41.023515+00:00",
+  "generated_at": "2026-10-31T09:52:16.825257+00:00",
   "coverage": {
     "start": "2017-01-19",
     "end": "2026-10-23",
@@ -47,10 +47,10 @@
     "score_recovering": false,
     "fwd_1d": 0.6964,
     "fwd_3d": 1.578,
-    "fwd_5d": null,
+    "fwd_5d": -0.572,
     "fwd_10d": null,
     "mfe_10d": 1.578,
-    "mae_10d": 0.6964,
+    "mae_10d": -0.572,
     "joint_4way": false
   },
   "ablation": {
@@ -69,7 +69,7 @@
       "fwd_10d_median_pct": 0.86,
       "fwd_10d_positive_pct": 65.7,
       "mfe_10d_avg_pct": 1.951,
-      "mae_10d_avg_pct": -1.542
+      "mae_10d_avg_pct": -1.543
     },
     "box_only": {
       "n": 72,
