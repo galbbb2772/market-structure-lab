@@ -462,7 +462,7 @@
             0.845
           ],
           "mfe_10d_avg_pct": 1.944,
-          "mae_10d_avg_pct": -1.591
+          "mae_10d_avg_pct": -1.593
         },
         "box_only": {
           "n": 47,
@@ -688,7 +688,7 @@
             1.128
           ],
           "mfe_10d_avg_pct": 1.832,
-          "mae_10d_avg_pct": -1.304
+          "mae_10d_avg_pct": -1.307
         },
         "box_only": {
           "n": 18,
