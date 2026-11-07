@@ -677,15 +677,15 @@
             0.002,
             0.685
           ],
-          "fwd_10d_avg_pct": 0.706,
-          "fwd_10d_positive_pct": 63.1,
+          "fwd_10d_avg_pct": 0.678,
+          "fwd_10d_positive_pct": 62.7,
           "fwd_10d_positive_wilson95": [
-            54.9,
-            70.6
+            54.5,
+            70.2
           ],
           "fwd_10d_mean_bootstrap95": [
-            0.272,
-            1.128
+            0.233,
+            1.083
           ],
           "mfe_10d_avg_pct": 1.832,
           "mae_10d_avg_pct": -1.325
