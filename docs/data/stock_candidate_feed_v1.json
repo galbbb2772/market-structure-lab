@@ -1,12 +1,12 @@
 {
   "schema": "STOCK-CANDIDATE-FEED-V1",
-  "generated_at": "2026-11-07T13:38:19.585571+00:00",
+  "generated_at": "2026-11-10T15:20:22.931223+00:00",
   "source_name": "frozen-v4",
   "source_version": "FROZEN-V4-STRICT-V3-MASSIVE-EOD-V1",
   "source_contract": "BASE_GENERATOR_CONTRACT.md",
   "canonical_immutable_pending_ledger": true,
-  "latest_as_of_market_date": "2026-11-06",
-  "snapshot_count": 36,
+  "latest_as_of_market_date": "2026-11-09",
+  "snapshot_count": 37,
   "rank_definition": "base candidates: eligible desc, ADV20 desc, symbol asc",
   "selection_rank_definition": "eligible only: ADV20 desc, base_signal_id asc; mirrors Frozen V4 open selection ordering before slot/re-entry constraints",
   "future_outcomes_included": false,
@@ -10212,6 +10212,51 @@
           "spy_rv20": 0.19940653684357695,
           "identity_ok": true,
           "dvr_gate_ok": false,
+          "market_gate_ok": true
+        }
+      ]
+    },
+    {
+      "as_of_market_date": "2026-11-09",
+      "entry_date": "2026-11-10",
+      "first_published_at": "2026-11-10T15:20:10.461973Z",
+      "candidate_count": 1,
+      "frozen_gate_eligible_count": 1,
+      "snapshot_sha256": "c844ccecf1d963bfeeb0474ac717b3648412b65f2c7b51ba69eda69c6800e255",
+      "candidates": [
+        {
+          "symbol": "VCIG",
+          "candidate_id": "477a607194e2e4553585a0d1",
+          "security_id": "CIK:0001930510:CS",
+          "continuous_segment_id": "CIK:0001930510:CS:2026-06-18",
+          "first_seen_at": "2026-11-10T15:20:10.461973Z",
+          "rank": 1,
+          "selection_rank": 1,
+          "trigger_reasons": [
+            "strict_v3_base",
+            "rsi14_lt_27_5",
+            "dif_slope_gt_0",
+            "dea_slope_gt_0",
+            "price_gte_5",
+            "adv20_gte_5m",
+            "dvr_lt_0_90",
+            "identity_gate_pass",
+            "dvr_le_0_40_gate_pass",
+            "market_gate_pass",
+            "frozen_gate_eligible"
+          ],
+          "entry_date": "2026-11-10",
+          "upstream_eligible": true,
+          "quality_score": 2,
+          "rsi14": 13.360924545922444,
+          "dollarvol_ratio_prev20": 0.10278049670916446,
+          "ma20_dev_pct": 0.3060385653970379,
+          "adv20_usd": 6694528.352028175,
+          "signal_raw_close": 6.66,
+          "spy_ret20": -0.03265647089063095,
+          "spy_rv20": 0.2204177476314057,
+          "identity_ok": true,
+          "dvr_gate_ok": true,
           "market_gate_ok": true
         }
       ]
