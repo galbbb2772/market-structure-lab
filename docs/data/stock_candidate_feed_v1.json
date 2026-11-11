@@ -1,12 +1,12 @@
 {
   "schema": "STOCK-CANDIDATE-FEED-V1",
-  "generated_at": "2026-11-10T15:20:22.931223+00:00",
+  "generated_at": "2026-11-11T14:51:24.153185+00:00",
   "source_name": "frozen-v4",
   "source_version": "FROZEN-V4-STRICT-V3-MASSIVE-EOD-V1",
   "source_contract": "BASE_GENERATOR_CONTRACT.md",
   "canonical_immutable_pending_ledger": true,
-  "latest_as_of_market_date": "2026-11-09",
-  "snapshot_count": 37,
+  "latest_as_of_market_date": "2026-11-10",
+  "snapshot_count": 38,
   "rank_definition": "base candidates: eligible desc, ADV20 desc, symbol asc",
   "selection_rank_definition": "eligible only: ADV20 desc, base_signal_id asc; mirrors Frozen V4 open selection ordering before slot/re-entry constraints",
   "future_outcomes_included": false,
@@ -10257,6 +10257,49 @@
           "spy_rv20": 0.2204177476314057,
           "identity_ok": true,
           "dvr_gate_ok": true,
+          "market_gate_ok": true
+        }
+      ]
+    },
+    {
+      "as_of_market_date": "2026-11-10",
+      "entry_date": "2026-11-11",
+      "first_published_at": "2026-11-11T14:51:12.535289Z",
+      "candidate_count": 1,
+      "frozen_gate_eligible_count": 0,
+      "snapshot_sha256": "f56f1805fe7be5f370ab08a390060f1558984a8ee579b2a2b116e6f77c928b19",
+      "candidates": [
+        {
+          "symbol": "CTVA",
+          "candidate_id": "7ff15c17b4e4757116628173",
+          "security_id": "BBG00BN969D0",
+          "continuous_segment_id": "BBG00BN969D0:2026-06-22",
+          "first_seen_at": "2026-11-11T14:51:12.535289Z",
+          "rank": 1,
+          "selection_rank": null,
+          "trigger_reasons": [
+            "strict_v3_base",
+            "rsi14_lt_27_5",
+            "dif_slope_gt_0",
+            "dea_slope_gt_0",
+            "price_gte_5",
+            "adv20_gte_5m",
+            "dvr_lt_0_90",
+            "identity_gate_pass",
+            "market_gate_pass"
+          ],
+          "entry_date": "2026-11-11",
+          "upstream_eligible": false,
+          "quality_score": 1,
+          "rsi14": 15.833831796988363,
+          "dollarvol_ratio_prev20": 0.5650346276030844,
+          "ma20_dev_pct": -0.00669278485145286,
+          "adv20_usd": 250190108.87091708,
+          "signal_raw_close": 12.17,
+          "spy_ret20": -0.03610493438387685,
+          "spy_rv20": 0.22046982978708718,
+          "identity_ok": true,
+          "dvr_gate_ok": false,
           "market_gate_ok": true
         }
       ]
