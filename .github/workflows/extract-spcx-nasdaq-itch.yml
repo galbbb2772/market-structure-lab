@@ -1,12 +1,6 @@
 name: Extract SPCX from Nasdaq Historical TotalView-ITCH
 
 on:
-  push:
-    branches:
-      - ipo-l3-nasdaq-spcx
-    paths:
-      - "native_itch/**"
-      - ".github/workflows/extract-spcx-nasdaq-itch.yml"
   workflow_dispatch:
 
 permissions:
@@ -22,8 +16,9 @@ jobs:
 
       - name: Build streaming extractor
         run: |
-          mkdir -p build artifacts
-          g++ -O3 -std=c++20 -Wall -Wextra -pedantic             native_itch/extract_symbol.cpp -o build/extract_symbol
+          mkdir -p build work artifacts
+          g++ -O3 -std=c++20 -Wall -Wextra -pedantic \
+            native_itch/extract_symbol.cpp -o build/extract_symbol
 
       - name: Stream Nasdaq raw ITCH and retain SPCX only
         shell: bash
@@ -31,27 +26,39 @@ jobs:
           set -euo pipefail
           URL="https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/S061226-v50.txt.gz"
           echo "Streaming $URL"
-          curl --fail --location --retry 5 --retry-delay 10                --connect-timeout 30 --speed-limit 1024 --speed-time 180                --user-agent "market-structure-lab/ipo-l3-research"                --silent --show-error "$URL"             | gzip -dc             | ./build/extract_symbol SPCX 2>artifacts/extract.log             | gzip -1 > artifacts/spcx_20260612.filtered.itch.gz
+          curl --fail --location --retry 5 --retry-delay 10 \
+               --connect-timeout 30 --speed-limit 1024 --speed-time 180 \
+               --user-agent "market-structure-lab/ipo-l3-research" \
+               --silent --show-error "$URL" \
+            | gzip -dc \
+            | ./build/extract_symbol SPCX 2>artifacts/extract.log \
+            | gzip -1 > work/spcx_20260612.filtered.itch.gz
 
       - name: Analyze SPCX native MBO and NOII
         run: |
-          python3 native_itch/analyze_symbol.py             --input artifacts/spcx_20260612.filtered.itch.gz             --symbol SPCX             --date 2026-06-12             --out-dir artifacts/analysis             | tee artifacts/analysis_stdout.txt
+          python3 native_itch/analyze_symbol.py \
+            --input work/spcx_20260612.filtered.itch.gz \
+            --symbol SPCX \
+            --date 2026-06-12 \
+            --out-dir artifacts/analysis \
+            | tee artifacts/analysis_stdout.txt
 
       - name: Integrity manifest
         run: |
           {
             echo "SOURCE_URL=https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/S061226-v50.txt.gz"
             echo "RUN_UTC=$(date -u +%FT%TZ)"
+            stat -c "FILTERED_NATIVE_BYTES=%s" work/spcx_20260612.filtered.itch.gz
+            sha256sum work/spcx_20260612.filtered.itch.gz
             find artifacts -type f -printf "%p %s bytes\n" | sort
-            sha256sum artifacts/spcx_20260612.filtered.itch.gz
           } | tee artifacts/MANIFEST.txt
           cat artifacts/extract.log
           cat artifacts/analysis/summary.json
 
-      - name: Upload extracted SPCX TotalView artifact
+      - name: Upload derived SPCX TotalView analysis
         uses: actions/upload-artifact@v4
         with:
-          name: spcx-nasdaq-totalview-20260612
+          name: spcx-nasdaq-totalview-20260612-analysis
           path: artifacts/
           retention-days: 3
-          compression-level: 1
+          compression-level: 6
