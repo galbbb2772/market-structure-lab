@@ -1,0 +1,71 @@
+name: Reanalyze SPCX native ITCH artifact
+
+on:
+  push:
+    branches:
+      - ipo-l3-nasdaq-spcx
+    paths:
+      - "native_itch/analyze_symbol.py"
+      - "native_itch/recovery_xnas.py"
+      - ".github/workflows/reanalyze-spcx-native.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reanalyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download prior SPCX filtered native ITCH artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p prior artifacts
+          gh run download 44424873396 \
+            --repo "${{ github.repository }}" \
+            --name spcx-nasdaq-totalview-20260612 \
+            --dir prior
+          find prior -maxdepth 3 -type f -printf "%p %s bytes\n" | sort
+
+      - name: Rebuild clean native book and flow
+        run: |
+          python3 native_itch/analyze_symbol.py \
+            --input prior/spcx_20260612.filtered.itch.gz \
+            --symbol SPCX \
+            --date 2026-06-12 \
+            --out-dir artifacts/analysis \
+            | tee artifacts/analyze_stdout.txt
+
+      - name: XNAS-native recovery benchmark
+        run: |
+          python3 native_itch/recovery_xnas.py \
+            --analysis-dir artifacts/analysis \
+            --out-dir artifacts/recovery \
+            | tee artifacts/recovery_stdout.txt
+
+      - name: Verify benchmark
+        run: |
+          python3 - <<'PY'
+          import json
+          s=json.load(open("artifacts/analysis/summary.json"))
+          assert s["ipo_cross"]["cross_price"] == 150.0
+          assert s["ipo_cross"]["shares"] == 58206084
+          assert s["auction_cleanup_total_qty"] > 40_000_000
+          r=json.load(open("artifacts/recovery/xnas_recovery_summary.json"))
+          assert r["selected_event_count"] > 20
+          print("BENCHMARK PASS")
+          print(json.dumps(s, indent=2))
+          print(json.dumps(r, indent=2))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spcx-native-reanalysis-v2
+          path: artifacts/
+          retention-days: 7
+          compression-level: 6
