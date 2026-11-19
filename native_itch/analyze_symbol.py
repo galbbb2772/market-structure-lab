@@ -3,11 +3,11 @@ import argparse
 import csv
 import gzip
 import json
-import struct
 from collections import Counter, defaultdict
 from pathlib import Path
 
 PRICE_SCALE = 10000.0
+CROSS_CLEANUP_NS = 1_000_000_000
 
 def u16(b, o): return int.from_bytes(b[o:o+2], "big")
 def u32(b, o): return int.from_bytes(b[o:o+4], "big")
@@ -46,15 +46,15 @@ class Book:
     def _levels(self, side):
         return self.bid if side == "B" else self.ask
 
-    def add(self, oid, side, qty, px):
-        self.orders[oid] = [side, qty, px]
+    def add(self, oid, side, qty, px, add_ns):
+        self.orders[oid] = [side, qty, px, add_ns]
         self._levels(side)[px] += qty
 
     def reduce(self, oid, qty):
         x = self.orders.get(oid)
         if not x:
             return None
-        side, old, px = x
+        side, old, px, add_ns = x
         q = min(qty, old)
         lv = self._levels(side)
         lv[px] -= q
@@ -65,25 +65,25 @@ class Book:
             self.orders.pop(oid, None)
         else:
             x[1] = remain
-        return side, q, px, remain
+        return side, q, px, remain, add_ns
 
     def delete(self, oid):
         x = self.orders.pop(oid, None)
         if not x:
             return None
-        side, qty, px = x
+        side, qty, px, add_ns = x
         lv = self._levels(side)
         lv[px] -= qty
         if lv[px] <= 0:
             lv.pop(px, None)
-        return side, qty, px
+        return side, qty, px, add_ns
 
-    def replace(self, old_id, new_id, qty, px):
+    def replace(self, old_id, new_id, qty, px, ns):
         old = self.delete(old_id)
         if not old:
             return None
         side = old[0]
-        self.add(new_id, side, qty, px)
+        self.add(new_id, side, qty, px, ns)
         return old, side
 
     def snapshot(self):
@@ -125,12 +125,11 @@ def main():
 
     counts = Counter()
     book = Book()
-    noii = []
-    crosses = []
-    actions = []
+    noii, crosses, actions = [], [], []
     broken = set()
-    first_ns = None
-    last_ns = None
+    first_ns = last_ns = None
+    ipo_cross_ns = None
+    ipo_cross_px_ticks = None
 
     bucket_sec = None
     flow = Counter()
@@ -139,21 +138,23 @@ def main():
     def flush(sec):
         if sec is None:
             return
-        s = book.snapshot()
-        if s["mid"] is None and not any(flow.values()):
+        snap = book.snapshot()
+        if snap["mid"] is None and not any(flow.values()):
             flow.clear()
             return
         row = {
             "date": args.date,
             "second": sec,
             "time_et": fmt_ns(sec * 1_000_000_000),
-            **s,
+            **snap,
             "add_bid": flow["add_B"], "add_ask": flow["add_S"],
             "cancel_bid": flow["cancel_B"], "cancel_ask": flow["cancel_S"],
             "fill_bid": flow["fill_B"], "fill_ask": flow["fill_S"],
             "classified_buy_qty": flow["aggr_buy"],
             "classified_sell_qty": flow["aggr_sell"],
             "unknown_trade_qty": flow["unknown_trade"],
+            "auction_cleanup_bid_qty": flow["auction_cleanup_B"],
+            "auction_cleanup_ask_qty": flow["auction_cleanup_S"],
         }
         book_rows.append(row)
         flow.clear()
@@ -166,7 +167,6 @@ def main():
         if sec == bucket_sec:
             return
         flush(bucket_sec)
-        # Avoid fabricating thousands of empty seconds before the IPO quote period.
         if sec - bucket_sec <= 10:
             for missing in range(bucket_sec + 1, sec):
                 flush(missing)
@@ -196,7 +196,7 @@ def main():
             side = chr(b[19])
             qty = u32(b, 20)
             px = u32(b, 32)
-            book.add(oid, side, qty, px)
+            book.add(oid, side, qty, px, ns)
             flow[f"add_{side}"] += qty
 
         elif typ == "E":
@@ -204,32 +204,47 @@ def main():
             qty = u32(b, 19)
             r = book.reduce(oid, qty)
             if r:
-                side, q, _, _ = r
+                side, q, _, _, _ = r
                 flow[f"fill_{side}"] += q
                 flow["aggr_buy" if side == "S" else "aggr_sell"] += q
 
         elif typ == "C":
             oid = u64(b, 11)
             qty = u32(b, 19)
+            printable = chr(b[31])
+            exec_px_ticks = u32(b, 32)  # ITCH 5.0: printable byte is offset 31.
             r = book.reduce(oid, qty)
             if r:
-                side, q, _, _ = r
-                flow[f"fill_{side}"] += q
-                flow["aggr_buy" if side == "S" else "aggr_sell"] += q
+                side, q, _, _, add_ns = r
+                is_ipo_cleanup = (
+                    ipo_cross_ns is not None
+                    and ipo_cross_px_ticks is not None
+                    and ipo_cross_ns <= ns <= ipo_cross_ns + CROSS_CLEANUP_NS
+                    and printable == "N"
+                    and exec_px_ticks == ipo_cross_px_ticks
+                    and add_ns < ipo_cross_ns
+                )
+                if is_ipo_cleanup:
+                    # Auction allocation lifecycle: update the book but do not
+                    # classify it as continuous aggressive flow.
+                    flow[f"auction_cleanup_{side}"] += q
+                else:
+                    flow[f"fill_{side}"] += q
+                    flow["aggr_buy" if side == "S" else "aggr_sell"] += q
 
         elif typ == "X":
             oid = u64(b, 11)
             qty = u32(b, 19)
             r = book.reduce(oid, qty)
             if r:
-                side, q, _, _ = r
+                side, q, _, _, _ = r
                 flow[f"cancel_{side}"] += q
 
         elif typ == "D":
             oid = u64(b, 11)
             r = book.delete(oid)
             if r:
-                side, q, _ = r
+                side, q, _, _ = r
                 flow[f"cancel_{side}"] += q
 
         elif typ == "U":
@@ -237,28 +252,33 @@ def main():
             new_id = u64(b, 19)
             qty = u32(b, 27)
             px = u32(b, 31)
-            r = book.replace(old_id, new_id, qty, px)
+            r = book.replace(old_id, new_id, qty, px, ns)
             if r:
                 old, side = r
                 flow[f"cancel_{side}"] += old[1]
                 flow[f"add_{side}"] += qty
 
         elif typ == "P":
-            qty = u32(b, 20)
-            flow["unknown_trade"] += qty
+            # ITCH non-cross trade. The buy/sell field is not reliable as an
+            # aggressor classifier for this research, so preserve as unknown.
+            flow["unknown_trade"] += u32(b, 20)
 
         elif typ == "Q":
+            cross_px_ticks = u32(b, 27)
             row = {
                 "date": args.date,
                 "time_et": fmt_ns(ns),
                 "ns": ns,
                 "shares": u64(b, 11),
                 "stock": alpha(b, 19, 8),
-                "cross_price": u32(b, 27) / PRICE_SCALE,
+                "cross_price": cross_px_ticks / PRICE_SCALE,
                 "match_number": u64(b, 31),
                 "cross_type": chr(b[39]),
             }
             crosses.append(row)
+            if row["cross_type"] == "H":
+                ipo_cross_ns = ns
+                ipo_cross_px_ticks = cross_px_ticks
 
         elif typ == "B":
             broken.add(u64(b, 11))
@@ -308,6 +328,8 @@ def main():
 
     ipo_crosses = [x for x in crosses if x["cross_type"] == "H"]
     ipo_noii = [x for x in noii if x["cross_type"] == "H"]
+    auction_cleanup_bid = sum(x["auction_cleanup_bid_qty"] for x in book_rows)
+    auction_cleanup_ask = sum(x["auction_cleanup_ask_qty"] for x in book_rows)
 
     summary = {
         "symbol": args.symbol,
@@ -320,6 +342,10 @@ def main():
         "noii_h_count": len(ipo_noii),
         "cross_h_count": len(ipo_crosses),
         "ipo_cross": ipo_crosses[0] if ipo_crosses else None,
+        "auction_cleanup_bid_qty": auction_cleanup_bid,
+        "auction_cleanup_ask_qty": auction_cleanup_ask,
+        "auction_cleanup_total_qty": auction_cleanup_bid + auction_cleanup_ask,
+        "cross_cleanup_rule": "C, Printable=N, exec_price=IPO cross, pre-cross order, <=1s after cross",
         "broken_trade_count": len(broken),
         "book_snapshot_rows": len(book_rows),
         "remaining_orders_eof": len(book.orders),
