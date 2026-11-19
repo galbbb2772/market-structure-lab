@@ -1,4 +1,4 @@
-name: Reanalyze SPCX native ITCH artifact
+name: Reanalyze SPCX native ITCH artifact\n# Reuse the first successful filtered-native artifact; do not re-download Nasdaq.
 
 on:
   push:
