@@ -1,26 +1,26 @@
 {
   "schema": "STRUCTURE-LAB-STATUS-V1",
-  "generated_at": "2026-11-20T04:06:00.748037+00:00",
+  "generated_at": "2026-11-21T04:06:07.267450+00:00",
   "indices": {
     "^GSPC": {
       "name": "S&P 500",
       "start": "1927-12-30",
-      "end": "2026-11-19",
-      "bars": 24840,
+      "end": "2026-11-20",
+      "bars": 24841,
       "source_status": "refreshed"
     },
     "^IXIC": {
       "name": "Nasdaq Composite",
       "start": "1971-02-05",
-      "end": "2026-11-19",
-      "bars": 14066,
+      "end": "2026-11-20",
+      "bars": 14067,
       "source_status": "refreshed"
     },
     "^DJI": {
       "name": "Dow Jones",
       "start": "1992-01-02",
-      "end": "2026-11-19",
-      "bars": 8784,
+      "end": "2026-11-20",
+      "bars": 8785,
       "source_status": "refreshed"
     }
   },
